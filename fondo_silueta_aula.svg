@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg"
+     role="img" aria-label="Fondo limpio con silueta de aula o tecnología educativa">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg         { fill: #f9fbff; }
+      .silhouette { fill: #0a2e68; opacity: 0.85; }
+      .title      { font: bold 32px sans-serif; fill: #ffffff; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    ]]></style>
+  </defs>
+
+  <!-- Fondo limpio -->
+  <rect x="0" y="0" width="1200" height="700" class="bg"/>
+
+  <!-- Silueta de aula con tecnología educativa -->
+  <g transform="translate(150,120) scale(1.2)">
+    <!-- Pizarra -->
+    <rect x="0" y="0" width="400" height="220" class="silhouette"/>
+    <!-- Mesa del docente -->
+    <rect x="420" y="60" width="160" height="120" class="silhouette"/>
+    <!-- Estudiantes en sillas y dispositivos -->
+    <circle cx="260" cy="340" r="40" class="silhouette"/>
+    <rect x="240" y="370" width="120" height="60" class="silhouette"/>
+    <!-- Laptop/tableta estudiante -->
+    <rect x="520" y="340" width="120" height="80" rx="10" ry="10" class="silhouette"/>
+    <rect x="540" y="365" width="80" height="50" fill="#f9fbff"/>
+    <!-- Silla de ruedas o accesibilidad -->
+    <circle cx="760" cy="360" r="40" class="silhouette"/>
+    <rect x="740" y="390" width="80" height="50" class="silhouette"/>
+    <!-- Tech icons -->
+    <circle cx="1000" cy="180" r="60" class="silhouette"/>
+    <path d="M980 150 L1020 150 L1020 190 L980 190 Z" fill="#f9fbff"/>
+  </g>
+
+  <!-- Texto opcional -->
+  <text x="600" y="650" class="title" text-anchor="middle">Tecnología Educativa · Inclusiva · Innovadora</text>
+</svg>

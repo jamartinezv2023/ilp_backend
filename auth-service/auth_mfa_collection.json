@@ -1,0 +1,45 @@
+﻿{
+  "info": {
+    "name": "Inclusive AuthService - MFA Demo",
+    "_postman_id": "auth-mfa-demo-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Enable TOTP (get QR)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"valeria\"\n}" },
+        "url": { "raw": "http://localhost:8080/api/auth/totp/enable" }
+      }
+    },
+    {
+      "name": "Verify TOTP Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"valeria\",\n  \"code\": \"123456\"\n}" },
+        "url": { "raw": "http://localhost:8080/api/auth/login-2fa" }
+      }
+    },
+    {
+      "name": "Disable TOTP",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"valeria\"\n}" },
+        "url": { "raw": "http://localhost:8080/api/auth/totp/disable" }
+      }
+    },
+    {
+      "name": "Rotate Secret",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"username\": \"valeria\"\n}" },
+        "url": { "raw": "http://localhost:8080/api/auth/totp/rotate" }
+      }
+    }
+  ]
+}

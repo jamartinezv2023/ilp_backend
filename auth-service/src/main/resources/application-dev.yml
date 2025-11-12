@@ -1,0 +1,28 @@
+﻿spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: tu_correo@gmail.com
+    password: tu_clave_de_aplicacion_google
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+twilio:
+  account-sid: TU_ACCOUNT_SID
+  auth-token: TU_AUTH_TOKEN
+  from-number: "+1234567890"
+
+server:
+  port: 8080

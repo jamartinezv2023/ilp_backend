@@ -1,0 +1,18 @@
+<!-- === TOTP (Google Authenticator / Authy compatible) === -->
+<dependency>
+  <groupId>dev.samstevens.totp</groupId>
+  <artifactId>totp-java</artifactId>
+  <version>1.7.1</version>
+</dependency>
+
+<!-- QR Code (para PNG Base64 del provisioning URI) -->
+<dependency>
+  <groupId>com.google.zxing</groupId>
+  <artifactId>core</artifactId>
+  <version>3.5.3</version>
+</dependency>
+<dependency>
+  <groupId>com.google.zxing</groupId>
+  <artifactId>javase</artifactId>
+  <version>3.5.3</version>
+</dependency>

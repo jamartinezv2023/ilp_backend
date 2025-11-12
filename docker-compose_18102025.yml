@@ -1,0 +1,225 @@
+version: '3.8'
+services:
+  eureka-server:
+    image: openjdk:17-jdk
+    container_name: eureka-server
+    working_dir: /app
+    volumes:
+      - ./services/eureka-server:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8761:8761"
+
+  config-server:
+    image: openjdk:17-jdk
+    container_name: config-server
+    working_dir: /app
+    volumes:
+      - ./services/config-server:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8888:8888"
+
+  gateway-service:
+    image: openjdk:17-jdk
+    container_name: gateway-service
+    working_dir: /app
+    volumes:
+      - ./services/gateway-service:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8080:8080"
+
+  auth-service:
+    image: openjdk:17-jdk
+    container_name: auth-service
+    working_dir: /app
+    volumes:
+      - ./services/auth-service:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://auth-db:5432/auth_db
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "8081:8081"
+    depends_on:
+      - auth-db
+
+  auth-db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - auth_db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  student-profile-service:
+    image: openjdk:17-jdk
+    container_name: student-profile-service
+    working_dir: /app
+    volumes:
+      - ./services/student-profile-service:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://students-db:3306/students_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "8082:8082"
+    depends_on:
+      - students-db
+
+  students-db:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+      - students_db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+  educational-resource-service:
+    image: openjdk:17-jdk
+    container_name: educational-resource-service
+    working_dir: /app
+    volumes:
+      - ./services/educational-resource-service:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  recommendation-engine:
+    image: python:3.10-slim
+    container_name: recommendation-engine
+    working_dir: /app
+    volumes:
+      - ./services/recommendation-engine:/app
+    command: ["sh","-c","pip install -r requirements.txt && uvicorn app:app --host 0.0.0.0 --port 5000"]
+    ports:
+      - "5000:5000"
+    depends_on:
+      - auth-db
+
+  neo4j:
+    image: neo4j:5.6
+    container_name: neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD}
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+
+  adaptive-api:
+    image: openjdk:17-jdk
+    container_name: adaptive-api
+    working_dir: /app
+    volumes:
+      - ./services/adaptive-education-service/adaptive-api:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8090:8090"
+    depends_on:
+      - neo4j
+
+  assessment-service:
+    image: openjdk:17-jdk
+    container_name: assessment-service
+    working_dir: /app
+    volumes:
+      - ./services/adaptive-education-service/assessment-service:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8091:8091"
+    depends_on:
+      - auth-db
+
+  feature-service:
+    image: openjdk:17-jdk
+    container_name: feature-service
+    working_dir: /app
+    volumes:
+      - ./services/adaptive-education-service/feature-service:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8092:8092"
+    depends_on:
+      - students-db
+      - neo4j
+
+  training-service:
+    image: python:3.10-slim
+    container_name: training-service
+    working_dir: /app
+    volumes:
+      - ./services/adaptive-education-service/training-service:/app
+    command: ["sh","-c","pip install -r requirements.txt && python train.py"]
+    depends_on:
+      - recommendation-engine
+
+  model-serving:
+    image: python:3.10-slim
+    container_name: model-serving
+    working_dir: /app
+    volumes:
+      - ./services/adaptive-education-service/model-serving:/app
+    command: ["sh","-c","pip install -r requirements.txt && python serve.py"]
+    ports:
+      - "8501:8501"
+    depends_on:
+      - training-service
+
+  embedding-service:
+    image: python:3.10-slim
+    container_name: embedding-service
+    working_dir: /app
+    volumes:
+      - ./services/adaptive-education-service/embedding-service:/app
+    command: ["sh","-c","pip install -r requirements.txt && python embed.py"]
+    depends_on:
+      - model-serving
+      - neo4j
+
+  explainability-audit-service:
+    image: openjdk:17-jdk
+    container_name: explainability-audit-service
+    working_dir: /app
+    volumes:
+      - ./services/adaptive-education-service/explainability-audit-service:/app
+    command: ["sh","-c","./mvnw -q -f /app/pom.xml spring-boot:run"]
+    ports:
+      - "8093:8093"
+    depends_on:
+      - auth-db
+
+  monitoring-service:
+    image: prom/prometheus
+    container_name: monitoring-service
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+volumes:
+  auth_db_data:
+  students_db_data:
+  mongo_data:
+  neo4j_data:

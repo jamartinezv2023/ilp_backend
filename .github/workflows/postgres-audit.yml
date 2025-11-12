@@ -1,0 +1,66 @@
+name: PostgreSQL CI/CD Audit
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  build-and-audit:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: inclusive/postgres-unify-audit
+      CONTAINER_NAME: inclusive_pg_audit
+      REPORT_FILE: audit_report.html
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          docker build -t $IMAGE_NAME:latest -f setup/Dockerfile.postgres-unify-audit .
+
+      - name: Run PostgreSQL Container
+        run: |
+          docker run -d --name $CONTAINER_NAME $IMAGE_NAME:latest
+          echo "Waiting for PostgreSQL to initialize..."
+          sleep 40
+          docker cp $CONTAINER_NAME:/var/log/postgres-verify/$REPORT_FILE ./$REPORT_FILE
+
+      - name: Upload Artifact (Audit Report)
+        uses: actions/upload-artifact@v4
+        with:
+          name: postgres-audit-report
+          path: ./$REPORT_FILE
+
+      # ---- Upload to Azure Blob (if secrets set) ----
+      - name: Upload Audit Report to Azure Blob
+        if: ${{ secrets.AZURE_STORAGE_ACCOUNT != '' }}
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az storage blob upload \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+              --container-name ${{ secrets.AZURE_CONTAINER_NAME }} \
+              --name audits/${{ github.run_id }}-${{ env.REPORT_FILE }} \
+              --file ${{ env.REPORT_FILE }} \
+              --overwrite true
+            echo "Report uploaded to Azure Blob Storage."
+
+      # ---- Upload to AWS S3 (if secrets set) ----
+      - name: Upload Audit Report to AWS S3
+        if: ${{ secrets.AWS_BUCKET != '' }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        run: |
+          aws s3 cp $REPORT_FILE s3://${{ secrets.AWS_BUCKET }}/audits/${{ github.run_id }}-$REPORT_FILE --acl private
+          echo "Report uploaded to S3 bucket: ${{ secrets.AWS_BUCKET }}/audits/${{ github.run_id }}-$REPORT_FILE"
+
+      - name: Stop and Clean Container
+        run: |
+          docker stop $CONTAINER_NAME
+          docker rm $CONTAINER_NAME

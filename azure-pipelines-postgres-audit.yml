@@ -1,0 +1,84 @@
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  IMAGE_NAME: 'inclusive/postgres-unify-audit'
+  CONTAINER_NAME: 'inclusive_pg_audit'
+  ARTIFACT_NAME: 'postgres-audit-report'
+  REPORT_FILE: 'audit_report.html'
+
+stages:
+  - stage: BuildAndVerify
+    displayName: 'Build and Verify PostgreSQL Schema'
+    jobs:
+      - job: Build
+        displayName: 'Build PostgreSQL Image and Run Verification'
+        steps:
+          - checkout: self
+
+          - task: Docker@2
+            displayName: 'Build PostgreSQL CI/CD Audit Image'
+            inputs:
+              command: build
+              dockerfile: setup/Dockerfile.postgres-unify-audit
+              tags: |
+                latest
+                $(Build.BuildId)
+              repository: $(IMAGE_NAME)
+
+          - script: |
+              echo ">>> Running PostgreSQL container for audit..."
+              docker run -d --name $(CONTAINER_NAME) $(IMAGE_NAME):latest
+              echo ">>> Waiting for initialization (≈40s)..."
+              sleep 40
+              docker cp $(CONTAINER_NAME):/var/log/postgres-verify/$(REPORT_FILE) $(REPORT_FILE)
+            displayName: 'Run Container and Collect Audit Report'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Audit HTML Report'
+            inputs:
+              PathtoPublish: '$(REPORT_FILE)'
+              ArtifactName: '$(ARTIFACT_NAME)'
+              publishLocation: 'Container'
+
+          # ---- Optional: Upload to Azure Blob Storage ----
+          - task: AzureCLI@2
+            condition: and(succeeded(), ne(variables['AZURE_STORAGE_ACCOUNT'], ''))
+            displayName: 'Upload Audit Report to Azure Blob Storage'
+            inputs:
+              azureSubscription: '$(AZURE_SERVICE_CONNECTION)'
+              scriptType: bash
+              scriptLocation: inlineScript
+              inlineScript: |
+                az storage blob upload \
+                  --account-name $(AZURE_STORAGE_ACCOUNT) \
+                  --container-name $(AZURE_CONTAINER_NAME) \
+                  --name audits/$(Build.BuildId)-$(REPORT_FILE) \
+                  --file $(REPORT_FILE) \
+                  --overwrite true
+                echo "Report uploaded to Azure Blob: audits/$(Build.BuildId)-$(REPORT_FILE)"
+
+          # ---- Optional: Upload to AWS S3 ----
+          - task: Bash@3
+            condition: and(succeeded(), ne(variables['AWS_BUCKET'], ''))
+            displayName: 'Upload Audit Report to AWS S3'
+            env:
+              AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+              AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+              AWS_DEFAULT_REGION: $(AWS_DEFAULT_REGION)
+            inputs:
+              targetType: inline
+              script: |
+                aws s3 cp $(REPORT_FILE) s3://$(AWS_BUCKET)/audits/$(Build.BuildId)-$(REPORT_FILE) --acl private
+                echo "Report uploaded to S3 bucket: $(AWS_BUCKET)/audits/$(Build.BuildId)-$(REPORT_FILE)"
+
+          - script: |
+              docker stop $(CONTAINER_NAME)
+              docker rm $(CONTAINER_NAME)
+            displayName: 'Clean up Container'

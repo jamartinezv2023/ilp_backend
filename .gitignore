@@ -1,0 +1,84 @@
+# =============================
+# Java / Maven / Gradle
+# =============================
+target/
+out/
+build/
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.log
+*.ctxt
+hs_err_pid*
+*.db
+*.h2.db
+
+.mvn/
+.gradle/
+.gradle-cache/
+.settings/
+bin/
+
+# =============================
+# Spring Boot
+# =============================
+spring.log
+logs/
+*.log
+*.tmp
+*.pid
+*.lock
+application.properties
+application.yml
+*.env
+
+# =============================
+# IDEs
+# =============================
+.idea/
+*.ipr
+*.iws
+*.bak
+*.swp
+.vscode/
+.project
+.classpath
+.settings/
+*.launch
+*.factorypath
+
+# =============================
+# Docker
+# =============================
+docker-compose.override.yml
+*.env
+*.tmp
+*.log
+**/Dockerfile~
+
+# =============================
+# Sistema / OS
+# =============================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.part*
+*.bak
+*.swp
+
+# =============================
+# Archivos comprimidos / Backups
+# =============================
+*.zip
+*.tar.gz
+*.rar
+inclusive-learning-platform-backend-final_v3.zip
+inclusive-learning-platform-backend-final_v3.zip.part00
+
+# =============================
+# Scripts
+# =============================
+*.sh~
+*.bat~

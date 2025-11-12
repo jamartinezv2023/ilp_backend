@@ -1,0 +1,65 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: pg_inclusive
+    restart: always
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_inclusive
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+
+  auth-service:
+    build:
+      context: ./auth-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  report-service:
+    build:
+      context: ./report-service
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  adaptive-education-service:
+    build:
+      context: ./adaptive-education-service
+    ports:
+      - "8082:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+
+  notification-service:
+    build:
+      context: ./notification-service
+    ports:
+      - "8083:8080"
+    depends_on:
+      - postgres
+      - rabbitmq
+
+volumes:
+  postgres_data:

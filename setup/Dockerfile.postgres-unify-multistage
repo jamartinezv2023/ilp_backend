@@ -1,0 +1,80 @@
+# ==========================================================
+#  PostgreSQL Multi-Stage Universal Auth & Init (CI/CD Ready)
+# ==========================================================
+#  Autor: Plataforma Inclusiva - DevOps
+#  Descripción:
+#   - Configura PostgreSQL con autenticación unificada (scram-sha-256)
+#   - Crea las bases del ecosistema educativo
+#   - Aplica scripts de estructura y verificación automática
+# ==========================================================
+
+### ---------- STAGE 1: Builder ----------
+FROM postgres:17 AS builder
+
+LABEL maintainer="Inclusive DevOps Team"
+LABEL stage="builder"
+
+WORKDIR /tmp/setup
+
+# Copiar scripts SQL y setup
+COPY setup_unify_postgres_auth_crossplatform.sh .
+COPY fix_auth_schema.sql .
+COPY fix_inclusive_learning_schema.sql .
+COPY fix_adaptive_education_schema.sql .
+COPY verify_all_schemas_detailed_ascii.sql .
+
+# Asegurar formato UNIX
+RUN apt-get update && apt-get install -y dos2unix && \
+    dos2unix *.sh *.sql && \
+    chmod +x setup_unify_postgres_auth_crossplatform.sh
+
+# ---------- STAGE 2: Runtime ----------
+FROM postgres:17
+
+LABEL maintainer="Inclusive DevOps Team"
+LABEL description="PostgreSQL Unified Auth + Multi-DB Auto-Init for CI/CD"
+
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_DB=postgres
+ENV PGPORT=5432
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+# Copiar scripts desde el builder
+COPY --from=builder /tmp/setup /docker-entrypoint-initdb.d/
+
+# Permisos y normalización
+RUN chmod +x /docker-entrypoint-initdb.d/*.sh && \
+    chown postgres:postgres /docker-entrypoint-initdb.d/*.sql && \
+    apt-get update && apt-get install -y dos2unix && \
+    dos2unix /docker-entrypoint-initdb.d/*.sh /docker-entrypoint-initdb.d/*.sql && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Crear script maestro de inicialización
+RUN bash -c 'cat > /docker-entrypoint-initdb.d/00-init-multidb.sh <<EOF
+#!/usr/bin/env bash
+set -e
+echo "=========================================================="
+echo "   INICIANDO CONFIGURACIÓN MULTIBASE - POSTGRES"
+echo "=========================================================="
+
+DBS=("auth_service" "inclusive_learning" "adaptive_education_db")
+
+for db in "${DBS[@]}"; do
+    echo "[CREANDO] Base de datos \$db..."
+    psql -v ON_ERROR_STOP=1 --username "\$POSTGRES_USER" --dbname "\$POSTGRES_DB" -c "CREATE DATABASE \$db;"
+done
+
+echo "[OK] Bases creadas correctamente."
+EOF' && chmod +x /docker-entrypoint-initdb.d/00-init-multidb.sh
+
+# Configuración del healthcheck
+HEALTHCHECK --interval=10s --timeout=5s --start-period=30s \
+  CMD pg_isready -U postgres -d postgres -h localhost || exit 1
+
+# Exponer el puerto PostgreSQL
+EXPOSE 5432
+
+# PostgreSQL ejecutará automáticamente los scripts en /docker-entrypoint-initdb.d/
+# durante el primer arranque del contenedor.

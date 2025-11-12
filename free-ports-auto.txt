@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# =====================================================================
+# File: free-ports-auto
+# Location: inclusive-learning-platform/
+# Author: Inclusive Learning Platform Automation
+# Description:
+#   Cross-platform launcher for freeing occupied ports.
+#   Automatically detects Windows or Linux/WSL environment.
+# =====================================================================
+
+# Detect OS
+OS=$(uname | tr '[:upper:]' '[:lower:]')
+
+# Parameters (forwarded to underlying script)
+ARGS="$@"
+
+echo "🌍 Detecting environment..."
+echo "-----------------------------------------------------"
+
+if [[ "$OS" == *"mingw"* || "$OS" == *"msys"* || "$OS" == *"cygwin"* ]]; then
+  echo "🪟 Windows environment detected"
+  if [[ -f "./free-port.ps1" ]]; then
+    echo "🚀 Running PowerShell script..."
+    powershell.exe -ExecutionPolicy Bypass -File "./free-port.ps1" $ARGS
+  else
+    echo "❌ PowerShell script 'free-port.ps1' not found in current directory."
+    exit 1
+  fi
+elif [[ "$OS" == *"linux"* || "$OS" == *"darwin"* ]]; then
+  echo "🐧 Unix/Linux or macOS environment detected"
+  if [[ -f "./free-port.sh" ]]; then
+    echo "🚀 Running Bash script..."
+    bash ./free-port.sh $ARGS
+  else
+    echo "❌ Bash script 'free-port.sh' not found in current directory."
+    exit 1
+  fi
+else
+  echo "⚠️ Unknown OS: $OS"
+  echo "Please run manually either 'free-port.ps1' or 'free-port.sh'."
+  exit 1
+fi

@@ -1,0 +1,48 @@
+# schema.graphqls
+
+type Query {
+    users: [User!]!
+    userById(id: ID!): User
+    roles: [Role!]!
+    roleById(id: ID!): Role
+}
+
+type Mutation {
+    createUser(input: CreateUserInput!): User!
+    createRole(input: CreateRoleInput!): Role!
+}
+
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    accountStatus: String!
+    emailVerified: Boolean!
+    createdAt: String!
+    roles: [Role!]!
+}
+
+type Role {
+    id: ID!
+    name: String!
+    permissions: [Permission!]!
+}
+
+type Permission {
+    id: ID!
+    name: String!
+    description: String
+}
+
+input CreateUserInput {
+    username: String!
+    email: String!
+    password: String!
+    roleIds: [ID!]! # asignar roles al crear usuario
+}
+
+input CreateRoleInput {
+    name: String!
+    permissionIds: [ID!]! # asignar permisos al crear rol
+}
+

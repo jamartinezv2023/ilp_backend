@@ -1,0 +1,1 @@
+   [+] Controlador creado: C:\Users\iesaf\OneDrive\Documentos\TEAC2025-26\Reconstruccion_19102025\inclusive-learning-platform-backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\controller\src\main\java\controller\controller\adaptive-education-serviceController.java

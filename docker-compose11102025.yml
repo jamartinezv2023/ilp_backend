@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16
+    container_name: inclusive-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: inclusive_platform
+    ports:
+      - "5432:5432"
+
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_APP_NAME=auth-service
+    depends_on:
+      - postgres
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "8086:8086"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_APP_NAME=notification-service
+    depends_on:
+      - postgres
+
+  report-service:
+    build: ./report-service
+    ports:
+      - "8087:8087"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SPRING_APP_NAME=report-service
+    depends_on:
+      - postgres

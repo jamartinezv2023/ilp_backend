@@ -1,0 +1,13 @@
+﻿Module,HasController,HasCRUD,Status
+controller,False,Missing,No Controller
+adaptive-education-service,True,Missing,Missing
+assessment-service,True,Complete,Complete
+auth-service,True,Complete,Complete
+commons-service,True,Complete,Complete
+common_DUPLICATE_DISABLED,True,Complete,Complete
+gateway-service,True,Complete,Complete
+monitoring-service,True,Complete,Complete
+notification-service,True,Complete,Complete
+report-service,True,Complete,Complete
+tenant-service,True,Complete,Complete
+inclusive-learning-platform-backend,True,Complete,Complete
