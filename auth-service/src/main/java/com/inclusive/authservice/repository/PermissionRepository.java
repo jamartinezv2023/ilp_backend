@@ -1,9 +1,11 @@
 package com.inclusive.authservice.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import com.inclusive.authservice.model.Permission;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
+import java.util.Optional;
+
 public interface PermissionRepository extends JpaRepository<Permission, Long> {
+
+    Optional<Permission> findByName(String name);
 }

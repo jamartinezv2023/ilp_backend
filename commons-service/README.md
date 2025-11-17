@@ -1,15 +1,14 @@
-# README - MÃ³dulo: commons-service
+# README - Módulo: commons-service
 
-**Ruta del mÃ³dulo:** C:\Users\iesaf\OneDrive\Documentos\TEAC2025-26\Reconstruccion_19102025\inclusive-learning-platform-backend\commons-service
+**Ruta del módulo:** C:\temp_ilp\inclusive-learning-platform-backend\commons-service
 
-**Generado el:** 2025-11-11 23:08:48
+**Generado el:** 2025-11-12 21:49:18
 
-## Entidades generadas
+## Entidades generadas (HARD RESET CRUD)
 
 | Entidad | Controller | Service | Repo | DTO | Model |
 |---|---:|---:|---:|---:|---:|
-| Resource | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| Resource | Unchanged | Unchanged | Unchanged | Unchanged | Updated |
+| Resource | Created | Created | Created | Created | Created |
 
 ## Endpoints
 
@@ -20,12 +19,5 @@
 - PUT /api/resource/{id}
 - DELETE /api/resource/{id}
 
-### Resource
-- GET /api/resource/list
-- GET /api/resource/{id}
-- POST /api/resource
-- PUT /api/resource/{id}
-- DELETE /api/resource/{id}
 
-
-_Generado por repair-crud-modules-v11.1.ps1_
+_Generado por repair-crud-modules-v11.2.ps1 (HARD RESET)_

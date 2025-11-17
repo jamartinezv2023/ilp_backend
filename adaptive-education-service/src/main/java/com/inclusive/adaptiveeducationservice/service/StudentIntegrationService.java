@@ -1,29 +1,19 @@
-// adaptive-education-service/src/main/java/com/inclusive/adaptiveeducationservice/service/StudentIntegrationService.java
 package com.inclusive.adaptiveeducationservice.service;
 
-import com.inclusive.common.dto.StudentDTO;
-import com.inclusive.adaptiveeducationservice.client.StudentClient;
-import org.springframework.stereotype.Service;
+import com.inclusive.adaptiveeducationservice.entity.dto.StudentDTO;
+
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class StudentIntegrationService {
+public interface StudentIntegrationService {
 
-    private final StudentClient studentClient;
+    List<StudentDTO> getAll();
 
-    public StudentIntegrationService(StudentClient studentClient) {
-        this.studentClient = studentClient;
-    }
+    Optional<StudentDTO> getById(Long id);
 
-    public List<StudentDTO> getStudents() {
-        return studentClient.getAllStudents();
-    }
+    StudentDTO create(StudentDTO dto);
 
-    public StudentDTO getStudent(Long id) {
-        return studentClient.getStudentById(id);
-    }
+    Optional<StudentDTO> update(Long id, StudentDTO dto);
+
+    void delete(Long id);
 }
-
-
-
-

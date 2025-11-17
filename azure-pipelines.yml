@@ -1,0 +1,147 @@
+﻿trigger:
+  branches:
+    include:
+      - main
+      - master
+  paths:
+    include:
+      - adaptive-education-service/*
+      - commons-service/*
+      - azure-pipelines.yml
+      - infra/terraform/aks/*
+      - k8s/*
+
+variables:
+  vmImage: 'ubuntu-latest'
+  javaVersion: '17'
+  mavenOptions: '-Xmx1024m'
+  dockerImageName: 'adaptive-education-service'
+  dockerImageTag: '$(Build.BuildId)'
+  terraformWorkingDirectory: 'infra/terraform/aks'
+
+stages:
+  - stage: Build
+    displayName: 'Build & Test (Maven)'
+    jobs:
+      - job: Build_Job
+        displayName: 'Build ILP Backend (adaptive-education-service)'
+        pool:
+          vmImage: $(vmImage)
+        steps:
+          - task: JavaToolInstaller@0
+            displayName: 'Install Java $(javaVersion)'
+            inputs:
+              versionSpec: '$(javaVersion)'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'PreInstalled'
+
+          - task: Maven@4
+            displayName: 'Maven clean package (adaptive-education-service)'
+            inputs:
+              mavenPomFile: 'adaptive-education-service/pom.xml'
+              goals: 'clean package'
+              options: '$(mavenOptions)'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              javaHomeOption: 'Path'
+              mavenVersionOption: 'Default'
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publicar artefactos (JARs)'
+            inputs:
+              PathtoPublish: '$(System.DefaultWorkingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+
+  - stage: Infra
+    displayName: 'Provisionar Infraestructura (Terraform AKS + ACR + Postgres)'
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - job: Infra_Job
+        displayName: 'Terraform plan & apply'
+        pool:
+          vmImage: $(vmImage)
+        steps:
+          - task: TerraformInstaller@1
+            displayName: 'Instalar Terraform'
+            inputs:
+              terraformVersion: '1.7.0'
+
+          - script: |
+              cd $(terraformWorkingDirectory)
+              terraform init
+            displayName: 'Terraform init'
+
+          - script: |
+              cd $(terraformWorkingDirectory)
+              terraform plan -out=tfplan
+            displayName: 'Terraform plan'
+
+          - script: |
+              cd $(terraformWorkingDirectory)
+              terraform apply -auto-approve tfplan
+            displayName: 'Terraform apply'
+
+  - stage: DockerBuildAndPush
+    displayName: 'Build & Push Docker Image'
+    dependsOn: Infra
+    condition: succeeded()
+    jobs:
+      - job: Docker_Job
+        displayName: 'Build & Push Docker Image to ACR'
+        pool:
+          vmImage: $(vmImage)
+        steps:
+          - task: AzureCLI@2
+            displayName: 'Login to ACR'
+            inputs:
+              azureSubscription: '$(AZURE_SERVICE_CONNECTION)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az acr login --name $(acrName)
+
+          - task: Docker@2
+            displayName: 'Build and Push adaptive-education-service image'
+            inputs:
+              containerRegistry: '$(ACR_SERVICE_CONNECTION)'
+              repository: '$(dockerImageName)'
+              command: 'buildAndPush'
+              Dockerfile: 'adaptive-education-service/Dockerfile'
+              buildContext: '$(System.DefaultWorkingDirectory)'
+              tags: |
+                $(dockerImageTag)
+
+  - stage: Deploy
+    displayName: 'Desplegar en AKS'
+    dependsOn: DockerBuildAndPush
+    condition: succeeded()
+    jobs:
+      - job: Deploy_Job
+        displayName: 'kubectl apply en AKS'
+        pool:
+          vmImage: $(vmImage)
+        steps:
+          - task: AzureCLI@2
+            displayName: 'Configurar kubectl (AKS)'
+            inputs:
+              azureSubscription: '$(AZURE_SERVICE_CONNECTION)'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az aks get-credentials -g $(resourceGroup) -n $(aksClusterName) --overwrite-existing
+
+          - task: Kubernetes@1
+            displayName: 'kubectl apply -f k8s/'
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscriptionEndpoint: '$(AZURE_SERVICE_CONNECTION)'
+              azureResourceGroup: '$(resourceGroup)'
+              kubernetesCluster: '$(aksClusterName)'
+              command: 'apply'
+              useConfigurationFile: true
+              configuration: 'k8s/*.yml'
+              secretType: 'dockerRegistry'
+              containerRegistryType: 'Azure Container Registry'
+              dockerRegistryEndpoint: '$(ACR_SERVICE_CONNECTION)'

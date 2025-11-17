@@ -1,7 +1,39 @@
-package com.inclusive.authservice.model;\r\nimport javax.persistence.*;\r\n@Entity
-public class VerificationToken {\r\n    @Id
+package com.inclusive.authservice.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "verification_tokens")
+public class VerificationToken {
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;\r\n    // Campos detectados (manual):
-    // id\r\n    public Long getId() { return id; }
+    private Long id;
+
+    @Column(nullable = false, unique = true, length = 255)
+    private String token;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @Column(nullable = false)
+    private LocalDateTime expiresAt;
+
+    public Long getId() { return id; }
+
     public void setId(Long id) { this.id = id; }
+
+    public String getToken() { return token; }
+
+    public void setToken(String token) { this.token = token; }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
+    public LocalDateTime getExpiresAt() { return expiresAt; }
+
+    public void setExpiresAt(LocalDateTime expiresAt) { this.expiresAt = expiresAt; }
 }

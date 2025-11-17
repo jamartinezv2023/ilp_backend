@@ -1,26 +1,26 @@
-# README - MÃ³dulo: auth-service
+# README - Módulo: auth-service
 
-**Ruta del mÃ³dulo:** C:\Users\iesaf\OneDrive\Documentos\TEAC2025-26\Reconstruccion_19102025\inclusive-learning-platform-backend\auth-service
+**Ruta del módulo:** C:\temp_ilp\inclusive-learning-platform-backend\auth-service
 
-**Generado el:** 2025-11-11 23:08:48
+**Generado el:** 2025-11-12 21:49:18
 
-## Entidades generadas
+## Entidades generadas (HARD RESET CRUD)
 
 | Entidad | Controller | Service | Repo | DTO | Model |
 |---|---:|---:|---:|---:|---:|
-| Institution | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| Permission | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| Profile | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| Role | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| Student | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| StudentAIOutput | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| StudentBehaviorMetric | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| StudentEnvironment | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| StudentLearningProfile | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| StudentSupportNeeds | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| User | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| UserMfa | Updated | Unchanged | Unchanged | Unchanged | Updated |
-| VerificationToken | Updated | Unchanged | Unchanged | Unchanged | Updated |
+| Institution | Created | Created | Created | Created | Unchanged |
+| Permission | Created | Created | Created | Created | Unchanged |
+| Profile | Created | Created | Created | Created | Unchanged |
+| Role | Created | Created | Created | Created | Unchanged |
+| Student | Created | Created | Created | Created | Unchanged |
+| StudentAIOutput | Created | Created | Created | Created | Unchanged |
+| StudentBehaviorMetric | Created | Created | Created | Created | Unchanged |
+| StudentEnvironment | Created | Created | Created | Created | Unchanged |
+| StudentLearningProfile | Created | Created | Created | Created | Unchanged |
+| StudentSupportNeeds | Created | Created | Created | Created | Unchanged |
+| User | Created | Created | Created | Created | Unchanged |
+| UserMfa | Created | Created | Created | Created | Unchanged |
+| VerificationToken | Created | Created | Created | Created | Unchanged |
 
 ## Endpoints
 
@@ -116,4 +116,4 @@
 - DELETE /api/verificationtoken/{id}
 
 
-_Generado por repair-crud-modules-v11.1.ps1_
+_Generado por repair-crud-modules-v11.2.ps1 (HARD RESET)_

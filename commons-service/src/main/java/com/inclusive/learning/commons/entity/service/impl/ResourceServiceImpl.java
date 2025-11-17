@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.inclusive.learning.commons.entity.model.Resource;
-import com.inclusive.learning.commons.entity.repository.ResourceRepository;
+    import com.inclusive.learning.commons.entity.repository.ResourceRepository;
 import com.inclusive.learning.commons.entity.service.ResourceService;
 
 @Service

@@ -1,12 +1,19 @@
 package com.inclusive.adaptiveeducationservice.entity.service;
 
+import com.inclusive.adaptiveeducationservice.entity.dto.StudentDTO;
+
 import java.util.List;
-import com.inclusive.adaptiveeducationservice.entity.model.Student;
+import java.util.Optional;
 
 public interface StudentService {
-    List<Student> listAll();
-    Student getById(Long id);
-    Student create(Student entity);
-    Student update(Long id, Student entity);
+
+    List<StudentDTO> findAll();
+
+    Optional<StudentDTO> findById(Long id);
+
+    StudentDTO create(StudentDTO dto);
+
+    Optional<StudentDTO> update(Long id, StudentDTO dto);
+
     void delete(Long id);
 }

@@ -5,6 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- ===================== -->
+    <!-- PARENT SPRING BOOT -->
+    <!-- ===================== -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -12,11 +15,33 @@
         <relativePath/>
     </parent>
 
+    <!-- ===================== -->
+    <!-- IDENTIFICACIÓN -->
+    <!-- ===================== -->
     <groupId>com.inclusive.platform</groupId>
     <artifactId>inclusive-learning-platform-backend</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <!-- ===================== -->
+    <!-- PROPIEDADES GLOBALES -->
+    <!-- ===================== -->
+    <properties>
+        <java.version>17</java.version>
+
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <jjwt.version>0.11.5</jjwt.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <!-- ===================== -->
+    <!-- MÓDULOS -->
+    <!-- ===================== -->
     <modules>
         <module>commons-service</module>
         <module>auth-service</module>
@@ -29,18 +54,18 @@
         <module>tenant-service</module>
     </modules>
 
-    \\r\n    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>\r\n\\r\n\
-
-    <!-- Dependencias comunes a todos los servicios -->
+    <!-- ===================== -->
+    <!-- DEPENDENCIAS GLOBALES -->
+    <!-- ===================== -->
     <dependencies>
 
-        <!-- ValidaciÃ³n -->
+        <!-- Validación -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- Swagger global -->
+        <!-- Swagger -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -49,11 +74,13 @@
 
     </dependencies>
 
-    <!-- GestiÃ³n centralizada de versiones -->
+    <!-- ===================== -->
+    <!-- MANEJO CENTRALIZADO DE VERSIONES -->
+    <!-- ===================== -->
     <dependencyManagement>
         <dependencies>
 
-            <!-- Commons service -->
+            <!-- Commons -->
             <dependency>
                 <groupId>com.inclusive.platform</groupId>
                 <artifactId>commons-service</artifactId>
@@ -86,13 +113,11 @@
                 <artifactId>jjwt-api</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-impl</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-jackson</artifactId>
@@ -116,5 +141,35 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- ===================== -->
+    <!-- BUILD -->
+    <!-- ===================== -->
+    <build>
+        <plugins>
+
+            <!-- Compilación -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <release>17</release>
+                </configuration>
+            </plugin>
+
+            <!-- Spring Boot -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>
-\r\n  <build>\r\n    <plugins>\r\n      <plugin>\r\n        <groupId>org.springframework.boot</groupId>\r\n        <artifactId>spring-boot-maven-plugin</artifactId>\r\n        <configuration>\r\n          <executable>true</executable>\r\n          <jvmArguments>-Dfile.encoding=UTF8</jvmArguments>\r\n        </configuration>\r\n      </plugin>\r\n    </plugins>\r\n  </build>\r\n
