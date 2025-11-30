@@ -2,23 +2,22 @@ package com.inclusive.authservice.controller;
 
 import com.inclusive.authservice.dto.UserAccountDTO;
 import com.inclusive.authservice.service.UserAccountService;
-import org.springframework.http.HttpStatus;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
 /**
  * REST controller exposing CRUD endpoints for UserAccount.
  *
- * Base path:
- *   /api/auth/users
+ * Base path (ADMIN ONLY):
+ *   /api/admin/user-accounts
  */
 @RestController
-@RequestMapping("/api/auth/users")
+@RequestMapping("/api/admin/user-accounts")
 @Validated
 public class UserAccountController {
 
@@ -43,7 +42,7 @@ public class UserAccountController {
     @PostMapping
     public ResponseEntity<UserAccountDTO> create(@Valid @RequestBody UserAccountDTO dto) {
         UserAccountDTO created = service.create(dto);
-        URI location = URI.create("/api/auth/users/" + created.getId());
+        URI location = URI.create("/api/admin/user-accounts/" + created.getId());
         return ResponseEntity.created(location).body(created);
     }
 
