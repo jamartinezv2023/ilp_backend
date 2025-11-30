@@ -1,12 +1,12 @@
+// src/main/java/com/inclusive/authservice/service/AuthServiceImpl.java
 package com.inclusive.authservice.service;
 
-import com.inclusive.authservice.dto.AuthResponse;
 import com.inclusive.authservice.model.Role;
 import com.inclusive.authservice.model.User;
 import com.inclusive.authservice.repository.RoleRepository;
 import com.inclusive.authservice.repository.UserRepository;
+import com.inclusive.authservice.security.AuthTokens;
 import com.inclusive.authservice.security.JwtTokenService;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,42 +48,41 @@ public class AuthServiceImpl implements AuthService {
         User user = new User();
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(rawPassword));
-        user.setEnabled(true);
         user.getRoles().add(baseRole);
+        user.setEnabled(true);
 
         return userRepository.save(user);
     }
 
     @Override
-    public AuthResponse login(String email, String rawPassword) {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new BadCredentialsException("Credenciales inválidas"));
-
-        if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
-            throw new BadCredentialsException("Credenciales inválidas");
-        }
-
-        List<String> roleNames = user.getRoles()
-                .stream()
-                .map(Role::getName)
-                .toList();
-
-        String accessToken = jwtTokenService.generateAccessToken(user.getEmail(), roleNames);
-        String refreshToken = jwtTokenService.generateRefreshToken(user.getEmail(), roleNames);
-
-        AuthResponse response = new AuthResponse();
-        response.setAccessToken(accessToken);
-        response.setRefreshToken(refreshToken);
-        response.setExpiresIn(jwtTokenService.getAccessTokenExpirationMs());
-        response.setUserId(user.getId());
-        response.setEmail(user.getEmail());
-        response.setRoles(roleNames);
-
-        return response;
+    @Transactional(readOnly = true)
+    public List<User> listUsers() {
+        return userRepository.findAll();
     }
 
     @Override
-    public List<User> listUsers() {
-        return userRepository.findAll();
+    public AuthTokens login(String email, String rawPassword) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Credenciales inválidas"));
+
+        if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
+            throw new IllegalArgumentException("Credenciales inválidas");
+        }
+
+        return jwtTokenService.generateTokens(user);
+    }
+
+    @Override
+    public AuthTokens refresh(String refreshToken) {
+        if (!jwtTokenService.validateRefreshToken(refreshToken)) {
+            throw new IllegalArgumentException("Refresh token inválido o expirado");
+        }
+
+        String email = jwtTokenService.getEmailFromRefreshToken(refreshToken);
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado para el refresh token"));
+
+        return jwtTokenService.generateTokens(user);
     }
 }

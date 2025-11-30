@@ -1,25 +1,68 @@
+// src/main/java/com/inclusive/authservice/dto/AuthResponse.java
 package com.inclusive.authservice.dto;
 
-import com.inclusive.authservice.model.User;
+import java.time.Instant;
+import java.util.List;
 
 public class AuthResponse {
 
-    private Long id;
+    private String tokenType = "Bearer";
+    private String accessToken;
+    private String refreshToken;
+    private Instant accessTokenExpiresAt;
+    private Instant refreshTokenExpiresAt;
     private String email;
-    private boolean enabled;
-    private AuthTokens tokens;
+    private List<String> roles;
 
-    public static AuthResponse of(User user, AuthTokens tokens) {
-        AuthResponse r = new AuthResponse();
-        r.id = user.getId();
-        r.email = user.getEmail();
-        r.enabled = user.isEnabled();
-        r.tokens = tokens;
-        return r;
+    public String getTokenType() {
+        return tokenType;
     }
 
-    public Long getId() { return id; }
-    public String getEmail() { return email; }
-    public boolean isEnabled() { return enabled; }
-    public AuthTokens getTokens() { return tokens; }
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public Instant getAccessTokenExpiresAt() {
+        return accessTokenExpiresAt;
+    }
+
+    public void setAccessTokenExpiresAt(Instant accessTokenExpiresAt) {
+        this.accessTokenExpiresAt = accessTokenExpiresAt;
+    }
+
+    public Instant getRefreshTokenExpiresAt() {
+        return refreshTokenExpiresAt;
+    }
+
+    public void setRefreshTokenExpiresAt(Instant refreshTokenExpiresAt) {
+        this.refreshTokenExpiresAt = refreshTokenExpiresAt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 }

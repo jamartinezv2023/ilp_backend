@@ -1,64 +1,117 @@
+// src/main/java/com/inclusive/authservice/security/JwtTokenService.java
 package com.inclusive.authservice.security;
 
+import com.inclusive.authservice.model.Role;
+import com.inclusive.authservice.model.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.time.Instant;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@Service
+@Component
 public class JwtTokenService {
 
-    private final SecretKey accessKey;
-    private final SecretKey refreshKey;
+    @Value("${jwt.access-token-secret}")
+    private String accessTokenSecret;
+
+    @Value("${jwt.refresh-token-secret}")
+    private String refreshTokenSecret;
 
     @Value("${jwt.access-token-expiration-ms}")
-    private long accessExpiration;
+    private long accessTokenExpirationMs;
 
     @Value("${jwt.refresh-token-expiration-ms}")
-    private long refreshExpiration;
+    private long refreshTokenExpirationMs;
 
-    public JwtTokenService(
-            @Value("${jwt.access-token-secret}") String accessSecret,
-            @Value("${jwt.refresh-token-secret}") String refreshSecret
-    ) {
-        this.accessKey = Keys.hmacShaKeyFor(accessSecret.getBytes());
-        this.refreshKey = Keys.hmacShaKeyFor(refreshSecret.getBytes());
+    private Key accessKey() {
+        return Keys.hmacShaKeyFor(accessTokenSecret.getBytes(StandardCharsets.UTF_8));
     }
 
-    // ACCESS TOKEN
-    public String generateAccessToken(String email) {
+    private Key refreshKey() {
+        return Keys.hmacShaKeyFor(refreshTokenSecret.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public AuthTokens generateTokens(User user) {
+        Instant now = Instant.now();
+        Instant accessExpiry = now.plusMillis(accessTokenExpirationMs);
+        Instant refreshExpiry = now.plusMillis(refreshTokenExpirationMs);
+
+        String accessToken = generateAccessToken(user, Date.from(now), Date.from(accessExpiry));
+        String refreshToken = generateRefreshToken(user, Date.from(now), Date.from(refreshExpiry));
+
+        return new AuthTokens(accessToken, refreshToken, accessExpiry, refreshExpiry);
+    }
+
+    private String generateAccessToken(User user, Date issuedAt, Date expiry) {
+        List<String> roles = user.getRoles()
+                .stream()
+                .map(Role::getName)
+                .collect(Collectors.toList());
+
         return Jwts.builder()
-                .subject(email)
-                .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + accessExpiration))
-                .signWith(accessKey)
+                .setSubject(user.getEmail())
+                .claim("uid", user.getId())
+                .claim("roles", roles)
+                .setIssuedAt(issuedAt)
+                .setExpiration(expiry)
+                .signWith(accessKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    // REFRESH TOKEN
-    public String generateRefreshToken(String email) {
+    private String generateRefreshToken(User user, Date issuedAt, Date expiry) {
         return Jwts.builder()
-                .subject(email)
-                .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + refreshExpiration))
-                .signWith(refreshKey)
+                .setSubject(user.getEmail())
+                .claim("uid", user.getId())
+                .setIssuedAt(issuedAt)
+                .setExpiration(expiry)
+                .signWith(refreshKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public String extractEmailFromAccessToken(String token) {
-        return Jwts.parser().verifyWith(accessKey).build()
-                .parseSignedClaims(token)
-                .getPayload()
-                .getSubject();
+    private Jws<Claims> parseAccessToken(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(accessKey())
+                .build()
+                .parseClaimsJws(token);
     }
 
-    public String extractEmailFromRefreshToken(String token) {
-        return Jwts.parser().verifyWith(refreshKey).build()
-                .parseSignedClaims(token)
-                .getPayload()
-                .getSubject();
+    private Jws<Claims> parseRefreshToken(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(refreshKey())
+                .build()
+                .parseClaimsJws(token);
+    }
+
+    public boolean validateAccessToken(String token) {
+        try {
+            Claims claims = parseAccessToken(token).getBody();
+            return claims.getExpiration().after(new Date());
+        } catch (JwtException | IllegalArgumentException ex) {
+            return false;
+        }
+    }
+
+    public boolean validateRefreshToken(String token) {
+        try {
+            Claims claims = parseRefreshToken(token).getBody();
+            return claims.getExpiration().after(new Date());
+        } catch (JwtException | IllegalArgumentException ex) {
+            return false;
+        }
+    }
+
+    public String getEmailFromAccessToken(String token) {
+        return parseAccessToken(token).getBody().getSubject();
+    }
+
+    public String getEmailFromRefreshToken(String token) {
+        return parseRefreshToken(token).getBody().getSubject();
     }
 }

@@ -1,3 +1,4 @@
+// src/main/java/com/inclusive/authservice/config/SecurityConfig.java
 package com.inclusive.authservice.config;
 
 import com.inclusive.authservice.security.JwtAuthenticationFilter;
@@ -26,31 +27,26 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                .csrf(csrf -> csrf.disable())
-                .cors(Customizer.withDefaults())
-                .sessionManagement(sm ->
-                        sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/swagger-ui.html",
-                                "/swagger-ui/**",
-                                "/v3/api-docs/**",
-                                "/v3/api-docs.yaml",
-                                "/actuator/**",
-                                "/error",
-
-                                // Auth endpoints públicos
-                                "/api/auth/register",
-                                "/api/auth/login",
-                                "/api/auth/refresh"
-                        ).permitAll()
-                        // El resto necesita JWT válido
-                        .anyRequest().authenticated()
-                )
-                .formLogin(form -> form.disable())
-                .httpBasic(Customizer.withDefaults()) // lo podemos quitar más adelante
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+            .csrf(csrf -> csrf.disable())
+            .cors(Customizer.withDefaults())
+            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                    .requestMatchers(
+                            "/swagger-ui.html",
+                            "/swagger-ui/**",
+                            "/v3/api-docs/**",
+                            "/v3/api-docs.yaml",
+                            "/actuator/**",
+                            "/error",
+                            "/api/auth/register",
+                            "/api/auth/login",
+                            "/api/auth/refresh"
+                    ).permitAll()
+                    .anyRequest().authenticated()
+            )
+            .formLogin(form -> form.disable())
+            .httpBasic(basic -> basic.disable())
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
