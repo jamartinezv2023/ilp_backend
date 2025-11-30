@@ -1,18 +1,14 @@
-// src/main/java/com/inclusive/authservice/service/AuthService.java
-package com.inclusive.authservice.service;
+@Override
+public AuthTokens login(String email, String rawPassword) {
 
-import com.inclusive.authservice.model.User;
-import com.inclusive.authservice.security.AuthTokens;
+    User user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new IllegalArgumentException("Credenciales inválidas"));
 
-import java.util.List;
+    // Validar contraseña encriptada
+    if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
+        throw new IllegalArgumentException("Credenciales inválidas");
+    }
 
-public interface AuthService {
-
-    User registerUser(String email, String password);
-
-    List<User> listUsers();
-
-    AuthTokens login(String email, String password);
-
-    AuthTokens refresh(String refreshToken);
+    // Generar Access + Refresh
+    return jwtTokenService.generateTokens(user);
 }

@@ -38,15 +38,18 @@ public class AuthController {
     // ================
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-        AuthTokens tokens = authService.login(request.getEmail(), request.getPassword());
-        User user = authService.listUsers().stream()
-                .filter(u -> u.getEmail().equalsIgnoreCase(request.getEmail()))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado tras login"));
 
-        AuthResponse response = toAuthResponse(user, tokens);
-        return ResponseEntity.ok(response);
+    AuthTokens tokens = authService.login(request.getEmail(), request.getPassword());
+
+    AuthResponse response = new AuthResponse();
+    response.setAccessToken(tokens.getAccessToken());
+    response.setAccessTokenExpiresAt(tokens.getAccessTokenExpiresAt());
+    response.setRefreshToken(tokens.getRefreshToken());
+    response.setRefreshTokenExpiresAt(tokens.getRefreshTokenExpiresAt());
+
+    return ResponseEntity.ok(response);
     }
+
 
     // ================
     // Refresh token
