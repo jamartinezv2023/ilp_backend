@@ -1,88 +1,106 @@
+// Location: auth-service/src/main/java/com/inclusive/authservice/entity/UserAccount.java
 package com.inclusive.authservice.entity;
 
 import jakarta.persistence.*;
-import java.time.OffsetDateTime;
+import java.time.Instant;
+import java.util.UUID;
 
-/**
- * UserAccount entity for authentication and authorization.
- * This model is intentionally simple but extensible for SaaS / multi-tenant usage.
- */
 @Entity
-@Table(name = "user_accounts")
+@Table(
+    name = "user_accounts",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"tenant_id", "email"})
+    }
+)
 public class UserAccount {
 
+    // =========================
+    // Primary Key
+    // =========================
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    @Column(name = "id", nullable = false, updatable = false)
+    private UUID id;
 
-    @Column(nullable = false, unique = true, length = 150)
-    private String username;
-
-    @Column(nullable = false, unique = true, length = 255)
-    private String email;
-
-    @Column(name = "password_hash", nullable = false, length = 255)
-    private String passwordHash;
-
-    /**
-     * Comma-separated list of roles. For a more advanced model, you can
-     * normalize this to a Role entity and a join table.
-     */
-    @Column(length = 255)
-    private String roles;
-
-    @Column(nullable = false)
-    private boolean enabled = true;
-
-    @Column(nullable = false)
-    private boolean locked = false;
-
-    /**
-     * Tenant identifier for multi-tenant SaaS scenarios.
-     */
-    @Column(name = "tenant_id", length = 100)
+    // =========================
+    // Multitenancy
+    // =========================
+    @Column(name = "tenant_id", nullable = false, length = 64)
     private String tenantId;
 
+    // =========================
+    // Identity
+    // =========================
+    @Column(name = "email", nullable = false, length = 150)
+    private String email;
+
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
+
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled = true;
+
+    // =========================
+    // MFA (Multi-Factor Auth)
+    // =========================
     @Column(name = "mfa_enabled", nullable = false)
     private boolean mfaEnabled = false;
 
-    @Column(name = "mfa_secret", length = 255)
+    @Column(name = "mfa_secret")
     private String mfaSecret;
 
-    @Column(name = "created_at")
-    private OffsetDateTime createdAt;
+    // =========================
+    // Learning Styles (future IA)
+    // =========================
+    @Column(name = "learning_style_kolb")
+    private String learningStyleKolb;
+
+    @Column(name = "learning_style_felder")
+    private String learningStyleFelder;
+
+    @Column(name = "kuder_preferences")
+    private String kuderPreferences;
+
+    // =========================
+    // Auditing
+    // =========================
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Instant createdAt;
 
     @Column(name = "updated_at")
-    private OffsetDateTime updatedAt;
+    private Instant updatedAt;
 
+    // =========================
+    // JPA Hooks
+    // =========================
     @PrePersist
     protected void onCreate() {
-        this.createdAt = OffsetDateTime.now();
+        this.createdAt = Instant.now();
         this.updatedAt = this.createdAt;
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updatedAt = OffsetDateTime.now();
+        this.updatedAt = Instant.now();
     }
 
-    public UserAccount() {
-    }
-
-    public Long getId() {
+    // =========================
+    // Getters and Setters
+    // =========================
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getTenantId() {
+        return tenantId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
     }
 
     public String getEmail() {
@@ -101,36 +119,12 @@ public class UserAccount {
         this.passwordHash = passwordHash;
     }
 
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
-
     public boolean isEnabled() {
         return enabled;
     }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public boolean isLocked() {
-        return locked;
-    }
-
-    public void setLocked(boolean locked) {
-        this.locked = locked;
-    }
-
-    public String getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
     }
 
     public boolean isMfaEnabled() {
@@ -149,19 +143,43 @@ public class UserAccount {
         this.mfaSecret = mfaSecret;
     }
 
-    public OffsetDateTime getCreatedAt() {
+    public String getLearningStyleKolb() {
+        return learningStyleKolb;
+    }
+
+    public void setLearningStyleKolb(String learningStyleKolb) {
+        this.learningStyleKolb = learningStyleKolb;
+    }
+
+    public String getLearningStyleFelder() {
+        return learningStyleFelder;
+    }
+
+    public void setLearningStyleFelder(String learningStyleFelder) {
+        this.learningStyleFelder = learningStyleFelder;
+    }
+
+    public String getKuderPreferences() {
+        return kuderPreferences;
+    }
+
+    public void setKuderPreferences(String kuderPreferences) {
+        this.kuderPreferences = kuderPreferences;
+    }
+
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public OffsetDateTime getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(OffsetDateTime updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

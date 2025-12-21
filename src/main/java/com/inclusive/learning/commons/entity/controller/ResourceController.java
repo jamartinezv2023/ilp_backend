@@ -1,4 +1,4 @@
-package com.inclusive.learning.commons.entity.controller;
+﻿package com.inclusive.learning.commons.entity.controller;
 
 import org.springframework.web.bind.annotation.*;
 import com.inclusive.learning.commons.entity.Resource;
@@ -6,7 +6,7 @@ import com.inclusive.learning.commons.entity.service.ResourceService;
 import java.util.List;
 
 @RestController
-@RequestMapping(""/api/resource"")
+@RequestMapping("/api/resource")
 public class ResourceController {
     private final ResourceService service;
 
@@ -15,18 +15,18 @@ public class ResourceController {
     @GetMapping
     public List<Resource> getAll() { return service.findAll(); }
 
-    @GetMapping(""/{id}"")
+    @GetMapping("/{id}")
     public Resource getById(@PathVariable Long id) { return service.findById(id).orElse(null); }
 
     @PostMapping
     public Resource create(@RequestBody Resource obj) { return service.save(obj); }
 
-    @PutMapping(""/{id}"")
+    @PutMapping("/{id}")
     public Resource update(@PathVariable Long id, @RequestBody Resource obj) {
         obj.setId(id);
         return service.save(obj);
     }
 
-    @DeleteMapping(""/{id}"")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) { service.deleteById(id); }
 }

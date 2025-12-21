@@ -1,74 +1,81 @@
+// Location: auth-service/src/main/java/com/inclusive/authservice/service/impl/UserAccountServiceImpl.java
 package com.inclusive.authservice.service.impl;
 
+import com.inclusive.authservice.dto.CreateUserAccountRequest;
+import com.inclusive.authservice.dto.UpdateUserAccountRequest;
 import com.inclusive.authservice.dto.UserAccountDTO;
 import com.inclusive.authservice.entity.UserAccount;
 import com.inclusive.authservice.mapper.UserAccountMapper;
 import com.inclusive.authservice.repository.UserAccountRepository;
 import com.inclusive.authservice.service.UserAccountService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
-/**
- * Default implementation of UserAccountService.
- */
 @Service
-@Transactional
 public class UserAccountServiceImpl implements UserAccountService {
 
     private final UserAccountRepository repository;
+    private final UserAccountMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserAccountServiceImpl(UserAccountRepository repository) {
+    public UserAccountServiceImpl(
+            UserAccountRepository repository,
+            UserAccountMapper mapper,
+            PasswordEncoder passwordEncoder
+    ) {
         this.repository = repository;
+        this.mapper = mapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<UserAccountDTO> findAll() {
         return repository.findAll()
                 .stream()
-                .map(UserAccountMapper::toDto)
-                .collect(Collectors.toList());
+                .map(mapper::toDto)
+                .toList();
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public UserAccountDTO findById(Long id) {
+    public UserAccountDTO findById(UUID id) {
         UserAccount entity = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("UserAccount not found with id: " + id));
-        return UserAccountMapper.toDto(entity);
+                .orElseThrow(() -> new IllegalArgumentException("UserAccount not found"));
+        return mapper.toDto(entity);
     }
 
     @Override
-    public UserAccountDTO create(UserAccountDTO dto) {
-        UserAccount entity = UserAccountMapper.toEntity(dto);
-        // Aqu?? deber??as aplicar hashing de password en un escenario real.
-        if (dto.getPassword() != null) {
-            entity.setPasswordHash(dto.getPassword());
-        }
-        UserAccount saved = repository.save(entity);
-        return UserAccountMapper.toDto(saved);
+    public UserAccountDTO create(CreateUserAccountRequest request) {
+        UserAccount entity = new UserAccount();
+
+        entity.setTenantId(request.getTenantId());
+        entity.setEmail(request.getEmail());
+        entity.setPasswordHash(passwordEncoder.encode(request.getPassword()));
+        entity.setEnabled(true);
+
+        return mapper.toDto(repository.save(entity));
     }
 
     @Override
-    public UserAccountDTO update(Long id, UserAccountDTO dto) {
+    public UserAccountDTO update(UUID id, UpdateUserAccountRequest request) {
         UserAccount existing = repository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("UserAccount not found with id: " + id));
-        UserAccountMapper.updateEntityFromDto(dto, existing);
-        if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
-            existing.setPasswordHash(dto.getPassword());
+                .orElseThrow(() -> new IllegalArgumentException("UserAccount not found"));
+
+        if (request.getEmail() != null) {
+            existing.setEmail(request.getEmail());
         }
-        UserAccount saved = repository.save(existing);
-        return UserAccountMapper.toDto(saved);
+
+        if (request.getPassword() != null && !request.getPassword().isBlank()) {
+            existing.setPasswordHash(passwordEncoder.encode(request.getPassword()));
+        }
+
+        return mapper.toDto(repository.save(existing));
     }
 
     @Override
-    public void delete(Long id) {
-        if (!repository.existsById(id)) {
-            throw new IllegalArgumentException("UserAccount not found with id: " + id);
-        }
+    public void delete(UUID id) {
         repository.deleteById(id);
     }
 }
