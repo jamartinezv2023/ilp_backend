@@ -20,9 +20,20 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      # 👇 ESTA ES LA CLAVE
-      - name: Set up Gradle
-        uses: gradle/gradle-build-action@v3
+      # 🔒 PASO CRÍTICO: asegurar permisos del wrapper
+      - name: Ensure Gradle Wrapper is executable
+        run: |
+          chmod +x ./gradlew
+          chmod -R +x gradle/wrapper
 
+      # ✅ Build del Golden Module
       - name: Build auth-service (Golden Module)
         run: ./gradlew :auth-service:clean :auth-service:test
+
+      # (Opcional / futuro)
+      - name: Build Docker image for adaptive-education-service
+        if: success()
+        run: |
+          cd adaptive-education-service
+          docker build -t ilp/adaptive-education-service:latest .
+
