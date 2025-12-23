@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -20,12 +20,9 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Ensure Gradle wrapper is executable
-        run: chmod +x gradlew
-
-      - name: Verify Gradle Wrapper
-        run: ls -l gradlew gradle/wrapper
+      # 👇 ESTA ES LA CLAVE
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v3
 
       - name: Build auth-service (Golden Module)
         run: ./gradlew :auth-service:clean :auth-service:test
-
