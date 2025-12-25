@@ -7,42 +7,48 @@ on:
     branches: [ "main", "master" ]
 
 jobs:
-  build:
+  auth-service-ci:
+    name: Auth Service – Golden Module CI
     runs-on: ubuntu-latest
 
     defaults:
       run:
         shell: bash
+        working-directory: .
 
     steps:
-      # 1️⃣ Checkout
+      # 1️⃣ Checkout completo
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # 2️⃣ Java
+      # 2️⃣ Java 17
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: "17"
 
-      # 3️⃣ Verificación defensiva del Gradle Wrapper
-      - name: Verify Gradle Wrapper
+      # 3️⃣ Verificación estricta del Gradle Wrapper
+      - name: Verify Gradle Wrapper integrity
         run: |
           echo "📁 Root directory:"
+          pwd
           ls -la
+
           echo "📁 gradle/wrapper:"
           ls -la gradle/wrapper
-          test -f gradlew || (echo "❌ gradlew missing" && exit 1)
-          test -f gradle/wrapper/gradle-wrapper.jar || (echo "❌ gradle-wrapper.jar missing" && exit 1)
 
-      # 4️⃣ Permisos (solo gradlew)
+          test -f gradlew || { echo "❌ gradlew not found"; exit 1; }
+          test -f gradle/wrapper/gradle-wrapper.jar || { echo "❌ gradle-wrapper.jar missing"; exit 1; }
+          test -f gradle/wrapper/gradle-wrapper.properties || { echo "❌ gradle-wrapper.properties missing"; exit 1; }
+
+      # 4️⃣ Permisos SOLO al wrapper
       - name: Make Gradle Wrapper executable
         run: chmod +x gradlew
 
-      # 5️⃣ Golden Module — auth-service
+      # 5️⃣ Build Golden Module (ÚNICA responsabilidad)
       - name: Build auth-service (Golden Module)
         run: |
           ./gradlew --version
