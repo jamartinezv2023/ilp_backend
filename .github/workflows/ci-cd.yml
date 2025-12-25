@@ -13,6 +13,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ${{ github.workspace }}
 
     steps:
       # 1️⃣ Checkout
@@ -28,21 +29,18 @@ jobs:
           distribution: "temurin"
           java-version: "17"
 
-      # 3️⃣ Verificación defensiva del wrapper
-      - name: Verify Gradle Wrapper files
+      # 3️⃣ Verificación defensiva
+      - name: Verify Gradle Wrapper
         run: |
-          echo "📁 Listing root files"
+          echo "Workspace: $PWD"
           ls -la
-          echo "📁 Listing gradle/wrapper"
           ls -la gradle/wrapper
-          test -f gradlew || (echo "❌ gradlew not found" && exit 1)
-          test -f gradle/wrapper/gradle-wrapper.jar || (echo "❌ gradle-wrapper.jar missing" && exit 1)
+          test -f gradlew
+          test -f gradle/wrapper/gradle-wrapper.jar
 
-      # 4️⃣ Permisos (SOLO gradlew)
+      # 4️⃣ Permisos (solo gradlew)
       - name: Make Gradle Wrapper executable
-        run: |
-          chmod +x gradlew
-          ls -la gradlew
+        run: chmod +x gradlew
 
       # 5️⃣ Build Golden Module
       - name: Build auth-service (Golden Module)
@@ -50,7 +48,7 @@ jobs:
           ./gradlew --version
           ./gradlew :auth-service:clean :auth-service:test
 
-      # 6️⃣ (Opcional – futuro)
+      # 6️⃣ (Opcional / futuro)
       - name: Build Docker image for adaptive-education-service
         if: success()
         run: |
