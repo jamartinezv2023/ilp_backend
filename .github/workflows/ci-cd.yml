@@ -28,7 +28,7 @@ jobs:
           distribution: "temurin"
           java-version: "17"
 
-      # 3️⃣ Verificación defensiva del wrapper
+      # 3️⃣ Verificación defensiva del Gradle Wrapper
       - name: Verify Gradle Wrapper
         run: |
           echo "📁 Root:"
@@ -42,18 +42,10 @@ jobs:
       - name: Make Gradle Wrapper executable
         run: chmod +x gradlew
 
-      # 5️⃣ Golden Module Build (ÚNICA fuente de verdad)
+      # 5️⃣ Build Golden Module (ÚNICA responsabilidad del CI ahora)
       - name: Build auth-service (Golden Module)
         run: |
           ./gradlew --version
           ./gradlew :auth-service:clean :auth-service:test
-
-      # 🚫 Docker deshabilitado temporalmente
-      # Se reactivará cuando adaptive-education-service sea normalizado
-      #
-      # - name: Build Docker image for adaptive-education-service
-      #   run: |
-      #     cd adaptive-education-service
-      #     docker build -t ilp/adaptive-education-service:latest .
 
 
