@@ -1,0 +1,84 @@
+# Script PowerShell: Generar Dockerfiles y docker-compose dev sin afectar auth-service
+# Ubicación: C:\TEAC2026\ilp_backend\generate_dockerfiles_and_compose.ps1
+
+# Variables
+$services = @("assessment-service", "adaptive-education-service", "notification-service", "report-service", "monitoring-service", "commons-service", "tenant-service", "gateway-service")
+$baseDir = "C:\TEAC2026\ilp_backend"
+$composeFile = "$baseDir\docker-compose.dev.yml"
+
+# Crear Dockerfile de cada servicio si no existe
+foreach ($service in $services) {
+    $serviceDir = Join-Path $baseDir $service
+    $dockerfilePath = Join-Path $serviceDir "Dockerfile"
+
+    if (-not (Test-Path $dockerfilePath)) {
+        "# Dockerfile para $service`nFROM eclipse-temurin:21-jdk-alpine
+WORKDIR /app
+COPY build/libs/*.jar app.jar
+ENTRYPOINT [\"java\", \"-jar\", \"/app/app.jar\"]" | Out-File -FilePath $dockerfilePath -Encoding utf8
+        Write-Host "Dockerfile creado para $service"
+    } else {
+        Write-Host "Dockerfile ya existe para $service, se mantiene" 
+    }
+}
+
+# Generar docker-compose.dev.yml
+$composeContent = @"
+version: '3.9'
+services:
+
+  auth-service:
+    build: ./auth-service
+    container_name: auth-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/authdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    ports:
+      - "8081:8080"
+    depends_on: []
+
+  postgres-dev:
+    image: postgres:15-alpine
+    container_name: ilp-postgres-dev
+    environment:
+      POSTGRES_DB: ilp_db
+      POSTGRES_USER: ilp_user
+      POSTGRES_PASSWORD: ilp_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+"@
+
+foreach ($service in $services) {
+    if ($service -ne "auth-service") {
+        $servicePort = switch ($service) {
+            "gateway-service" { 8080 }
+            "tenant-service" { 8082 }
+            default { 8090 + ($services.IndexOf($service)) }
+        }
+
+        $composeContent += "`n  $service:`n    build: ./$service
+    container_name: $service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-dev:5432/ilp_db
+      - SPRING_DATASOURCE_USERNAME=ilp_user
+      - SPRING_DATASOURCE_PASSWORD=ilp_pass
+    ports:
+      - \"$servicePort:8080\"
+    depends_on:
+      - postgres-dev
+"
+    }
+}
+
+$composeContent += "`nvolumes:
+  pgdata:"
+
+# Guardar docker-compose.dev.yml con codificacion UTF-8
+$composeContent | Out-File -FilePath $composeFile -Encoding utf8
+Write-Host "docker-compose.dev.yml generado correctamente"
+
+Write-Host "Proceso completado. Ahora puedes levantar todos los servicios con:`ndocker-compose -f docker-compose.dev.yml up --build"

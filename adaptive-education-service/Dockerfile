@@ -1,17 +1,19 @@
-FROM eclipse-temurin:17-jdk-alpine AS build
-WORKDIR /workspace/app
+﻿FROM maven:3.9.8-eclipse-temurin-21 AS build
 
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
-COPY src src
-
-RUN ./mvnw -q -DskipTests package
-
-FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-COPY --from=build /workspace/app/target/*.jar app.jar
+
+COPY pom.xml ./
+COPY build.gradle.kts ./
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+FROM eclipse-temurin:21-jdk
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar /app/app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java","-jar","/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

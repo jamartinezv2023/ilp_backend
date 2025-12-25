@@ -1,24 +1,19 @@
+// Location: auth-service/src/main/java/com/inclusive/authservice/controller/UserAccountController.java
 package com.inclusive.authservice.controller;
 
+import com.inclusive.authservice.dto.CreateUserAccountRequest;
+import com.inclusive.authservice.dto.UpdateUserAccountRequest;
 import com.inclusive.authservice.dto.UserAccountDTO;
 import com.inclusive.authservice.service.UserAccountService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
+import java.util.UUID;
 
-/**
- * REST controller exposing CRUD endpoints for UserAccount.
- *
- * Base path (ADMIN ONLY):
- *   /api/admin/user-accounts
- */
 @RestController
-@RequestMapping("/api/admin/user-accounts")
-@Validated
+@RequestMapping("/api/user-accounts")
 public class UserAccountController {
 
     private final UserAccountService service;
@@ -27,34 +22,49 @@ public class UserAccountController {
         this.service = service;
     }
 
+    // =========================
+    // READ
+    // =========================
+
     @GetMapping
-    public ResponseEntity<List<UserAccountDTO>> getAll() {
-        List<UserAccountDTO> users = service.findAll();
-        return ResponseEntity.ok(users);
+    public List<UserAccountDTO> findAll() {
+        return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserAccountDTO> getById(@PathVariable Long id) {
-        UserAccountDTO dto = service.findById(id);
-        return ResponseEntity.ok(dto);
+    public UserAccountDTO findById(@PathVariable UUID id) {
+        return service.findById(id);
     }
+
+    // =========================
+    // CREATE
+    // =========================
 
     @PostMapping
-    public ResponseEntity<UserAccountDTO> create(@Valid @RequestBody UserAccountDTO dto) {
-        UserAccountDTO created = service.create(dto);
-        URI location = URI.create("/api/admin/user-accounts/" + created.getId());
-        return ResponseEntity.created(location).body(created);
+    public ResponseEntity<UserAccountDTO> create(
+            @Valid @RequestBody CreateUserAccountRequest request
+    ) {
+        return ResponseEntity.ok(service.create(request));
     }
+
+    // =========================
+    // UPDATE
+    // =========================
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserAccountDTO> update(@PathVariable Long id,
-                                                 @Valid @RequestBody UserAccountDTO dto) {
-        UserAccountDTO updated = service.update(id, dto);
-        return ResponseEntity.ok(updated);
+    public ResponseEntity<UserAccountDTO> update(
+            @PathVariable UUID id,
+            @Valid @RequestBody UpdateUserAccountRequest request
+    ) {
+        return ResponseEntity.ok(service.update(id, request));
     }
 
+    // =========================
+    // DELETE
+    // =========================
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

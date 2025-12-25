@@ -1,21 +1,22 @@
+// Location: auth-service/src/main/java/com/inclusive/authservice/service/UserAccountService.java
 package com.inclusive.authservice.service;
 
+import com.inclusive.authservice.dto.CreateUserAccountRequest;
+import com.inclusive.authservice.dto.UpdateUserAccountRequest;
 import com.inclusive.authservice.dto.UserAccountDTO;
 
 import java.util.List;
+import java.util.UUID;
 
-/**
- * Service interface for UserAccount operations.
- */
 public interface UserAccountService {
 
     List<UserAccountDTO> findAll();
 
-    UserAccountDTO findById(Long id);
+    UserAccountDTO findById(UUID id);
 
-    UserAccountDTO create(UserAccountDTO dto);
+    UserAccountDTO create(CreateUserAccountRequest request);
 
-    UserAccountDTO update(Long id, UserAccountDTO dto);
+    UserAccountDTO update(UUID id, UpdateUserAccountRequest request);
 
-    void delete(Long id);
+    void delete(UUID id);
 }

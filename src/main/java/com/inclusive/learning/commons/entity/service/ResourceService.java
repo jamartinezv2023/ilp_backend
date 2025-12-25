@@ -1,4 +1,4 @@
-package com.inclusive.learning.commons.entity.service;
+﻿package com.inclusive.learning.commons.entity.service;
 
 import org.springframework.stereotype.Service;
 import com.inclusive.learning.commons.entity.Resource;
