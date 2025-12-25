@@ -1,10 +1,20 @@
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/ilp-dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: postgres
+    password: postgres
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
-logging:
-  level:
-    org.hibernate.SQL: debug
+server:
+  port: 8083
 

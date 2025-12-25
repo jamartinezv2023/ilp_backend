@@ -1,0 +1,1019 @@
+﻿========== TREE ==========
+Listado de rutas de carpetas
+El n·mero de serie del volumen es 6401-AA31
+C:\TEAC2026\ILP_BACKEND\AUTH-SERVICE\SRC\MAIN\JAVA\COM\INCLUSIVE\AUTHSERVICE
+|   AuthServiceApplication.java
+|   
++---controller
+|   |   UserAccountController.java
+|   |   
+|   \---authorization
+|           PermissionController.java
+|           RoleController.java
+|           RolePermissionController.java
+|           UserRoleController.java
+|           
++---dto
+|   |   CreateUserAccountRequest.java
+|   |   UpdateUserAccountRequest.java
+|   |   UserAccountDTO.java
+|   |   
+|   \---authorization
+|       |   CreatePermissionRequest.java
+|       |   CreateRoleRequest.java
+|       |   PermissionResponse.java
+|       |   
+|       \---domain
+|               PermissionDTO.java
+|               RoleDTO.java
+|               
++---entity
+|   |   UserAccount.java
+|   |   
+|   \---authorization
+|           Permission.java
+|           Role.java
+|           RolePermission.java
+|           UserRole.java
+|           
++---exception
+|       BadRequestException.java
+|       GlobalExceptionHandler.java
+|       ResourceNotFoundException.java
+|       
++---mapper
+|   |   UserAccountMapper.java
+|   |   
+|   \---authorization
+|           PermissionMapper.java
+|           RoleMapper.java
+|           
++---repository
+|   |   UserAccountRepository.java
+|   |   
+|   \---authorization
+|           PermissionRepository.java
+|           RolePermissionRepository.java
+|           RoleRepository.java
+|           UserRoleRepository.java
+|           
++---service
+|   |   UserAccountService.java
+|   |   
+|   +---authorization
+|   |   |   PermissionService.java
+|   |   |   RolePermissionService.java
+|   |   |   RoleService.java
+|   |   |   UserRoleService.java
+|   |   |   
+|   |   \---impl
+|   |           PermissionServiceImpl.java
+|   |           RolePermissionServiceImpl.java
+|   |           RoleServiceImpl.java
+|   |           UserRoleServiceImpl.java
+|   |           
+|   \---impl
+|           UserAccountServiceImpl.java
+|           
++---tenant
+|       TenantContext.java
+|       TenantFilter.java
+|       
+\---validator
+        AuthorizationValidator.java
+        
+
+========== ENTITIES ==========
+package com.inclusive.authservice.entity.authorization;
+
+import jakarta.persistence.*;
+import java.util.UUID;
+
+@Entity
+@Table(
+    name = "permissions",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"tenant_id", "code"})
+    }
+)
+public class Permission {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @Column(name = "tenant_id", nullable = false)
+    private UUID tenantId;
+
+    @Column(nullable = false)
+    private String code;
+
+    private String description;
+
+    /* ===== Getters & Setters ===== */
+
+    public UUID getId() {
+        return id;
+    }
+
+    public UUID getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(UUID tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+package com.inclusive.authservice.entity.authorization;
+
+import jakarta.persistence.*;
+import java.time.OffsetDateTime;
+import java.util.UUID;
+
+@Entity
+@Table(
+    name = "roles",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"tenant_id", "name"})
+    }
+)
+public class Role {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @Column(name = "tenant_id", nullable = false)
+    private UUID tenantId;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Column(length = 255)
+    private String description;
+
+    @Column(nullable = false)
+    private boolean active = true;
+
+    @Column(name = "deleted_at")
+    private OffsetDateTime deletedAt;
+
+    /* ====== Domain rules ====== */
+
+    public void deactivate() {
+        this.active = false;
+        this.deletedAt = OffsetDateTime.now();
+    }
+
+    public boolean isDeleted() {
+        return deletedAt != null;
+    }
+
+    /* ====== Getters & Setters ====== */
+
+    public UUID getId() {
+        return id;
+    }
+
+    public UUID getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(UUID tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public OffsetDateTime getDeletedAt() {
+        return deletedAt;
+    }
+}
+package com.inclusive.authservice.entity.authorization;
+
+import jakarta.persistence.*;
+import java.util.UUID;
+
+@Entity
+@Table(
+    name = "role_permissions",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"role_id", "permission_id"})
+    }
+)
+public class RolePermission {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "permission_id")
+    private Permission permission;
+
+    /* ===== Getters & Setters ===== */
+
+    public UUID getId() {
+        return id;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+}
+package com.inclusive.authservice.entity.authorization;
+
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Entity
+@Table(
+    name = "user_roles",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"user_id", "role_id", "tenant_id"})
+    }
+)
+public class UserRole {
+
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @Column(name = "user_id", nullable = false)
+    private UUID userId;
+
+    @Column(name = "role_id", nullable = false)
+    private UUID roleId;
+
+    @Column(name = "tenant_id", nullable = false)
+    private UUID tenantId;
+
+    @Column(nullable = false)
+    private boolean active = true;
+
+    @Column(name = "assigned_at", nullable = false)
+    private LocalDateTime assignedAt = LocalDateTime.now();
+
+    @Column(name = "revoked_at")
+    private LocalDateTime revokedAt;
+
+    // --- Getters & Setters ---
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
+    public UUID getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(UUID roleId) {
+        this.roleId = roleId;
+    }
+
+    public UUID getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(UUID tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public LocalDateTime getAssignedAt() {
+        return assignedAt;
+    }
+
+    public void setAssignedAt(LocalDateTime assignedAt) {
+        this.assignedAt = assignedAt;
+    }
+
+    public LocalDateTime getRevokedAt() {
+        return revokedAt;
+    }
+
+    public void setRevokedAt(LocalDateTime revokedAt) {
+        this.revokedAt = revokedAt;
+    }
+}
+
+========== REPOSITORIES ==========
+package com.inclusive.authservice.repository.authorization;
+
+import com.inclusive.authservice.entity.authorization.Permission;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+import java.util.UUID;
+
+public interface PermissionRepository extends JpaRepository<Permission, UUID> {
+
+    Optional<Permission> findByCode(String code);
+
+    boolean existsByCode(String code);
+
+    boolean existsByCodeIgnoreCase(String code);
+}
+package com.inclusive.authservice.repository.authorization;
+
+import com.inclusive.authservice.entity.authorization.RolePermission;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+import java.util.UUID;
+
+public interface RolePermissionRepository extends JpaRepository<RolePermission, UUID> {
+
+    boolean existsByRole_IdAndPermission_Id(UUID roleId, UUID permissionId);
+
+    Optional<RolePermission> findByRole_IdAndPermission_Id(UUID roleId, UUID permissionId);
+}
+package com.inclusive.authservice.repository.authorization;
+
+import com.inclusive.authservice.entity.authorization.Role;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface RoleRepository extends JpaRepository<Role, UUID> {
+
+    boolean existsByTenantIdAndNameIgnoreCase(UUID tenantId, String name);
+
+    List<Role> findAllByTenantIdAndActiveTrueAndDeletedAtIsNull(UUID tenantId);
+}
+package com.inclusive.authservice.repository.authorization;
+
+import com.inclusive.authservice.entity.authorization.UserRole;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.Optional;
+import java.util.UUID;
+
+public interface UserRoleRepository extends JpaRepository<UserRole, UUID> {
+
+    @Query("""
+        SELECT COUNT(ur) > 0
+        FROM UserRole ur
+        WHERE ur.userId = :userId
+          AND ur.roleId = :roleId
+    """)
+    boolean existsByUserAndRole(
+            @Param("userId") UUID userId,
+            @Param("roleId") UUID roleId
+    );
+
+    @Query("""
+        SELECT ur
+        FROM UserRole ur
+        WHERE ur.userId = :userId
+          AND ur.roleId = :roleId
+    """)
+    Optional<UserRole> findByUserAndRole(
+            @Param("userId") UUID userId,
+            @Param("roleId") UUID roleId
+    );
+}
+
+========== SERVICES (interfaces) ==========
+package com.inclusive.authservice.service.authorization;
+
+import com.inclusive.authservice.entity.authorization.Permission;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface PermissionService {
+
+    Permission createPermission(String code, String description);
+
+    List<Permission> getAllPermissions();
+
+    void deletePermission(UUID permissionId);
+}
+package com.inclusive.authservice.service.authorization;
+
+import java.util.UUID;
+
+public interface RolePermissionService {
+
+    void assignPermissionToRole(UUID roleId, UUID permissionId);
+
+    void removePermissionFromRole(UUID roleId, UUID permissionId);
+}
+package com.inclusive.authservice.service.authorization;
+
+import com.inclusive.authservice.entity.authorization.Role;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface RoleService {
+
+    Role create(String name, String description);
+
+    List<Role> getActiveRoles();
+
+    void deactivate(UUID roleId);
+}
+package com.inclusive.authservice.service.authorization;
+
+import java.util.UUID;
+
+public interface UserRoleService {
+
+    void assignRoleToUser(UUID userId, UUID roleId);
+
+    void removeRoleFromUser(UUID userId, UUID roleId);
+}
+
+========== SERVICES (impl) ==========
+package com.inclusive.authservice.service.authorization.impl;
+
+import com.inclusive.authservice.entity.authorization.Permission;
+import com.inclusive.authservice.exception.BadRequestException;
+import com.inclusive.authservice.repository.authorization.PermissionRepository;
+import com.inclusive.authservice.service.authorization.PermissionService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+
+@Service
+public class PermissionServiceImpl implements PermissionService {
+
+    private final PermissionRepository repository;
+
+    public PermissionServiceImpl(PermissionRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public Permission createPermission(String code, String description) {
+        if (repository.existsByCodeIgnoreCase(code)) {
+            throw new BadRequestException("Permission already exists: " + code);
+        }
+
+        Permission permission = new Permission();
+        permission.setCode(code);
+        permission.setDescription(description);
+
+        return repository.save(permission);
+    }
+
+    @Override
+    public List<Permission> getAllPermissions() {
+        return repository.findAll();
+    }
+
+    @Override
+    public void deletePermission(UUID permissionId) {
+        repository.deleteById(permissionId);
+    }
+}
+package com.inclusive.authservice.service.authorization.impl;
+
+import com.inclusive.authservice.entity.authorization.Permission;
+import com.inclusive.authservice.entity.authorization.Role;
+import com.inclusive.authservice.entity.authorization.RolePermission;
+import com.inclusive.authservice.exception.ResourceNotFoundException;
+import com.inclusive.authservice.repository.authorization.PermissionRepository;
+import com.inclusive.authservice.repository.authorization.RolePermissionRepository;
+import com.inclusive.authservice.repository.authorization.RoleRepository;
+import com.inclusive.authservice.service.authorization.RolePermissionService;
+import com.inclusive.authservice.tenant.TenantContext;
+import com.inclusive.authservice.validator.AuthorizationValidator;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
+
+/**
+ * Servicio de asociaciÃ³n Role â†” Permission.
+ * Aplica reglas de negocio:
+ * - Multitenancy
+ * - Rol activo
+ * - Evita duplicados
+ */
+@Service
+public class RolePermissionServiceImpl implements RolePermissionService {
+
+    private final RoleRepository roleRepository;
+    private final PermissionRepository permissionRepository;
+    private final RolePermissionRepository rolePermissionRepository;
+
+    public RolePermissionServiceImpl(
+            RoleRepository roleRepository,
+            PermissionRepository permissionRepository,
+            RolePermissionRepository rolePermissionRepository
+    ) {
+        this.roleRepository = roleRepository;
+        this.permissionRepository = permissionRepository;
+        this.rolePermissionRepository = rolePermissionRepository;
+    }
+
+    @Override
+    public void assignPermissionToRole(UUID roleId, UUID permissionId) {
+
+        Role role = roleRepository.findById(roleId)
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+
+        Permission permission = permissionRepository.findById(permissionId)
+                .orElseThrow(() -> new ResourceNotFoundException("Permission not found"));
+
+        UUID tenantId = TenantContext.getTenantIdAsUUID();
+
+        // ðŸ” Validaciones de negocio
+        AuthorizationValidator.validateTenant(tenantId, role.getTenantId());
+        AuthorizationValidator.validateTenant(tenantId, permission.getTenantId());
+        AuthorizationValidator.validateActiveRole(role);
+
+        // Evitar duplicados
+        if (rolePermissionRepository.existsByRole_IdAndPermission_Id(roleId, permissionId)) {
+            return;
+        }
+
+        RolePermission rolePermission = new RolePermission();
+        rolePermission.setRole(role);
+        rolePermission.setPermission(permission);
+
+        rolePermissionRepository.save(rolePermission);
+    }
+
+    @Override
+    public void removePermissionFromRole(UUID roleId, UUID permissionId) {
+
+        rolePermissionRepository
+                .findByRole_IdAndPermission_Id(roleId, permissionId)
+                .ifPresent(rolePermissionRepository::delete);
+    }
+}
+package com.inclusive.authservice.service.authorization.impl;
+
+import com.inclusive.authservice.entity.authorization.Role;
+import com.inclusive.authservice.exception.BadRequestException;
+import com.inclusive.authservice.exception.ResourceNotFoundException;
+import com.inclusive.authservice.repository.authorization.RoleRepository;
+import com.inclusive.authservice.service.authorization.RoleService;
+import com.inclusive.authservice.tenant.TenantContext;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
+
+@Service
+public class RoleServiceImpl implements RoleService {
+
+    private final RoleRepository repository;
+
+    public RoleServiceImpl(RoleRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public Role create(String name, String description) {
+        UUID tenantId = TenantContext.getTenantIdAsUUID();
+
+        if (repository.existsByTenantIdAndNameIgnoreCase(tenantId, name)) {
+            throw new BadRequestException("Role already exists for this tenant");
+        }
+
+        Role role = new Role();
+        role.setTenantId(tenantId);
+        role.setName(name);
+        role.setDescription(description);
+
+        return repository.save(role);
+    }
+
+    @Override
+    public List<Role> getActiveRoles() {
+        return repository.findAllByTenantIdAndActiveTrueAndDeletedAtIsNull(
+                TenantContext.getTenantIdAsUUID()
+        );
+    }
+
+    @Override
+    public void deactivate(UUID roleId) {
+        Role role = repository.findById(roleId)
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+
+        if (!role.getTenantId().equals(TenantContext.getTenantIdAsUUID())) {
+            throw new BadRequestException("Role does not belong to tenant");
+        }
+
+        if (!role.isActive()) {
+            return; // idempotente
+        }
+
+        role.deactivate();
+        repository.save(role);
+    }
+}
+package com.inclusive.authservice.service.authorization.impl;
+
+import com.inclusive.authservice.entity.authorization.Role;
+import com.inclusive.authservice.entity.authorization.UserRole;
+import com.inclusive.authservice.exception.BadRequestException;
+import com.inclusive.authservice.exception.ResourceNotFoundException;
+import com.inclusive.authservice.repository.authorization.RoleRepository;
+import com.inclusive.authservice.repository.authorization.UserRoleRepository;
+import com.inclusive.authservice.service.authorization.UserRoleService;
+import com.inclusive.authservice.tenant.TenantContext;
+import org.springframework.stereotype.Service;
+
+import java.util.UUID;
+
+@Service
+public class UserRoleServiceImpl implements UserRoleService {
+
+    private final UserRoleRepository repository;
+    private final RoleRepository roleRepository;
+
+    public UserRoleServiceImpl(
+            UserRoleRepository repository,
+            RoleRepository roleRepository
+    ) {
+        this.repository = repository;
+        this.roleRepository = roleRepository;
+    }
+
+    @Override
+    public void assignRoleToUser(UUID userId, UUID roleId) {
+
+        Role role = roleRepository.findById(roleId)
+                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+
+        UUID tenantId = TenantContext.getTenantIdAsUUID();
+
+        if (!role.getTenantId().equals(tenantId)) {
+            throw new BadRequestException("Role does not belong to tenant");
+        }
+
+        if (!role.isActive()) {
+            throw new BadRequestException("Cannot assign inactive role");
+        }
+
+        if (repository.existsByUserAndRole(userId, roleId)) {
+            return; // idempotente
+        }
+
+        UserRole userRole = new UserRole();
+        userRole.setUserId(userId);
+        userRole.setRoleId(roleId);
+
+        repository.save(userRole);
+    }
+
+    @Override
+    public void removeRoleFromUser(UUID userId, UUID roleId) {
+
+        repository.findByUserAndRole(userId, roleId)
+                .ifPresent(repository::delete);
+    }
+}
+
+========== CONTROLLERS ==========
+package com.inclusive.authservice.controller.authorization;
+
+import com.inclusive.authservice.entity.authorization.Permission;
+import com.inclusive.authservice.service.authorization.PermissionService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/auth/permissions")
+public class PermissionController {
+
+    private final PermissionService permissionService;
+
+    public PermissionController(PermissionService permissionService) {
+        this.permissionService = permissionService;
+    }
+
+    @PostMapping
+    public ResponseEntity<Permission> create(
+            @RequestParam String code,
+            @RequestParam(required = false) String description
+    ) {
+        return ResponseEntity.ok(
+                permissionService.createPermission(code, description)
+        );
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Permission>> findAll() {
+        return ResponseEntity.ok(
+                permissionService.getAllPermissions()
+        );
+    }
+}
+package com.inclusive.authservice.controller.authorization;
+
+import com.inclusive.authservice.dto.authorization.CreateRoleRequest;
+import com.inclusive.authservice.dto.authorization.domain.RoleDTO;
+import com.inclusive.authservice.entity.authorization.Role;
+import com.inclusive.authservice.mapper.authorization.RoleMapper;
+import com.inclusive.authservice.service.authorization.RoleService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+@RestController
+@RequestMapping("/api/auth/roles")
+public class RoleController {
+
+    private final RoleService roleService;
+    private final RoleMapper roleMapper;
+
+    public RoleController(RoleService roleService, RoleMapper roleMapper) {
+        this.roleService = roleService;
+        this.roleMapper = roleMapper;
+    }
+
+    @PostMapping
+    public ResponseEntity<RoleDTO> create(@RequestBody CreateRoleRequest request) {
+        Role role = roleService.create(
+                request.getName(),
+                request.getDescription()
+        );
+
+        return ResponseEntity.ok(roleMapper.toDto(role));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<RoleDTO>> getActiveRoles() {
+        List<RoleDTO> roles = roleService.getActiveRoles()
+                .stream()
+                .map(roleMapper::toDto)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(roles);
+    }
+
+    @DeleteMapping("/{roleId}")
+    public ResponseEntity<Void> deactivate(@PathVariable UUID roleId) {
+        roleService.deactivate(roleId);
+        return ResponseEntity.noContent().build();
+    }
+}
+package com.inclusive.authservice.controller.authorization;
+
+import com.inclusive.authservice.service.authorization.RolePermissionService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/auth/role-permissions")
+public class RolePermissionController {
+
+    private final RolePermissionService rolePermissionService;
+
+    public RolePermissionController(RolePermissionService rolePermissionService) {
+        this.rolePermissionService = rolePermissionService;
+    }
+
+    @PostMapping("/roles/{roleId}/permissions/{permissionId}")
+    public ResponseEntity<Void> assignPermission(
+            @PathVariable UUID roleId,
+            @PathVariable UUID permissionId
+    ) {
+        rolePermissionService.assignPermissionToRole(roleId, permissionId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/roles/{roleId}/permissions/{permissionId}")
+    public ResponseEntity<Void> removePermission(
+            @PathVariable UUID roleId,
+            @PathVariable UUID permissionId
+    ) {
+        rolePermissionService.removePermissionFromRole(roleId, permissionId);
+        return ResponseEntity.noContent().build();
+    }
+}
+package com.inclusive.authservice.controller.authorization;
+
+import com.inclusive.authservice.service.authorization.UserRoleService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/auth/user-roles")
+public class UserRoleController {
+
+    private final UserRoleService userRoleService;
+
+    public UserRoleController(UserRoleService userRoleService) {
+        this.userRoleService = userRoleService;
+    }
+
+    @PostMapping("/users/{userId}/roles/{roleId}")
+    public ResponseEntity<Void> assignRole(
+            @PathVariable UUID userId,
+            @PathVariable UUID roleId
+    ) {
+        userRoleService.assignRoleToUser(userId, roleId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/users/{userId}/roles/{roleId}")
+    public ResponseEntity<Void> removeRole(
+            @PathVariable UUID userId,
+            @PathVariable UUID roleId
+    ) {
+        userRoleService.removeRoleFromUser(userId, roleId);
+        return ResponseEntity.noContent().build();
+    }
+}
+
+========== VALIDATORS ==========
+package com.inclusive.authservice.validator;
+
+import com.inclusive.authservice.entity.authorization.Permission;
+import com.inclusive.authservice.entity.authorization.Role;
+import com.inclusive.authservice.exception.BadRequestException;
+
+import java.util.UUID;
+
+/**
+ * Validador central de reglas de autorizaciÃ³n.
+ * Mantiene las reglas de negocio desacopladas de los servicios.
+ */
+public final class AuthorizationValidator {
+
+    private AuthorizationValidator() {
+        // Utility class
+    }
+
+    /**
+     * Valida que el recurso pertenezca al tenant actual.
+     */
+    public static void validateTenant(UUID currentTenantId, UUID resourceTenantId) {
+        if (!currentTenantId.equals(resourceTenantId)) {
+            throw new BadRequestException("Resource does not belong to tenant");
+        }
+    }
+
+    /**
+     * Valida que el rol estÃ© activo.
+     */
+    public static void validateActiveRole(Role role) {
+        if (!role.isActive()) {
+            throw new BadRequestException("Role is inactive");
+        }
+    }
+
+    /**
+     * Punto de extensiÃ³n futuro (soft-delete / estados).
+     * Se deja preparado sin romper compilaciÃ³n.
+     */
+    public static void validatePermissionActive(Permission permission) {
+        // Por ahora no hay estado ni soft-delete en Permission
+        // Se deja el mÃ©todo para evoluciÃ³n futura
+    }
+}
+
+========== TENANT ==========
+package com.inclusive.authservice.tenant;
+
+import java.util.UUID;
+
+public class TenantContext {
+
+    private static final ThreadLocal<String> TENANT = new ThreadLocal<>();
+
+    private TenantContext() {}
+
+    public static void setTenantId(String tenantId) {
+        TENANT.set(tenantId);
+    }
+
+    public static String getTenantId() {
+        return TENANT.get();
+    }
+
+    public static UUID getTenantIdAsUUID() {
+        String tenantId = TENANT.get();
+        if (tenantId == null) {
+            throw new IllegalStateException("Tenant ID not set");
+        }
+        return UUID.fromString(tenantId);
+    }
+
+    public static void clear() {
+        TENANT.remove();
+    }
+}
+// Location: auth-service/src/main/java/com/inclusive/authservice/tenant/TenantFilter.java
+package com.inclusive.authservice.tenant;
+
+import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+
+@Component
+public class TenantFilter implements Filter {
+
+    public static final String TENANT_HEADER = "X-Tenant-Id";
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+
+        try {
+            HttpServletRequest http = (HttpServletRequest) request;
+            String tenantId = http.getHeader(TENANT_HEADER);
+
+            if (tenantId == null || tenantId.isBlank()) {
+                throw new IllegalStateException("Missing X-Tenant-Id header");
+            }
+
+            TenantContext.setTenantId(tenantId);
+            chain.doFilter(request, response);
+        } finally {
+            TenantContext.clear();
+        }
+    }
+}
