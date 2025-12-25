@@ -15,6 +15,10 @@ hs_err_pid*
 *.db
 *.h2.db
 
+# 🔑 EXCEPCIÓN CRÍTICA — Gradle Wrapper (NO SE IGNORA)
+!gradle/wrapper/gradle-wrapper.jar
+
+
 .mvn/
 .gradle/
 .gradle-cache/
