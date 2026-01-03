@@ -14,7 +14,6 @@ import java.util.UUID;
 public class UserRole {
 
     @Id
-    @GeneratedValue
     private UUID id;
 
     @Column(name = "user_id", nullable = false)
@@ -26,70 +25,48 @@ public class UserRole {
     @Column(name = "tenant_id", nullable = false)
     private UUID tenantId;
 
-    @Column(nullable = false)
-    private boolean active = true;
-
     @Column(name = "assigned_at", nullable = false)
-    private LocalDateTime assignedAt = LocalDateTime.now();
+    private LocalDateTime assignedAt;
 
     @Column(name = "revoked_at")
     private LocalDateTime revokedAt;
 
-    // --- Getters & Setters ---
+    @Column(nullable = false)
+    private boolean active;
 
-    public UUID getId() {
-        return id;
+    protected UserRole() {
+        // JPA only
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    /* ===== Domain constructor ===== */
 
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
+    public UserRole(UUID userId, UUID roleId, UUID tenantId) {
+        this.id = UUID.randomUUID();
         this.userId = userId;
-    }
-
-    public UUID getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(UUID roleId) {
         this.roleId = roleId;
-    }
-
-    public UUID getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(UUID tenantId) {
         this.tenantId = tenantId;
+        this.assignedAt = LocalDateTime.now();
+        this.active = true;
     }
 
-    public boolean isActive() {
-        return active;
+    /* ===== Domain behavior ===== */
+
+    public void revoke() {
+        this.active = false;
+        this.revokedAt = LocalDateTime.now();
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public boolean isEffective() {
+        return active && revokedAt == null;
     }
 
-    public LocalDateTime getAssignedAt() {
-        return assignedAt;
-    }
+    /* ===== Getters ===== */
 
-    public void setAssignedAt(LocalDateTime assignedAt) {
-        this.assignedAt = assignedAt;
-    }
-
-    public LocalDateTime getRevokedAt() {
-        return revokedAt;
-    }
-
-    public void setRevokedAt(LocalDateTime revokedAt) {
-        this.revokedAt = revokedAt;
-    }
+    public UUID getId() { return id; }
+    public UUID getUserId() { return userId; }
+    public UUID getRoleId() { return roleId; }
+    public UUID getTenantId() { return tenantId; }
+    public LocalDateTime getAssignedAt() { return assignedAt; }
+    public LocalDateTime getRevokedAt() { return revokedAt; }
+    public boolean isActive() { return active; }
 }

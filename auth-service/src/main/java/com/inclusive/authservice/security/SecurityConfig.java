@@ -1,35 +1,41 @@
+// Location: auth-service/src/main/java/com/inclusive/authservice/security/SecurityConfig.java
 package com.inclusive.authservice.security;
 
 import com.inclusive.authservice.security.jwt.JwtAuthConverter;
+import com.inclusive.authservice.tenant.TenantValidationFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
+@EnableMethodSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
 
     private final JwtAuthConverter jwtAuthConverter;
-
-    public SecurityConfig(JwtAuthConverter jwtAuthConverter) {
-        this.jwtAuthConverter = jwtAuthConverter;
-    }
+    private final TenantValidationFilter tenantValidationFilter;
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/protected/**").authenticated()
-                .anyRequest().permitAll()
-            )
-            .oauth2ResourceServer(oauth -> oauth
-                .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter))
-            );
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/actuator/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                // Tenant FIRST (before auth)
+                .addFilterBefore(tenantValidationFilter, UsernamePasswordAuthenticationFilter.class)
+                .oauth2ResourceServer(oauth ->
+                        oauth.jwt(jwt ->
+                                jwt.jwtAuthenticationConverter(jwtAuthConverter)
+                        )
+                );
 
         return http.build();
     }
