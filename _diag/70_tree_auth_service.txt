@@ -1,0 +1,201 @@
+﻿Listado de rutas de carpetas
+El n·mero de serie del volumen es 6401-AA31
+C:\TEAC2026\ILP_BACKEND\AUTH-SERVICE
+|   .gitattributes
+|   .gitignore
+|   build.gradle.kts
+|   docker-compose.yml
+|   Dockerfile
+|   estructura_auth_service_actual.txt
+|   estructura_auth_service_paths.txt
+|   gradle.properties
+|   gradlew
+|   gradlew.bat
+|   MODULE_CONTRACT.md
+|   README.md
+|   settings.gradle.kts
+|   
++---build
+|   +---classes
+|   |   \---java
+|   |       \---main
+|   +---generated
+|   |   \---sources
+|   |       +---annotationProcessor
+|   |       |   \---java
+|   |       |       \---main
+|   |       |           \---com
+|   |       |               \---inclusive
+|   |       |                   \---authservice
+|   |       |                       \---mapper
+|   |       |                           |   UserAccountMapperImpl.java
+|   |       |                           |   
+|   |       |                           \---authorization
+|   |       |                                   PermissionMapperImpl.java
+|   |       |                                   RoleMapperImpl.java
+|   |       |                                   RolePermissionMapperImpl.java
+|   |       |                                   
+|   |       \---headers
+|   |           \---java
+|   |               \---main
+|   \---tmp
+|       \---compileJava
++---legacy-tests
+|       UserAccountServiceTest.java
+|       
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---com
+|   |   |       \---inclusive
+|   |   |           \---authservice
+|   |   |               |   AuthServiceApplication.java
+|   |   |               |   
+|   |   |               +---auth
+|   |   |               |   +---controller
+|   |   |               |   |       AuthController.java
+|   |   |               |   |       
+|   |   |               |   +---dto
+|   |   |               |   |       AuthResponse.java
+|   |   |               |   |       LoginRequest.java
+|   |   |               |   |       LoginResponse.java
+|   |   |               |   |       
+|   |   |               |   \---service
+|   |   |               |           AuthService.java
+|   |   |               |           
+|   |   |               +---config
+|   |   |               |       PasswordEncoderConfig.java
+|   |   |               |       
+|   |   |               +---controller
+|   |   |               |   |   TestController.java
+|   |   |               |   |   UserAccountController.java
+|   |   |               |   |   
+|   |   |               |   \---authorization
+|   |   |               |           PermissionController.java
+|   |   |               |           RoleController.java
+|   |   |               |           RolePermissionController.java
+|   |   |               |           UserRoleController.java
+|   |   |               |           
+|   |   |               +---dto
+|   |   |               |   |   CreateUserAccountRequest.java
+|   |   |               |   |   UpdateUserAccountRequest.java
+|   |   |               |   |   UserAccountDTO.java
+|   |   |               |   |   
+|   |   |               |   \---authorization
+|   |   |               |       |   CreatePermissionRequest.java
+|   |   |               |       |   CreateRoleRequest.java
+|   |   |               |       |   PermissionResponse.java
+|   |   |               |       |   
+|   |   |               |       \---domain
+|   |   |               |               PermissionDTO.java
+|   |   |               |               RoleDTO.java
+|   |   |               |               RolePermissionDTO.java
+|   |   |               |               
+|   |   |               +---entity
+|   |   |               |   |   UserAccount.java
+|   |   |               |   |   
+|   |   |               |   \---authorization
+|   |   |               |           Permission.java
+|   |   |               |           Role.java
+|   |   |               |           RolePermission.java
+|   |   |               |           UserRole.java
+|   |   |               |           
+|   |   |               +---exception
+|   |   |               |       BadRequestException.java
+|   |   |               |       GlobalExceptionHandler.java
+|   |   |               |       ResourceNotFoundException.java
+|   |   |               |       
+|   |   |               +---mapper
+|   |   |               |   |   UserAccountMapper.java
+|   |   |               |   |   
+|   |   |               |   \---authorization
+|   |   |               |           PermissionMapper.java
+|   |   |               |           RoleMapper.java
+|   |   |               |           RolePermissionMapper.java
+|   |   |               |           
+|   |   |               +---repository
+|   |   |               |   |   RoleRepository.java
+|   |   |               |   |   UserAccountRepository.java
+|   |   |               |   |   UserRoleRepository.java
+|   |   |               |   |   
+|   |   |               |   \---authorization
+|   |   |               |           PermissionRepository.java
+|   |   |               |           RolePermissionRepository.java
+|   |   |               |           RoleRepository.java
+|   |   |               |           UserRoleRepository.java
+|   |   |               |           
+|   |   |               +---security
+|   |   |               |   |   JwtService.java
+|   |   |               |   |   SecurityConfig.java
+|   |   |               |   |   
+|   |   |               |   \---jwt
+|   |   |               |           JwtAuthConverter.java
+|   |   |               |           JwtAuthenticationFilter.java
+|   |   |               |           JwtAuthoritiesExtractor.java
+|   |   |               |           JwtConfig.java
+|   |   |               |           JwtDecoderConfig.java
+|   |   |               |           JwtProperties.java
+|   |   |               |           JwtService.java
+|   |   |               |           
+|   |   |               +---service
+|   |   |               |   |   UserAccountService.java
+|   |   |               |   |   
+|   |   |               |   +---authorization
+|   |   |               |   |   |   PermissionService.java
+|   |   |               |   |   |   RolePermissionService.java
+|   |   |               |   |   |   RoleService.java
+|   |   |               |   |   |   UserRoleService.java
+|   |   |               |   |   |   
+|   |   |               |   |   \---impl
+|   |   |               |   |           PermissionServiceImpl.java
+|   |   |               |   |           RolePermissionServiceImpl.java
+|   |   |               |   |           RoleServiceImpl.java
+|   |   |               |   |           UserRoleServiceImpl.java
+|   |   |               |   |           
+|   |   |               |   \---impl
+|   |   |               |           UserAccountServiceImpl.java
+|   |   |               |           
+|   |   |               +---tenant
+|   |   |               |       TenantContext.java
+|   |   |               |       TenantFilter.java
+|   |   |               |       
+|   |   |               \---validator
+|   |   |                       AuthorizationValidator.java
+|   |   |                       
+|   |   \---resources
+|   |       |   application-dev.yml
+|   |       |   application-prod.yml
+|   |       |   application-test.yml
+|   |       |   application.yml
+|   |       |   
+|   |       \---db
+|   |           \---migration
+|   |                   data.sql
+|   |                   V2__add_email_verified_and_created_at.sql
+|   |                   V2__create_user_mfa.sql
+|   |                   V3__create_authorization_tables.sql
+|   |                   
+|   \---test
+|       +---java
+|       \---resources
+|           |   application-test.yml
+|           |   
+|           \---features
+|                   user_account.feature
+|                   
+\---_backup_architecture_cleanup_2025_12_14
+    +---db_migration
+    |       V1__create_users_students.sql
+    |       V2__create_student_ai_and_behavior.sql
+    |       V2__user_mfa.sql
+    |       V2__verification_token.sql
+    |       
+    +---graphql
+    |       MutationResolver.java
+    |       QueryResolver.java
+    |       schema.graphqls
+    |       
+    \---legacy_data
+            data.sql
+            data1.sql
+            

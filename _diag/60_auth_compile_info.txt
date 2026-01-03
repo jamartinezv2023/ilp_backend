@@ -1,0 +1,403 @@
+﻿Initialized native services in: C:\Users\Admin\.gradle\native
+Initialized jansi services in: C:\Users\Admin\.gradle\native
+Received JVM installation metadata from 'C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot': {JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot, JAVA_VERSION=17.0.17, JAVA_VENDOR=Eclipse Adoptium, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=17.0.17+10, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=17.0.17+10, VM_VENDOR=Eclipse Adoptium, OS_ARCH=amd64}
+The client will now receive all logging from the daemon (pid: 3224). The daemon log file: C:\Users\Admin\.gradle\daemon\8.6\daemon-3224.out.log
+Starting 5th build in daemon [uptime: 4 mins 58.267 secs, performance: 100%, GC rate: 0.00/s, heap usage: 0% of 512 MiB, non-heap usage: 17% of 384 MiB]
+Using 16 worker leases.
+Calculating task graph as no cached configuration is available for tasks: clean :auth-service:compileJava
+Now considering [C:\TEAC2026\ilp_backend] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Transforming foojay-resolver-1.0.0.jar (org.gradle.toolchains:foojay-resolver:1.0.0) with ExternalDependencyInstrumentingArtifactTransform
+Settings evaluated using settings file 'C:\TEAC2026\ilp_backend\settings.gradle.kts'.
+Using local directory build cache for the root build (location = C:\Users\Admin\.gradle\caches\build-cache-1, removeUnusedEntriesAfter = 7 days).
+Projects loaded. Root project using build file 'C:\TEAC2026\ilp_backend\build.gradle.kts'.
+Included projects: [root project 'ilp_backend', project ':adaptive-education-service', project ':app', project ':assessment-service', project ':auth-service', project ':common-libs', project ':commons-service', project ':gateway-service', project ':monitoring-service', project ':notification-service', project ':report-service', project ':tenant-service']
+
+> Configure project :
+Evaluating root project 'ilp_backend' using build file 'C:\TEAC2026\ilp_backend\build.gradle.kts'.
+Transforming spring-boot-gradle-plugin-3.3.5.jar (org.springframework.boot:spring-boot-gradle-plugin:3.3.5) with ExternalDependencyInstrumentingArtifactTransform
+Transforming dependency-management-plugin-1.1.6.jar (io.spring.gradle:dependency-management-plugin:1.1.6) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-boot-buildpack-platform-3.3.5.jar (org.springframework.boot:spring-boot-buildpack-platform:3.3.5) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-boot-loader-tools-3.3.5.jar (org.springframework.boot:spring-boot-loader-tools:3.3.5) with ExternalDependencyInstrumentingArtifactTransform
+Transforming commons-compress-1.25.0.jar (org.apache.commons:commons-compress:1.25.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-core-6.0.23.jar (org.springframework:spring-core:6.0.23) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-annotations-2.14.2.jar (com.fasterxml.jackson.core:jackson-annotations:2.14.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-core-2.14.2.jar (com.fasterxml.jackson.core:jackson-core:2.14.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-module-parameter-names-2.14.2.jar (com.fasterxml.jackson.module:jackson-module-parameter-names:2.14.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jackson-databind-2.14.2.jar (com.fasterxml.jackson.core:jackson-databind:2.14.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming tomlj-1.0.0.jar (org.tomlj:tomlj:1.0.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jna-platform-5.13.0.jar (net.java.dev.jna:jna-platform:5.13.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpclient5-5.3.1.jar (org.apache.httpcomponents.client5:httpclient5:5.3.1) with ExternalDependencyInstrumentingArtifactTransform
+Transforming spring-jcl-6.0.23.jar (org.springframework:spring-jcl:6.0.23) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jna-5.13.0.jar (net.java.dev.jna:jna:5.13.0) with ExternalDependencyInstrumentingArtifactTransform
+Transforming slf4j-api-1.7.36.jar (org.slf4j:slf4j-api:1.7.36) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpcore5-5.2.4.jar (org.apache.httpcomponents.core5:httpcore5:5.2.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming antlr4-runtime-4.7.2.jar (org.antlr:antlr4-runtime:4.7.2) with ExternalDependencyInstrumentingArtifactTransform
+Transforming httpcore5-h2-5.2.4.jar (org.apache.httpcomponents.core5:httpcore5-h2:5.2.4) with ExternalDependencyInstrumentingArtifactTransform
+Transforming jsr305-3.0.2.jar (com.google.code.findbugs:jsr305:3.0.2) with ExternalDependencyInstrumentingArtifactTransform
+Applying dependency management to configuration 'annotationProcessor' in project 'adaptive-education-service'
+Applying dependency management to configuration 'apiElements' in project 'adaptive-education-service'
+Applying dependency management to configuration 'archives' in project 'adaptive-education-service'
+Applying dependency management to configuration 'compileClasspath' in project 'adaptive-education-service'
+Applying dependency management to configuration 'compileOnly' in project 'adaptive-education-service'
+Applying dependency management to configuration 'default' in project 'adaptive-education-service'
+Applying dependency management to configuration 'implementation' in project 'adaptive-education-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'adaptive-education-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'adaptive-education-service'
+Applying dependency management to configuration 'runtimeElements' in project 'adaptive-education-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'adaptive-education-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'adaptive-education-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'adaptive-education-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'adaptive-education-service'
+Applying dependency management to configuration 'testImplementation' in project 'adaptive-education-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'adaptive-education-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'adaptive-education-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'adaptive-education-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'app'
+Applying dependency management to configuration 'apiElements' in project 'app'
+Applying dependency management to configuration 'archives' in project 'app'
+Applying dependency management to configuration 'compileClasspath' in project 'app'
+Applying dependency management to configuration 'compileOnly' in project 'app'
+Applying dependency management to configuration 'default' in project 'app'
+Applying dependency management to configuration 'implementation' in project 'app'
+Applying dependency management to configuration 'mainSourceElements' in project 'app'
+Applying dependency management to configuration 'runtimeClasspath' in project 'app'
+Applying dependency management to configuration 'runtimeElements' in project 'app'
+Applying dependency management to configuration 'runtimeOnly' in project 'app'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'app'
+Applying dependency management to configuration 'testCompileClasspath' in project 'app'
+Applying dependency management to configuration 'testCompileOnly' in project 'app'
+Applying dependency management to configuration 'testImplementation' in project 'app'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'app'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'app'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'app'
+Applying dependency management to configuration 'annotationProcessor' in project 'assessment-service'
+Applying dependency management to configuration 'apiElements' in project 'assessment-service'
+Applying dependency management to configuration 'archives' in project 'assessment-service'
+Applying dependency management to configuration 'compileClasspath' in project 'assessment-service'
+Applying dependency management to configuration 'compileOnly' in project 'assessment-service'
+Applying dependency management to configuration 'default' in project 'assessment-service'
+Applying dependency management to configuration 'implementation' in project 'assessment-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'assessment-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'assessment-service'
+Applying dependency management to configuration 'runtimeElements' in project 'assessment-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'assessment-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'assessment-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'assessment-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'assessment-service'
+Applying dependency management to configuration 'testImplementation' in project 'assessment-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'assessment-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'assessment-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'assessment-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'auth-service'
+Applying dependency management to configuration 'apiElements' in project 'auth-service'
+Applying dependency management to configuration 'archives' in project 'auth-service'
+Applying dependency management to configuration 'compileClasspath' in project 'auth-service'
+Applying dependency management to configuration 'compileOnly' in project 'auth-service'
+Applying dependency management to configuration 'default' in project 'auth-service'
+Applying dependency management to configuration 'implementation' in project 'auth-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'auth-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'auth-service'
+Applying dependency management to configuration 'runtimeElements' in project 'auth-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'auth-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'auth-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'auth-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'auth-service'
+Applying dependency management to configuration 'testImplementation' in project 'auth-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'auth-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'auth-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'auth-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'common-libs'
+Applying dependency management to configuration 'apiElements' in project 'common-libs'
+Applying dependency management to configuration 'archives' in project 'common-libs'
+Applying dependency management to configuration 'compileClasspath' in project 'common-libs'
+Applying dependency management to configuration 'compileOnly' in project 'common-libs'
+Applying dependency management to configuration 'default' in project 'common-libs'
+Applying dependency management to configuration 'implementation' in project 'common-libs'
+Applying dependency management to configuration 'mainSourceElements' in project 'common-libs'
+Applying dependency management to configuration 'runtimeClasspath' in project 'common-libs'
+Applying dependency management to configuration 'runtimeElements' in project 'common-libs'
+Applying dependency management to configuration 'runtimeOnly' in project 'common-libs'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'common-libs'
+Applying dependency management to configuration 'testCompileClasspath' in project 'common-libs'
+Applying dependency management to configuration 'testCompileOnly' in project 'common-libs'
+Applying dependency management to configuration 'testImplementation' in project 'common-libs'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'common-libs'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'common-libs'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'common-libs'
+Applying dependency management to configuration 'annotationProcessor' in project 'commons-service'
+Applying dependency management to configuration 'apiElements' in project 'commons-service'
+Applying dependency management to configuration 'archives' in project 'commons-service'
+Applying dependency management to configuration 'compileClasspath' in project 'commons-service'
+Applying dependency management to configuration 'compileOnly' in project 'commons-service'
+Applying dependency management to configuration 'default' in project 'commons-service'
+Applying dependency management to configuration 'implementation' in project 'commons-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'commons-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'commons-service'
+Applying dependency management to configuration 'runtimeElements' in project 'commons-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'commons-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'commons-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'commons-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'commons-service'
+Applying dependency management to configuration 'testImplementation' in project 'commons-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'commons-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'commons-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'commons-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'gateway-service'
+Applying dependency management to configuration 'apiElements' in project 'gateway-service'
+Applying dependency management to configuration 'archives' in project 'gateway-service'
+Applying dependency management to configuration 'compileClasspath' in project 'gateway-service'
+Applying dependency management to configuration 'compileOnly' in project 'gateway-service'
+Applying dependency management to configuration 'default' in project 'gateway-service'
+Applying dependency management to configuration 'implementation' in project 'gateway-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'gateway-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'gateway-service'
+Applying dependency management to configuration 'runtimeElements' in project 'gateway-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'gateway-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'gateway-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'gateway-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'gateway-service'
+Applying dependency management to configuration 'testImplementation' in project 'gateway-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'gateway-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'gateway-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'gateway-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'monitoring-service'
+Applying dependency management to configuration 'apiElements' in project 'monitoring-service'
+Applying dependency management to configuration 'archives' in project 'monitoring-service'
+Applying dependency management to configuration 'compileClasspath' in project 'monitoring-service'
+Applying dependency management to configuration 'compileOnly' in project 'monitoring-service'
+Applying dependency management to configuration 'default' in project 'monitoring-service'
+Applying dependency management to configuration 'implementation' in project 'monitoring-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'monitoring-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'monitoring-service'
+Applying dependency management to configuration 'runtimeElements' in project 'monitoring-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'monitoring-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'monitoring-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'monitoring-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'monitoring-service'
+Applying dependency management to configuration 'testImplementation' in project 'monitoring-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'monitoring-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'monitoring-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'monitoring-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'notification-service'
+Applying dependency management to configuration 'apiElements' in project 'notification-service'
+Applying dependency management to configuration 'archives' in project 'notification-service'
+Applying dependency management to configuration 'compileClasspath' in project 'notification-service'
+Applying dependency management to configuration 'compileOnly' in project 'notification-service'
+Applying dependency management to configuration 'default' in project 'notification-service'
+Applying dependency management to configuration 'implementation' in project 'notification-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'notification-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'notification-service'
+Applying dependency management to configuration 'runtimeElements' in project 'notification-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'notification-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'notification-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'notification-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'notification-service'
+Applying dependency management to configuration 'testImplementation' in project 'notification-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'notification-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'notification-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'notification-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'report-service'
+Applying dependency management to configuration 'apiElements' in project 'report-service'
+Applying dependency management to configuration 'archives' in project 'report-service'
+Applying dependency management to configuration 'compileClasspath' in project 'report-service'
+Applying dependency management to configuration 'compileOnly' in project 'report-service'
+Applying dependency management to configuration 'default' in project 'report-service'
+Applying dependency management to configuration 'implementation' in project 'report-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'report-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'report-service'
+Applying dependency management to configuration 'runtimeElements' in project 'report-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'report-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'report-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'report-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'report-service'
+Applying dependency management to configuration 'testImplementation' in project 'report-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'report-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'report-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'report-service'
+Applying dependency management to configuration 'annotationProcessor' in project 'tenant-service'
+Applying dependency management to configuration 'apiElements' in project 'tenant-service'
+Applying dependency management to configuration 'archives' in project 'tenant-service'
+Applying dependency management to configuration 'compileClasspath' in project 'tenant-service'
+Applying dependency management to configuration 'compileOnly' in project 'tenant-service'
+Applying dependency management to configuration 'default' in project 'tenant-service'
+Applying dependency management to configuration 'implementation' in project 'tenant-service'
+Applying dependency management to configuration 'mainSourceElements' in project 'tenant-service'
+Applying dependency management to configuration 'runtimeClasspath' in project 'tenant-service'
+Applying dependency management to configuration 'runtimeElements' in project 'tenant-service'
+Applying dependency management to configuration 'runtimeOnly' in project 'tenant-service'
+Applying dependency management to configuration 'testAnnotationProcessor' in project 'tenant-service'
+Applying dependency management to configuration 'testCompileClasspath' in project 'tenant-service'
+Applying dependency management to configuration 'testCompileOnly' in project 'tenant-service'
+Applying dependency management to configuration 'testImplementation' in project 'tenant-service'
+Applying dependency management to configuration 'testResultsElementsForTest' in project 'tenant-service'
+Applying dependency management to configuration 'testRuntimeClasspath' in project 'tenant-service'
+Applying dependency management to configuration 'testRuntimeOnly' in project 'tenant-service'
+
+> Configure project :adaptive-education-service
+Evaluating project ':adaptive-education-service' using build file 'C:\TEAC2026\ilp_backend\adaptive-education-service\build.gradle'.
+
+> Configure project :app
+Evaluating project ':app' using build file 'C:\TEAC2026\ilp_backend\app\build.gradle.kts'.
+
+> Configure project :assessment-service
+Evaluating project ':assessment-service' using build file 'C:\TEAC2026\ilp_backend\assessment-service\build.gradle'.
+
+> Configure project :auth-service
+Evaluating project ':auth-service' using build file 'C:\TEAC2026\ilp_backend\auth-service\build.gradle.kts'.
+Applying dependency management to configuration 'bootArchives' in project 'auth-service'
+Applying dependency management to configuration 'productionRuntimeClasspath' in project 'auth-service'
+Applying dependency management to configuration 'developmentOnly' in project 'auth-service'
+Applying dependency management to configuration 'testAndDevelopmentOnly' in project 'auth-service'
+
+> Configure project :common-libs
+Evaluating project ':common-libs' using build file 'C:\TEAC2026\ilp_backend\common-libs\build.gradle'.
+
+> Configure project :commons-service
+Evaluating project ':commons-service' using build file 'C:\TEAC2026\ilp_backend\commons-service\build.gradle'.
+
+> Configure project :gateway-service
+Evaluating project ':gateway-service' using build file 'C:\TEAC2026\ilp_backend\gateway-service\build.gradle'.
+
+> Configure project :monitoring-service
+Evaluating project ':monitoring-service' using build file 'C:\TEAC2026\ilp_backend\monitoring-service\build.gradle'.
+
+> Configure project :notification-service
+Evaluating project ':notification-service' using build file 'C:\TEAC2026\ilp_backend\notification-service\build.gradle'.
+
+> Configure project :report-service
+Evaluating project ':report-service' using build file 'C:\TEAC2026\ilp_backend\report-service\build.gradle'.
+
+> Configure project :tenant-service
+Evaluating project ':tenant-service' using build file 'C:\TEAC2026\ilp_backend\tenant-service\build.gradle'.
+All projects evaluated.
+Task name matched 'clean'
+Task path ':auth-service:compileJava' matched project ':auth-service'
+Task name matched 'compileJava'
+Selected primary task 'clean' from project :
+Selected primary task 'compileJava' from project :auth-service
+Resolving global dependency management for project 'auth-service'
+Excluding []
+Excluding []
+Tasks to be executed: [task ':clean', task ':adaptive-education-service:clean', task ':app:clean', task ':assessment-service:clean', task ':auth-service:clean', task ':common-libs:clean', task ':commons-service:clean', task ':gateway-service:clean', task ':monitoring-service:clean', task ':notification-service:clean', task ':report-service:clean', task ':tenant-service:clean', task ':auth-service:compileJava']
+Tasks that were excluded: []
+Ignoring listeners of task graph ready event, as this build (:) has already executed work.
+Resolve mutations for :clean (Thread[Execution worker,5,main]) started.
+Resolve mutations for :adaptive-education-service:clean (Thread[Execution worker Thread 2,5,main]) started.
+Resolve mutations for :app:clean (Thread[Execution worker Thread 3,5,main]) started.
+Resolve mutations for :assessment-service:clean (Thread[Execution worker Thread 4,5,main]) started.
+Resolve mutations for :auth-service:clean (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :common-libs:clean (Thread[Execution worker Thread 6,5,main]) started.
+Resolve mutations for :commons-service:clean (Thread[Execution worker Thread 7,5,main]) started.
+Resolve mutations for :gateway-service:clean (Thread[Execution worker Thread 8,5,main]) started.
+Resolve mutations for :monitoring-service:clean (Thread[Execution worker Thread 9,5,main]) started.
+Resolve mutations for :notification-service:clean (Thread[Execution worker Thread 10,5,main]) started.
+Resolve mutations for :report-service:clean (Thread[Execution worker Thread 11,5,main]) started.
+Resolve mutations for :tenant-service:clean (Thread[Execution worker Thread 12,5,main]) started.
+:auth-service:clean (Thread[Execution worker Thread 12,5,main]) started.
+:tenant-service:clean (Thread[included builds,5,main]) started.
+:app:clean (Thread[Execution worker Thread 3,5,main]) started.
+:notification-service:clean (Thread[Execution worker Thread 10,5,main]) started.
+:commons-service:clean (Thread[Execution worker Thread 7,5,main]) started.
+:monitoring-service:clean (Thread[Execution worker Thread 9,5,main]) started.
+:gateway-service:clean (Thread[Execution worker Thread 8,5,main]) started.
+:clean (Thread[Execution worker,5,main]) started.
+:common-libs:clean (Thread[Execution worker Thread 6,5,main]) started.
+:report-service:clean (Thread[Execution worker Thread 11,5,main]) started.
+:assessment-service:clean (Thread[Execution worker Thread 4,5,main]) started.
+:adaptive-education-service:clean (Thread[Execution worker Thread 2,5,main]) started.
+destroyer locations for task group 0 (Thread[Execution worker Thread 5,5,main]) started.
+Resolve mutations for :auth-service:compileJava (Thread[Execution worker Thread 5,5,main]) started.
+
+> Task :assessment-service:clean UP-TO-DATE
+Caching disabled for task ':assessment-service:clean' because:
+  Deletion cannot be cached
+Task ':assessment-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :notification-service:clean UP-TO-DATE
+Caching disabled for task ':notification-service:clean' because:
+  Deletion cannot be cached
+Task ':notification-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :common-libs:clean UP-TO-DATE
+Caching disabled for task ':common-libs:clean' because:
+  Deletion cannot be cached
+Task ':common-libs:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :commons-service:clean UP-TO-DATE
+Caching disabled for task ':commons-service:clean' because:
+  Deletion cannot be cached
+Task ':commons-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :app:clean UP-TO-DATE
+Caching disabled for task ':app:clean' because:
+  Deletion cannot be cached
+Task ':app:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :adaptive-education-service:clean UP-TO-DATE
+Caching disabled for task ':adaptive-education-service:clean' because:
+  Deletion cannot be cached
+Task ':adaptive-education-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :monitoring-service:clean UP-TO-DATE
+Caching disabled for task ':monitoring-service:clean' because:
+  Deletion cannot be cached
+Task ':monitoring-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :report-service:clean UP-TO-DATE
+Caching disabled for task ':report-service:clean' because:
+  Deletion cannot be cached
+Task ':report-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :gateway-service:clean UP-TO-DATE
+Caching disabled for task ':gateway-service:clean' because:
+  Deletion cannot be cached
+Task ':gateway-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :tenant-service:clean UP-TO-DATE
+Caching disabled for task ':tenant-service:clean' because:
+  Deletion cannot be cached
+Task ':tenant-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :clean
+Caching disabled for task ':clean' because:
+  Deletion cannot be cached
+Task ':clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+
+> Task :auth-service:clean
+Caching disabled for task ':auth-service:clean' because:
+  Deletion cannot be cached
+Task ':auth-service:clean' is not up-to-date because:
+  Task has not declared any outputs despite executing actions.
+:auth-service:compileJava (Thread[Execution worker Thread 12,5,main]) started.
+
+> Task :auth-service:compileJava
+Build cache key for task ':auth-service:compileJava' is 530e031750abb9b84955e0009a0d08a2
+Task ':auth-service:compileJava' is not up-to-date because:
+  Task has failed previously.
+The input changes require a full rebuild for incremental task ':auth-service:compileJava'.
+Full recompilation is required because no incremental change information is available. This is usually caused by clean builds or changing compiler arguments.
+Compiling with toolchain 'C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot'.
+Compiling with JDK Java compiler API.
+
+> Task :auth-service:compileJava FAILED
+
+0 problems were found storing the configuration cache.
+
+See the complete report at file:///C:/TEAC2026/ilp_backend/build/reports/configuration-cache/eg4r6g5pqm9965x1jae6odvd1/cesko94et2ekj04j09mob0hxt/configuration-cache-report.html
+13 actionable tasks: 3 executed, 10 up-to-date
+Watched directory hierarchies: [C:\TEAC2026\ilp_backend]
+Configuration cache entry stored.

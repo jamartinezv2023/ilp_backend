@@ -1,0 +1,58 @@
+﻿
+===== C:\TEAC2026\ilp_backend\auth-service\build\resources\main\application.yml =====
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  jwt:
+    secret: "ilp-super-secret-key-should-be-very-long-and-secure-123456"
+    expiration-ms: 3600000
+    issuer: "inclusive-learning-platform"
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\resources\application.yml =====
+
+server:
+  port: 8083
+
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+app:
+  jwt:
+    secret: "ilp-super-secret-key-should-be-very-long-and-secure-123456"
+    expiration-ms: 3600000
+    issuer: "inclusive-learning-platform"

@@ -1,0 +1,7 @@
+﻿
+FullName                                                                 
+--------                                                                 
+C:\TEAC2026\ilp_backend\auth-service\build\resources\main\application.yml
+C:\TEAC2026\ilp_backend\auth-service\src\main\resources\application.yml  
+
+

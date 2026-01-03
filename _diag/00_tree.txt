@@ -1,0 +1,1004 @@
+﻿Listado de rutas de carpetas
+El n·mero de serie del volumen es 6401-AA31
+C:.
+|   .env.example
+|   .gitattributes
+|   .gitignore
+|   auth-service-radiografia.txt
+|   auto_push.bat
+|   azure-pipelines-postgres-audit.yml
+|   azure-pipelines.yml
+|   bootstrap_ilp_full_mvp_backend.ps1
+|   bootstrap_ilp_mvp_backend.ps1
+|   build.gradle.kts
+|   cache-deps.txt
+|   check_adaptive_module_advanced.ps1
+|   controllers.txt
+|   diagnose-auth-service.ps1
+|   diagnose.ps1
+|   docker-compose.dev.yml
+|   docker-compose.dev.yml.txt
+|   docker-compose.yml
+|   docker-compose10102025.yml
+|   docker-compose11102025.yml
+|   docker-compose_18102025.yml
+|   entities.txt
+|   fix-java-path.sh
+|   fix_adaptive_module.ps1
+|   fix_adaptive_student_files.ps1
+|   fix_auth_service_crud.ps1
+|   fix_bom_notification_service.ps1
+|   fix_ilp_dto_resolution.ps1
+|   fix_notification_service_crud.ps1
+|   fondo_silueta_aula.svg
+|   free-port.ps1
+|   free-port.sh
+|   free-ports-auto.ps1
+|   free-ports-auto.sh
+|   free-ports-auto.txt
+|   generar_proyecto_nopcommerce.ps1
+|   generate_assessment_service.ps1
+|   generate_assessment_service_no_bom.ps1
+|   generate_assessment_service_no_bom_clean.ps1
+|   generate_dockerfiles_and_compose.ps1
+|   generate_dockerfiles_and_compose.ps1.txt
+|   gradle.properties
+|   gradlew
+|   gradlew.bat
+|   ilp_backend_autofix.ps1
+|   ilp_backend_setup_and_verify.ps1
+|   ilp_build.ps1
+|   ilp_cicd.ps1
+|   ilp_create_e2e_tests_module.ps1
+|   ilp_fix_java_sources.ps1
+|   ilp_generate_crud_e2e_tests.ps1
+|   ilp_infra.ps1
+|   ilp_megascript_azure_backend.ps1
+|   ilp_megascript_azure_backend1.ps1
+|   ilp_megascript_full_backend.ps1
+|   ilp_reconstruct_incremental.ps1
+|   ilp_run_e2e_tests.ps1
+|   ilp_setup_postgres_databases.ps1
+|   java_files.txt
+|   java_modules.txt
+|   module_crud_fix_2025-11-09_11-22-24.csv
+|   module_crud_fix_2025-11-09_11-39-58.csv
+|   module_crud_fix_2025-11-09_11-53-56.csv
+|   module_crud_fix_2025-11-09_19-44-31.csv
+|   module_crud_report_2025-11-08_22-45.csv
+|   module_crud_report_2025-11-08_22-45.html
+|   Nuevo Documento de texto.txt
+|   prepare_release.sh
+|   radiografia_total_20251221_1716.md
+|   README.md
+|   README_DEVOPS.md
+|   README_PROJECT.md
+|   rebuild_failed_modules_no_bom.ps1
+|   rebuild_ilp_backend_core.ps1
+|   rebuild_ilp_mvp.ps1
+|   repair-crud-modules-v10.ps1
+|   repair-crud-modules-v11.1.ps1
+|   repair-crud-modules-v11.2.ps1
+|   repair-crud-modules-v11.ps1
+|   repair-crud-modules-v5.ps1
+|   repair-crud-modules-v6.1.ps1
+|   repair-crud-modules-v6.ps1
+|   repair-crud-modules-v7.1.ps1
+|   repair-crud-modules-v7.ps1
+|   repair-crud-modules-v8.1.ps1
+|   repair-crud-modules-v8.2.ps1
+|   repair-crud-modules-v8.ps1
+|   repair-crud-modules.ps1
+|   repair-crud-modules1.ps1
+|   repair_log_2025-11-08_22-52.txt
+|   repair_log_2025-11-08_22-58.txt
+|   repair_log_2025-11-08_22-59.txt
+|   repara.txt
+|   repositories.txt
+|   Resource.java
+|   ResourceController.java
+|   ResourceRepository.java
+|   ResourceService.java
+|   routes.txt
+|   run-all.sh
+|   services.txt
+|   settings.gradle.kts
+|   structure.txt
+|   validate-and-report-modules.ps1
+|   validate-modules.ps1
+|   [Help
+|   
++---.github
+|   \---workflows
+|           ci-cd.yml
+|           ci.yml
+|           postgres-audit.yml
+|           
++---.gradle
+|   |   file-system.probe
+|   |   
+|   +---8.6
+|   |   |   gc.properties
+|   |   |   
+|   |   +---checksums
+|   |   |       checksums.lock
+|   |   |       md5-checksums.bin
+|   |   |       sha1-checksums.bin
+|   |   |       
+|   |   +---dependencies-accessors
+|   |   |   |   gc.properties
+|   |   |   |   
+|   |   |   \---b0b32d309130f56363f7e8390f57303b96717543
+|   |   |       |   metadata.bin
+|   |   |       |   
+|   |   |       +---classes
+|   |   |       |   \---org
+|   |   |       |       \---gradle
+|   |   |       |           \---accessors
+|   |   |       |               \---dm
+|   |   |       |                       LibrariesForLibs$BundleAccessors.class
+|   |   |       |                       LibrariesForLibs$PluginAccessors.class
+|   |   |       |                       LibrariesForLibs$VersionAccessors.class
+|   |   |       |                       LibrariesForLibs.class
+|   |   |       |                       LibrariesForLibsInPluginsBlock$BundleAccessors.class
+|   |   |       |                       LibrariesForLibsInPluginsBlock$PluginAccessors.class
+|   |   |       |                       LibrariesForLibsInPluginsBlock$VersionAccessors.class
+|   |   |       |                       LibrariesForLibsInPluginsBlock.class
+|   |   |       |                       
+|   |   |       \---sources
+|   |   |           \---org
+|   |   |               \---gradle
+|   |   |                   \---accessors
+|   |   |                       \---dm
+|   |   |                               LibrariesForLibs.java
+|   |   |                               LibrariesForLibsInPluginsBlock.java
+|   |   |                               
+|   |   +---executionHistory
+|   |   |       executionHistory.bin
+|   |   |       executionHistory.lock
+|   |   |       
+|   |   +---fileChanges
+|   |   |       last-build.bin
+|   |   |       
+|   |   +---fileHashes
+|   |   |       fileHashes.bin
+|   |   |       fileHashes.lock
+|   |   |       resourceHashesCache.bin
+|   |   |       
+|   |   \---vcsMetadata
+|   +---9.2.1
+|   |   |   gc.properties
+|   |   |   
+|   |   +---checksums
+|   |   |       checksums.lock
+|   |   |       
+|   |   +---executionHistory
+|   |   |       executionHistory.bin
+|   |   |       executionHistory.lock
+|   |   |       
+|   |   +---expanded
+|   |   +---fileChanges
+|   |   |       last-build.bin
+|   |   |       
+|   |   +---fileHashes
+|   |   |       fileHashes.bin
+|   |   |       fileHashes.lock
+|   |   |       resourceHashesCache.bin
+|   |   |       
+|   |   \---vcsMetadata
+|   +---buildOutputCleanup
+|   |       buildOutputCleanup.lock
+|   |       cache.properties
+|   |       outputFiles.bin
+|   |       
+|   +---configuration-cache
+|   |   |   configuration-cache.lock
+|   |   |   gc.properties
+|   |   |   
+|   |   +---4wg7c3043hfdapbz19j282vrx
+|   |   |       candidates.bin
+|   |   |       
+|   |   +---5f75a8fc-ce52-4f52-bb0c-8638bffd45b5
+|   |   |       .globals.work.bin
+|   |   |       .strings.work.bin
+|   |   |       buildfingerprint.bin
+|   |   |       classloaderscopes.bin
+|   |   |       entry.bin
+|   |   |       projectfingerprint.bin
+|   |   |       work.bin
+|   |   |       _auth-service.work.bin
+|   |   |       
+|   |   +---83rqh9g66w2oonjx2nne2s7yp
+|   |   |       candidates.bin
+|   |   |       
+|   |   +---8lyemudt58c8mm8y4b9e05ulw
+|   |   |       buildfingerprint.bin
+|   |   |       entry.bin
+|   |   |       projectfingerprint.bin
+|   |   |       work.bin
+|   |   |       
+|   |   +---9qeezvp99e03f26apmw9knb8x
+|   |   |       buildfingerprint.bin
+|   |   |       entry.bin
+|   |   |       projectfingerprint.bin
+|   |   |       work.bin
+|   |   |       
+|   |   +---9vbh8h223iy9am3kngjna14rb
+|   |   |       candidates.bin
+|   |   |       
+|   |   +---by34121dofim64xh9bahu5dpd
+|   |   |       buildfingerprint.bin
+|   |   |       entry.bin
+|   |   |       projectfingerprint.bin
+|   |   |       work.bin
+|   |   |       
+|   |   +---c4brkw0rgq0uf41ip3uqlxgwv
+|   |   |       buildfingerprint.bin
+|   |   |       entry.bin
+|   |   |       projectfingerprint.bin
+|   |   |       work.bin
+|   |   |       
+|   |   +---c4da7bbe-ec2c-45a2-b73e-fa1c8a49818a
+|   |   |       .globals.work.bin
+|   |   |       .strings.work.bin
+|   |   |       build.work.bin
+|   |   |       buildfingerprint.bin
+|   |   |       classloaderscopes.bin
+|   |   |       entry.bin
+|   |   |       projectfingerprint.bin
+|   |   |       work.bin
+|   |   |       _auth-service.work.bin
+|   |   |       
+|   |   +---d0313326-db5b-4e96-a65b-ecf6017698a0
+|   |   |       .globals.work.bin
+|   |   |       .strings.work.bin
+|   |   |       buildfingerprint.bin
+|   |   |       classloaderscopes.bin
+|   |   |       entry.bin
+|   |   |       projectfingerprint.bin
+|   |   |       work.bin
+|   |   |       _.work.bin
+|   |   |       
+|   |   \---dswavdpla1qey1s8q8ano2q8r
+|   |           buildfingerprint.bin
+|   |           entry.bin
+|   |           projectfingerprint.bin
+|   |           work.bin
+|   |           
+|   \---vcs-1
+|           gc.properties
+|           
++---.idea
+|   |   .gitignore
+|   |   AndroidProjectSystem.xml
+|   |   aws.xml
+|   |   compiler.xml
+|   |   copilot.data.migration.agent.xml
+|   |   gradle.xml
+|   |   misc.xml
+|   |   modules.xml
+|   |   vcs.xml
+|   |   workspace.xml
+|   |   
+|   +---codeStyles
+|   |       codeStyleConfig.xml
+|   |       Project.xml
+|   |       
+|   \---modules
+|       \---auth-service
+|               ilp_backend.auth-service.main.iml
+|               ilp_backend.auth-service.test.iml
+|               
++---adaptive-education-service
+|   |   Dockerfile
+|   |   pom.xml
+|   |   README.md
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---adaptiveeducationservice
+|                           |   AdaptiveEducationServiceApplication.java
+|                           |   
+|                           +---client
+|                           |       StudentClient.java
+|                           |       
+|                           +---config
+|                           |       DataInitializer.java
+|                           |       SwaggerConfig.java
+|                           |       
+|                           +---controller
+|                           |       StudentProxyController.java
+|                           |       
+|                           +---entity
+|                           |   +---controller
+|                           |   |       StudentController.java
+|                           |   |       
+|                           |   +---dto
+|                           |   |       StudentDTO.java
+|                           |   |       
+|                           |   +---model
+|                           |   |       Student.java
+|                           |   |       StudentMapper.java
+|                           |   |       
+|                           |   +---repository
+|                           |   |       StudentRepository.java
+|                           |   |       
+|                           |   \---service
+|                           |       |   StudentService.java
+|                           |       |   
+|                           |       \---impl
+|                           |               StudentServiceImpl.java
+|                           |               
+|                           \---service
+|                                   StudentIntegrationService.java
+|                                   StudentIntegrationServiceImpl.java
+|                                   
++---app
+|   |   build.gradle.kts
+|   |   
+|   \---src
+|       +---main
+|       |   +---java
+|       |   |   \---org
+|       |   |       \---example
+|       |   |               App.java
+|       |   |               
+|       |   \---resources
+|       \---test
+|           +---java
+|           |   \---org
+|           |       \---example
+|           |               AppTest.java
+|           |               
+|           \---resources
++---assessment-service
+|   |   Dockerfile
+|   |   pom.xml
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---assessmentservice
+|                           |   AssessmentServiceApplication.java
+|                           |   
+|                           +---controller
+|                           |       AssessmentController.java
+|                           |       
+|                           +---dto
+|                           |       AssessmentDTO.java
+|                           |       
+|                           +---entity
+|                           |       Assessment.java
+|                           |       
+|                           +---repository
+|                           |       AssessmentRepository.java
+|                           |       
+|                           \---service
+|                               |   AssessmentService.java
+|                               |   
+|                               \---impl
+|                                       AssessmentServiceImpl.java
+|                                       
++---auth-service
+|   |   .gitattributes
+|   |   .gitignore
+|   |   build.gradle.kts
+|   |   docker-compose.yml
+|   |   Dockerfile
+|   |   estructura_auth_service_actual.txt
+|   |   estructura_auth_service_paths.txt
+|   |   gradle.properties
+|   |   gradlew
+|   |   gradlew.bat
+|   |   MODULE_CONTRACT.md
+|   |   README.md
+|   |   settings.gradle.kts
+|   |   
+|   +---build
+|   |   +---classes
+|   |   |   \---java
+|   |   |       \---main
+|   |   +---generated
+|   |   |   \---sources
+|   |   |       +---annotationProcessor
+|   |   |       |   \---java
+|   |   |       |       \---main
+|   |   |       |           \---com
+|   |   |       |               \---inclusive
+|   |   |       |                   \---authservice
+|   |   |       |                       \---mapper
+|   |   |       |                           |   UserAccountMapperImpl.java
+|   |   |       |                           |   
+|   |   |       |                           \---authorization
+|   |   |       |                                   PermissionMapperImpl.java
+|   |   |       |                                   RoleMapperImpl.java
+|   |   |       |                                   RolePermissionMapperImpl.java
+|   |   |       |                                   
+|   |   |       \---headers
+|   |   |           \---java
+|   |   |               \---main
+|   |   +---resources
+|   |   |   \---main
+|   |   |       |   application-dev.yml
+|   |   |       |   application-prod.yml
+|   |   |       |   application-test.yml
+|   |   |       |   application.yml
+|   |   |       |   
+|   |   |       \---db
+|   |   |           \---migration
+|   |   |                   data.sql
+|   |   |                   V2__add_email_verified_and_created_at.sql
+|   |   |                   V2__create_user_mfa.sql
+|   |   |                   V3__create_authorization_tables.sql
+|   |   |                   
+|   |   \---tmp
+|   |       \---compileJava
+|   +---legacy-tests
+|   |       UserAccountServiceTest.java
+|   |       
+|   +---src
+|   |   +---main
+|   |   |   +---java
+|   |   |   |   \---com
+|   |   |   |       \---inclusive
+|   |   |   |           \---authservice
+|   |   |   |               |   AuthServiceApplication.java
+|   |   |   |               |   
+|   |   |   |               +---auth
+|   |   |   |               |   +---controller
+|   |   |   |               |   |       AuthController.java
+|   |   |   |               |   |       
+|   |   |   |               |   +---dto
+|   |   |   |               |   |       AuthResponse.java
+|   |   |   |               |   |       LoginRequest.java
+|   |   |   |               |   |       LoginResponse.java
+|   |   |   |               |   |       
+|   |   |   |               |   \---service
+|   |   |   |               |           AuthService.java
+|   |   |   |               |           
+|   |   |   |               +---config
+|   |   |   |               |       PasswordEncoderConfig.java
+|   |   |   |               |       
+|   |   |   |               +---controller
+|   |   |   |               |   |   TestController.java
+|   |   |   |               |   |   UserAccountController.java
+|   |   |   |               |   |   
+|   |   |   |               |   \---authorization
+|   |   |   |               |           PermissionController.java
+|   |   |   |               |           RoleController.java
+|   |   |   |               |           RolePermissionController.java
+|   |   |   |               |           UserRoleController.java
+|   |   |   |               |           
+|   |   |   |               +---dto
+|   |   |   |               |   |   CreateUserAccountRequest.java
+|   |   |   |               |   |   UpdateUserAccountRequest.java
+|   |   |   |               |   |   UserAccountDTO.java
+|   |   |   |               |   |   
+|   |   |   |               |   \---authorization
+|   |   |   |               |       |   CreatePermissionRequest.java
+|   |   |   |               |       |   CreateRoleRequest.java
+|   |   |   |               |       |   PermissionResponse.java
+|   |   |   |               |       |   
+|   |   |   |               |       \---domain
+|   |   |   |               |               PermissionDTO.java
+|   |   |   |               |               RoleDTO.java
+|   |   |   |               |               RolePermissionDTO.java
+|   |   |   |               |               
+|   |   |   |               +---entity
+|   |   |   |               |   |   UserAccount.java
+|   |   |   |               |   |   
+|   |   |   |               |   \---authorization
+|   |   |   |               |           Permission.java
+|   |   |   |               |           Role.java
+|   |   |   |               |           RolePermission.java
+|   |   |   |               |           UserRole.java
+|   |   |   |               |           
+|   |   |   |               +---exception
+|   |   |   |               |       BadRequestException.java
+|   |   |   |               |       GlobalExceptionHandler.java
+|   |   |   |               |       ResourceNotFoundException.java
+|   |   |   |               |       
+|   |   |   |               +---mapper
+|   |   |   |               |   |   UserAccountMapper.java
+|   |   |   |               |   |   
+|   |   |   |               |   \---authorization
+|   |   |   |               |           PermissionMapper.java
+|   |   |   |               |           RoleMapper.java
+|   |   |   |               |           RolePermissionMapper.java
+|   |   |   |               |           
+|   |   |   |               +---repository
+|   |   |   |               |   |   RoleRepository.java
+|   |   |   |               |   |   UserAccountRepository.java
+|   |   |   |               |   |   UserRoleRepository.java
+|   |   |   |               |   |   
+|   |   |   |               |   \---authorization
+|   |   |   |               |           PermissionRepository.java
+|   |   |   |               |           RolePermissionRepository.java
+|   |   |   |               |           RoleRepository.java
+|   |   |   |               |           UserRoleRepository.java
+|   |   |   |               |           
+|   |   |   |               +---security
+|   |   |   |               |   |   JwtService.java
+|   |   |   |               |   |   SecurityConfig.java
+|   |   |   |               |   |   
+|   |   |   |               |   \---jwt
+|   |   |   |               |           JwtAuthConverter.java
+|   |   |   |               |           JwtAuthenticationFilter.java
+|   |   |   |               |           JwtAuthoritiesExtractor.java
+|   |   |   |               |           JwtConfig.java
+|   |   |   |               |           JwtDecoderConfig.java
+|   |   |   |               |           JwtProperties.java
+|   |   |   |               |           JwtService.java
+|   |   |   |               |           
+|   |   |   |               +---service
+|   |   |   |               |   |   UserAccountService.java
+|   |   |   |               |   |   
+|   |   |   |               |   +---authorization
+|   |   |   |               |   |   |   PermissionService.java
+|   |   |   |               |   |   |   RolePermissionService.java
+|   |   |   |               |   |   |   RoleService.java
+|   |   |   |               |   |   |   UserRoleService.java
+|   |   |   |               |   |   |   
+|   |   |   |               |   |   \---impl
+|   |   |   |               |   |           PermissionServiceImpl.java
+|   |   |   |               |   |           RolePermissionServiceImpl.java
+|   |   |   |               |   |           RoleServiceImpl.java
+|   |   |   |               |   |           UserRoleServiceImpl.java
+|   |   |   |               |   |           
+|   |   |   |               |   \---impl
+|   |   |   |               |           UserAccountServiceImpl.java
+|   |   |   |               |           
+|   |   |   |               +---tenant
+|   |   |   |               |       TenantContext.java
+|   |   |   |               |       TenantFilter.java
+|   |   |   |               |       
+|   |   |   |               \---validator
+|   |   |   |                       AuthorizationValidator.java
+|   |   |   |                       
+|   |   |   \---resources
+|   |   |       |   application-dev.yml
+|   |   |       |   application-prod.yml
+|   |   |       |   application-test.yml
+|   |   |       |   application.yml
+|   |   |       |   
+|   |   |       \---db
+|   |   |           \---migration
+|   |   |                   data.sql
+|   |   |                   V2__add_email_verified_and_created_at.sql
+|   |   |                   V2__create_user_mfa.sql
+|   |   |                   V3__create_authorization_tables.sql
+|   |   |                   
+|   |   \---test
+|   |       +---java
+|   |       \---resources
+|   |           |   application-test.yml
+|   |           |   
+|   |           \---features
+|   |                   user_account.feature
+|   |                   
+|   \---_backup_architecture_cleanup_2025_12_14
+|       +---db_migration
+|       |       V1__create_users_students.sql
+|       |       V2__create_student_ai_and_behavior.sql
+|       |       V2__user_mfa.sql
+|       |       V2__verification_token.sql
+|       |       
+|       +---graphql
+|       |       MutationResolver.java
+|       |       QueryResolver.java
+|       |       schema.graphqls
+|       |       
+|       \---legacy_data
+|               data.sql
+|               data1.sql
+|               
++---build
+|   \---reports
+|       \---configuration-cache
+|           \---8lyemudt58c8mm8y4b9e05ulw
+|               \---8sbbz1h7wst47nszqvjro47tp
+|                       configuration-cache-report.html
+|                       
++---common-libs
+|   |   pom.xml
+|   |   README.md
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---common
+|                           \---dto
+|                                   StudentDTO.java
+|                                   
++---commons-service
+|   |   .gitkeep
+|   |   Dockerfile
+|   |   estructura.txt
+|   |   estructura_dirs.txt
+|   |   pom.xml
+|   |   README.md
+|   |   
+|   \---src
+|       \---main
+|           |   estructura_10112025.txt
+|           |   
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       +---common
+|                       |   \---dto
+|                       |           StudentDTO.java
+|                       |           
+|                       \---learning
+|                           \---commons
+|                               |   CommonsServiceApplication.java
+|                               |   
+|                               +---controller
+|                               |       CommonResourceController.java
+|                               |       CommonsServiceController.java
+|                               |       
+|                               +---dto
+|                               |       CommonResourceDto.java
+|                               |       
+|                               +---entity
+|                               |   |   CommonResource.java
+|                               |   |   
+|                               |   +---controller
+|                               |   |       ResourceController.java
+|                               |   |       
+|                               |   +---dto
+|                               |   |       ResourceDTO.java
+|                               |   |       
+|                               |   +---model
+|                               |   |       Resource.java
+|                               |   |       
+|                               |   +---repository
+|                               |   |       ResourceRepository.java
+|                               |   |       
+|                               |   \---service
+|                               |       |   ResourceService.java
+|                               |       |   
+|                               |       \---impl
+|                               |               ResourceServiceImpl.java
+|                               |               
+|                               \---service
+|                                   |   CommonResourceService.java
+|                                   |   
+|                                   \---impl
+|                                           CommonResourceServiceImpl.java
+|                                           
++---controller
+|       TenantController.java
+|       
++---diagnostics
+|   +---20251221_155717
+|   |       _index.txt
+|   |       
+|   +---20251221_170054
+|   |       _index.txt
+|   |       
+|   +---20251221_170516
+|   |       _index.txt
+|   |       
+|   \---20251221_170617
+|           _index.txt
+|           
++---e2e-tests
+|   |   pom.xml
+|   |   
+|   \---src
+|       \---test
+|           \---java
+|               \---com
+|                   \---ilp
+|                       \---e2e
+|                           |   SmokeTest.java
+|                           |   
+|                           +---adaptiveeducation
+|                           |       StudentCrudE2ETest.java
+|                           |       StudentDTOCrudE2ETest.java
+|                           |       
+|                           +---assessment
+|                           |       AssessmentCrudE2ETest.java
+|                           |       
+|                           +---auth
+|                           |       UserAccountCrudE2ETest.java
+|                           |       
+|                           +---commons
+|                           |       CommonResourceCrudE2ETest.java
+|                           |       ResourceCrudE2ETest.java
+|                           |       ResourceDTOCrudE2ETest.java
+|                           |       
+|                           +---monitoring
+|                           |       MonitoringEventCrudE2ETest.java
+|                           |       
+|                           +---notification
+|                           |       NotificationChannelCrudE2ETest.java
+|                           |       NotificationCrudE2ETest.java
+|                           |       NotificationPriorityCrudE2ETest.java
+|                           |       NotificationTypeCrudE2ETest.java
+|                           |       
+|                           +---report
+|                           |       ReportJobCrudE2ETest.java
+|                           |       
+|                           \---tenant
+|                                   TenantCrudE2ETest.java
+|                                   
++---gateway-service
+|   |   Dockerfile
+|   |   pom.xml
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---gatewayservice
+|                           |   GatewayServiceApplication.java
+|                           |   
+|                           \---controller
+|                                   GatewayInfoController.java
+|                                   
++---gradle
+|   |   libs.versions.toml
+|   |   
+|   \---wrapper
+|           gradle-wrapper.jar
+|           gradle-wrapper.properties
+|           
++---infra
+|   |   .terraform.lock.hcl
+|   |   install_terraform.ps1
+|   |   storage_audit_backend.tf
+|   |   
+|   \---terraform
+|       \---aks
+|               main.tf
+|               outputs.tf
+|               provider.tf
+|               variables.tf
+|               
++---k8s
+|       adaptive-education-service-deployment.yml
+|       adaptive-education-service-service.yml
+|       
++---ML_DL
+|       consumo.txt
+|       edu_schema.sql
+|       export_dataset.py
+|       server.ts
+|       
++---monitoring
+|       prometheus.yml
+|       
++---monitoring-service
+|   |   Dockerfile
+|   |   pom.xml
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---monitoringservice
+|                           |   MonitoringServiceApplication.java
+|                           |   
+|                           +---controller
+|                           |       MonitoringEventController.java
+|                           |       
+|                           +---dto
+|                           |       MonitoringEventDTO.java
+|                           |       
+|                           +---entity
+|                           |       MonitoringEvent.java
+|                           |       
+|                           +---mapper
+|                           |       MonitoringEventMapper.java
+|                           |       
+|                           +---repository
+|                           |       MonitoringEventRepository.java
+|                           |       
+|                           \---service
+|                               |   MonitoringEventService.java
+|                               |   
+|                               \---impl
+|                                       MonitoringEventServiceImpl.java
+|                                       
++---notification-service
+|   |   Dockerfile
+|   |   pom.xml
+|   |   README.md
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---notificationservice
+|                           |   NotificationServiceApplication.java
+|                           |   
+|                           +---controller
+|                           |       NotificationController.java
+|                           |       
+|                           +---dto
+|                           |       NotificationDTO.java
+|                           |       
+|                           +---entity
+|                           |       Notification.java
+|                           |       NotificationChannel.java
+|                           |       NotificationPriority.java
+|                           |       NotificationType.java
+|                           |       
+|                           +---mapper
+|                           |       NotificationMapper.java
+|                           |       
+|                           +---repository
+|                           |       NotificationRepository.java
+|                           |       
+|                           \---service
+|                               |   NotificationService.java
+|                               |   
+|                               \---impl
+|                                       NotificationServiceImpl.java
+|                                       
++---report-service
+|   |   Dockerfile
+|   |   pom.xml
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---reportservice
+|                           |   ReportServiceApplication.java
+|                           |   
+|                           +---controller
+|                           |       ReportJobController.java
+|                           |       
+|                           +---dto
+|                           |       ReportJobDTO.java
+|                           |       
+|                           +---entity
+|                           |       ReportJob.java
+|                           |       
+|                           +---mapper
+|                           |       ReportJobMapper.java
+|                           |       
+|                           +---repository
+|                           |       ReportJobRepository.java
+|                           |       
+|                           \---service
+|                               |   ReportJobService.java
+|                               |   
+|                               \---impl
+|                                       ReportJobServiceImpl.java
+|                                       
++---reports
+|       report_controller.csv
+|       report_controller.html
+|       report_endpoints.csv
+|       report_endpoints.html
+|       report_repository.csv
+|       report_repository.html
+|       report_service.csv
+|       report_service.html
+|       
++---repository
+|       TenantRepository.java
+|       
++---scripts
+|       init_docker_env.sh
+|       run_local.sh
+|       
++---service
+|       TenantService.java
+|       
++---setup
+|       auth_service_schema_fixed.sql
+|       docker-compose.yml
+|       Dockerfile.postgres-unify
+|       Dockerfile.postgres-unify-audit
+|       Dockerfile.postgres-unify-multistage
+|       fix_adaptive_education_schema.sql
+|       fix_auth_schema.sql
+|       fix_inclusive_learning_schema.sql
+|       patch_auth_seed.sql
+|       setup_multitenant_full.sql
+|       setup_unify_postgres_auth.ps1
+|       setup_unify_postgres_auth_crossplatform.sh
+|       verify_all_schemas_detailed.sql
+|       verify_all_schemas_detailed_ascii.sql
+|       
++---src
+|   \---main
+|       \---java
+|           +---com
+|           |   \---inclusive
+|           |       +---authservice
+|           |       |   \---repository
+|           |       |       \---authorization
+|           |       \---learning
+|           |           \---commons
+|           |               \---entity
+|           |                   +---controller
+|           |                   |       ResourceController.java
+|           |                   |       
+|           |                   +---repository
+|           |                   |       ResourceRepository.java
+|           |                   |       
+|           |                   \---service
+|           |                           ResourceService.java
+|           |                           
+|           \---controller
+|                   inclusive-learning-platform-backendController.java
+|                   
++---tenant-service
+|   |   Dockerfile
+|   |   pom.xml
+|   |   
+|   \---src
+|       \---main
+|           \---java
+|               \---com
+|                   \---inclusive
+|                       \---tenantservice
+|                           |   TenantServiceApplication.java
+|                           |   
+|                           +---controller
+|                           |       TenantController.java
+|                           |       
+|                           +---dto
+|                           |       TenantDTO.java
+|                           |       
+|                           +---entity
+|                           |       Tenant.java
+|                           |       
+|                           +---mapper
+|                           |       TenantMapper.java
+|                           |       
+|                           +---repository
+|                           |       TenantRepository.java
+|                           |       
+|                           \---service
+|                               |   TenantService.java
+|                               |   
+|                               \---impl
+|                                       TenantServiceImpl.java
+|                                       
++---tools
+|       full-diagnose.ps1
+|       radiografia_total.ps1
+|       
++---_archive
+|       all_java_files.txt
+|       estructura.txt
+|       estructura03092025.txt
+|       estructura06092025.txt
+|       estructura13092025.txt
+|       estructura31082025.txt
+|       estructura_02112025.txt
+|       estructura_02112025c.txt
+|       estructura_02112025d.txt
+|       estructura_08112025.txt
+|       estructura_carpetas_04110205.txt
+|       estructura_carpetas_04112025.txt
+|       estructura_carpetas_05112025.txt
+|       estructura_carpetas_05112025a.txt
+|       estructura_plataforma_inclusiva_08102025.txt
+|       estructura_plataforma_inclusiva_08102025a.txt
+|       estructura_plataforma_inclusiva_10102025a.txt
+|       estructura_proyecto.txt
+|       radiografia_total.txt
+|       README.md
+|       
+\---_diag
+        00_tree.txt
+        

@@ -1,0 +1,24 @@
+﻿On branch audit/radiografia-total
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   auth-service/build.gradle.kts
+	modified:   auth-service/src/main/java/com/inclusive/authservice/repository/UserAccountRepository.java
+	modified:   auth-service/src/main/java/com/inclusive/authservice/security/SecurityConfig.java
+	modified:   auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtAuthConverter.java
+	modified:   auth-service/src/main/resources/application-dev.yml
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.github/workflows/ci.yml
+	_diag/
+	auth-service/src/main/java/com/inclusive/authservice/auth/
+	auth-service/src/main/java/com/inclusive/authservice/config/
+	auth-service/src/main/java/com/inclusive/authservice/repository/RoleRepository.java
+	auth-service/src/main/java/com/inclusive/authservice/repository/UserRoleRepository.java
+	auth-service/src/main/java/com/inclusive/authservice/security/JwtService.java
+	auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtConfig.java
+	auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtDecoderConfig.java
+	auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtService.java
+
+no changes added to commit (use "git add" and/or "git commit -a")

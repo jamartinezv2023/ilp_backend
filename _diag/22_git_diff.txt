@@ -1,0 +1,230 @@
+﻿diff --git a/auth-service/build.gradle.kts b/auth-service/build.gradle.kts
+index b86c67f..b36f976 100644
+--- a/auth-service/build.gradle.kts
++++ b/auth-service/build.gradle.kts
+@@ -32,7 +32,13 @@ dependencies {
+     // -------------------------------------------------------------------------
+     implementation("org.springframework.boot:spring-boot-starter-security")
+ 
+-    // JWT / OAuth2 Resource Server (OBLIGATORIO para Jwt, JwtDecoder, etc.)
++    // JWT (JJWT)
++    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
++    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
++    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
++
++
++    // OAuth2 Resource Server (JwtDecoder, etc.)
+     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+ 
+     // -------------------------------------------------------------------------
+@@ -48,8 +54,6 @@ dependencies {
+     // Database
+     // -------------------------------------------------------------------------
+     runtimeOnly("org.postgresql:postgresql")
+-
+-    // Base de datos en memoria solo para tests
+     testImplementation("com.h2database:h2")
+ 
+     // -------------------------------------------------------------------------
+@@ -72,10 +76,13 @@ dependencies {
+     }
+     testImplementation("org.springframework.security:spring-security-test")
+     testImplementation("org.testcontainers:junit-jupiter")
+-
+     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+ }
+ 
++tasks.withType<JavaCompile> {
++    options.compilerArgs.add("-parameters")
++}
++
+ tasks.withType<Test> {
+     useJUnitPlatform()
+ }
+diff --git a/auth-service/src/main/java/com/inclusive/authservice/repository/UserAccountRepository.java b/auth-service/src/main/java/com/inclusive/authservice/repository/UserAccountRepository.java
+index 5c21121..02f280e 100644
+--- a/auth-service/src/main/java/com/inclusive/authservice/repository/UserAccountRepository.java
++++ b/auth-service/src/main/java/com/inclusive/authservice/repository/UserAccountRepository.java
+@@ -1,10 +1,12 @@
+-// Location: auth-service/src/main/java/com/inclusive/authservice/repository/UserAccountRepository.java
+ package com.inclusive.authservice.repository;
+ 
+ import com.inclusive.authservice.entity.UserAccount;
+ import org.springframework.data.jpa.repository.JpaRepository;
+ 
++import java.util.Optional;
+ import java.util.UUID;
+ 
+ public interface UserAccountRepository extends JpaRepository<UserAccount, UUID> {
++
++    Optional<UserAccount> findByEmail(String email);
+ }
+diff --git a/auth-service/src/main/java/com/inclusive/authservice/security/SecurityConfig.java b/auth-service/src/main/java/com/inclusive/authservice/security/SecurityConfig.java
+index 6f4ac0b..fbc5ca2 100644
+--- a/auth-service/src/main/java/com/inclusive/authservice/security/SecurityConfig.java
++++ b/auth-service/src/main/java/com/inclusive/authservice/security/SecurityConfig.java
+@@ -1,36 +1,50 @@
+ package com.inclusive.authservice.security;
+ 
+-import com.inclusive.authservice.security.jwt.JwtAuthConverter;
++import lombok.RequiredArgsConstructor;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
++import org.springframework.security.config.Customizer;
+ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
++import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
++import org.springframework.security.crypto.password.PasswordEncoder;
++import org.springframework.security.oauth2.jwt.JwtDecoder;
++import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
+ import org.springframework.security.web.SecurityFilterChain;
+ 
+ @Configuration
+-@EnableWebSecurity
++@RequiredArgsConstructor
+ public class SecurityConfig {
+ 
+-    private final JwtAuthConverter jwtAuthConverter;
+-
+-    public SecurityConfig(JwtAuthConverter jwtAuthConverter) {
+-        this.jwtAuthConverter = jwtAuthConverter;
+-    }
++    private final JwtService jwtService;
+ 
+     @Bean
+-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
++    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+ 
+         http
+-            .csrf(csrf -> csrf.disable())
+-            .authorizeHttpRequests(auth -> auth
+-                .requestMatchers("/admin/**").hasRole("ADMIN")
+-                .requestMatchers("/protected/**").authenticated()
+-                .anyRequest().permitAll()
+-            )
+-            .oauth2ResourceServer(oauth -> oauth
+-                .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter))
+-            );
++                .csrf(csrf -> csrf.disable())
++                .authorizeHttpRequests(auth -> auth
++                        .requestMatchers("/api/auth/**").permitAll()
++                        .anyRequest().authenticated()
++                )
++                .oauth2ResourceServer(oauth ->
++                        oauth.jwt(jwt ->
++                                jwt.decoder(jwtDecoder())
++                        )
++                );
+ 
+         return http.build();
+     }
++
++    @Bean
++    public JwtDecoder jwtDecoder() {
++        return NimbusJwtDecoder
++                .withSecretKey(jwtService.getSecretKey())
++                .build();
++    }
++
++    @Bean
++    public PasswordEncoder passwordEncoder() {
++        return new BCryptPasswordEncoder();
++    }
+ }
++
+diff --git a/auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtAuthConverter.java b/auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtAuthConverter.java
+index 4d8a8a5..4ac0dda 100644
+--- a/auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtAuthConverter.java
++++ b/auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtAuthConverter.java
+@@ -1,7 +1,14 @@
+ package com.inclusive.authservice.security.jwt;
+ 
++import java.util.Collection;
++import java.util.Collections;
++import java.util.List;
++import java.util.stream.Collectors;
++
+ import org.springframework.core.convert.converter.Converter;
+ import org.springframework.security.authentication.AbstractAuthenticationToken;
++import org.springframework.security.core.GrantedAuthority;
++import org.springframework.security.core.authority.SimpleGrantedAuthority;
+ import org.springframework.security.oauth2.jwt.Jwt;
+ import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+ import org.springframework.stereotype.Component;
+@@ -9,17 +16,26 @@ import org.springframework.stereotype.Component;
+ @Component
+ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
+ 
+-    private final JwtAuthoritiesExtractor extractor;
+-
+-    public JwtAuthConverter(JwtAuthoritiesExtractor extractor) {
+-        this.extractor = extractor;
+-    }
+-
+     @Override
+     public AbstractAuthenticationToken convert(Jwt jwt) {
+-        var authorities = extractor.extract(jwt);
+-        // principalName: normalmente sub
+-        String principal = jwt.getSubject();
+-        return new JwtAuthenticationToken(jwt, authorities, principal);
++        Collection<GrantedAuthority> authorities = extractAuthorities(jwt);
++        // principal: subject
++        return new JwtAuthenticationToken(jwt, authorities, jwt.getSubject());
++    }
++
++    @SuppressWarnings("unchecked")
++    private Collection<GrantedAuthority> extractAuthorities(Jwt jwt) {
++        Object rolesClaim = jwt.getClaims().get("roles");
++        if (rolesClaim == null) return Collections.emptyList();
++
++        if (rolesClaim instanceof List<?> roles) {
++            return roles.stream()
++                    .map(String::valueOf)
++                    .map(r -> r.startsWith("ROLE_") ? r : "ROLE_" + r)
++                    .map(SimpleGrantedAuthority::new)
++                    .collect(Collectors.toList());
++        }
++
++        return Collections.emptyList();
+     }
+ }
+diff --git a/auth-service/src/main/resources/application-dev.yml b/auth-service/src/main/resources/application-dev.yml
+index 17fafc2..9088917 100644
+--- a/auth-service/src/main/resources/application-dev.yml
++++ b/auth-service/src/main/resources/application-dev.yml
+@@ -1,20 +1,27 @@
++server:
++  port: 8083
++
+ spring:
+-  security:
+-    oauth2:
+-      resourceserver:
+-        jwt:
+-          issuer-uri: http://localhost:8080/realms/ilp-dev
++  application:
++    name: auth-service
+ 
+   datasource:
+     url: jdbc:postgresql://localhost:5432/authdb
+     username: postgres
+     password: postgres
++    driver-class-name: org.postgresql.Driver
+ 
+   jpa:
+     hibernate:
+-      ddl-auto: update
++      ddl-auto: create-drop
+     show-sql: true
++    properties:
++      hibernate:
++        format_sql: true
+ 
+-server:
+-  port: 8083
++app:
++  jwt:
++    secret: "ilp-super-secret-key-should-be-very-long-and-secure-123456"
++    expiration-ms: 3600000
++    issuer: "inclusive-learning-platform"
+ 

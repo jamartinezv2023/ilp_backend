@@ -1,0 +1,28 @@
+﻿Starting a Gradle Daemon (subsequent builds will be faster)
+Calculating task graph as no cached configuration is available for tasks: projects
+
+> Task :projects
+
+------------------------------------------------------------
+Root project 'ilp_backend'
+------------------------------------------------------------
+
+Root project 'ilp_backend'
++--- Project ':adaptive-education-service'
++--- Project ':app'
++--- Project ':assessment-service'
++--- Project ':auth-service'
++--- Project ':common-libs'
++--- Project ':commons-service'
++--- Project ':gateway-service'
++--- Project ':monitoring-service'
++--- Project ':notification-service'
++--- Project ':report-service'
+\--- Project ':tenant-service'
+
+To see a list of the tasks of a project, run gradlew <project-path>:tasks
+For example, try running gradlew :adaptive-education-service:tasks
+
+BUILD SUCCESSFUL in 9s
+1 actionable task: 1 executed
+Configuration cache entry stored.

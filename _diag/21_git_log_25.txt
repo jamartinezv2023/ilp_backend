@@ -1,0 +1,25 @@
+﻿567be9f ci(auth-service): stabilize Golden Module CI using Gradle Wrapper
+a79c2ca ci: stabilize CI and validate auth-service Golden Module
+295ec77 ci: stabilize CI and validate auth-service Golden Module
+1e4b9b8 ci: stabilize pipeline focusing on auth-service Golden Module
+0e9ec05 ci: fix working directory and stabilize Gradle wrapper execution
+edfbf2a fix(ci): enforce LF line endings for gradlew to unblock Linux CI
+c8e69bc fix(ci): version Gradle wrapper and unblock GitHub Actions
+d10914c ci: fix Gradle wrapper execution and stabilize Golden Module build
+28f8116 chore(ci): make gradlew executable for Linux CI
+ef2395f ci: fix Gradle wrapper permissions and build Golden Module
+92f5011 ci: fix GitHub Actions to use Gradle wrapper correctly for multi-module build
+05212df ci: fix Gradle CI for auth-service Golden Module
+3de02e8 ci: fix Gradle CI using official setup-gradle action
+7e7c759 ci: migrate pipeline from Maven to Gradle and build auth-service golden module
+be2bbdb chore(repo): archive historical analysis and structure documents
+6fb66b8 docs(auth-service): add Module Contract and declare Golden Module baseline
+d1a485a chore: limpieza estructural controlada
+e1e77ff audit: radiograf├¡a total del proyecto
+7749cf8 Se tiene persistencia en la tabla refesh:tokens
+a869824 Login empresarial con jwt access + Refresh persistentes
+3e5c204 Buena salud del auth-service y responde a swagger
+0774b20 Agregando accesibilidad e inclusi├│n
+9c6c217 Reconstruction ALL: microservice cleanup, DTO/domain rebuild, accessibility layer, CI/CD pipelines, IaC foundational structure
+82feb64 fix: updated gitignore and removed terraform providers
+172d5a6 feat: initial backend with CRUD generator v11.2 base

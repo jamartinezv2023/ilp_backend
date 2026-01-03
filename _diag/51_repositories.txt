@@ -1,0 +1,4 @@
+﻿
+repository\TenantRepository.java:8:public interface TenantRepository extends JpaRepository<Tenant, Long> {
+
+

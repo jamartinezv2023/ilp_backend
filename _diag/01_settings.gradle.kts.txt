@@ -1,0 +1,23 @@
+﻿/*
+ * Multi-module Gradle configuration for ILP Backend
+ */
+
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
+
+rootProject.name = "ilp_backend"
+
+include(
+    "app",
+    "auth-service",
+    "assessment-service",
+    "adaptive-education-service",
+    "gateway-service",
+    "notification-service",
+    "monitoring-service",
+    "report-service",
+    "tenant-service",
+    "commons-service",
+    "common-libs"
+)

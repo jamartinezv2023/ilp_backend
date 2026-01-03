@@ -1,0 +1,8 @@
+﻿
+FullName                                             
+--------                                             
+C:\TEAC2026\ilp_backend\build.gradle.kts             
+C:\TEAC2026\ilp_backend\app\build.gradle.kts         
+C:\TEAC2026\ilp_backend\auth-service\build.gradle.kts
+
+

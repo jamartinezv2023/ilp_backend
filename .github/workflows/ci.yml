@@ -1,0 +1,53 @@
+name: ILP Backend CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
+
+    steps:
+      # 1️⃣ Checkout completo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2️⃣ Java 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # 3️⃣ Verificación dura del wrapper
+      - name: Verify Gradle Wrapper
+        run: |
+          echo "📁 Root directory"
+          pwd
+          ls -la
+          echo "📁 gradle/wrapper"
+          ls -la gradle/wrapper
+          test -f gradlew
+          test -f gradle/wrapper/gradle-wrapper.jar
+
+      # 4️⃣ Permisos
+      - name: Make Gradle Wrapper executable
+        run: chmod +x gradlew
+
+      # 5️⃣ Build del Golden Module (DESDE ROOT)
+      - name: Build auth-service (Golden Module)
+        run: |
+          ./gradlew --version
+          ./gradlew :auth-service:clean :auth-service:test
+
+

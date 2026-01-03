@@ -1,0 +1,405 @@
+﻿Calculating task graph as no cached configuration is available for tasks: tasks --all
+
+> Task :tasks
+
+------------------------------------------------------------
+Tasks runnable from root project 'ilp_backend'
+------------------------------------------------------------
+
+Application tasks
+-----------------
+auth-service:bootRun - Runs this project as a Spring Boot application.
+auth-service:bootTestRun - Runs this project as a Spring Boot application using the test runtime classpath.
+app:run - Runs this project as a JVM application
+
+Build tasks
+-----------
+assemble - Assembles the outputs of this project.
+adaptive-education-service:assemble - Assembles the outputs of this project.
+app:assemble - Assembles the outputs of this project.
+assessment-service:assemble - Assembles the outputs of this project.
+auth-service:assemble - Assembles the outputs of this project.
+common-libs:assemble - Assembles the outputs of this project.
+commons-service:assemble - Assembles the outputs of this project.
+gateway-service:assemble - Assembles the outputs of this project.
+monitoring-service:assemble - Assembles the outputs of this project.
+notification-service:assemble - Assembles the outputs of this project.
+report-service:assemble - Assembles the outputs of this project.
+tenant-service:assemble - Assembles the outputs of this project.
+auth-service:bootBuildImage - Builds an OCI image of the application using the output of the bootJar task
+auth-service:bootJar - Assembles an executable jar archive containing the main classes and their dependencies.
+build - Assembles and tests this project.
+adaptive-education-service:build - Assembles and tests this project.
+app:build - Assembles and tests this project.
+assessment-service:build - Assembles and tests this project.
+auth-service:build - Assembles and tests this project.
+common-libs:build - Assembles and tests this project.
+commons-service:build - Assembles and tests this project.
+gateway-service:build - Assembles and tests this project.
+monitoring-service:build - Assembles and tests this project.
+notification-service:build - Assembles and tests this project.
+report-service:build - Assembles and tests this project.
+tenant-service:build - Assembles and tests this project.
+buildDependents - Assembles and tests this project and all projects that depend on it.
+adaptive-education-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+app:buildDependents - Assembles and tests this project and all projects that depend on it.
+assessment-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+auth-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+common-libs:buildDependents - Assembles and tests this project and all projects that depend on it.
+commons-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+gateway-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+monitoring-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+notification-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+report-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+tenant-service:buildDependents - Assembles and tests this project and all projects that depend on it.
+buildNeeded - Assembles and tests this project and all projects it depends on.
+adaptive-education-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+app:buildNeeded - Assembles and tests this project and all projects it depends on.
+assessment-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+auth-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+common-libs:buildNeeded - Assembles and tests this project and all projects it depends on.
+commons-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+gateway-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+monitoring-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+notification-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+report-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+tenant-service:buildNeeded - Assembles and tests this project and all projects it depends on.
+classes - Assembles main classes.
+adaptive-education-service:classes - Assembles main classes.
+app:classes - Assembles main classes.
+assessment-service:classes - Assembles main classes.
+auth-service:classes - Assembles main classes.
+common-libs:classes - Assembles main classes.
+commons-service:classes - Assembles main classes.
+gateway-service:classes - Assembles main classes.
+monitoring-service:classes - Assembles main classes.
+notification-service:classes - Assembles main classes.
+report-service:classes - Assembles main classes.
+tenant-service:classes - Assembles main classes.
+clean - Deletes the build directory.
+adaptive-education-service:clean - Deletes the build directory.
+app:clean - Deletes the build directory.
+assessment-service:clean - Deletes the build directory.
+auth-service:clean - Deletes the build directory.
+common-libs:clean - Deletes the build directory.
+commons-service:clean - Deletes the build directory.
+gateway-service:clean - Deletes the build directory.
+monitoring-service:clean - Deletes the build directory.
+notification-service:clean - Deletes the build directory.
+report-service:clean - Deletes the build directory.
+tenant-service:clean - Deletes the build directory.
+jar - Assembles a jar archive containing the classes of the 'main' feature.
+adaptive-education-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+app:jar - Assembles a jar archive containing the classes of the 'main' feature.
+assessment-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+auth-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+common-libs:jar - Assembles a jar archive containing the classes of the 'main' feature.
+commons-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+gateway-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+monitoring-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+notification-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+report-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+tenant-service:jar - Assembles a jar archive containing the classes of the 'main' feature.
+auth-service:resolveMainClassName - Resolves the name of the application's main class.
+auth-service:resolveTestMainClassName - Resolves the name of the application's test main class.
+testClasses - Assembles test classes.
+adaptive-education-service:testClasses - Assembles test classes.
+app:testClasses - Assembles test classes.
+assessment-service:testClasses - Assembles test classes.
+auth-service:testClasses - Assembles test classes.
+common-libs:testClasses - Assembles test classes.
+commons-service:testClasses - Assembles test classes.
+gateway-service:testClasses - Assembles test classes.
+monitoring-service:testClasses - Assembles test classes.
+notification-service:testClasses - Assembles test classes.
+report-service:testClasses - Assembles test classes.
+tenant-service:testClasses - Assembles test classes.
+
+Build Setup tasks
+-----------------
+init - Initializes a new Gradle build.
+wrapper - Generates Gradle wrapper files.
+
+Distribution tasks
+------------------
+app:assembleDist - Assembles the main distributions
+app:distTar - Bundles the project as a distribution.
+app:distZip - Bundles the project as a distribution.
+app:installDist - Installs the project as a distribution as-is.
+
+Documentation tasks
+-------------------
+javadoc - Generates Javadoc API documentation for the 'main' feature.
+adaptive-education-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+app:javadoc - Generates Javadoc API documentation for the 'main' feature.
+assessment-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+auth-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+common-libs:javadoc - Generates Javadoc API documentation for the 'main' feature.
+commons-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+gateway-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+monitoring-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+notification-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+report-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+tenant-service:javadoc - Generates Javadoc API documentation for the 'main' feature.
+
+Help tasks
+----------
+buildEnvironment - Displays all buildscript dependencies declared in root project 'ilp_backend'.
+adaptive-education-service:buildEnvironment - Displays all buildscript dependencies declared in project ':adaptive-education-service'.
+app:buildEnvironment - Displays all buildscript dependencies declared in project ':app'.
+assessment-service:buildEnvironment - Displays all buildscript dependencies declared in project ':assessment-service'.
+auth-service:buildEnvironment - Displays all buildscript dependencies declared in project ':auth-service'.
+common-libs:buildEnvironment - Displays all buildscript dependencies declared in project ':common-libs'.
+commons-service:buildEnvironment - Displays all buildscript dependencies declared in project ':commons-service'.
+gateway-service:buildEnvironment - Displays all buildscript dependencies declared in project ':gateway-service'.
+monitoring-service:buildEnvironment - Displays all buildscript dependencies declared in project ':monitoring-service'.
+notification-service:buildEnvironment - Displays all buildscript dependencies declared in project ':notification-service'.
+report-service:buildEnvironment - Displays all buildscript dependencies declared in project ':report-service'.
+tenant-service:buildEnvironment - Displays all buildscript dependencies declared in project ':tenant-service'.
+dependencies - Displays all dependencies declared in root project 'ilp_backend'.
+adaptive-education-service:dependencies - Displays all dependencies declared in project ':adaptive-education-service'.
+app:dependencies - Displays all dependencies declared in project ':app'.
+assessment-service:dependencies - Displays all dependencies declared in project ':assessment-service'.
+auth-service:dependencies - Displays all dependencies declared in project ':auth-service'.
+common-libs:dependencies - Displays all dependencies declared in project ':common-libs'.
+commons-service:dependencies - Displays all dependencies declared in project ':commons-service'.
+gateway-service:dependencies - Displays all dependencies declared in project ':gateway-service'.
+monitoring-service:dependencies - Displays all dependencies declared in project ':monitoring-service'.
+notification-service:dependencies - Displays all dependencies declared in project ':notification-service'.
+report-service:dependencies - Displays all dependencies declared in project ':report-service'.
+tenant-service:dependencies - Displays all dependencies declared in project ':tenant-service'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'ilp_backend'.
+adaptive-education-service:dependencyInsight - Displays the insight into a specific dependency in project ':adaptive-education-service'.
+app:dependencyInsight - Displays the insight into a specific dependency in project ':app'.
+assessment-service:dependencyInsight - Displays the insight into a specific dependency in project ':assessment-service'.
+auth-service:dependencyInsight - Displays the insight into a specific dependency in project ':auth-service'.
+common-libs:dependencyInsight - Displays the insight into a specific dependency in project ':common-libs'.
+commons-service:dependencyInsight - Displays the insight into a specific dependency in project ':commons-service'.
+gateway-service:dependencyInsight - Displays the insight into a specific dependency in project ':gateway-service'.
+monitoring-service:dependencyInsight - Displays the insight into a specific dependency in project ':monitoring-service'.
+notification-service:dependencyInsight - Displays the insight into a specific dependency in project ':notification-service'.
+report-service:dependencyInsight - Displays the insight into a specific dependency in project ':report-service'.
+tenant-service:dependencyInsight - Displays the insight into a specific dependency in project ':tenant-service'.
+adaptive-education-service:dependencyManagement - Displays the dependency management declared in project ':adaptive-education-service'.
+app:dependencyManagement - Displays the dependency management declared in project ':app'.
+assessment-service:dependencyManagement - Displays the dependency management declared in project ':assessment-service'.
+auth-service:dependencyManagement - Displays the dependency management declared in project ':auth-service'.
+common-libs:dependencyManagement - Displays the dependency management declared in project ':common-libs'.
+commons-service:dependencyManagement - Displays the dependency management declared in project ':commons-service'.
+gateway-service:dependencyManagement - Displays the dependency management declared in project ':gateway-service'.
+monitoring-service:dependencyManagement - Displays the dependency management declared in project ':monitoring-service'.
+notification-service:dependencyManagement - Displays the dependency management declared in project ':notification-service'.
+report-service:dependencyManagement - Displays the dependency management declared in project ':report-service'.
+tenant-service:dependencyManagement - Displays the dependency management declared in project ':tenant-service'.
+help - Displays a help message.
+adaptive-education-service:help - Displays a help message.
+app:help - Displays a help message.
+assessment-service:help - Displays a help message.
+auth-service:help - Displays a help message.
+common-libs:help - Displays a help message.
+commons-service:help - Displays a help message.
+gateway-service:help - Displays a help message.
+monitoring-service:help - Displays a help message.
+notification-service:help - Displays a help message.
+report-service:help - Displays a help message.
+tenant-service:help - Displays a help message.
+javaToolchains - Displays the detected java toolchains.
+adaptive-education-service:javaToolchains - Displays the detected java toolchains.
+app:javaToolchains - Displays the detected java toolchains.
+assessment-service:javaToolchains - Displays the detected java toolchains.
+auth-service:javaToolchains - Displays the detected java toolchains.
+common-libs:javaToolchains - Displays the detected java toolchains.
+commons-service:javaToolchains - Displays the detected java toolchains.
+gateway-service:javaToolchains - Displays the detected java toolchains.
+monitoring-service:javaToolchains - Displays the detected java toolchains.
+notification-service:javaToolchains - Displays the detected java toolchains.
+report-service:javaToolchains - Displays the detected java toolchains.
+tenant-service:javaToolchains - Displays the detected java toolchains.
+kotlinDslAccessorsReport - Prints the Kotlin code for accessing the currently available project extensions and conventions.
+app:kotlinDslAccessorsReport - Prints the Kotlin code for accessing the currently available project extensions and conventions.
+auth-service:kotlinDslAccessorsReport - Prints the Kotlin code for accessing the currently available project extensions and conventions.
+outgoingVariants - Displays the outgoing variants of root project 'ilp_backend'.
+adaptive-education-service:outgoingVariants - Displays the outgoing variants of project ':adaptive-education-service'.
+app:outgoingVariants - Displays the outgoing variants of project ':app'.
+assessment-service:outgoingVariants - Displays the outgoing variants of project ':assessment-service'.
+auth-service:outgoingVariants - Displays the outgoing variants of project ':auth-service'.
+common-libs:outgoingVariants - Displays the outgoing variants of project ':common-libs'.
+commons-service:outgoingVariants - Displays the outgoing variants of project ':commons-service'.
+gateway-service:outgoingVariants - Displays the outgoing variants of project ':gateway-service'.
+monitoring-service:outgoingVariants - Displays the outgoing variants of project ':monitoring-service'.
+notification-service:outgoingVariants - Displays the outgoing variants of project ':notification-service'.
+report-service:outgoingVariants - Displays the outgoing variants of project ':report-service'.
+tenant-service:outgoingVariants - Displays the outgoing variants of project ':tenant-service'.
+projects - Displays the sub-projects of root project 'ilp_backend'.
+adaptive-education-service:projects - Displays the sub-projects of project ':adaptive-education-service'.
+app:projects - Displays the sub-projects of project ':app'.
+assessment-service:projects - Displays the sub-projects of project ':assessment-service'.
+auth-service:projects - Displays the sub-projects of project ':auth-service'.
+common-libs:projects - Displays the sub-projects of project ':common-libs'.
+commons-service:projects - Displays the sub-projects of project ':commons-service'.
+gateway-service:projects - Displays the sub-projects of project ':gateway-service'.
+monitoring-service:projects - Displays the sub-projects of project ':monitoring-service'.
+notification-service:projects - Displays the sub-projects of project ':notification-service'.
+report-service:projects - Displays the sub-projects of project ':report-service'.
+tenant-service:projects - Displays the sub-projects of project ':tenant-service'.
+properties - Displays the properties of root project 'ilp_backend'.
+adaptive-education-service:properties - Displays the properties of project ':adaptive-education-service'.
+app:properties - Displays the properties of project ':app'.
+assessment-service:properties - Displays the properties of project ':assessment-service'.
+auth-service:properties - Displays the properties of project ':auth-service'.
+common-libs:properties - Displays the properties of project ':common-libs'.
+commons-service:properties - Displays the properties of project ':commons-service'.
+gateway-service:properties - Displays the properties of project ':gateway-service'.
+monitoring-service:properties - Displays the properties of project ':monitoring-service'.
+notification-service:properties - Displays the properties of project ':notification-service'.
+report-service:properties - Displays the properties of project ':report-service'.
+tenant-service:properties - Displays the properties of project ':tenant-service'.
+resolvableConfigurations - Displays the configurations that can be resolved in root project 'ilp_backend'.
+adaptive-education-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':adaptive-education-service'.
+app:resolvableConfigurations - Displays the configurations that can be resolved in project ':app'.
+assessment-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':assessment-service'.
+auth-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':auth-service'.
+common-libs:resolvableConfigurations - Displays the configurations that can be resolved in project ':common-libs'.
+commons-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':commons-service'.
+gateway-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':gateway-service'.
+monitoring-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':monitoring-service'.
+notification-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':notification-service'.
+report-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':report-service'.
+tenant-service:resolvableConfigurations - Displays the configurations that can be resolved in project ':tenant-service'.
+tasks - Displays the tasks runnable from root project 'ilp_backend' (some of the displayed tasks may belong to subprojects).
+adaptive-education-service:tasks - Displays the tasks runnable from project ':adaptive-education-service'.
+app:tasks - Displays the tasks runnable from project ':app'.
+assessment-service:tasks - Displays the tasks runnable from project ':assessment-service'.
+auth-service:tasks - Displays the tasks runnable from project ':auth-service'.
+common-libs:tasks - Displays the tasks runnable from project ':common-libs'.
+commons-service:tasks - Displays the tasks runnable from project ':commons-service'.
+gateway-service:tasks - Displays the tasks runnable from project ':gateway-service'.
+monitoring-service:tasks - Displays the tasks runnable from project ':monitoring-service'.
+notification-service:tasks - Displays the tasks runnable from project ':notification-service'.
+report-service:tasks - Displays the tasks runnable from project ':report-service'.
+tenant-service:tasks - Displays the tasks runnable from project ':tenant-service'.
+
+Verification tasks
+------------------
+check - Runs all checks.
+adaptive-education-service:check - Runs all checks.
+app:check - Runs all checks.
+assessment-service:check - Runs all checks.
+auth-service:check - Runs all checks.
+common-libs:check - Runs all checks.
+commons-service:check - Runs all checks.
+gateway-service:check - Runs all checks.
+monitoring-service:check - Runs all checks.
+notification-service:check - Runs all checks.
+report-service:check - Runs all checks.
+tenant-service:check - Runs all checks.
+test - Runs the test suite.
+adaptive-education-service:test - Runs the test suite.
+app:test - Runs the test suite.
+assessment-service:test - Runs the test suite.
+auth-service:test - Runs the test suite.
+common-libs:test - Runs the test suite.
+commons-service:test - Runs the test suite.
+gateway-service:test - Runs the test suite.
+monitoring-service:test - Runs the test suite.
+notification-service:test - Runs the test suite.
+report-service:test - Runs the test suite.
+tenant-service:test - Runs the test suite.
+
+Other tasks
+-----------
+compileJava - Compiles main Java source.
+adaptive-education-service:compileJava - Compiles main Java source.
+app:compileJava - Compiles main Java source.
+assessment-service:compileJava - Compiles main Java source.
+auth-service:compileJava - Compiles main Java source.
+common-libs:compileJava - Compiles main Java source.
+commons-service:compileJava - Compiles main Java source.
+gateway-service:compileJava - Compiles main Java source.
+monitoring-service:compileJava - Compiles main Java source.
+notification-service:compileJava - Compiles main Java source.
+report-service:compileJava - Compiles main Java source.
+tenant-service:compileJava - Compiles main Java source.
+compileTestJava - Compiles test Java source.
+adaptive-education-service:compileTestJava - Compiles test Java source.
+app:compileTestJava - Compiles test Java source.
+assessment-service:compileTestJava - Compiles test Java source.
+auth-service:compileTestJava - Compiles test Java source.
+common-libs:compileTestJava - Compiles test Java source.
+commons-service:compileTestJava - Compiles test Java source.
+gateway-service:compileTestJava - Compiles test Java source.
+monitoring-service:compileTestJava - Compiles test Java source.
+notification-service:compileTestJava - Compiles test Java source.
+report-service:compileTestJava - Compiles test Java source.
+tenant-service:compileTestJava - Compiles test Java source.
+components - Displays the components produced by root project 'ilp_backend'. [deprecated]
+adaptive-education-service:components - Displays the components produced by project ':adaptive-education-service'. [deprecated]
+app:components - Displays the components produced by project ':app'. [deprecated]
+assessment-service:components - Displays the components produced by project ':assessment-service'. [deprecated]
+auth-service:components - Displays the components produced by project ':auth-service'. [deprecated]
+common-libs:components - Displays the components produced by project ':common-libs'. [deprecated]
+commons-service:components - Displays the components produced by project ':commons-service'. [deprecated]
+gateway-service:components - Displays the components produced by project ':gateway-service'. [deprecated]
+monitoring-service:components - Displays the components produced by project ':monitoring-service'. [deprecated]
+notification-service:components - Displays the components produced by project ':notification-service'. [deprecated]
+report-service:components - Displays the components produced by project ':report-service'. [deprecated]
+tenant-service:components - Displays the components produced by project ':tenant-service'. [deprecated]
+dependentComponents - Displays the dependent components of components in root project 'ilp_backend'. [deprecated]
+adaptive-education-service:dependentComponents - Displays the dependent components of components in project ':adaptive-education-service'. [deprecated]
+app:dependentComponents - Displays the dependent components of components in project ':app'. [deprecated]
+assessment-service:dependentComponents - Displays the dependent components of components in project ':assessment-service'. [deprecated]
+auth-service:dependentComponents - Displays the dependent components of components in project ':auth-service'. [deprecated]
+common-libs:dependentComponents - Displays the dependent components of components in project ':common-libs'. [deprecated]
+commons-service:dependentComponents - Displays the dependent components of components in project ':commons-service'. [deprecated]
+gateway-service:dependentComponents - Displays the dependent components of components in project ':gateway-service'. [deprecated]
+monitoring-service:dependentComponents - Displays the dependent components of components in project ':monitoring-service'. [deprecated]
+notification-service:dependentComponents - Displays the dependent components of components in project ':notification-service'. [deprecated]
+report-service:dependentComponents - Displays the dependent components of components in project ':report-service'. [deprecated]
+tenant-service:dependentComponents - Displays the dependent components of components in project ':tenant-service'. [deprecated]
+model - Displays the configuration model of root project 'ilp_backend'. [deprecated]
+adaptive-education-service:model - Displays the configuration model of project ':adaptive-education-service'. [deprecated]
+app:model - Displays the configuration model of project ':app'. [deprecated]
+assessment-service:model - Displays the configuration model of project ':assessment-service'. [deprecated]
+auth-service:model - Displays the configuration model of project ':auth-service'. [deprecated]
+common-libs:model - Displays the configuration model of project ':common-libs'. [deprecated]
+commons-service:model - Displays the configuration model of project ':commons-service'. [deprecated]
+gateway-service:model - Displays the configuration model of project ':gateway-service'. [deprecated]
+monitoring-service:model - Displays the configuration model of project ':monitoring-service'. [deprecated]
+notification-service:model - Displays the configuration model of project ':notification-service'. [deprecated]
+report-service:model - Displays the configuration model of project ':report-service'. [deprecated]
+tenant-service:model - Displays the configuration model of project ':tenant-service'. [deprecated]
+prepareKotlinBuildScriptModel
+processResources - Processes main resources.
+adaptive-education-service:processResources - Processes main resources.
+app:processResources - Processes main resources.
+assessment-service:processResources - Processes main resources.
+auth-service:processResources - Processes main resources.
+common-libs:processResources - Processes main resources.
+commons-service:processResources - Processes main resources.
+gateway-service:processResources - Processes main resources.
+monitoring-service:processResources - Processes main resources.
+notification-service:processResources - Processes main resources.
+report-service:processResources - Processes main resources.
+tenant-service:processResources - Processes main resources.
+processTestResources - Processes test resources.
+adaptive-education-service:processTestResources - Processes test resources.
+app:processTestResources - Processes test resources.
+assessment-service:processTestResources - Processes test resources.
+auth-service:processTestResources - Processes test resources.
+common-libs:processTestResources - Processes test resources.
+commons-service:processTestResources - Processes test resources.
+gateway-service:processTestResources - Processes test resources.
+monitoring-service:processTestResources - Processes test resources.
+notification-service:processTestResources - Processes test resources.
+report-service:processTestResources - Processes test resources.
+tenant-service:processTestResources - Processes test resources.
+app:startScripts - Creates OS specific scripts to run the project as a JVM application.
+
+Rules
+-----
+Pattern: clean<TaskName>: Cleans the output files of a task.
+Pattern: build<ConfigurationName>: Assembles the artifacts of a configuration.
+
+BUILD SUCCESSFUL in 2s
+1 actionable task: 1 executed
+Configuration cache entry stored.
