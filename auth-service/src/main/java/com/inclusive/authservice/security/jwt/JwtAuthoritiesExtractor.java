@@ -1,81 +1,41 @@
+// Location: auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtAuthoritiesExtractor.java
 package com.inclusive.authservice.security.jwt;
 
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Component
 public class JwtAuthoritiesExtractor {
 
-    public Collection<SimpleGrantedAuthority> extract(Jwt jwt) {
-        Set<SimpleGrantedAuthority> out = new LinkedHashSet<>();
+    public Collection<? extends GrantedAuthority> extract(Jwt jwt) {
+        List<GrantedAuthority> authorities = new ArrayList<>();
 
-        // 1) ROLES -> ROLE_*
-        out.addAll(extractRoles(jwt));
-
-        // 2) SCOPES -> SCOPE_*
-        out.addAll(extractScopes(jwt));
-
-        // 3) TENANT -> TENANT_<id> (opcional)
-        String tenant = jwt.getClaimAsString("tenant");
-        if (tenant != null && !tenant.isBlank()) {
-            out.add(new SimpleGrantedAuthority("TENANT_" + tenant));
-        }
-
-        return out;
-    }
-
-    private Collection<SimpleGrantedAuthority> extractRoles(Jwt jwt) {
-        Object rolesClaim = jwt.getClaims().get("roles");
-        if (rolesClaim == null) rolesClaim = jwt.getClaims().get("role");
-
-        List<String> roles = new ArrayList<>();
-
-        if (rolesClaim instanceof String s) {
-            roles.add(s);
-        } else if (rolesClaim instanceof Collection<?> col) {
-            for (Object o : col) {
-                if (o != null) roles.add(o.toString());
+        Object roles = jwt.getClaims().get("roles");
+        if (roles instanceof Collection<?> roleList) {
+            for (Object r : roleList) {
+                String role = String.valueOf(r);
+                if (!role.startsWith("ROLE_")) {
+                    role = "ROLE_" + role;
+                }
+                authorities.add(new SimpleGrantedAuthority(role));
             }
         }
 
-        List<SimpleGrantedAuthority> auths = new ArrayList<>();
-        for (String r : roles) {
-            String role = r.trim();
-            if (role.isEmpty()) continue;
-            if (!role.startsWith("ROLE_")) role = "ROLE_" + role;
-            auths.add(new SimpleGrantedAuthority(role));
-        }
-        return auths;
-    }
-
-    private Collection<SimpleGrantedAuthority> extractScopes(Jwt jwt) {
-        Set<String> scopes = new LinkedHashSet<>();
-
-        // scope: "read write"
-        String scopeStr = jwt.getClaimAsString("scope");
-        if (scopeStr != null && !scopeStr.isBlank()) {
-            scopes.addAll(Arrays.asList(scopeStr.trim().split("\\s+")));
-        }
-
-        // scp: ["read","write"] (Azure AD style)
-        Object scp = jwt.getClaims().get("scp");
-        if (scp instanceof Collection<?> col) {
-            for (Object o : col) {
-                if (o != null) scopes.add(o.toString());
+        Object permissions = jwt.getClaims().get("permissions");
+        if (permissions instanceof Collection<?> permList) {
+            for (Object p : permList) {
+                authorities.add(
+                        new SimpleGrantedAuthority("PERM_" + p)
+                );
             }
         }
 
-        List<SimpleGrantedAuthority> auths = new ArrayList<>();
-        for (String s : scopes) {
-            String scope = s.trim();
-            if (scope.isEmpty()) continue;
-            if (!scope.startsWith("SCOPE_")) scope = "SCOPE_" + scope;
-            auths.add(new SimpleGrantedAuthority(scope));
-        }
-        return auths;
+        return authorities;
     }
 }
-

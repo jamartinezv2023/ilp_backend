@@ -1,10 +1,7 @@
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${JWT_ISSUER_URI}
+server:
+  port: 8080
 
+spring:
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
@@ -19,5 +16,12 @@ logging:
   level:
     org.springframework.security: INFO
 
-server:
-  port: 8080
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    issuer: "inclusive-learning-platform"
+    audience: "ilp-api"
+    version: 1
+    access-expiration-ms: 900000
+    refresh-expiration-ms: 604800000
+    clock-skew-seconds: 60
