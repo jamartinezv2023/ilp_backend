@@ -3,23 +3,27 @@ package com.inclusive.authservice.mapper;
 
 import com.inclusive.authservice.dto.UserAccountDTO;
 import com.inclusive.authservice.entity.UserAccount;
-import org.mapstruct.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring")
+@Mapper(
+        componentModel = "spring",
+        unmappedTargetPolicy = ReportingPolicy.IGNORE
+)
 public interface UserAccountMapper {
 
-    UserAccountDTO toDto(UserAccount entity);
-
+    /**
+     * ⚠️ Importante:
+     * - NO se mapean aquí Felder ni Kuder
+     * - Solo el núcleo del agregado UserAccount
+     */
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "tenantId", ignore = true)
     @Mapping(target = "passwordHash", ignore = true)
     @Mapping(target = "mfaEnabled", ignore = true)
     @Mapping(target = "mfaSecret", ignore = true)
-    @Mapping(target = "learningStyleKolb", ignore = true)
-    @Mapping(target = "learningStyleFelder", ignore = true)
-    @Mapping(target = "kuderPreferences", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     UserAccount toEntity(UserAccountDTO dto);
-
-    @InheritConfiguration(name = "toEntity")
-    void updateEntityFromDto(UserAccountDTO dto, @MappingTarget UserAccount entity);
 }

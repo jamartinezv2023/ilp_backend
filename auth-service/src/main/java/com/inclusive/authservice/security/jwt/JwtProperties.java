@@ -2,43 +2,49 @@
 package com.inclusive.authservice.security.jwt;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 
-/**
- * JWT configuration properties.
- *
- * This class ONLY holds configuration.
- * No logic is allowed here.
- */
-@Configuration
-@ConfigurationProperties(prefix = "jwt")
+@ConfigurationProperties(prefix = "security.jwt")
 public class JwtProperties {
 
-    /**
-     * Secret used to sign access tokens.
-     */
-    private String accessTokenSecret;
+    private String secret;
+    private String issuer;
+    private String audience;
+    private long accessTokenExpirationSeconds;
+    private long refreshTokenExpirationSeconds;
 
-    /**
-     * Access token expiration in milliseconds.
-     */
-    private long accessTokenExpirationMs;
-
-    // getters & setters
-
-    public String getAccessTokenSecret() {
-        return accessTokenSecret;
+    // getters y setters
+    public String getSecret() {
+        return secret;
+    }
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 
-    public void setAccessTokenSecret(String accessTokenSecret) {
-        this.accessTokenSecret = accessTokenSecret;
+    public String getIssuer() {
+        return issuer;
+    }
+    public void setIssuer(String issuer) {
+        this.issuer = issuer;
     }
 
-    public long getAccessTokenExpirationMs() {
-        return accessTokenExpirationMs;
+    public String getAudience() {
+        return audience;
+    }
+    public void setAudience(String audience) {
+        this.audience = audience;
     }
 
-    public void setAccessTokenExpirationMs(long accessTokenExpirationMs) {
-        this.accessTokenExpirationMs = accessTokenExpirationMs;
+    public long getAccessTokenExpirationSeconds() {
+        return accessTokenExpirationSeconds;
+    }
+    public void setAccessTokenExpirationSeconds(long accessTokenExpirationSeconds) {
+        this.accessTokenExpirationSeconds = accessTokenExpirationSeconds;
+    }
+
+    public long getRefreshTokenExpirationSeconds() {
+        return refreshTokenExpirationSeconds;
+    }
+    public void setRefreshTokenExpirationSeconds(long refreshTokenExpirationSeconds) {
+        this.refreshTokenExpirationSeconds = refreshTokenExpirationSeconds;
     }
 }

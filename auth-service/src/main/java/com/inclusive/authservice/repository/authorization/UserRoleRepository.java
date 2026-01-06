@@ -3,32 +3,34 @@ package com.inclusive.authservice.repository.authorization;
 import com.inclusive.authservice.entity.authorization.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRoleRepository extends JpaRepository<UserRole, UUID> {
 
-    @Query("""
-        SELECT COUNT(ur) > 0
-        FROM UserRole ur
-        WHERE ur.userId = :userId
-          AND ur.roleId = :roleId
-    """)
-    boolean existsByUserAndRole(
-            @Param("userId") UUID userId,
-            @Param("roleId") UUID roleId
+    boolean existsByUserIdAndRoleIdAndTenantIdAndActiveTrue(
+            UUID userId,
+            UUID roleId,
+            UUID tenantId
+    );
+
+    Optional<UserRole> findByUserIdAndRoleIdAndTenantIdAndActiveTrue(
+            UUID userId,
+            UUID roleId,
+            UUID tenantId
     );
 
     @Query("""
-        SELECT ur
-        FROM UserRole ur
-        WHERE ur.userId = :userId
-          AND ur.roleId = :roleId
+        select ur.roleId
+        from UserRole ur
+        where ur.userId = :userId
+          and ur.tenantId = :tenantId
+          and ur.active = true
     """)
-    Optional<UserRole> findByUserAndRole(
-            @Param("userId") UUID userId,
-            @Param("roleId") UUID roleId
+    List<UUID> findActiveRoleIdsByUserAndTenant(
+            UUID userId,
+            UUID tenantId
     );
 }
