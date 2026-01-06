@@ -28,12 +28,19 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     // -------------------------------------------------------------------------
-    // Security
+    // Security (Spring Security 6)
     // -------------------------------------------------------------------------
     implementation("org.springframework.boot:spring-boot-starter-security")
 
-    // JWT / OAuth2 Resource Server (OBLIGATORIO para Jwt, JwtDecoder, etc.)
+    // OAuth2 + JWT (Nimbus / JOSE)  ✅ STACK CORRECTO
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation("org.springframework.security:spring-security-oauth2-jose")
+
+    // -------------------------------------------------------------------------
+    // Database
+    // -------------------------------------------------------------------------
+    runtimeOnly("org.postgresql:postgresql")
+    testImplementation("com.h2database:h2")
 
     // -------------------------------------------------------------------------
     // Lombok
@@ -43,14 +50,6 @@ dependencies {
 
     testCompileOnly("org.projectlombok:lombok")
     testAnnotationProcessor("org.projectlombok:lombok")
-
-    // -------------------------------------------------------------------------
-    // Database
-    // -------------------------------------------------------------------------
-    runtimeOnly("org.postgresql:postgresql")
-
-    // Base de datos en memoria solo para tests
-    testImplementation("com.h2database:h2")
 
     // -------------------------------------------------------------------------
     // Mapping
@@ -72,11 +71,13 @@ dependencies {
     }
     testImplementation("org.springframework.security:spring-security-test")
     testImplementation("org.testcontainers:junit-jupiter")
-
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("-parameters")
 }
 
 tasks.withType<Test> {
     useJUnitPlatform()
 }
-
