@@ -137,3 +137,6 @@ ENV/
 
 # Ignore Gradle build output directory
 build
+
+# diagnostics
+_diag/
