@@ -1,0 +1,139 @@
+# =============================
+# Java / Maven / Gradle
+# =============================
+target/
+out/
+build/
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.log
+*.ctxt
+hs_err_pid*
+*.db
+*.h2.db
+
+# 🔑 EXCEPCIÓN CRÍTICA — Gradle Wrapper (NO SE IGNORA)
+!gradle/wrapper/gradle-wrapper.jar
+
+
+.mvn/
+.gradle/
+.gradle-cache/
+.settings/
+bin/
+
+# =============================
+# Spring Boot
+# =============================
+spring.log
+logs/
+*.log
+*.tmp
+*.pid
+*.lock
+
+application.properties
+application.yml
+application-*.yml
+*.env
+
+# =============================
+# IDEs
+# =============================
+.idea/
+*.ipr
+*.iws
+*.bak
+*.swp
+.vscode/
+.project
+.classpath
+.settings/
+*.launch
+*.factorypath
+
+# =============================
+# Docker
+# =============================
+docker-compose.override.yml
+*.env
+*.tmp
+*.log
+**/Dockerfile~
+
+# =============================
+# Sistema / OS
+# =============================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.part*
+*.bak
+*.swp
+
+# =============================
+# Archivos comprimidos / Backups
+# =============================
+*.zip
+*.tar.gz
+*.rar
+inclusive-learning-platform-backend-final_v3.zip
+inclusive-learning-platform-backend-final_v3.zip.part00
+
+# =============================
+# Scripts
+# =============================
+*.sh~
+*.bat~
+
+# =============================
+# Terraform / IaC
+# =============================
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+crash.log
+
+# Terraform variables (muy sensibles)
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Providers gigantes (Azure / AWS / GCP)
+**/.terraform/providers/**/*
+**/providers/**/*
+*.exe
+*.zip
+
+# Lock files
+.terraform.lock.hcl
+
+# =============================
+# Node / npm (si usas UI o microfront)
+# =============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =============================
+# Python venv (si usas scripts)
+# =============================
+venv/
+ENV/
+.env/
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
