@@ -1,15 +1,15 @@
 package com.inclusive.authservice.service.authorization;
 
-import com.inclusive.authservice.dto.authorization.domain.RolePermissionDTO;
+import com.inclusive.authservice.entity.authorization.Permission;
+import com.inclusive.authservice.entity.authorization.Role;
+import com.inclusive.authservice.entity.authorization.RolePermission;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface RolePermissionService {
 
-    void assignPermissionToRole(UUID roleId, UUID permissionId);
+    RolePermission assignPermission(Role role, Permission permission);
 
-    void removePermissionFromRole(UUID roleId, UUID permissionId);
-
-    List<RolePermissionDTO> getPermissionsByRole(UUID roleId);
+    List<Permission> getPermissionsByRole(UUID roleId);
 }

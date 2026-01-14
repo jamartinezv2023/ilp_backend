@@ -1,36 +1,33 @@
 package com.inclusive.authservice.controller.authorization;
 
+import com.inclusive.authservice.entity.authorization.UserRole;
 import com.inclusive.authservice.service.authorization.UserRoleService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/auth/user-roles")
+@RequestMapping("/api/user-roles")
+@RequiredArgsConstructor
 public class UserRoleController {
 
     private final UserRoleService userRoleService;
 
-    public UserRoleController(UserRoleService userRoleService) {
-        this.userRoleService = userRoleService;
+    @PostMapping
+    public ResponseEntity<UserRole> assign(
+            @RequestParam UUID userId,
+            @RequestParam UUID roleId
+    ) {
+        return ResponseEntity.ok(
+                userRoleService.assignRole(userId, roleId)
+        );
     }
 
-    @PostMapping("/users/{userId}/roles/{roleId}")
-    public ResponseEntity<Void> assignRole(
-            @PathVariable UUID userId,
-            @PathVariable UUID roleId
-    ) {
-        userRoleService.assignRoleToUser(userId, roleId);
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping("/users/{userId}/roles/{roleId}")
-    public ResponseEntity<Void> removeRole(
-            @PathVariable UUID userId,
-            @PathVariable UUID roleId
-    ) {
-        userRoleService.removeRoleFromUser(userId, roleId);
+    @DeleteMapping("/{userRoleId}")
+    public ResponseEntity<Void> revoke(@PathVariable UUID userRoleId) {
+        userRoleService.revokeRole(userRoleId);
         return ResponseEntity.noContent().build();
     }
 }

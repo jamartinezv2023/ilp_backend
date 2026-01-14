@@ -7,9 +7,11 @@ import java.util.UUID;
 
 public interface PermissionService {
 
-    Permission createPermission(String code, String description);
+    Permission create(Permission permission);
 
-    List<Permission> getAllPermissions();
+    List<Permission> findAll();
+
+    Permission findByCode(String code);
 
     void deletePermission(UUID permissionId);
 }

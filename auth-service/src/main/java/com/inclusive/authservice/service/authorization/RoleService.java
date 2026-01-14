@@ -7,7 +7,11 @@ import java.util.UUID;
 
 public interface RoleService {
 
-    Role create(String name, String description);
+    Role create(Role role);
+
+    List<Role> findAll();
+
+    Role findById(UUID roleId);
 
     List<Role> getActiveRoles();
 

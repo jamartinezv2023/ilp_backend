@@ -2,31 +2,30 @@ server:
   port: 8083
 
 spring:
-  application:
-    name: auth-service
-
   datasource:
-    url: jdbc:postgresql://localhost:5432/authdb
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:h2:mem:authdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
 
-app:
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.springframework.security: DEBUG
+
+security:
   jwt:
-    secret: "ilp-super-secret-key-should-be-very-long-and-secure-123456"
-    expiration-ms: 3600000
-    issuer: "inclusive-learning-platform"
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health
+    secret: "ilp-dev-jwt-9F3aQ2LxM7Rk8ZP4HcD0EwS1BvN6U"
+    issuer: "ilp-auth-service"
+    access-token-minutes: 15
+    refresh-token-days: 7
