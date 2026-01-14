@@ -1,18 +1,15 @@
-// Location: auth-service/src/main/java/com/inclusive/authservice/security/jwt/impl/JwtServiceImpl.java
 package com.inclusive.authservice.security.jwt.impl;
 
-import com.inclusive.authservice.entity.UserAccount;
 import com.inclusive.authservice.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.oauth2.jwt.JwsHeader;
-import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -21,35 +18,43 @@ public class JwtServiceImpl implements JwtService {
 
     private final JwtEncoder jwtEncoder;
 
-    @Value("${security.jwt.issuer:ilp-auth-service}")
+    @Value("${security.jwt.issuer}")
     private String issuer;
 
-    @Value("${security.jwt.access-token-validity-seconds:900}")
-    private long accessTokenValiditySeconds;
+    @Value("${security.jwt.access-token-minutes}")
+    private long accessTokenMinutes;
+
+    @Value("${security.jwt.refresh-token-days}")
+    private long refreshTokenDays;
 
     @Override
-    public String generateAccessToken(UserAccount user, UUID tenantId) {
+    public String generateAccessToken(
+            UUID userId,
+            UUID tenantId,
+            String email,
+            Set<String> roles,
+            Set<String> permissions
+    ) {
         Instant now = Instant.now();
-        Instant expiresAt = now.plusSeconds(accessTokenValiditySeconds);
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer(issuer)
                 .issuedAt(now)
-                .expiresAt(expiresAt)
-                .subject(user.getId().toString())
-                .claim("tenant_id", tenantId.toString())
-                .claim("email", user.getEmail())
+                .expiresAt(now.plusSeconds(accessTokenMinutes * 60))
+                .subject(userId.toString())
+                .claim("tenantId", tenantId.toString())
+                .claim("email", email)
+                .claim("roles", roles)
+                .claim("permissions", permissions)
                 .build();
 
-        JwsHeader header = JwsHeader.with(MacAlgorithm.HS256).build();
-
-        return jwtEncoder
-                .encode(JwtEncoderParameters.from(header, claims))
+        return jwtEncoder.encode(JwtEncoderParameters.from(claims))
                 .getTokenValue();
     }
 
     @Override
-    public long getAccessTokenExpirationSeconds() {
-        return accessTokenValiditySeconds;
+    public String generateRefreshToken() {
+        // Refresh token simple, seguro y desacoplado
+        return UUID.randomUUID().toString() + "-" + UUID.randomUUID();
     }
 }
