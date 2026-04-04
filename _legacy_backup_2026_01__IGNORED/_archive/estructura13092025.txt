@@ -1,0 +1,268 @@
+﻿Listado de rutas de carpetas
+El número de serie del volumen es A8CF-D276
+C:.
+│   docker-compose.yml
+│   estructura.txt
+│   estructura03092025.txt
+│   estructura06092025.txt
+│   estructura13092025.txt
+│   estructura31082025.txt
+│   README.md
+│   
+├───.idea
+│   │   .gitignore
+│   │   aws.xml
+│   │   compiler.xml
+│   │   encodings.xml
+│   │   inclusive-platform-backend.iml
+│   │   jarRepositories.xml
+│   │   misc.xml
+│   │   modules.xml
+│   │   vcs.xml
+│   │   workspace.xml
+│   │   
+│   └───codeStyles
+│           codeStyleConfig.xml
+│           Project.xml
+│           
+├───adaptive-education-service
+│   │   Dockerfile
+│   │   pom.xml
+│   │   
+│   ├───src
+│   │   └───main
+│   │       ├───java
+│   │       │   └───com
+│   │       │       └───inclusive
+│   │       │           └───adaptiveeducationservice
+│   │       │               │   AdaptiveEducationServiceApplication.java
+│   │       │               │   
+│   │       │               ├───controller
+│   │       │               ├───model
+│   │       │               ├───repository
+│   │       │               └───service
+│   │       └───resources
+│   │               application.yml
+│   │               
+│   └───target
+│       └───classes
+│               application.yml
+│               
+├───auth-service
+│   │   docker-compose.yml
+│   │   Dockerfile
+│   │   pom.xml
+│   │   
+│   ├───src
+│   │   └───main
+│   │       ├───java
+│   │       │   └───com
+│   │       │       └───inclusive
+│   │       │           └───authservice
+│   │       │               │   AuthServiceApplication.java
+│   │       │               │   
+│   │       │               ├───config
+│   │       │               │       CorsConfig.java
+│   │       │               │       DataInitializer.java
+│   │       │               │       GlobalCorsConfig.java
+│   │       │               │       HibernateMultiTenantConfig.java
+│   │       │               │       PasswordEncoderConfig.java
+│   │       │               │       ProfileDataInitializer.java
+│   │       │               │       SecurityConfig.java
+│   │       │               │       SwaggerConfig.java
+│   │       │               │       WebConfig.java
+│   │       │               │       
+│   │       │               ├───controller
+│   │       │               │       AuthController.java
+│   │       │               │       InstitutionController.java
+│   │       │               │       PermissionController.java
+│   │       │               │       ProfileController.java
+│   │       │               │       RoleController.java
+│   │       │               │       StudentController.java
+│   │       │               │       UserController.java
+│   │       │               │       
+│   │       │               ├───dto
+│   │       │               │   │   CreateProfileRequest.java
+│   │       │               │   │   CreateStudentRequest.java
+│   │       │               │   │   InstitutionRequestDTO.java
+│   │       │               │   │   LoginRequest.java
+│   │       │               │   │   PermissionRequestDTO.java
+│   │       │               │   │   PermissionResponseDTO.java
+│   │       │               │   │   ProfileDTO.java
+│   │       │               │   │   RegisterRequest.java
+│   │       │               │   │   RoleRequestDTO.java
+│   │       │               │   │   RoleResponseDTO.java
+│   │       │               │   │   StudentAcademicRecordDTO.java
+│   │       │               │   │   StudentAIOutputDTO.java
+│   │       │               │   │   StudentDTO.java
+│   │       │               │   │   StudentEnvironmentDTO.java
+│   │       │               │   │   StudentLearningProfileDTO.java
+│   │       │               │   │   StudentSupportNeedsDTO.java
+│   │       │               │   │   TokenResponse.java
+│   │       │               │   │   UpdateProfileRequest.java
+│   │       │               │   │   UpdateStudentRequest.java
+│   │       │               │   │   UserDTO.java
+│   │       │               │   │   UserRequestDTO.java
+│   │       │               │   │   UserResponseDTO.java
+│   │       │               │   │   
+│   │       │               │   └───student
+│   │       │               │           StudentAcademicRecordDTO.java
+│   │       │               │           StudentAIOutputDTO.java
+│   │       │               │           StudentEnvironmentDTO.java
+│   │       │               │           StudentLearningProfileDTO.java
+│   │       │               │           StudentPersonalDataDTO.java
+│   │       │               │           StudentRequestDTO.java
+│   │       │               │           StudentResponseDTO.java
+│   │       │               │           StudentSupportNeedsDTO.java
+│   │       │               │           
+│   │       │               ├───exception
+│   │       │               │       GlobalExceptionHandler.java
+│   │       │               │       ResourceNotFoundException.java
+│   │       │               │       
+│   │       │               ├───mapper
+│   │       │               │       ProfileDTOMapper.java
+│   │       │               │       StudentMapper.java
+│   │       │               │       UserMapper.java
+│   │       │               │       
+│   │       │               ├───model
+│   │       │               │   │   Institution.java
+│   │       │               │   │   Permission.java
+│   │       │               │   │   Profile.java
+│   │       │               │   │   Role.java
+│   │       │               │   │   RoleType.java
+│   │       │               │   │   Student.java
+│   │       │               │   │   StudentAcademicRecord.java
+│   │       │               │   │   StudentAIOutput.java
+│   │       │               │   │   StudentEnvironment.java
+│   │       │               │   │   StudentLearningProfile.java
+│   │       │               │   │   StudentPersonalData.java
+│   │       │               │   │   StudentSupportNeeds.java
+│   │       │               │   │   User.java
+│   │       │               │   │   
+│   │       │               │   └───enums
+│   │       │               │           AccountStatus.java
+│   │       │               │           
+│   │       │               ├───repository
+│   │       │               │       InstitutionRepository.java
+│   │       │               │       PermissionRepository.java
+│   │       │               │       ProfileRepository.java
+│   │       │               │       RoleRepository.java
+│   │       │               │       StudentRepository.java
+│   │       │               │       UserRepository.java
+│   │       │               │       
+│   │       │               ├───security
+│   │       │               │       JwtAuthenticationFilter.java
+│   │       │               │       JwtAuthEntryPoint.java
+│   │       │               │       JwtService.java
+│   │       │               │       UserDetailsImpl.java
+│   │       │               │       UserDetailsServiceImpl.java
+│   │       │               │       UserPrincipal.java
+│   │       │               │       
+│   │       │               ├───service
+│   │       │               │   │   AuthService.java
+│   │       │               │   │   InstitutionService.java
+│   │       │               │   │   PermissionService.java
+│   │       │               │   │   ProfileInitializerService.java
+│   │       │               │   │   ProfileService.java
+│   │       │               │   │   RoleService.java
+│   │       │               │   │   StudentService.java
+│   │       │               │   │   UserService.java
+│   │       │               │   │   
+│   │       │               │   └───impl
+│   │       │               │           AuthServiceImpl.java
+│   │       │               │           InstitutionServiceImpl.java
+│   │       │               │           PermissionServiceImpl.java
+│   │       │               │           ProfileServiceImpl.java
+│   │       │               │           RoleServiceImpl.java
+│   │       │               │           StudentServiceImpl.java
+│   │       │               │           UserServiceImpl.java
+│   │       │               │           
+│   │       │               └───tenant
+│   │       │                       SchemaBasedMultiTenantConnectionProvider.java
+│   │       │                       TenantContext.java
+│   │       │                       TenantFilter.java
+│   │       │                       TenantIdentifierResolver.java
+│   │       │                       
+│   │       └───resources
+│   │           │   application.yml
+│   │           │   data.sql
+│   │           │   data1.sql
+│   │           │   
+│   │           └───graphql
+│   │                   MutationResolver.java
+│   │                   QueryResolver.java
+│   │                   schema.graphqls
+│   │                   
+│   └───target
+│       ├───classes
+│       │   │   application.yml
+│       │   │   data.sql
+│       │   │   data1.sql
+│       │   │   
+│       │   ├───com
+│       │   │   └───inclusive
+│       │   │       └───authservice
+│       │   │           └───mapper
+│       │   │                   StudentMapperImpl.class
+│       │   │                   UserMapperImpl.class
+│       │   │                   
+│       │   └───graphql
+│       │           MutationResolver.java
+│       │           QueryResolver.java
+│       │           schema.graphqls
+│       │           
+│       └───generated-sources
+│           └───annotations
+│               └───com
+│                   └───inclusive
+│                       └───authservice
+│                           └───mapper
+│                                   StudentMapperImpl.java
+│                                   UserMapperImpl.java
+│                                   
+├───notification-service
+│   │   Dockerfile
+│   │   pom.xml
+│   │   
+│   ├───src
+│   │   └───main
+│   │       ├───java
+│   │       │   └───com
+│   │       │       └───inclusive
+│   │       │           └───notificationservice
+│   │       │               │   NotificationServiceApplication.java
+│   │       │               │   
+│   │       │               ├───controller
+│   │       │               ├───model
+│   │       │               ├───repository
+│   │       │               └───service
+│   │       └───resources
+│   │               application.yml
+│   │               
+│   └───target
+│       └───classes
+│               application.yml
+│               
+└───report-service
+    │   Dockerfile
+    │   pom.xml
+    │   
+    ├───src
+    │   └───main
+    │       ├───java
+    │       │   └───com
+    │       │       └───inclusive
+    │       │           └───reportservice
+    │       │               │   ReportServiceApplication.java
+    │       │               │   
+    │       │               ├───controller
+    │       │               ├───model
+    │       │               ├───repository
+    │       │               └───service
+    │       └───resources
+    │               application.yml
+    │               
+    └───target
+        └───classes
+                application.yml
+                

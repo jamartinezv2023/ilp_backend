@@ -1,23 +1,42 @@
 /*
- * Multi-module Gradle configuration for ILP Backend
+ * settings.gradle.kts
+ * ILP Backend – Multi-module configuration
  */
 
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+rootProject.name = "ilp-backend"
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
 
-rootProject.name = "ilp_backend"
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+    }
+}
 
-include(
-    "app",
-    "auth-service",
-    "assessment-service",
-    "adaptive-education-service",
-    "gateway-service",
-    "notification-service",
-    "monitoring-service",
-    "report-service",
-    "tenant-service",
-    "commons-service",
-    "common-libs"
-)
+/* Core / Shared */
+include("common-libs")
+include("commons-service")
+
+/* Seguridad y acceso */
+include("auth-service")
+include("gateway-service")
+include("tenant-service")
+
+/* Dominio educativo */
+include("adaptive-education-service")
+include("assessment-service")
+
+/* Operación y soporte */
+include("notification-service")
+include("monitoring-service")
+include("report-service")
+include("student-service")
+include("common-events")
+
+
+include("discovery-server")

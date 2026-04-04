@@ -15,7 +15,7 @@ public class KuderPreference {
     private String area;
 
     /**
-     * Puntaje obtenido en esa área
+     * Puntaje obtenido en esa Ã¡rea
      */
     private Integer score;
 }

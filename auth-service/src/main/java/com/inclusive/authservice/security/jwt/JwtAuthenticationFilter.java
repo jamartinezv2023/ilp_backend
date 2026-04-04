@@ -30,7 +30,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader(AUTHORIZATION_HEADER);
 
-        // Infrastructure only — no validation yet
+        // Infrastructure only â€” no validation yet
         if (authHeader != null && authHeader.startsWith(BEARER_PREFIX)) {
             String token = authHeader.substring(BEARER_PREFIX.length());
             // Token extracted but NOT used yet

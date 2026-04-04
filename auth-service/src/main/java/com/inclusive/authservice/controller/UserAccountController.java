@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * ❌ LEGACY USER ACCOUNT CONTROLLER
+ * âŒ LEGACY USER ACCOUNT CONTROLLER
  * 
  * Desactivado temporalmente.
  */

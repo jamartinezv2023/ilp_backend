@@ -3,8 +3,8 @@ package com.inclusive.authservice.dto.authorization.domain;
 import java.util.UUID;
 
 /**
- * DTO de lectura que representa la relación
- * Rol -> Permiso (proyección para API).
+ * DTO de lectura que representa la relaciÃ³n
+ * Rol -> Permiso (proyecciÃ³n para API).
  */
 public class RolePermissionDTO {
 

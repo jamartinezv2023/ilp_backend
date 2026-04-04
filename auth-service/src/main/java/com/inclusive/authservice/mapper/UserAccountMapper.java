@@ -14,9 +14,9 @@ import org.mapstruct.ReportingPolicy;
 public interface UserAccountMapper {
 
     /**
-     * ⚠️ Importante:
-     * - NO se mapean aquí Felder ni Kuder
-     * - Solo el núcleo del agregado UserAccount
+     * âš ï¸ Importante:
+     * - NO se mapean aquÃ­ Felder ni Kuder
+     * - Solo el nÃºcleo del agregado UserAccount
      */
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "tenantId", ignore = true)

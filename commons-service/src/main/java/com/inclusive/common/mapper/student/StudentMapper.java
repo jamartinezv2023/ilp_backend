@@ -9,7 +9,7 @@ public final class StudentMapper {
     private StudentMapper() {}
 
     // =========================
-    // Entity → DTO
+    // Entity â†’ DTO
     // =========================
 
     public static StudentIdentityDTO toIdentityDTO(Student student) {
@@ -37,7 +37,7 @@ public final class StudentMapper {
     }
 
     // =========================
-    // DTO → Entity (USANDO FACTORY)
+    // DTO â†’ Entity (USANDO FACTORY)
     // =========================
 
     public static Student toEntity(StudentProfileDTO dto) {

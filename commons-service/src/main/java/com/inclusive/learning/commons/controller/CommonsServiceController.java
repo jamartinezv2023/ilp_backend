@@ -8,7 +8,7 @@ public class CommonsServiceController {
 
     @GetMapping("/commons/status")
     public String getStatus() {
-        return "âœ… Commons Service activo y funcionando correctamente";
+        return "Ã¢Å“â€¦ Commons Service activo y funcionando correctamente";
     }
 }
 

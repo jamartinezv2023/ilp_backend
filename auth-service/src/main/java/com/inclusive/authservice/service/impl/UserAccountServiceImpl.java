@@ -4,10 +4,10 @@ package com.inclusive.authservice.service.impl;
 import org.springframework.context.annotation.Profile;
 
 /**
- * ❌ LEGACY USER ACCOUNT SERVICE
+ * âŒ LEGACY USER ACCOUNT SERVICE
  * 
  * Desactivado temporalmente.
- * Será refactorizado para usar el repositorio canónico.
+ * SerÃ¡ refactorizado para usar el repositorio canÃ³nico.
  */
 @Profile("legacy-crud")
 public class UserAccountServiceImpl {
