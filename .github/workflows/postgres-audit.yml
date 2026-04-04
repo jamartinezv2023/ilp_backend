@@ -26,6 +26,7 @@ jobs:
         run: |
           docker run -d --name $CONTAINER_NAME $IMAGE_NAME:latest
           echo "Waiting for PostgreSQL to initialize..."
+          # Aumentado a 40s para asegurar que los scripts de inicialización terminen
           sleep 40
           docker cp $CONTAINER_NAME:/var/log/postgres-verify/$REPORT_FILE ./$REPORT_FILE
 
@@ -33,11 +34,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: postgres-audit-report
-          path: ./$REPORT_FILE
+          path: ./audit_report.html
 
       # ---- Upload to Azure Blob (if secrets set) ----
       - name: Upload Audit Report to Azure Blob
-        if: ${{ secrets.AZURE_STORAGE_ACCOUNT != '' }}
+        if: secrets.AZURE_STORAGE_ACCOUNT != ''
         uses: azure/cli@v2
         with:
           inlineScript: |
@@ -51,7 +52,7 @@ jobs:
 
       # ---- Upload to AWS S3 (if secrets set) ----
       - name: Upload Audit Report to AWS S3
-        if: ${{ secrets.AWS_BUCKET != '' }}
+        if: secrets.AWS_BUCKET != ''
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -61,6 +62,7 @@ jobs:
           echo "Report uploaded to S3 bucket: ${{ secrets.AWS_BUCKET }}/audits/${{ github.run_id }}-$REPORT_FILE"
 
       - name: Stop and Clean Container
+        if: always()
         run: |
-          docker stop $CONTAINER_NAME
-          docker rm $CONTAINER_NAME
+          docker stop $CONTAINER_NAME || true
+          docker rm $CONTAINER_NAME || true
