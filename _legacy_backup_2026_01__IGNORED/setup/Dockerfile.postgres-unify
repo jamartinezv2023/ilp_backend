@@ -1,0 +1,41 @@
+# ==========================================================
+#   PostgreSQL Universal Authentication Layer (CI/CD Ready)
+# ==========================================================
+#   Autor: Plataforma Inclusiva - DevOps
+#   Objetivo:
+#     - Unificar credenciales en entornos dockerizados o CI/CD
+#     - Configurar scram-sha-256
+#     - Ejecutar el script de configuración en arranque
+# ==========================================================
+
+FROM postgres:17
+
+LABEL maintainer="DevOps Inclusive Platform"
+LABEL description="PostgreSQL Auth Unifier for CI/CD environments"
+
+# Variables de entorno para CI/CD
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_DB=postgres
+ENV PGPORT=5432
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+# Copiar script de configuración al contenedor
+COPY setup_unify_postgres_auth_crossplatform.sh /docker-entrypoint-initdb.d/99-setup_unify_postgres_auth.sh
+
+# Asignar permisos y convertir fin de línea si viene de Windows
+RUN chmod +x /docker-entrypoint-initdb.d/99-setup_unify_postgres_auth.sh && \
+    apt-get update && apt-get install -y dos2unix && \
+    dos2unix /docker-entrypoint-initdb.d/99-setup_unify_postgres_auth.sh && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Modo saludable para CI/CD (opcional)
+HEALTHCHECK --interval=10s --timeout=5s --start-period=20s \
+  CMD pg_isready -U postgres -d postgres -h localhost || exit 1
+
+# Exponer el puerto PostgreSQL
+EXPOSE 5432
+
+# La imagen oficial de Postgres ejecutará automáticamente
+# cualquier script en /docker-entrypoint-initdb.d/ al primer arranque

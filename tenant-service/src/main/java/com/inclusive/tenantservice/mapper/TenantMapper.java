@@ -1,7 +1,7 @@
 package com.inclusive.tenantservice.mapper;
 
 import com.inclusive.tenantservice.dto.TenantDTO;
-import com.inclusive.tenantservice.entity.Tenant;
+import com.inclusive.tenantservice.domain.tenant.Tenant;
 
 public final class TenantMapper {
 

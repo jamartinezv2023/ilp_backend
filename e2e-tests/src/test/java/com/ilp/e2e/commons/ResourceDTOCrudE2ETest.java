@@ -22,7 +22,7 @@ class ResourceDTOCrudE2ETest {
 
     @Test
     void create_shouldReturnSuccessOrValidationError() {
-        // TODO: completar JSON vÃ¡lido para ResourceDTO
+        // TODO: completar JSON vÃƒÂ¡lido para ResourceDTO
         String body = "{ }";
 
         given()
@@ -31,7 +31,7 @@ class ResourceDTOCrudE2ETest {
         .when()
             .post(BASE_PATH)
         .then()
-            // Permitimos varios cÃ³digos mientras el API madura
+            // Permitimos varios cÃƒÂ³digos mientras el API madura
             .statusCode(anyOf(is(201), is(200), is(400), is(404)));
     }
 
@@ -46,7 +46,7 @@ class ResourceDTOCrudE2ETest {
 
     @Test
     void update_shouldReturnSuccessOr404() {
-        // TODO: completar JSON vÃ¡lido para ResourceDTO
+        // TODO: completar JSON vÃƒÂ¡lido para ResourceDTO
         String body = "{ }";
 
         given()

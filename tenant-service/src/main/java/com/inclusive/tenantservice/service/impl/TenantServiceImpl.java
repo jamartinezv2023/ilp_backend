@@ -1,9 +1,9 @@
 package com.inclusive.tenantservice.service.impl;
 
 import com.inclusive.tenantservice.dto.TenantDTO;
-import com.inclusive.tenantservice.entity.Tenant;
+import com.inclusive.tenantservice.domain.tenant.Tenant;
 import com.inclusive.tenantservice.mapper.TenantMapper;
-import com.inclusive.tenantservice.repository.TenantRepository;
+import com.inclusive.tenantservice.domain.tenant.repository.TenantRepository;
 import com.inclusive.tenantservice.service.TenantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

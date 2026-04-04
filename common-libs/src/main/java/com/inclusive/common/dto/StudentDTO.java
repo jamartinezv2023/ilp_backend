@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * DTO compartido que representa la informaciÃ³n esencial del estudiante.
+ * DTO compartido que representa la informaciÃƒÂ³n esencial del estudiante.
  * Este objeto se intercambia entre microservicios sin acoplamiento con JPA.
  */
 public class StudentDTO {

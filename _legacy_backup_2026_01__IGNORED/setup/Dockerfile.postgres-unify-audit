@@ -1,0 +1,105 @@
+# ==========================================================
+#  PostgreSQL Multi-Stage Unified Auth + Audit (CI/CD Ready)
+# ==========================================================
+#  Autor: Plataforma Inclusiva - DevOps
+#  Descripción:
+#   - Crea y configura las bases auth_service, inclusive_learning, adaptive_education_db
+#   - Aplica autenticación scram-sha-256 unificada
+#   - Ejecuta scripts SQL de estructura y verificación
+#   - Genera logs y resumen HTML de auditoría
+# ==========================================================
+
+### ---------- STAGE 1: Builder ----------
+FROM postgres:17 AS builder
+
+LABEL maintainer="Inclusive DevOps Team"
+LABEL stage="builder"
+
+WORKDIR /tmp/setup
+
+# Copiar scripts SQL y setup
+COPY setup_unify_postgres_auth_crossplatform.sh .
+COPY fix_auth_schema.sql .
+COPY fix_inclusive_learning_schema.sql .
+COPY fix_adaptive_education_schema.sql .
+COPY verify_all_schemas_detailed_ascii.sql .
+
+# Normalizar formato de archivos
+RUN apt-get update && apt-get install -y dos2unix && \
+    dos2unix *.sh *.sql && chmod +x setup_unify_postgres_auth_crossplatform.sh && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+### ---------- STAGE 2: Runtime ----------
+FROM postgres:17
+
+LABEL maintainer="Inclusive DevOps Team"
+LABEL description="PostgreSQL Unified Auth + Multi-DB Init + Audit HTML Report"
+
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_DB=postgres
+ENV PGPORT=5432
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+# Copiar scripts desde el builder
+COPY --from=builder /tmp/setup /docker-entrypoint-initdb.d/
+
+# Crear directorio de logs persistente
+RUN mkdir -p /var/log/postgres-verify && \
+    chmod -R 777 /var/log/postgres-verify
+
+# Script maestro de inicialización
+RUN bash -c 'cat > /docker-entrypoint-initdb.d/00-init-multidb.sh <<EOF
+#!/usr/bin/env bash
+set -e
+
+LOGFILE="/var/log/postgres-verify/init_audit.log"
+HTMLREPORT="/var/log/postgres-verify/audit_report.html"
+
+echo "==========================================================" | tee -a "\$LOGFILE"
+echo "   INICIANDO CONFIGURACIÓN MULTIBASE - POSTGRES" | tee -a "\$LOGFILE"
+echo "==========================================================" | tee -a "\$LOGFILE"
+
+DBS=("auth_service" "inclusive_learning" "adaptive_education_db")
+
+for db in "\${DBS[@]}"; do
+    echo "[CREANDO] Base de datos \$db..." | tee -a "\$LOGFILE"
+    psql -v ON_ERROR_STOP=1 --username "\$POSTGRES_USER" --dbname "\$POSTGRES_DB" -c "CREATE DATABASE \$db;"
+done
+
+echo "[OK] Bases creadas correctamente." | tee -a "\$LOGFILE"
+
+# Aplicar esquemas
+echo "--- Aplicando scripts de estructura ---" | tee -a "\$LOGFILE"
+for file in /docker-entrypoint-initdb.d/fix_*.sql; do
+    echo ">> Ejecutando \$file" | tee -a "\$LOGFILE"
+    psql -v ON_ERROR_STOP=1 --username "\$POSTGRES_USER" --dbname postgres -f "\$file" | tee -a "\$LOGFILE"
+done
+
+# Verificación detallada
+echo "--- Ejecutando verificación detallada ---" | tee -a "\$LOGFILE"
+psql -v ON_ERROR_STOP=1 --username "\$POSTGRES_USER" --dbname postgres -f /docker-entrypoint-initdb.d/verify_all_schemas_detailed_ascii.sql | tee -a "\$LOGFILE"
+
+# Generar resumen HTML
+echo "--- Generando reporte HTML ---" | tee -a "\$LOGFILE"
+{
+  echo "<html><head><meta charset='UTF-8'><title>PostgreSQL CI/CD Audit Report</title>"
+  echo "<style>body{font-family:Arial;background:#f9f9f9;color:#222;margin:20px;}h1{color:#0055aa;}pre{background:#fff;padding:10px;border:1px solid #ccc;border-radius:6px;overflow-x:auto;}</style>"
+  echo "</head><body><h1>PostgreSQL Unified Audit Report</h1>"
+  echo "<p>Fecha de generación: \$(date)</p><hr><pre>"
+  cat "\$LOGFILE"
+  echo "</pre><hr><p style='font-size:12px;color:#555;'>Generado automáticamente por Dockerfile.postgres-unify-audit</p></body></html>"
+} > "\$HTMLREPORT"
+
+echo "[OK] Reporte HTML generado en \$HTMLREPORT"
+EOF' && chmod +x /docker-entrypoint-initdb.d/00-init-multidb.sh
+
+# Configurar healthcheck
+HEALTHCHECK --interval=10s --timeout=5s --start-period=30s \
+  CMD pg_isready -U postgres -d postgres -h localhost || exit 1
+
+# Exponer puerto PostgreSQL
+EXPOSE 5432
+
+# El entrypoint oficial ejecutará automáticamente los scripts .sh y .sql

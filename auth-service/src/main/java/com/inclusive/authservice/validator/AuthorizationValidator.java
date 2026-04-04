@@ -7,7 +7,7 @@ import com.inclusive.authservice.exception.BadRequestException;
 import java.util.UUID;
 
 /**
- * Validador central de reglas de autorización.
+ * Validador central de reglas de autorizaciÃ³n.
  * Mantiene las reglas de negocio desacopladas de los servicios.
  */
 public final class AuthorizationValidator {
@@ -26,7 +26,7 @@ public final class AuthorizationValidator {
     }
 
     /**
-     * Valida que el rol esté activo y no soft-deleted.
+     * Valida que el rol estÃ© activo y no soft-deleted.
      */
     public static void validateActiveRole(Role role) {
         if (!role.isActive() || role.isDeleted()) {
@@ -35,10 +35,10 @@ public final class AuthorizationValidator {
     }
 
     /**
-     * Punto de extensión futuro (soft-delete / estados).
+     * Punto de extensiÃ³n futuro (soft-delete / estados).
      */
     public static void validatePermissionActive(Permission permission) {
-        // Permission aún no tiene estado ni soft-delete
-        // Método preparado para evolución futura
+        // Permission aÃºn no tiene estado ni soft-delete
+        // MÃ©todo preparado para evoluciÃ³n futura
     }
 }

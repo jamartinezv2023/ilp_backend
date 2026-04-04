@@ -1,0 +1,14 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+  name: adaptive-education-service
+  labels:
+    app: adaptive-education-service
+spec:
+  type: ClusterIP
+  selector:
+    app: adaptive-education-service
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
