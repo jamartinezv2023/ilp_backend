@@ -1,0 +1,53 @@
+﻿\documentclass[12pt,letterpaper]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\geometry{margin=2.5cm}
+
+\title{Informe Técnico de Avance y Aseguramiento de Calidad\\ Plataforma Digital ILP Backend}
+\author{Proyecto ILP Backend}
+\date{2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Resumen Ejecutivo}
+El proyecto ILP Backend corresponde a una plataforma digital educativa basada en arquitectura modular y microservicios. Actualmente el build global del proyecto compila exitosamente con Gradle, lo cual permite avanzar hacia una fase de aseguramiento de calidad, arquitectura sostenible y DevOps.
+
+\section{Estado Actual del Proyecto}
+El backend contiene módulos como auth-service, gateway-service, discovery-server, student-service, tenant-service, assessment-service, adaptive-education-service, report-service, notification-service, monitoring-service, common-events y common-libs.
+
+\section{Marco de Calidad}
+El aseguramiento de calidad se estructura tomando como referencia IEEE 730, integrando planificación, control, verificación, validación, auditoría, trazabilidad, gestión de defectos y mejora continua.
+
+\section{Estrategia de Pruebas}
+La estrategia se basa en la pirámide de Cohn:
+\begin{itemize}
+  \item Pruebas unitarias: rápidas, aisladas, patrón AAA.
+  \item Pruebas de integración: validan persistencia, servicios y contratos.
+  \item Pruebas end-to-end: flujos críticos con Screenplay.
+\end{itemize}
+
+\section{Arquitectura}
+Se propone evolucionar gradualmente hacia arquitectura hexagonal, bajo acoplamiento, alta cohesión y separación clara entre dominio, aplicación, infraestructura y presentación.
+
+\section{DevOps e IaC}
+Se incorporarán pipelines, análisis estático, cobertura, quality gates, contenedores, infraestructura como código y automatización reproducible.
+
+\section{Gestión de Defectos}
+Todo bug debe registrarse con identificador, severidad, prioridad, módulo, pasos para reproducir, evidencia, causa raíz, estado y responsable.
+
+\section{Conclusiones}
+El proyecto cuenta con una base funcional. La siguiente fase debe enfocarse en calidad medible, trazabilidad, pruebas automatizadas, análisis estático y arquitectura sostenible.
+
+\end{document}
