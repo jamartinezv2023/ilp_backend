@@ -2,9 +2,8 @@ package com.inclusive.adaptiveeducationservice.domain.adaptation.repository;
 
 import com.inclusive.adaptiveeducationservice.domain.adaptation.AdaptationRule;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
+import java.util.Optional;
 
 public interface AdaptationRuleRepository extends JpaRepository<AdaptationRule, Long> {
-    List<AdaptationRule> findByTenantIdAndEnabledTrue(String tenantId);
+    Optional<AdaptationRule> findByStyleKeyAndStyleValue(String styleKey, String styleValue);
 }

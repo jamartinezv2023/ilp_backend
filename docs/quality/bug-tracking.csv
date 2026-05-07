@@ -1,0 +1,2 @@
+﻿ID,Fecha,Modulo,Severidad,Prioridad,Descripcion,Pasos,Resultado_Esperado,Resultado_Actual,Estado,Responsable
+BUG-0001,2026-05-07,adaptive-education-service,Media,Alta,Revisar uso de ddl-auto create-drop durante pruebas,Ejecutar gradlew build,No destruir datos fuera de test,Se observan sentencias drop table,Abierto,QA
