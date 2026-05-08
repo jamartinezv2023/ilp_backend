@@ -1,7 +1,10 @@
 // notification-service/src/main/java/com/inclusive/notificationservice/domain/notification/Notification.java
 package com.inclusive.notificationservice.domain.notification;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 

@@ -2,7 +2,6 @@ package com.inclusive.notificationservice.event;
 
 import com.inclusive.notificationservice.service.NotificationService;
 import org.springframework.stereotype.Component;
-import com.inclusive.common.events.v1.AssessmentCompletedEvent;
 
 
 @Component("integrationNotificationHandler")
