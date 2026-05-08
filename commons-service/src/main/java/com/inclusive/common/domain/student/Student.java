@@ -1,7 +1,10 @@
 package com.inclusive.common.domain.student;
 
-import jakarta.persistence.*;
-import java.time.OffsetDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "students")
@@ -15,33 +18,7 @@ public class Student {
     private String email;
     private String gender;
     private String location;
-
     private boolean active;
-
-    private OffsetDateTime createdAt;
-    private OffsetDateTime updatedAt;
-
-    // =========================
-    // CONSTRUCTORES
-    // =========================
-
-    protected Student() {
-        // requerido por JPA
-    }
-
-    protected Student(String fullName, String email, String gender, String location) {
-        this.fullName = fullName;
-        this.email = email;
-        this.gender = gender;
-        this.location = location;
-        this.active = true;
-        this.createdAt = OffsetDateTime.now();
-        this.updatedAt = OffsetDateTime.now();
-    }
-
-    // =========================
-    // FACTORY (ÃšNICO punto de creaciÃ³n)
-    // =========================
 
     public static Student create(
             String fullName,
@@ -49,45 +26,52 @@ public class Student {
             String gender,
             String location
     ) {
-        return new Student(fullName, email, gender, location);
+        Student student = new Student();
+        student.fullName = fullName;
+        student.email = email;
+        student.gender = gender;
+        student.location = location;
+        student.active = true;
+        return student;
     }
 
-    // =========================
-    // COMPORTAMIENTO
-    // =========================
+    public Long getId() {
+        return id;
+    }
 
-    public void activate() {
-        this.active = true;
-        touch();
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void updateFrom(Student updated) {
+        this.fullName = updated.fullName;
+        this.email = updated.email;
+        this.gender = updated.gender;
+        this.location = updated.location;
+        this.active = updated.active;
     }
 
     public void deactivate() {
         this.active = false;
-        touch();
     }
-
-    public void updateFrom(Student other) {
-        this.fullName = other.fullName;
-        this.email = other.email;
-        this.gender = other.gender;
-        this.location = other.location;
-        touch();
-    }
-
-    private void touch() {
-        this.updatedAt = OffsetDateTime.now();
-    }
-
-    // =========================
-    // GETTERS
-    // =========================
-
-    public Long getId() { return id; }
-    public String getFullName() { return fullName; }
-    public String getEmail() { return email; }
-    public String getGender() { return gender; }
-    public String getLocation() { return location; }
-    public boolean isActive() { return active; }
-    public OffsetDateTime getCreatedAt() { return createdAt; }
-    public OffsetDateTime getUpdatedAt() { return updatedAt; }
 }

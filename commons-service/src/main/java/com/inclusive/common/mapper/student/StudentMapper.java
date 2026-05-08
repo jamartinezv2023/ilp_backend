@@ -6,14 +6,13 @@ import com.inclusive.common.dto.student.StudentProfileDTO;
 
 public final class StudentMapper {
 
-    private StudentMapper() {}
-
-    // =========================
-    // Entity â†’ DTO
-    // =========================
+    private StudentMapper() {
+    }
 
     public static StudentIdentityDTO toIdentityDTO(Student student) {
-        if (student == null) return null;
+        if (student == null) {
+            return null;
+        }
 
         return new StudentIdentityDTO(
                 student.getId(),
@@ -23,7 +22,9 @@ public final class StudentMapper {
     }
 
     public static StudentProfileDTO toProfileDTO(Student student) {
-        if (student == null) return null;
+        if (student == null) {
+            return null;
+        }
 
         StudentProfileDTO dto = new StudentProfileDTO();
         dto.setId(student.getId());
@@ -36,12 +37,10 @@ public final class StudentMapper {
         return dto;
     }
 
-    // =========================
-    // DTO â†’ Entity (USANDO FACTORY)
-    // =========================
-
     public static Student toEntity(StudentProfileDTO dto) {
-        if (dto == null) return null;
+        if (dto == null) {
+            return null;
+        }
 
         return Student.create(
                 dto.getFullName(),
