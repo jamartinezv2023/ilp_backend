@@ -95,6 +95,7 @@ subprojects {
 
     tasks.withType<com.github.spotbugs.snom.SpotBugsTask> {
         ignoreFailures = true
+        excludeFilter.set(rootProject.file("config/spotbugs/exclude.xml"))
 
         reports {
             create("html") {
@@ -116,4 +117,5 @@ sonarqube {
         property("sonar.coverage.jacoco.xmlReportPaths", "**/build/reports/jacoco/test/jacocoTestReport.xml")
     }
 }
+
 
