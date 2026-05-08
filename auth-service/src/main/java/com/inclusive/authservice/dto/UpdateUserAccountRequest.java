@@ -1,10 +1,9 @@
-// Location: auth-service/src/main/java/com/inclusive/authservice/dto/UpdateUserAccountRequest.java
 package com.inclusive.authservice.dto;
 
 public class UpdateUserAccountRequest {
 
     private String email;
-    private String password; // opcional
+    private String password;
 
     public String getEmail() {
         return email;
@@ -16,5 +15,9 @@ public class UpdateUserAccountRequest {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
