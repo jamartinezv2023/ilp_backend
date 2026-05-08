@@ -1,4 +1,4 @@
-// UbicaciÃ³n:
+// UbicaciÃƒÂ³n:
 // src/main/java/com/inclusive/authservice/multitenancy/filter/TenantHeaderFilter.java
 
 package com.inclusive.authservice.multitenancy.filter;
@@ -8,7 +8,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -71,7 +70,7 @@ public class TenantHeaderFilter extends OncePerRequestFilter {
             return;
         }
 
-        // AquÃ­ puedes setear el tenant en ThreadLocal si lo usas
+        // AquÃƒÂ­ puedes setear el tenant en ThreadLocal si lo usas
         // TenantContext.setCurrentTenant(tenantId);
 
         filterChain.doFilter(request, response);

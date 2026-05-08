@@ -1,7 +1,10 @@
 // Location: auth-service/src/main/java/com/inclusive/authservice/entity/RefreshToken.java
 package com.inclusive.authservice.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 
 import java.time.OffsetDateTime;

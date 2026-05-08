@@ -1,13 +1,10 @@
 // Location: auth-service/src/main/java/com/inclusive/authservice/service/authorization/impl/RolePermissionServiceImpl.java
 package com.inclusive.authservice.service.authorization.impl;
 
-import com.inclusive.authservice.dto.authorization.RolePermissionDTO;
 import com.inclusive.authservice.entity.authorization.Permission;
 import com.inclusive.authservice.entity.authorization.Role;
 import com.inclusive.authservice.entity.authorization.RolePermission;
-import com.inclusive.authservice.repository.authorization.PermissionRepository;
 import com.inclusive.authservice.repository.authorization.RolePermissionRepository;
-import com.inclusive.authservice.repository.authorization.RoleRepository;
 import com.inclusive.authservice.service.authorization.RolePermissionService;
 import com.inclusive.authservice.tenant.TenantContext;
 import lombok.RequiredArgsConstructor;
