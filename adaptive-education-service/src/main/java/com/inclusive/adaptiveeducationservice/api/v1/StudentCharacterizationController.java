@@ -4,7 +4,10 @@ import com.inclusive.adaptiveeducationservice.application.dto.StudentCharacteriz
 import com.inclusive.adaptiveeducationservice.application.ports.input.CharacterizeStudentUseCase;
 import com.inclusive.adaptiveeducationservice.domain.model.StudentCharacterization;
 import com.inclusive.adaptiveeducationservice.mapper.StudentCharacterizationMapper;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/characterizations")

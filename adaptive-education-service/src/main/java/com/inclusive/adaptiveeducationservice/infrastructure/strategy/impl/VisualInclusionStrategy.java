@@ -1,5 +1,4 @@
 package com.inclusive.adaptiveeducationservice.infrastructure.strategy.impl;
-import com.inclusive.adaptiveeducationservice.domain.model.StudentCharacterization;
 import com.inclusive.adaptiveeducationservice.infrastructure.strategy.InferenceStrategy;
 import org.springframework.stereotype.Component;
 import java.util.Map;

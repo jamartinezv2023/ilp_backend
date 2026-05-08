@@ -1,6 +1,9 @@
 package com.inclusive.common.events.v1;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.time.OffsetDateTime;
 
 @Data
@@ -17,7 +20,7 @@ public class AssessmentCompletedEvent {
     private OffsetDateTime completedAt;
     private String correlationId;
 
-    // Métodos estilo Record para compatibilidad
+    // MÃ©todos estilo Record para compatibilidad
     public Long studentId() { return studentId; }
     public Long assessmentId() { return assessmentId; }
     public String tenantId() { return tenantId; }
