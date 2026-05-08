@@ -2,12 +2,12 @@ package com.inclusive.learning.commons.service.impl;
 
 import com.inclusive.learning.commons.dto.CommonResourceDto;
 import com.inclusive.learning.commons.service.CommonResourceService;
-import org.springframework.stereotype.Service;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CommonResourceServiceImpl implements CommonResourceService {
@@ -35,7 +35,10 @@ public class CommonResourceServiceImpl implements CommonResourceService {
 
     @Override
     public CommonResourceDto update(Long id, CommonResourceDto dto) {
-        if (!data.containsKey(id)) return null;
+        if (!data.containsKey(id)) {
+            return null;
+        }
+
         dto.setId(id);
         data.put(id, dto);
         return dto;
@@ -46,10 +49,3 @@ public class CommonResourceServiceImpl implements CommonResourceService {
         return data.remove(id) != null;
     }
 }
-
-
-
-
-
-
-

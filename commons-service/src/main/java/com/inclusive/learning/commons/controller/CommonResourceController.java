@@ -2,15 +2,18 @@ package com.inclusive.learning.commons.controller;
 
 import com.inclusive.learning.commons.dto.CommonResourceDto;
 import com.inclusive.learning.commons.service.CommonResourceService;
-import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
 import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/commons")
+@RequestMapping("/api/common/resources")
 public class CommonResourceController {
 
     private final CommonResourceService service;
@@ -20,38 +23,30 @@ public class CommonResourceController {
     }
 
     @GetMapping
-    public List<CommonResourceDto> list() {
+    public List<CommonResourceDto> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CommonResourceDto> get(@PathVariable Long id) {
-        CommonResourceDto dto = service.findById(id);
-        return dto == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(dto);
+    public CommonResourceDto findById(@PathVariable Long id) {
+        return service.findById(id);
     }
 
     @PostMapping
-    public ResponseEntity<CommonResourceDto> create(@Valid @RequestBody CommonResourceDto dto) {
-        CommonResourceDto created = service.create(dto);
-        return ResponseEntity.created(URI.create("/api/commons/" + created.getId())).body(created);
+    public CommonResourceDto create(@RequestBody CommonResourceDto dto) {
+        return service.create(dto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CommonResourceDto> update(@PathVariable Long id, @Valid @RequestBody CommonResourceDto dto) {
-        CommonResourceDto updated = service.update(id, dto);
-        return updated == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(updated);
+    public CommonResourceDto update(
+            @PathVariable Long id,
+            @RequestBody CommonResourceDto dto
+    ) {
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        boolean ok = service.delete(id);
-        return ok ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    public boolean delete(@PathVariable Long id) {
+        return service.delete(id);
     }
 }
-
-
-
-
-
-
-
