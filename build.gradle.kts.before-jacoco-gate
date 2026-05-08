@@ -79,22 +79,6 @@ subprojects {
         }
     }
 
-    tasks.withType<JacocoCoverageVerification> {
-        dependsOn(tasks.withType<Test>())
-
-        violationRules {
-            rule {
-                limit {
-                    minimum = "0.20".toBigDecimal()
-                }
-            }
-        }
-    }
-
-    tasks.named("check") {
-        dependsOn(tasks.withType<JacocoCoverageVerification>())
-    }
-
     tasks.withType<Checkstyle> {
         reports {
             xml.required.set(true)
@@ -133,6 +117,5 @@ sonarqube {
         property("sonar.coverage.jacoco.xmlReportPaths", "**/build/reports/jacoco/test/jacocoTestReport.xml")
     }
 }
-
 
 
