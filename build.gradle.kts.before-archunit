@@ -51,7 +51,6 @@ subprojects {
 
         testImplementation(platform("org.junit:junit-bom:5.10.2"))
         testImplementation("org.junit.jupiter:junit-jupiter")
-        testImplementation("com.tngtech.archunit:archunit-junit5:1.4.2")
     }
 
     checkstyle {
@@ -134,7 +133,6 @@ sonarqube {
         property("sonar.coverage.jacoco.xmlReportPaths", "**/build/reports/jacoco/test/jacocoTestReport.xml")
     }
 }
-
 
 
 
