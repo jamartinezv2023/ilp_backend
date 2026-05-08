@@ -1,6 +1,9 @@
 package com.inclusive.common.events.v1;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +24,7 @@ public class LearningPathRecommendedEvent {
     private String type;
     private Map<String, String> metadata;
 
-    // Método estático factory solicitado por el servicio
+    // MÃ©todo estÃ¡tico factory solicitado por el servicio
     public static LearningPathRecommendedEvent of(String tenantId, Long studentId, String title, String content, 
             String adjustmentType, List<String> activities, Double score, String result, String correlationId, 
             String type, Map<String, String> metadata) {
