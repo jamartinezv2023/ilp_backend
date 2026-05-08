@@ -13,6 +13,12 @@ jobs:
       IMAGE_NAME: inclusive/postgres-unify-audit
       CONTAINER_NAME: inclusive_pg_audit
       REPORT_FILE: audit_report.html
+      AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+      AZURE_CONTAINER_NAME: ${{ secrets.AZURE_CONTAINER_NAME }}
+      AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 
     steps:
       - name: Checkout repository
@@ -26,7 +32,6 @@ jobs:
         run: |
           docker run -d --name $CONTAINER_NAME $IMAGE_NAME:latest
           echo "Waiting for PostgreSQL to initialize..."
-          # Aumentado a 40s para asegurar que los scripts de inicialización terminen
           sleep 40
           docker cp $CONTAINER_NAME:/var/log/postgres-verify/$REPORT_FILE ./$REPORT_FILE
 
@@ -36,30 +41,24 @@ jobs:
           name: postgres-audit-report
           path: ./audit_report.html
 
-      # ---- Upload to Azure Blob (if secrets set) ----
       - name: Upload Audit Report to Azure Blob
-        if: secrets.AZURE_STORAGE_ACCOUNT != ''
+        if: ${{ env.AZURE_STORAGE_ACCOUNT != '' && env.AZURE_CONTAINER_NAME != '' }}
         uses: azure/cli@v2
         with:
           inlineScript: |
             az storage blob upload \
-              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-              --container-name ${{ secrets.AZURE_CONTAINER_NAME }} \
-              --name audits/${{ github.run_id }}-${{ env.REPORT_FILE }} \
-              --file ${{ env.REPORT_FILE }} \
+              --account-name "$AZURE_STORAGE_ACCOUNT" \
+              --container-name "$AZURE_CONTAINER_NAME" \
+              --name "audits/${{ github.run_id }}-${{ env.REPORT_FILE }}" \
+              --file "${{ env.REPORT_FILE }}" \
               --overwrite true
             echo "Report uploaded to Azure Blob Storage."
 
-      # ---- Upload to AWS S3 (if secrets set) ----
       - name: Upload Audit Report to AWS S3
-        if: secrets.AWS_BUCKET != ''
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        if: ${{ env.AWS_BUCKET != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
         run: |
-          aws s3 cp $REPORT_FILE s3://${{ secrets.AWS_BUCKET }}/audits/${{ github.run_id }}-$REPORT_FILE --acl private
-          echo "Report uploaded to S3 bucket: ${{ secrets.AWS_BUCKET }}/audits/${{ github.run_id }}-$REPORT_FILE"
+          aws s3 cp "$REPORT_FILE" "s3://$AWS_BUCKET/audits/${{ github.run_id }}-$REPORT_FILE" --acl private
+          echo "Report uploaded to S3 bucket: $AWS_BUCKET/audits/${{ github.run_id }}-$REPORT_FILE"
 
       - name: Stop and Clean Container
         if: always()
