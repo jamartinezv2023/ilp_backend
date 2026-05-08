@@ -1,0 +1,74 @@
+name: ILP Backend Quality Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+
+  quality-gate:
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 30
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Run enterprise quality pipeline
+        run: |
+          ./gradlew clean \
+          build \
+          test \
+          jacocoTestReport \
+          jacocoTestCoverageVerification \
+          pmdMain \
+          spotbugsMain \
+          --no-daemon
+
+      - name: Upload JaCoCo Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-reports
+          path: |
+            **/build/reports/jacoco/
+
+      - name: Upload PMD Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: pmd-reports
+          path: |
+            **/build/reports/pmd/
+
+      - name: Upload SpotBugs Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: spotbugs-reports
+          path: |
+            **/build/reports/spotbugs/
+
+      - name: Upload Checkstyle Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkstyle-reports
+          path: |
+            **/build/reports/checkstyle/
