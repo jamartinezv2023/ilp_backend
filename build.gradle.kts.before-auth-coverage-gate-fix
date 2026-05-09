@@ -100,7 +100,6 @@ subprojects {
 
         violationRules {
             rule {
-                enabled = project.name != "auth-service"
                 limit {
                     minimum = "0.20".toBigDecimal()
                 }
