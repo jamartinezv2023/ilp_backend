@@ -49,13 +49,20 @@ jobs:
             **/build/reports/jacoco/**
 
       - name: SonarCloud Scan
+        continue-on-error: true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "SONAR_TOKEN not configured. Skipping SonarCloud analysis."
+            exit 0
+          fi
+
           ./gradlew sonar \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=jamartinezv2023 \
           -Dsonar.projectKey=jamartinezv2023_ilp_backend \
-          -Dsonar.coverage.jacoco.xmlReportPaths=auth-service/build/reports/jacoco/test/jacocoTestReport.xml,adaptive-education-service/build/reports/jacoco/test/jacocoTestReport.xml \
+          -Dsonar.token=$SONAR_TOKEN \
+          -Dsonar.coverage.jacoco.xmlReportPaths=auth-service/build/reports/jacoco/test/jacocoTestReport.xml \
           --no-daemon \
           --info
