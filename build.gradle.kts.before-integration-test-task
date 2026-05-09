@@ -94,40 +94,8 @@ subprojects {
         }
     }
 
-    plugins.withType<JavaPlugin> {
-
-        tasks.withType<Test> {
-            useJUnitPlatform {
-                excludeTags("integration")
-            }
-        }
-
-        tasks.register<Test>("integrationTest") {
-
-            group = "verification"
-
-            description =
-                "Runs integration tests tagged with @Tag(\"integration\")."
-
-            val sourceSets =
-                project.extensions.getByType<SourceSetContainer>()
-
-            testClassesDirs =
-                sourceSets["test"].output.classesDirs
-
-            classpath =
-                sourceSets["test"].runtimeClasspath
-
-            useJUnitPlatform {
-                includeTags("integration")
-            }
-
-            shouldRunAfter(tasks.named("test"))
-
-            onlyIf {
-                System.getenv("ENABLE_TESTCONTAINERS") == "true"
-            }
-        }
+    tasks.withType<Test> {
+        useJUnitPlatform()
     }
 
     tasks.withType<JacocoReport> {

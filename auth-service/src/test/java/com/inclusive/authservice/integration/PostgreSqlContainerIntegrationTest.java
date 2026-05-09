@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -14,6 +15,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 @Testcontainers
 @EnabledIfEnvironmentVariable(named = "ENABLE_TESTCONTAINERS", matches = "true")
+@Tag("integration")
 class PostgreSqlContainerIntegrationTest {
 
     @Container
