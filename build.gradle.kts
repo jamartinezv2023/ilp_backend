@@ -45,13 +45,25 @@ subprojects {
         }
     }
 
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.junit.platform") {
+                useVersion("1.10.2")
+            }
+
+            if (requested.group == "org.junit.jupiter") {
+                useVersion("5.10.2")
+            }
+        }
+    }
+
     dependencies {
         implementation(platform("org.springframework.boot:spring-boot-dependencies:3.3.5"))
         implementation(platform("org.springframework.cloud:spring-cloud-dependencies:2023.0.3"))
 
         testImplementation(platform("org.junit:junit-bom:5.10.2"))
         testImplementation("org.junit.jupiter:junit-jupiter")
-        testImplementation("com.tngtech.archunit:archunit-junit5:1.4.2")
+        testImplementation("com.tngtech.archunit:archunit-junit5:1.3.0")
         testImplementation("org.testcontainers:junit-jupiter:1.19.8")
         testImplementation("org.testcontainers:postgresql:1.19.8")
 
