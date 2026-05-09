@@ -154,3 +154,4 @@ _diag/
 # Directorios de claves (en cualquier módulo)
 **/keys/
 **/security/keys/
+.env
