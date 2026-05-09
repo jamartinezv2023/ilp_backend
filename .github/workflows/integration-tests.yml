@@ -1,0 +1,36 @@
+name: ILP Backend Integration Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      ENABLE_TESTCONTAINERS: "true"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Run auth-service integration tests
+        run: ./gradlew :auth-service:integrationTest --no-daemon
+
+      - name: Upload integration test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auth-service-integration-test-report
+          path: |
+            auth-service/build/reports/tests/integrationTest/**
