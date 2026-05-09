@@ -48,13 +48,17 @@ jobs:
           path: |
             **/build/reports/jacoco/**
       - name: SonarCloud Scan
-        if: ${{ secrets.SONAR_TOKEN != '' }}
         continue-on-error: true
 
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
         run: |
+          if [ -z "$SONAR_TOKEN" ]; then
+            echo "SONAR_TOKEN not configured. Skipping SonarCloud analysis."
+            exit 0
+          fi
+
           echo "Running SonarCloud analysis..."
 
           ./gradlew sonar \
