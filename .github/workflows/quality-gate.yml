@@ -47,6 +47,17 @@ jobs:
           name: jacoco-report
           path: |
             **/build/reports/jacoco/**
+
+      - name: Run PIT Mutation Testing
+        run: |
+          ./gradlew :common-events:pitest --no-daemon
+
+      - name: Upload PIT reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: pitest-report
+          path: |
+            common-events/build/reports/pitest/**
       - name: SonarCloud Scan
         continue-on-error: true
 
