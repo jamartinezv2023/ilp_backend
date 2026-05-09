@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "v1",
+  "eventType": "LearningPathRecommendedEvent",
+  "requiredFields": [
+    "eventId",
+    "schemaVersion",
+    "studentId",
+    "tenantId",
+    "recommendationId",
+    "reason",
+    "recommendedItems",
+    "confidence",
+    "policyName",
+    "modelName",
+    "modelVersion",
+    "metadata",
+    "occurredAt"
+  ],
+  "fieldTypes": {
+    "eventId": "string",
+    "schemaVersion": "string",
+    "studentId": "number",
+    "tenantId": "string",
+    "recommendationId": "string",
+    "reason": "string",
+    "recommendedItems": "array",
+    "confidence": "number",
+    "policyName": "string",
+    "modelName": "string",
+    "modelVersion": "string",
+    "metadata": "object",
+    "occurredAt": "string"
+  }
+}
