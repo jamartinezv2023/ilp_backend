@@ -13,6 +13,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6" apply false
     id("org.sonarqube") version "5.0.0.4638"
     id("com.github.spotbugs") version "6.0.26" apply false
+    id("info.solidsoft.pitest") version "1.15.0" apply false
 }
 
 java {

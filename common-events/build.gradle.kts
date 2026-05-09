@@ -5,6 +5,7 @@
 
 plugins {
     java
+    id("info.solidsoft.pitest")
 }
 
 group = "edu.ilp"
@@ -30,4 +31,37 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+
+pitest {
+    junit5PluginVersion.set("1.2.1")
+
+    targetClasses.set(
+        listOf(
+            "com.inclusive.common.events.*",
+            "com.inclusive.common.events.v1.*"
+        )
+    )
+
+    targetTests.set(
+        listOf(
+            "com.inclusive.common.events.v1.*"
+        )
+    )
+
+    threads.set(2)
+    outputFormats.set(listOf("XML", "HTML"))
+    timestampedReports.set(false)
+    verbose.set(false)
+
+    mutationThreshold.set(10)
+
+    excludedMethods.set(
+        listOf(
+            "hashCode",
+            "equals",
+            "toString"
+        )
+    )
 }
