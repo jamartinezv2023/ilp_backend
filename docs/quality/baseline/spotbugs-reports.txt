@@ -1,0 +1,13 @@
+./adaptive-education-service/build/reports/spotbugs/main.html
+./assessment-service/build/reports/spotbugs/main.html
+./auth-service/build/reports/spotbugs/main.html
+./common-events/build/reports/spotbugs/main.html
+./common-libs/build/reports/spotbugs/main.html
+./commons-service/build/reports/spotbugs/main.html
+./discovery-server/build/reports/spotbugs/main.html
+./gateway-service/build/reports/spotbugs/main.html
+./monitoring-service/build/reports/spotbugs/main.html
+./notification-service/build/reports/spotbugs/main.html
+./report-service/build/reports/spotbugs/main.html
+./student-service/build/reports/spotbugs/main.html
+./tenant-service/build/reports/spotbugs/main.html

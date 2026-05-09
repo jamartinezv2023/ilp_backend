@@ -1,0 +1,13 @@
+./adaptive-education-service/build/reports/pmd/main.html
+./assessment-service/build/reports/pmd/main.html
+./auth-service/build/reports/pmd/main.html
+./common-events/build/reports/pmd/main.html
+./common-libs/build/reports/pmd/main.html
+./commons-service/build/reports/pmd/main.html
+./discovery-server/build/reports/pmd/main.html
+./gateway-service/build/reports/pmd/main.html
+./monitoring-service/build/reports/pmd/main.html
+./notification-service/build/reports/pmd/main.html
+./report-service/build/reports/pmd/main.html
+./student-service/build/reports/pmd/main.html
+./tenant-service/build/reports/pmd/main.html
