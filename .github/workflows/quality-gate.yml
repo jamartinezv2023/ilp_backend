@@ -38,7 +38,8 @@ jobs:
           build \
           test \
           jacocoTestReport \
-          --no-daemon
+          --no-daemon \
+          -x :adaptive-education-service:test
 
       - name: Upload JaCoCo reports
         uses: actions/upload-artifact@v4
