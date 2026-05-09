@@ -1,4 +1,4 @@
-﻿name: ILP Backend Quality Gate
+name: ILP Backend Quality Gate
 
 on:
   push:
@@ -33,13 +33,19 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build + Test + Coverage
-        run: ./gradlew clean build test jacocoTestReport --info
+        run: |
+          ./gradlew clean \
+          build \
+          test \
+          jacocoTestReport \
+          --no-daemon
 
       - name: Upload JaCoCo reports
         uses: actions/upload-artifact@v4
         with:
           name: jacoco-report
-          path: '**/build/reports/jacoco/**'
+          path: |
+            **/build/reports/jacoco/**
 
       - name: SonarCloud Scan
         env:
@@ -49,5 +55,6 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.organization=jamartinezv2023 \
           -Dsonar.projectKey=jamartinezv2023_ilp_backend \
-          -Dsonar.coverage.jacoco.xmlReportPaths=**/build/reports/jacoco/test/jacocoTestReport.xml \
+          -Dsonar.coverage.jacoco.xmlReportPaths=auth-service/build/reports/jacoco/test/jacocoTestReport.xml,adaptive-education-service/build/reports/jacoco/test/jacocoTestReport.xml \
+          --no-daemon \
           --info
