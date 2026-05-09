@@ -1,0 +1,10 @@
+3a29096 ci(sonar): include adaptive JaCoCo report
+2643b6a ci(sonar): trigger authenticated analysis
+399f9de ci(sonar): skip SonarCloud when token is missing
+dc8fe68 ci(sonar): make SonarCloud analysis non-blocking
+6093ceb ci(quality): exclude unstable adaptive tests from quality gate
+c2a9cf4 ci: rerun stabilized workflows
+b5cf44f ci(workflows): stabilize quality and audit pipelines
+e9739ca ci(workflows): repair malformed YAML pipelines
+4a44d09 quality(auth): relax coverage gate and resolve PMD warning
+aeef204 test(integration): add guarded PostgreSQL Testcontainers baseline
