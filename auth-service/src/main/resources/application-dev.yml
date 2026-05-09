@@ -25,7 +25,7 @@ logging:
 
 security:
   jwt:
-    secret: "ilp-dev-jwt-9F3aQ2LxM7Rk8ZP4HcD0EwS1BvN6U"
+    secret: ${JWT_SECRET:dev-only-change-me}
     issuer: "ilp-auth-service"
     access-token-minutes: 15
     refresh-token-days: 7
