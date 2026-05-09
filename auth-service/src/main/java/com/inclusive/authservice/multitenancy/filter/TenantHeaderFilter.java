@@ -40,13 +40,7 @@ public class TenantHeaderFilter extends OncePerRequestFilter {
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getRequestURI();
 
-        // Exact matches
-        if (EXCLUDED_PATHS.contains(path)) {
-            return true;
-        }
-
-        // Actuator endpoints
-        return path.startsWith("/actuator");
+        return EXCLUDED_PATHS.contains(path) || path.startsWith("/actuator");
     }
 
     @Override
