@@ -7,6 +7,7 @@ on:
     paths:
       - "contracts/**"
       - "auth-service/**"
+      - "adaptive-education-service/**"
       - ".github/workflows/consumer-contract-tests.yml"
 
   pull_request:
@@ -15,6 +16,7 @@ on:
     paths:
       - "contracts/**"
       - "auth-service/**"
+      - "adaptive-education-service/**"
       - ".github/workflows/consumer-contract-tests.yml"
 
   workflow_dispatch:
@@ -44,6 +46,13 @@ jobs:
           :auth-service:checkstyleTest \
           --no-daemon
 
+      - name: Validate adaptive-service consumer contracts
+        run: |
+          ./gradlew :adaptive-education-service:test \
+          :adaptive-education-service:jacocoTestReport \
+          :adaptive-education-service:checkstyleTest \
+          --no-daemon
+
       - name: Upload auth-service consumer contract reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -52,3 +61,5 @@ jobs:
           path: |
             auth-service/build/reports/tests/test/**
             auth-service/build/reports/jacoco/test/**
+            adaptive-education-service/build/reports/tests/test/**
+            adaptive-education-service/build/reports/jacoco/test/**
