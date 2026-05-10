@@ -17,6 +17,8 @@ public class OutboxEventPublisherProcessor {
 
     private final OutboxEventRepository repository;
 
+    private static final int MAX_RETRY_ATTEMPTS = 3;
+
     private final DomainEventPublisher publisher;
 
     @Scheduled(fixedDelayString = "${events.outbox.publisher-delay-ms:5000}")
@@ -46,7 +48,12 @@ public class OutboxEventPublisherProcessor {
             repository.save(event);
 
         } catch (Exception exception) {
-            event.markAsFailed();
+            if (event.getRetryCount() >= MAX_RETRY_ATTEMPTS) {
+                event.markAsDeadLetter();
+            } else {
+                event.markAsPendingRetry();
+            }
+
             repository.save(event);
         }
     }

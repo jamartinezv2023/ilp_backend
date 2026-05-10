@@ -64,4 +64,14 @@ public class OutboxEvent {
         this.status = OutboxEventStatus.FAILED;
         this.retryCount = this.retryCount + 1;
     }
+
+    public void markAsPendingRetry() {
+        this.status = OutboxEventStatus.PENDING;
+        this.retryCount = this.retryCount + 1;
+    }
+
+    public void markAsDeadLetter() {
+        this.status = OutboxEventStatus.DEAD_LETTER;
+        this.retryCount = this.retryCount + 1;
+    }
 }
