@@ -54,4 +54,14 @@ public class OutboxEvent {
 
     @Column(nullable = false)
     private Integer retryCount;
+
+    public void markAsPublished() {
+        this.status = OutboxEventStatus.PUBLISHED;
+        this.publishedAt = OffsetDateTime.now();
+    }
+
+    public void markAsFailed() {
+        this.status = OutboxEventStatus.FAILED;
+        this.retryCount = this.retryCount + 1;
+    }
 }
