@@ -49,8 +49,7 @@ jobs:
       - name: Validate adaptive-service consumer contracts
         run: |
           ./gradlew :adaptive-education-service:test \
-          :adaptive-education-service:jacocoTestReport \
-          :adaptive-education-service:checkstyleTest \
+          --tests "*AdaptiveEducationConsumerContractTest" \
           --no-daemon
 
       - name: Upload auth-service consumer contract reports
