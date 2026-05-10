@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "v1",
+  "eventType": "AssessmentCompletedEvent",
+  "requiredFields": [
+    "eventId",
+    "correlationId",
+    "schemaVersion",
+    "assessmentId",
+    "studentId",
+    "tenantId",
+    "type",
+    "score",
+    "result",
+    "completedAt",
+    "occurredAt"
+  ],
+  "fieldTypes": {
+    "eventId": "string",
+    "correlationId": "string",
+    "schemaVersion": "string",
+    "assessmentId": "number",
+    "studentId": "number",
+    "tenantId": "string",
+    "type": "string",
+    "score": "number",
+    "result": "string",
+    "completedAt": "string",
+    "occurredAt": "string"
+  }
+}
