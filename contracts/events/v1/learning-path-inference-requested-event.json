@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "v1",
+  "eventType": "LearningPathInferenceRequestedEvent",
+  "requiredFields": [
+    "eventId",
+    "correlationId",
+    "schemaVersion",
+    "studentId",
+    "tenantId",
+    "assessmentId",
+    "assessmentType",
+    "score",
+    "result",
+    "policyName",
+    "policyVersion",
+    "candidateItemsCsv",
+    "rationale",
+    "metadata",
+    "occurredAt"
+  ],
+  "fieldTypes": {
+    "eventId": "string",
+    "correlationId": "string",
+    "schemaVersion": "string",
+    "studentId": "number",
+    "tenantId": "string",
+    "assessmentId": "number",
+    "assessmentType": "string",
+    "score": "number",
+    "result": "string",
+    "policyName": "string",
+    "policyVersion": "string",
+    "candidateItemsCsv": "string",
+    "rationale": "string",
+    "metadata": "object",
+    "occurredAt": "string"
+  }
+}
