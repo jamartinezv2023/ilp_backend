@@ -38,3 +38,8 @@ security:
       retries: 3
       properties:
         enable.idempotence: true
+
+
+events:
+  outbox:
+    publisher-delay-ms: ${OUTBOX_PUBLISHER_DELAY_MS:5000}
