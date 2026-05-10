@@ -7,6 +7,8 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":common-events"))
+
     implementation("org.springframework.kafka:spring-kafka")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
