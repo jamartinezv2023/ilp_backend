@@ -1,0 +1,61 @@
+name: ILP Backend BDD Screenplay Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bdd-screenplay:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: gradle
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Build auth-service
+        run: ./gradlew :auth-service:bootJar --no-daemon
+
+      - name: Start auth-service
+        run: |
+          java -jar auth-service/build/libs/*.jar \
+            --spring.profiles.active=dev \
+            > auth-service.log 2>&1 &
+
+          echo $! > auth-service.pid
+
+      - name: Wait for auth-service
+        run: |
+          for i in {1..60}; do
+            if curl -s http://localhost:8083/auth/login > /dev/null; then
+              echo "auth-service is responding"
+              exit 0
+            fi
+            sleep 2
+          done
+
+          echo "auth-service did not start"
+          cat auth-service.log
+          exit 1
+
+      - name: Run Serenity Screenplay BDD tests
+        run: ./gradlew :bdd-tests:test :bdd-tests:aggregate --no-daemon
+
+      - name: Upload Serenity report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: serenity-bdd-report
+          path: bdd-tests/target/site/serenity/**
+
+      - name: Show auth-service logs on failure
+        if: failure()
+        run: cat auth-service.log
