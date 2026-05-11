@@ -8,6 +8,8 @@ import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
+import net.thucydides.model.environment.SystemEnvironmentVariables;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,7 +19,12 @@ public class LoginStepDefinitions {
 
     @Before
     public void configurarActor() {
-        usuario = Actor.named("Usuario Plataforma");
+        String baseUrl = SystemEnvironmentVariables
+                .createEnvironmentVariables()
+                .getProperty("restapi.baseurl", "http://localhost:8083");
+
+        usuario = Actor.named("Usuario Plataforma")
+                .whoCan(CallAnApi.at(baseUrl));
     }
 
     @Dado("el usuario tiene credenciales válidas")
