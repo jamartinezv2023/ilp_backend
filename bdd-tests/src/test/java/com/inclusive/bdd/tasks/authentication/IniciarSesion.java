@@ -3,7 +3,6 @@ package com.inclusive.bdd.tasks.authentication;
 import com.inclusive.bdd.models.authentication.LoginCredentials;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.serenitybdd.screenplay.rest.interactions.Post;
 
 import java.util.Map;
