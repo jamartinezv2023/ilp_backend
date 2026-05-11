@@ -1,8 +1,11 @@
 package com.inclusive.bdd.tasks.authentication;
 
 import com.inclusive.bdd.models.authentication.LoginCredentials;
+import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+
+import java.util.Map;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
@@ -26,9 +29,19 @@ public class IniciarSesion implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
+        SerenityRest.given()
+                .baseUri("http://localhost:8083")
+                .header("X-Tenant-Id", credentials.tenantId())
+                .contentType("application/json")
+                .body(Map.of(
+                        "email", credentials.email(),
+                        "password", credentials.password()
+                ))
+                .post("/auth/login");
+
         actor.remember(
-                "authenticatedUser",
-                credentials.username()
+                "lastResponse",
+                SerenityRest.lastResponse()
         );
     }
 }
