@@ -4,6 +4,7 @@ import com.inclusive.bdd.models.authentication.LoginCredentials;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.thucydides.model.environment.SystemEnvironmentVariables;
 
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class IniciarSesion implements Task {
     public <T extends Actor> void performAs(T actor) {
 
         SerenityRest.given()
-                .baseUri("http://localhost:8083")
+                .baseUri(SystemEnvironmentVariables.createEnvironmentVariables().getProperty("services.auth.base-url"))
                 .header("X-Tenant-Id", credentials.tenantId())
                 .contentType("application/json")
                 .body(Map.of(
