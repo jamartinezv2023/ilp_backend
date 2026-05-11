@@ -23,6 +23,11 @@ public class TenantValidationFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
 
+        if (request.getRequestURI().startsWith("/actuator")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String tenantHeader = request.getHeader(TENANT_HEADER);
 
         if (tenantHeader == null || tenantHeader.isBlank()) {

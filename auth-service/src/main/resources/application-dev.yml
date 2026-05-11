@@ -43,3 +43,21 @@ security:
 events:
   outbox:
     publisher-delay-ms: ${OUTBOX_PUBLISHER_DELAY_MS:5000}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+
+management.health:
+  readinessstate:
+    enabled: true
+
+  livenessstate:
+    enabled: true
