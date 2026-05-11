@@ -26,8 +26,9 @@ public class LoginStepDefinitions {
         usuario.remember(
                 "credentials",
                 new LoginCredentials(
-                        "admin@ilp.com",
-                        "Password123"
+                        "admin@demo.com",
+                        "Admin123*",
+                        "00000000-0000-0000-0000-000000000001"
                 )
         );
     }
