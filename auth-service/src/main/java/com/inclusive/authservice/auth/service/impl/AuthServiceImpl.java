@@ -36,7 +36,7 @@ public class AuthServiceImpl implements AuthService {
                 user.getId(),
                 tenantId,
                 user.getEmail(),
-                Set.of(),
+                Set.of("USER"),
                 Set.of()
         );
 
