@@ -1,4 +1,3 @@
-// Location: auth-service/src/main/java/com/inclusive/authservice/security/jwt/JwtAuthoritiesExtractor.java
 package com.inclusive.authservice.security.jwt;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -16,10 +15,9 @@ public class JwtAuthoritiesExtractor {
     public Collection<? extends GrantedAuthority> extract(Jwt jwt) {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        Object roles = jwt.getClaims().get("roles");
-        if (roles instanceof Collection<?> roleList) {
-            for (Object r : roleList) {
-                String role = String.valueOf(r);
+        List<String> roles = jwt.getClaimAsStringList("roles");
+        if (roles != null) {
+            for (String role : roles) {
                 if (!role.startsWith("ROLE_")) {
                     role = "ROLE_" + role;
                 }
@@ -27,12 +25,10 @@ public class JwtAuthoritiesExtractor {
             }
         }
 
-        Object permissions = jwt.getClaims().get("permissions");
-        if (permissions instanceof Collection<?> permList) {
-            for (Object p : permList) {
-                authorities.add(
-                        new SimpleGrantedAuthority("PERM_" + p)
-                );
+        List<String> permissions = jwt.getClaimAsStringList("permissions");
+        if (permissions != null) {
+            for (String permission : permissions) {
+                authorities.add(new SimpleGrantedAuthority("PERM_" + permission));
             }
         }
 
