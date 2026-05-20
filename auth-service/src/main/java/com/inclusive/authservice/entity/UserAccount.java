@@ -72,4 +72,20 @@ public class UserAccount {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
+    public void prepareMfaEnrollment(String mfaSecret) {
+        this.mfaSecret = mfaSecret;
+        this.mfaEnabled = false;
+        this.updatedAt = Instant.now();
+    }
+
+    public void enableMfa() {
+        this.mfaEnabled = true;
+        this.updatedAt = Instant.now();
+    }
+
+    public boolean hasMfaSecret() {
+        return this.mfaSecret != null && !this.mfaSecret.isBlank();
+    }
+
 }
