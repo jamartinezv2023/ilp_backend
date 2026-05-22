@@ -6,12 +6,16 @@ import com.inclusive.diagnosis.indicator.repository.LearningIndicatorRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/indicators")
@@ -52,6 +56,17 @@ public class LearningIndicatorController {
 
         return ResponseEntity.ok(
                 repository.save(indicator)
+        );
+    }
+
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<List<LearningIndicator>>
+    findByStudentId(
+            @PathVariable UUID studentId
+    ) {
+
+        return ResponseEntity.ok(
+                repository.findByStudentProfileId(studentId)
         );
     }
 }

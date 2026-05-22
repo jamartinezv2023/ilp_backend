@@ -1,5 +1,6 @@
 package com.inclusive.diagnosis.response.controller;
 
+import com.inclusive.diagnosis.engine.service.EducationalRuleEngineService;
 import com.inclusive.diagnosis.response.dto.CreateDiagnosticResponseRequest;
 import com.inclusive.diagnosis.response.entity.DiagnosticResponse;
 import com.inclusive.diagnosis.response.repository.DiagnosticResponseRepository;
@@ -19,6 +20,9 @@ import java.time.LocalDateTime;
 public class DiagnosticResponseController {
 
     private final DiagnosticResponseRepository repository;
+
+    private final EducationalRuleEngineService
+            educationalRuleEngineService;
 
     @PostMapping
     public ResponseEntity<DiagnosticResponse> create(
@@ -43,8 +47,13 @@ public class DiagnosticResponseController {
                         .submittedAt(LocalDateTime.now())
                         .build();
 
-        return ResponseEntity.ok(
-                repository.save(response)
+        DiagnosticResponse saved =
+                repository.save(response);
+
+        educationalRuleEngineService.processResponse(
+                saved
         );
+
+        return ResponseEntity.ok(saved);
     }
 }

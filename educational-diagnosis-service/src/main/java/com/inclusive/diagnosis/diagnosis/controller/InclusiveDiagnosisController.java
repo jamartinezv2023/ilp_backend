@@ -6,12 +6,16 @@ import com.inclusive.diagnosis.diagnosis.repository.InclusiveDiagnosisRepository
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/diagnoses")
@@ -61,6 +65,17 @@ public class InclusiveDiagnosisController {
 
         return ResponseEntity.ok(
                 repository.save(diagnosis)
+        );
+    }
+
+    @GetMapping("/student/{studentId}")
+    public ResponseEntity<List<InclusiveDiagnosis>>
+    findByStudentId(
+            @PathVariable UUID studentId
+    ) {
+
+        return ResponseEntity.ok(
+                repository.findByStudentProfileId(studentId)
         );
     }
 }
