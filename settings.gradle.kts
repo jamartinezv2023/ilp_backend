@@ -42,3 +42,4 @@ include("common-events")
 include("discovery-server")
 
 include("bdd-tests")
+include("educational-diagnosis-service")
