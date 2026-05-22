@@ -1,5 +1,7 @@
 package com.inclusive.diagnosis.engine.service;
 
+import com.inclusive.diagnosis.diagnosis.entity.InclusiveDiagnosis;
+import com.inclusive.diagnosis.diagnosis.repository.InclusiveDiagnosisRepository;
 import com.inclusive.diagnosis.indicator.entity.LearningIndicator;
 import com.inclusive.diagnosis.indicator.repository.LearningIndicatorRepository;
 import com.inclusive.diagnosis.response.entity.DiagnosticResponse;
@@ -14,6 +16,9 @@ public class EducationalRuleEngineService {
 
     private final LearningIndicatorRepository
             learningIndicatorRepository;
+
+    private final InclusiveDiagnosisRepository
+            inclusiveDiagnosisRepository;
 
     public void processResponse(
             DiagnosticResponse response
@@ -47,8 +52,62 @@ public class EducationalRuleEngineService {
                             )
                             .build();
 
-            learningIndicatorRepository.save(
-                    indicator
+            LearningIndicator savedIndicator =
+                    learningIndicatorRepository.save(
+                            indicator
+                    );
+
+            generateDiagnosis(
+                    savedIndicator
+            );
+        }
+    }
+
+    private void generateDiagnosis(
+            LearningIndicator indicator
+    ) {
+
+        if ("REFLECTIVE_OBSERVATION".equals(
+                indicator.getIndicatorCode()
+        ) && indicator.getIndicatorValue() >= 0.8) {
+
+            InclusiveDiagnosis diagnosis =
+                    InclusiveDiagnosis.builder()
+                            .tenantId(
+                                    indicator.getTenantId()
+                            )
+                            .studentProfileId(
+                                    indicator.getStudentProfileId()
+                            )
+                            .diagnosisCategory(
+                                    "INCLUSIVE_LEARNING_PROFILE"
+                            )
+                            .diagnosisSummary(
+                                    "Student demonstrates a strong reflective learning profile."
+                            )
+                            .identifiedBarriers(
+                                    "Potential low classroom interaction"
+                            )
+                            .learningStrengths(
+                                    "Reflective analysis and independent learning"
+                            )
+                            .supportNeeds(
+                                    "Structured reflective activities"
+                            )
+                            .recommendedInterventions(
+                                    "Use guided reflective journals and asynchronous learning"
+                            )
+                            .dueAlignment(
+                                    "Multiple means of engagement"
+                            )
+                            .confidenceScore(0.91)
+                            .generatedAt(
+                                    LocalDateTime.now()
+                            )
+                            .build();
+
+            inclusiveDiagnosisRepository.save(
+                    diagnosis
             );
         }
     }
