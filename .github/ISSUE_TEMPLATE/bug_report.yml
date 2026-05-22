@@ -1,0 +1,52 @@
+name: Enterprise Bug Report
+description: Create an enterprise-grade bug report
+title: "[BUG] "
+labels:
+  - bug
+body:
+  - type: textarea
+    attributes:
+      label: Summary
+      description: Describe the issue
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Actual result
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Severity
+      options:
+        - Sev0
+        - Sev1
+        - Sev2
+        - Sev3
+        - Sev4
+
+  - type: textarea
+    attributes:
+      label: Logs and evidence
+
+  - type: textarea
+    attributes:
+      label: Root cause analysis
+
+  - type: textarea
+    attributes:
+      label: Preventive actions
