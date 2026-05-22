@@ -19,20 +19,25 @@ public class SecurityConfig {
     ) throws Exception {
 
         http
+            .cors(cors -> {})
             .csrf(csrf -> csrf.disable())
-            .addFilterBefore(tenantFilter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(
+                    tenantFilter,
+                    UsernamePasswordAuthenticationFilter.class
+            )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/.well-known/jwks.json",
                     "/auth/login",
-                    "/auth/mfa/setup",
-                    "/auth/mfa/verify",
+                    "/auth/mfa/**",
                     "/actuator/**"
                 ).permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2ResourceServer(oauth2 ->
-                oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthConverter))
+                oauth2.jwt(jwt ->
+                    jwt.jwtAuthenticationConverter(jwtAuthConverter)
+                )
             );
 
         return http.build();

@@ -6,6 +6,7 @@ import com.inclusive.authservice.auth.service.AuthService;
 import com.inclusive.authservice.entity.UserAccount;
 import com.inclusive.authservice.repository.authorization.UserAccountRepository;
 import com.inclusive.authservice.security.jwt.JwtService;
+import com.inclusive.authservice.security.mfa.MfaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,13 +14,14 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 import java.util.UUID;
 
-@Service // ðŸ”¥ ESTE ERA EL FALTANTE
+@Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
     private final UserAccountRepository userAccountRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final MfaService mfaService;
 
     @Override
     public LoginResponse login(LoginRequest request, UUID tenantId) {
@@ -32,6 +34,21 @@ public class AuthServiceImpl implements AuthService {
             throw new IllegalArgumentException("Invalid credentials");
         }
 
+        if (user.isMfaEnabled()) {
+            if (request.mfaCode() == null) {
+                return LoginResponse.requiresMfa();
+            }
+
+            boolean validMfaCode = mfaService.verifyCode(
+                    user.getMfaSecret(),
+                    request.mfaCode()
+            );
+
+            if (!validMfaCode) {
+                throw new IllegalArgumentException("Invalid MFA code");
+            }
+        }
+
         String accessToken = jwtService.generateAccessToken(
                 user.getId(),
                 tenantId,
@@ -42,6 +59,6 @@ public class AuthServiceImpl implements AuthService {
 
         String refreshToken = jwtService.generateRefreshToken();
 
-        return new LoginResponse(accessToken, refreshToken);
+        return LoginResponse.authenticated(accessToken, refreshToken);
     }
 }
