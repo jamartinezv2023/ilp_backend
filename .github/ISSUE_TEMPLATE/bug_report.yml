@@ -1,13 +1,13 @@
 name: Enterprise Bug Report
-description: Create an enterprise-grade bug report
+description: Report a platform issue
 title: "[BUG] "
 labels:
   - bug
+
 body:
   - type: textarea
     attributes:
       label: Summary
-      description: Describe the issue
     validations:
       required: true
 
@@ -41,12 +41,8 @@ body:
 
   - type: textarea
     attributes:
-      label: Logs and evidence
+      label: Root Cause Analysis
 
   - type: textarea
     attributes:
-      label: Root cause analysis
-
-  - type: textarea
-    attributes:
-      label: Preventive actions
+      label: Preventive Actions
