@@ -6,10 +6,15 @@ import com.inclusive.diagnosis.student.repository.StudentProfileRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/students")
@@ -43,6 +48,27 @@ public class StudentProfileController {
                 )
                 .build();
 
-        return ResponseEntity.ok(repository.save(student));
+        return ResponseEntity.ok(
+                repository.save(student)
+        );
+    }
+
+    @GetMapping
+    public ResponseEntity<List<StudentProfile>> findAll() {
+        return ResponseEntity.ok(
+                repository.findAll()
+        );
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<StudentProfile> findById(
+            @PathVariable UUID id
+    ) {
+
+        return repository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(
+                        () -> ResponseEntity.notFound().build()
+                );
     }
 }
