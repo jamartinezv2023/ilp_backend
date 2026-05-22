@@ -1,0 +1,13 @@
+# ILP Platform CODEOWNERS
+
+# Global ownership
+* @jamartinezv2020
+
+# Backend services
+/auth-service/ @jamartinezv2020
+/common-events/ @jamartinezv2020
+/bdd-tests/ @jamartinezv2020
+
+# Governance and DevSecOps
+/.github/ @jamartinezv2020
+/docs/ @jamartinezv2020
