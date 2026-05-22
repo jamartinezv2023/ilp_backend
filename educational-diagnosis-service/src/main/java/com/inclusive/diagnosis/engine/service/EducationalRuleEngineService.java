@@ -2,6 +2,8 @@ package com.inclusive.diagnosis.engine.service;
 
 import com.inclusive.diagnosis.diagnosis.entity.InclusiveDiagnosis;
 import com.inclusive.diagnosis.diagnosis.repository.InclusiveDiagnosisRepository;
+import com.inclusive.diagnosis.dua.entity.DuaRecommendation;
+import com.inclusive.diagnosis.dua.repository.DuaRecommendationRepository;
 import com.inclusive.diagnosis.indicator.entity.LearningIndicator;
 import com.inclusive.diagnosis.indicator.repository.LearningIndicatorRepository;
 import com.inclusive.diagnosis.response.entity.DiagnosticResponse;
@@ -14,11 +16,11 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class EducationalRuleEngineService {
 
-    private final LearningIndicatorRepository
-            learningIndicatorRepository;
+    private final LearningIndicatorRepository learningIndicatorRepository;
 
-    private final InclusiveDiagnosisRepository
-            inclusiveDiagnosisRepository;
+    private final InclusiveDiagnosisRepository inclusiveDiagnosisRepository;
+
+    private final DuaRecommendationRepository duaRecommendationRepository;
 
     public void processResponse(
             DiagnosticResponse response
@@ -47,23 +49,22 @@ public class EducationalRuleEngineService {
                             .pedagogicalRecommendation(
                                     "Use reflective and analytical activities"
                             )
-                            .calculatedAt(
-                                    LocalDateTime.now()
-                            )
+                            .calculatedAt(LocalDateTime.now())
                             .build();
 
             LearningIndicator savedIndicator =
-                    learningIndicatorRepository.save(
-                            indicator
-                    );
+                    learningIndicatorRepository.save(indicator);
 
-            generateDiagnosis(
-                    savedIndicator
-            );
+            InclusiveDiagnosis diagnosis =
+                    generateDiagnosis(savedIndicator);
+
+            if (diagnosis != null) {
+                generateDuaRecommendation(diagnosis);
+            }
         }
     }
 
-    private void generateDiagnosis(
+    private InclusiveDiagnosis generateDiagnosis(
             LearningIndicator indicator
     ) {
 
@@ -73,9 +74,7 @@ public class EducationalRuleEngineService {
 
             InclusiveDiagnosis diagnosis =
                     InclusiveDiagnosis.builder()
-                            .tenantId(
-                                    indicator.getTenantId()
-                            )
+                            .tenantId(indicator.getTenantId())
                             .studentProfileId(
                                     indicator.getStudentProfileId()
                             )
@@ -101,14 +100,47 @@ public class EducationalRuleEngineService {
                                     "Multiple means of engagement"
                             )
                             .confidenceScore(0.91)
-                            .generatedAt(
-                                    LocalDateTime.now()
-                            )
+                            .generatedAt(LocalDateTime.now())
                             .build();
 
-            inclusiveDiagnosisRepository.save(
-                    diagnosis
-            );
+            return inclusiveDiagnosisRepository.save(diagnosis);
         }
+
+        return null;
+    }
+
+    private void generateDuaRecommendation(
+            InclusiveDiagnosis diagnosis
+    ) {
+
+        DuaRecommendation recommendation =
+                DuaRecommendation.builder()
+                        .tenantId(diagnosis.getTenantId())
+                        .studentProfileId(
+                                diagnosis.getStudentProfileId()
+                        )
+                        .duaPrinciple(
+                                "MULTIPLE_MEANS_OF_ENGAGEMENT"
+                        )
+                        .recommendationCategory(
+                                "REFLECTIVE_LEARNING"
+                        )
+                        .recommendationText(
+                                "Use reflective journals, asynchronous discussions and guided metacognitive prompts."
+                        )
+                        .accessibilitySupport(
+                                "Flexible pacing and clear written instructions"
+                        )
+                        .assistiveTechnologySuggestion(
+                                "Speech-to-text or digital journaling tools"
+                        )
+                        .implementationGuidance(
+                                "Provide weekly guided reflection prompts and allow asynchronous participation."
+                        )
+                        .priorityScore(0.95)
+                        .generatedAt(LocalDateTime.now())
+                        .build();
+
+        duaRecommendationRepository.save(recommendation);
     }
 }
