@@ -1,5 +1,7 @@
 package com.inclusive.diagnosis.analytics.dto;
 
+import java.util.List;
+
 public record PedagogicalPriorityPlanResponse(
 
         String priorityLevel,
@@ -10,6 +12,8 @@ public record PedagogicalPriorityPlanResponse(
 
         String evidenceSummary,
 
-        double confidence
+        double confidence,
+
+        List<String> reasoning
 ) {
 }
