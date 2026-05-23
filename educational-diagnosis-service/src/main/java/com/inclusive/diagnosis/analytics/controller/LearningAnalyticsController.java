@@ -1,7 +1,9 @@
 package com.inclusive.diagnosis.analytics.controller;
 
+import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
+import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,9 @@ public class LearningAnalyticsController {
     private final PriorityRecommendationService
             priorityRecommendationService;
 
+    private final EvidenceTraceabilityService
+            evidenceTraceabilityService;
+
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
     summarizeLearningProfile(
@@ -45,6 +50,17 @@ public class LearningAnalyticsController {
                 priorityRecommendationService.generatePriorityPlan(
                         studentId
                 )
+        );
+    }
+
+    @GetMapping("/student/{studentId}/evidence-trace")
+    public ResponseEntity<EvidenceTraceabilityResponse>
+    traceEvidence(
+            @PathVariable UUID studentId
+    ) {
+
+        return ResponseEntity.ok(
+                evidenceTraceabilityService.trace(studentId)
         );
     }
 }
