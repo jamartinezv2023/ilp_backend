@@ -1,7 +1,9 @@
 package com.inclusive.diagnosis.analytics.controller;
 
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
+import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
+import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,9 @@ public class LearningAnalyticsController {
     private final LearningProfileAggregationService
             aggregationService;
 
+    private final PriorityRecommendationService
+            priorityRecommendationService;
+
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
     summarizeLearningProfile(
@@ -27,6 +32,19 @@ public class LearningAnalyticsController {
 
         return ResponseEntity.ok(
                 aggregationService.summarize(studentId)
+        );
+    }
+
+    @GetMapping("/student/{studentId}/priority-plan")
+    public ResponseEntity<PedagogicalPriorityPlanResponse>
+    generatePriorityPlan(
+            @PathVariable UUID studentId
+    ) {
+
+        return ResponseEntity.ok(
+                priorityRecommendationService.generatePriorityPlan(
+                        studentId
+                )
         );
     }
 }
