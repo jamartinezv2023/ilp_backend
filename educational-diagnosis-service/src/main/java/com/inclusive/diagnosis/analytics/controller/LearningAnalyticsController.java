@@ -2,6 +2,7 @@ package com.inclusive.diagnosis.analytics.controller;
 
 import com.inclusive.diagnosis.analytics.dto.AdaptivePiarPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.AdaptiveSupportProfileResponse;
+import com.inclusive.diagnosis.analytics.dto.ClassroomInclusionProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EarlySupportAlertResponse;
 import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
@@ -14,6 +15,7 @@ import com.inclusive.diagnosis.analytics.dto.SupportEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
 import com.inclusive.diagnosis.analytics.service.AdaptiveSupportProfileService;
+import com.inclusive.diagnosis.analytics.service.ClassroomInclusionIntelligenceService;
 import com.inclusive.diagnosis.analytics.service.EarlySupportAlertService;
 import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
@@ -63,6 +65,9 @@ public class LearningAnalyticsController {
     private final AdaptiveSupportProfileService adaptiveSupportProfileService;
 
     private final SupportEvolutionService supportEvolutionService;
+
+    private final ClassroomInclusionIntelligenceService
+            classroomInclusionIntelligenceService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -125,7 +130,17 @@ public class LearningAnalyticsController {
     @GetMapping("/student/{studentId}/support-evolution")
     public ResponseEntity<SupportEvolutionResponse>
     analyzeSupportEvolution(@PathVariable UUID studentId) {
-        return ResponseEntity.ok(supportEvolutionService.analyze(studentId));
+        return ResponseEntity.ok(
+                supportEvolutionService.analyze(studentId)
+        );
+    }
+
+    @GetMapping("/classroom/inclusion-profile")
+    public ResponseEntity<ClassroomInclusionProfileResponse>
+    analyzeClassroomInclusion() {
+        return ResponseEntity.ok(
+                classroomInclusionIntelligenceService.analyze()
+        );
     }
 
     @GetMapping("/institution/policy-recommendation")
@@ -139,6 +154,8 @@ public class LearningAnalyticsController {
     @GetMapping("/institution/governance-report")
     public ResponseEntity<InstitutionalGovernanceReportResponse>
     generateGovernanceReport() {
-        return ResponseEntity.ok(institutionalGovernanceService.generate());
+        return ResponseEntity.ok(
+                institutionalGovernanceService.generate()
+        );
     }
 }
