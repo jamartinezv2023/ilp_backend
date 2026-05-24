@@ -1,5 +1,6 @@
 package com.inclusive.diagnosis.analytics.controller;
 
+import com.inclusive.diagnosis.analytics.dto.AdaptivePiarPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.EarlySupportAlertResponse;
 import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
@@ -9,6 +10,7 @@ import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
+import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
 import com.inclusive.diagnosis.analytics.service.EarlySupportAlertService;
 import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
@@ -52,89 +54,61 @@ public class LearningAnalyticsController {
 
     private final EarlySupportAlertService earlySupportAlertService;
 
+    private final AdaptivePiarPlanService adaptivePiarPlanService;
+
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
-    summarizeLearningProfile(
-            @PathVariable UUID studentId
-    ) {
-
-        return ResponseEntity.ok(
-                aggregationService.summarize(studentId)
-        );
+    summarizeLearningProfile(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(aggregationService.summarize(studentId));
     }
 
     @GetMapping("/student/{studentId}/priority-plan")
     public ResponseEntity<PedagogicalPriorityPlanResponse>
-    generatePriorityPlan(
-            @PathVariable UUID studentId
-    ) {
-
+    generatePriorityPlan(@PathVariable UUID studentId) {
         return ResponseEntity.ok(
-                priorityRecommendationService.generatePriorityPlan(
-                        studentId
-                )
+                priorityRecommendationService.generatePriorityPlan(studentId)
         );
     }
 
     @GetMapping("/student/{studentId}/evidence-trace")
     public ResponseEntity<EvidenceTraceabilityResponse>
-    traceEvidence(
-            @PathVariable UUID studentId
-    ) {
-
-        return ResponseEntity.ok(
-                evidenceTraceabilityService.trace(studentId)
-        );
+    traceEvidence(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(evidenceTraceabilityService.trace(studentId));
     }
 
     @GetMapping("/student/{studentId}/action-plan")
     public ResponseEntity<TeacherActionPlanResponse>
-    generateActionPlan(
-            @PathVariable UUID studentId
-    ) {
-
-        return ResponseEntity.ok(
-                teacherActionPlanService.generate(studentId)
-        );
+    generateActionPlan(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(teacherActionPlanService.generate(studentId));
     }
 
     @GetMapping("/student/{studentId}/learning-evolution")
     public ResponseEntity<LearningEvolutionResponse>
-    analyzeLearningEvolution(
-            @PathVariable UUID studentId
-    ) {
-
-        return ResponseEntity.ok(
-                learningEvolutionService.analyze(studentId)
-        );
+    analyzeLearningEvolution(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(learningEvolutionService.analyze(studentId));
     }
 
     @GetMapping("/student/{studentId}/risk-profile")
     public ResponseEntity<EducationalRiskProfileResponse>
-    analyzeRisk(
-            @PathVariable UUID studentId
-    ) {
-
-        return ResponseEntity.ok(
-                educationalRiskService.analyzeRisk(studentId)
-        );
+    analyzeRisk(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(educationalRiskService.analyzeRisk(studentId));
     }
 
     @GetMapping("/student/{studentId}/early-support-alert")
     public ResponseEntity<EarlySupportAlertResponse>
-    analyzeEarlySupportAlert(
-            @PathVariable UUID studentId
-    ) {
+    analyzeEarlySupportAlert(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(earlySupportAlertService.analyze(studentId));
+    }
 
-        return ResponseEntity.ok(
-                earlySupportAlertService.analyze(studentId)
-        );
+    @GetMapping("/student/{studentId}/piar-plan")
+    public ResponseEntity<AdaptivePiarPlanResponse>
+    generatePiarPlan(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(adaptivePiarPlanService.generate(studentId));
     }
 
     @GetMapping("/institution/policy-recommendation")
     public ResponseEntity<InstitutionalPolicyRecommendationResponse>
     generateInstitutionalPolicyRecommendation() {
-
         return ResponseEntity.ok(
                 institutionalPolicyRecommendationService.generate()
         );
@@ -143,9 +117,6 @@ public class LearningAnalyticsController {
     @GetMapping("/institution/governance-report")
     public ResponseEntity<InstitutionalGovernanceReportResponse>
     generateGovernanceReport() {
-
-        return ResponseEntity.ok(
-                institutionalGovernanceService.generate()
-        );
+        return ResponseEntity.ok(institutionalGovernanceService.generate());
     }
 }
