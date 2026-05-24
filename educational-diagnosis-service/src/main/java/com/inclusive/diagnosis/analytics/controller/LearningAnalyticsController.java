@@ -1,10 +1,12 @@
 package com.inclusive.diagnosis.analytics.controller;
 
+import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
+import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
 import com.inclusive.diagnosis.analytics.service.LearningEvolutionService;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
@@ -24,20 +26,17 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class LearningAnalyticsController {
 
-    private final LearningProfileAggregationService
-            aggregationService;
+    private final LearningProfileAggregationService aggregationService;
 
-    private final PriorityRecommendationService
-            priorityRecommendationService;
+    private final PriorityRecommendationService priorityRecommendationService;
 
-    private final EvidenceTraceabilityService
-            evidenceTraceabilityService;
+    private final EvidenceTraceabilityService evidenceTraceabilityService;
 
-    private final TeacherActionPlanService
-            teacherActionPlanService;
+    private final TeacherActionPlanService teacherActionPlanService;
 
-    private final LearningEvolutionService
-            learningEvolutionService;
+    private final LearningEvolutionService learningEvolutionService;
+
+    private final EducationalRiskService educationalRiskService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -93,6 +92,17 @@ public class LearningAnalyticsController {
 
         return ResponseEntity.ok(
                 learningEvolutionService.analyze(studentId)
+        );
+    }
+
+    @GetMapping("/student/{studentId}/risk-profile")
+    public ResponseEntity<EducationalRiskProfileResponse>
+    analyzeRisk(
+            @PathVariable UUID studentId
+    ) {
+
+        return ResponseEntity.ok(
+                educationalRiskService.analyzeRisk(studentId)
         );
     }
 }
