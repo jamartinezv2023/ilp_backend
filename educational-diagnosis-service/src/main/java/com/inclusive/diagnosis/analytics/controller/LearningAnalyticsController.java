@@ -2,12 +2,14 @@ package com.inclusive.diagnosis.analytics.controller;
 
 import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
+import com.inclusive.diagnosis.analytics.dto.InstitutionalPolicyRecommendationResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
+import com.inclusive.diagnosis.analytics.service.InstitutionalPolicyRecommendationService;
 import com.inclusive.diagnosis.analytics.service.LearningEvolutionService;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
@@ -37,6 +39,9 @@ public class LearningAnalyticsController {
     private final LearningEvolutionService learningEvolutionService;
 
     private final EducationalRiskService educationalRiskService;
+
+    private final InstitutionalPolicyRecommendationService
+            institutionalPolicyRecommendationService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -103,6 +108,15 @@ public class LearningAnalyticsController {
 
         return ResponseEntity.ok(
                 educationalRiskService.analyzeRisk(studentId)
+        );
+    }
+
+    @GetMapping("/institution/policy-recommendation")
+    public ResponseEntity<InstitutionalPolicyRecommendationResponse>
+    generateInstitutionalPolicyRecommendation() {
+
+        return ResponseEntity.ok(
+                institutionalPolicyRecommendationService.generate()
         );
     }
 }
