@@ -11,6 +11,7 @@ import com.inclusive.diagnosis.analytics.dto.InstitutionalPolicyRecommendationRe
 import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
+import com.inclusive.diagnosis.analytics.dto.PsychopedagogicalProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.SupportEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
@@ -24,6 +25,7 @@ import com.inclusive.diagnosis.analytics.service.InstitutionalPolicyRecommendati
 import com.inclusive.diagnosis.analytics.service.LearningEvolutionService;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
+import com.inclusive.diagnosis.analytics.service.PsychopedagogicalProfileService;
 import com.inclusive.diagnosis.analytics.service.SupportEvolutionService;
 import com.inclusive.diagnosis.analytics.service.TeacherActionPlanService;
 import lombok.RequiredArgsConstructor;
@@ -68,6 +70,9 @@ public class LearningAnalyticsController {
 
     private final ClassroomInclusionIntelligenceService
             classroomInclusionIntelligenceService;
+
+    private final PsychopedagogicalProfileService
+            psychopedagogicalProfileService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -132,6 +137,16 @@ public class LearningAnalyticsController {
     analyzeSupportEvolution(@PathVariable UUID studentId) {
         return ResponseEntity.ok(
                 supportEvolutionService.analyze(studentId)
+        );
+    }
+
+    @GetMapping("/student/{studentId}/psychopedagogical-profile")
+    public ResponseEntity<PsychopedagogicalProfileResponse>
+    generatePsychopedagogicalProfile(
+            @PathVariable UUID studentId
+    ) {
+        return ResponseEntity.ok(
+                psychopedagogicalProfileService.generate(studentId)
         );
     }
 
