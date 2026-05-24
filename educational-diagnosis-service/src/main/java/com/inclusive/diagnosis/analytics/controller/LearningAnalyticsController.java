@@ -10,6 +10,7 @@ import com.inclusive.diagnosis.analytics.dto.InstitutionalPolicyRecommendationRe
 import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
+import com.inclusive.diagnosis.analytics.dto.SupportEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
 import com.inclusive.diagnosis.analytics.service.AdaptiveSupportProfileService;
@@ -21,6 +22,7 @@ import com.inclusive.diagnosis.analytics.service.InstitutionalPolicyRecommendati
 import com.inclusive.diagnosis.analytics.service.LearningEvolutionService;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
+import com.inclusive.diagnosis.analytics.service.SupportEvolutionService;
 import com.inclusive.diagnosis.analytics.service.TeacherActionPlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +61,8 @@ public class LearningAnalyticsController {
     private final AdaptivePiarPlanService adaptivePiarPlanService;
 
     private final AdaptiveSupportProfileService adaptiveSupportProfileService;
+
+    private final SupportEvolutionService supportEvolutionService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -116,6 +120,12 @@ public class LearningAnalyticsController {
         return ResponseEntity.ok(
                 adaptiveSupportProfileService.generate(studentId)
         );
+    }
+
+    @GetMapping("/student/{studentId}/support-evolution")
+    public ResponseEntity<SupportEvolutionResponse>
+    analyzeSupportEvolution(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(supportEvolutionService.analyze(studentId));
     }
 
     @GetMapping("/institution/policy-recommendation")
