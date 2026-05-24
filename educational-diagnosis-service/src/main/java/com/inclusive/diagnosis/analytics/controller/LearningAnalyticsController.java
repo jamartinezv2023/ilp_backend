@@ -4,6 +4,7 @@ import com.inclusive.diagnosis.analytics.dto.AdaptivePiarPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.AdaptiveSupportProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.ClassroomInclusionProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EarlySupportAlertResponse;
+import com.inclusive.diagnosis.analytics.dto.EducationalMlDatasetPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
 import com.inclusive.diagnosis.analytics.dto.InstitutionalGovernanceReportResponse;
@@ -18,6 +19,7 @@ import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
 import com.inclusive.diagnosis.analytics.service.AdaptiveSupportProfileService;
 import com.inclusive.diagnosis.analytics.service.ClassroomInclusionIntelligenceService;
 import com.inclusive.diagnosis.analytics.service.EarlySupportAlertService;
+import com.inclusive.diagnosis.analytics.service.EducationalMlDatasetPreviewService;
 import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
 import com.inclusive.diagnosis.analytics.service.InstitutionalGovernanceService;
@@ -73,6 +75,9 @@ public class LearningAnalyticsController {
 
     private final PsychopedagogicalProfileService
             psychopedagogicalProfileService;
+
+    private final EducationalMlDatasetPreviewService
+            educationalMlDatasetPreviewService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -171,6 +176,14 @@ public class LearningAnalyticsController {
     generateGovernanceReport() {
         return ResponseEntity.ok(
                 institutionalGovernanceService.generate()
+        );
+    }
+
+    @GetMapping("/ml/dataset-preview")
+    public ResponseEntity<EducationalMlDatasetPreviewResponse>
+    generateMlDatasetPreview() {
+        return ResponseEntity.ok(
+                educationalMlDatasetPreviewService.generatePreview()
         );
     }
 }
