@@ -1,6 +1,7 @@
 package com.inclusive.diagnosis.analytics.controller;
 
 import com.inclusive.diagnosis.analytics.dto.AdaptivePiarPlanResponse;
+import com.inclusive.diagnosis.analytics.dto.AdaptiveSupportProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EarlySupportAlertResponse;
 import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
@@ -11,6 +12,7 @@ import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
+import com.inclusive.diagnosis.analytics.service.AdaptiveSupportProfileService;
 import com.inclusive.diagnosis.analytics.service.EarlySupportAlertService;
 import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
@@ -55,6 +57,8 @@ public class LearningAnalyticsController {
     private final EarlySupportAlertService earlySupportAlertService;
 
     private final AdaptivePiarPlanService adaptivePiarPlanService;
+
+    private final AdaptiveSupportProfileService adaptiveSupportProfileService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -104,6 +108,14 @@ public class LearningAnalyticsController {
     public ResponseEntity<AdaptivePiarPlanResponse>
     generatePiarPlan(@PathVariable UUID studentId) {
         return ResponseEntity.ok(adaptivePiarPlanService.generate(studentId));
+    }
+
+    @GetMapping("/student/{studentId}/support-profile")
+    public ResponseEntity<AdaptiveSupportProfileResponse>
+    generateSupportProfile(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(
+                adaptiveSupportProfileService.generate(studentId)
+        );
     }
 
     @GetMapping("/institution/policy-recommendation")
