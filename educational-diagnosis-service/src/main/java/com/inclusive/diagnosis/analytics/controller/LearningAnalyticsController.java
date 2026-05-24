@@ -1,5 +1,6 @@
 package com.inclusive.diagnosis.analytics.controller;
 
+import com.inclusive.diagnosis.analytics.dto.EarlySupportAlertResponse;
 import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
 import com.inclusive.diagnosis.analytics.dto.InstitutionalGovernanceReportResponse;
@@ -8,6 +9,7 @@ import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
+import com.inclusive.diagnosis.analytics.service.EarlySupportAlertService;
 import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
 import com.inclusive.diagnosis.analytics.service.InstitutionalGovernanceService;
@@ -47,6 +49,8 @@ public class LearningAnalyticsController {
 
     private final InstitutionalGovernanceService
             institutionalGovernanceService;
+
+    private final EarlySupportAlertService earlySupportAlertService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -113,6 +117,17 @@ public class LearningAnalyticsController {
 
         return ResponseEntity.ok(
                 educationalRiskService.analyzeRisk(studentId)
+        );
+    }
+
+    @GetMapping("/student/{studentId}/early-support-alert")
+    public ResponseEntity<EarlySupportAlertResponse>
+    analyzeEarlySupportAlert(
+            @PathVariable UUID studentId
+    ) {
+
+        return ResponseEntity.ok(
+                earlySupportAlertService.analyze(studentId)
         );
     }
 
