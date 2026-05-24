@@ -1,10 +1,12 @@
 package com.inclusive.diagnosis.analytics.controller;
 
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
+import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
+import com.inclusive.diagnosis.analytics.service.LearningEvolutionService;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
 import com.inclusive.diagnosis.analytics.service.TeacherActionPlanService;
@@ -33,6 +35,9 @@ public class LearningAnalyticsController {
 
     private final TeacherActionPlanService
             teacherActionPlanService;
+
+    private final LearningEvolutionService
+            learningEvolutionService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -77,6 +82,17 @@ public class LearningAnalyticsController {
 
         return ResponseEntity.ok(
                 teacherActionPlanService.generate(studentId)
+        );
+    }
+
+    @GetMapping("/student/{studentId}/learning-evolution")
+    public ResponseEntity<LearningEvolutionResponse>
+    analyzeLearningEvolution(
+            @PathVariable UUID studentId
+    ) {
+
+        return ResponseEntity.ok(
+                learningEvolutionService.analyze(studentId)
         );
     }
 }
