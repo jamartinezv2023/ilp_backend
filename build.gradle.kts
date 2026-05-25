@@ -196,3 +196,17 @@ sonar {
         property("sonar.java.binaries", "**/build/classes")
     }
 }
+
+
+
+subprojects {
+    plugins.withId("jacoco") {
+        tasks.withType<org.gradle.testing.jacoco.tasks.JacocoReport>().configureEach {
+            reports {
+                xml.required.set(true)
+                html.required.set(true)
+                csv.required.set(false)
+            }
+        }
+    }
+}
