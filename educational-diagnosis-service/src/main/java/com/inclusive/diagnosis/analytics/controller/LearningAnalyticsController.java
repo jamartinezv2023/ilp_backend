@@ -1,6 +1,7 @@
 package com.inclusive.diagnosis.analytics.controller;
 
 import com.inclusive.diagnosis.analytics.dto.AdaptivePiarPlanResponse;
+import com.inclusive.diagnosis.analytics.dto.AdaptiveRecommendationPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.AdaptiveSupportProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.ClassroomInclusionProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EarlySupportAlertResponse;
@@ -19,6 +20,7 @@ import com.inclusive.diagnosis.analytics.dto.SupportForecastPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TemporalEducationalSequenceResponse;
 import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
+import com.inclusive.diagnosis.analytics.service.AdaptiveRecommendationPreviewService;
 import com.inclusive.diagnosis.analytics.service.AdaptiveSupportProfileService;
 import com.inclusive.diagnosis.analytics.service.ClassroomInclusionIntelligenceService;
 import com.inclusive.diagnosis.analytics.service.EarlySupportAlertService;
@@ -68,6 +70,7 @@ public class LearningAnalyticsController {
     private final EducationalFeatureStorePreviewService educationalFeatureStorePreviewService;
     private final TemporalEducationalSequenceService temporalEducationalSequenceService;
     private final SupportForecastPreviewService supportForecastPreviewService;
+    private final AdaptiveRecommendationPreviewService adaptiveRecommendationPreviewService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -175,5 +178,11 @@ public class LearningAnalyticsController {
     public ResponseEntity<SupportForecastPreviewResponse>
     generateSupportForecastPreview() {
         return ResponseEntity.ok(supportForecastPreviewService.generatePreview());
+    }
+
+    @GetMapping("/ml/adaptive-recommendation-preview")
+    public ResponseEntity<AdaptiveRecommendationPreviewResponse>
+    generateAdaptiveRecommendationPreview() {
+        return ResponseEntity.ok(adaptiveRecommendationPreviewService.generatePreview());
     }
 }
