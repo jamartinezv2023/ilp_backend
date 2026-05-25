@@ -17,6 +17,7 @@ import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.PolicyLearningPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.PsychopedagogicalProfileResponse;
+import com.inclusive.diagnosis.analytics.dto.ReinforcementSignalPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.SupportEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.SupportForecastPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
@@ -38,6 +39,7 @@ import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationServi
 import com.inclusive.diagnosis.analytics.service.PolicyLearningPreviewService;
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
 import com.inclusive.diagnosis.analytics.service.PsychopedagogicalProfileService;
+import com.inclusive.diagnosis.analytics.service.ReinforcementSignalPreviewService;
 import com.inclusive.diagnosis.analytics.service.SupportEvolutionService;
 import com.inclusive.diagnosis.analytics.service.SupportForecastPreviewService;
 import com.inclusive.diagnosis.analytics.service.TeacherActionPlanService;
@@ -77,6 +79,7 @@ public class LearningAnalyticsController {
     private final AdaptiveRecommendationPreviewService adaptiveRecommendationPreviewService;
     private final InterventionOrchestrationPreviewService interventionOrchestrationPreviewService;
     private final PolicyLearningPreviewService policyLearningPreviewService;
+    private final ReinforcementSignalPreviewService reinforcementSignalPreviewService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -202,5 +205,11 @@ public class LearningAnalyticsController {
     public ResponseEntity<PolicyLearningPreviewResponse>
     generatePolicyLearningPreview() {
         return ResponseEntity.ok(policyLearningPreviewService.generatePreview());
+    }
+
+    @GetMapping("/ml/reinforcement-signal-preview")
+    public ResponseEntity<ReinforcementSignalPreviewResponse>
+    generateReinforcementSignalPreview() {
+        return ResponseEntity.ok(reinforcementSignalPreviewService.generatePreview());
     }
 }
