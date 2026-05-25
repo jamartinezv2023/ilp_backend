@@ -11,6 +11,7 @@ import com.inclusive.diagnosis.analytics.dto.EducationalRiskProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.EvidenceTraceabilityResponse;
 import com.inclusive.diagnosis.analytics.dto.InstitutionalGovernanceReportResponse;
 import com.inclusive.diagnosis.analytics.dto.InstitutionalPolicyRecommendationResponse;
+import com.inclusive.diagnosis.analytics.dto.InterventionOrchestrationPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
@@ -30,6 +31,7 @@ import com.inclusive.diagnosis.analytics.service.EducationalRiskService;
 import com.inclusive.diagnosis.analytics.service.EvidenceTraceabilityService;
 import com.inclusive.diagnosis.analytics.service.InstitutionalGovernanceService;
 import com.inclusive.diagnosis.analytics.service.InstitutionalPolicyRecommendationService;
+import com.inclusive.diagnosis.analytics.service.InterventionOrchestrationPreviewService;
 import com.inclusive.diagnosis.analytics.service.LearningEvolutionService;
 import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationService;
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
@@ -71,6 +73,7 @@ public class LearningAnalyticsController {
     private final TemporalEducationalSequenceService temporalEducationalSequenceService;
     private final SupportForecastPreviewService supportForecastPreviewService;
     private final AdaptiveRecommendationPreviewService adaptiveRecommendationPreviewService;
+    private final InterventionOrchestrationPreviewService interventionOrchestrationPreviewService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -184,5 +187,11 @@ public class LearningAnalyticsController {
     public ResponseEntity<AdaptiveRecommendationPreviewResponse>
     generateAdaptiveRecommendationPreview() {
         return ResponseEntity.ok(adaptiveRecommendationPreviewService.generatePreview());
+    }
+
+    @GetMapping("/ml/intervention-orchestration-preview")
+    public ResponseEntity<InterventionOrchestrationPreviewResponse>
+    generateInterventionOrchestrationPreview() {
+        return ResponseEntity.ok(interventionOrchestrationPreviewService.generatePreview());
     }
 }
