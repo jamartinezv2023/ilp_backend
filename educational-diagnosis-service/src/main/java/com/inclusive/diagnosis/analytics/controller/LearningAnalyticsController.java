@@ -15,6 +15,7 @@ import com.inclusive.diagnosis.analytics.dto.LearningProfileSummaryResponse;
 import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.PsychopedagogicalProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.SupportEvolutionResponse;
+import com.inclusive.diagnosis.analytics.dto.SupportForecastPreviewResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.TemporalEducationalSequenceResponse;
 import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
@@ -32,6 +33,7 @@ import com.inclusive.diagnosis.analytics.service.LearningProfileAggregationServi
 import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
 import com.inclusive.diagnosis.analytics.service.PsychopedagogicalProfileService;
 import com.inclusive.diagnosis.analytics.service.SupportEvolutionService;
+import com.inclusive.diagnosis.analytics.service.SupportForecastPreviewService;
 import com.inclusive.diagnosis.analytics.service.TeacherActionPlanService;
 import com.inclusive.diagnosis.analytics.service.TemporalEducationalSequenceService;
 import lombok.RequiredArgsConstructor;
@@ -49,45 +51,23 @@ import java.util.UUID;
 public class LearningAnalyticsController {
 
     private final LearningProfileAggregationService aggregationService;
-
     private final PriorityRecommendationService priorityRecommendationService;
-
     private final EvidenceTraceabilityService evidenceTraceabilityService;
-
     private final TeacherActionPlanService teacherActionPlanService;
-
     private final LearningEvolutionService learningEvolutionService;
-
     private final EducationalRiskService educationalRiskService;
-
-    private final InstitutionalPolicyRecommendationService
-            institutionalPolicyRecommendationService;
-
-    private final InstitutionalGovernanceService
-            institutionalGovernanceService;
-
+    private final InstitutionalPolicyRecommendationService institutionalPolicyRecommendationService;
+    private final InstitutionalGovernanceService institutionalGovernanceService;
     private final EarlySupportAlertService earlySupportAlertService;
-
     private final AdaptivePiarPlanService adaptivePiarPlanService;
-
     private final AdaptiveSupportProfileService adaptiveSupportProfileService;
-
     private final SupportEvolutionService supportEvolutionService;
-
-    private final ClassroomInclusionIntelligenceService
-            classroomInclusionIntelligenceService;
-
-    private final PsychopedagogicalProfileService
-            psychopedagogicalProfileService;
-
-    private final EducationalMlDatasetPreviewService
-            educationalMlDatasetPreviewService;
-
-    private final EducationalFeatureStorePreviewService
-            educationalFeatureStorePreviewService;
-
-    private final TemporalEducationalSequenceService
-            temporalEducationalSequenceService;
+    private final ClassroomInclusionIntelligenceService classroomInclusionIntelligenceService;
+    private final PsychopedagogicalProfileService psychopedagogicalProfileService;
+    private final EducationalMlDatasetPreviewService educationalMlDatasetPreviewService;
+    private final EducationalFeatureStorePreviewService educationalFeatureStorePreviewService;
+    private final TemporalEducationalSequenceService temporalEducationalSequenceService;
+    private final SupportForecastPreviewService supportForecastPreviewService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -98,9 +78,7 @@ public class LearningAnalyticsController {
     @GetMapping("/student/{studentId}/priority-plan")
     public ResponseEntity<PedagogicalPriorityPlanResponse>
     generatePriorityPlan(@PathVariable UUID studentId) {
-        return ResponseEntity.ok(
-                priorityRecommendationService.generatePriorityPlan(studentId)
-        );
+        return ResponseEntity.ok(priorityRecommendationService.generatePriorityPlan(studentId));
     }
 
     @GetMapping("/student/{studentId}/evidence-trace")
@@ -142,74 +120,60 @@ public class LearningAnalyticsController {
     @GetMapping("/student/{studentId}/support-profile")
     public ResponseEntity<AdaptiveSupportProfileResponse>
     generateSupportProfile(@PathVariable UUID studentId) {
-        return ResponseEntity.ok(
-                adaptiveSupportProfileService.generate(studentId)
-        );
+        return ResponseEntity.ok(adaptiveSupportProfileService.generate(studentId));
     }
 
     @GetMapping("/student/{studentId}/support-evolution")
     public ResponseEntity<SupportEvolutionResponse>
     analyzeSupportEvolution(@PathVariable UUID studentId) {
-        return ResponseEntity.ok(
-                supportEvolutionService.analyze(studentId)
-        );
+        return ResponseEntity.ok(supportEvolutionService.analyze(studentId));
     }
 
     @GetMapping("/student/{studentId}/psychopedagogical-profile")
     public ResponseEntity<PsychopedagogicalProfileResponse>
-    generatePsychopedagogicalProfile(
-            @PathVariable UUID studentId
-    ) {
-        return ResponseEntity.ok(
-                psychopedagogicalProfileService.generate(studentId)
-        );
+    generatePsychopedagogicalProfile(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(psychopedagogicalProfileService.generate(studentId));
     }
 
     @GetMapping("/classroom/inclusion-profile")
     public ResponseEntity<ClassroomInclusionProfileResponse>
     analyzeClassroomInclusion() {
-        return ResponseEntity.ok(
-                classroomInclusionIntelligenceService.analyze()
-        );
+        return ResponseEntity.ok(classroomInclusionIntelligenceService.analyze());
     }
 
     @GetMapping("/institution/policy-recommendation")
     public ResponseEntity<InstitutionalPolicyRecommendationResponse>
     generateInstitutionalPolicyRecommendation() {
-        return ResponseEntity.ok(
-                institutionalPolicyRecommendationService.generate()
-        );
+        return ResponseEntity.ok(institutionalPolicyRecommendationService.generate());
     }
 
     @GetMapping("/institution/governance-report")
     public ResponseEntity<InstitutionalGovernanceReportResponse>
     generateGovernanceReport() {
-        return ResponseEntity.ok(
-                institutionalGovernanceService.generate()
-        );
+        return ResponseEntity.ok(institutionalGovernanceService.generate());
     }
 
     @GetMapping("/ml/dataset-preview")
     public ResponseEntity<EducationalMlDatasetPreviewResponse>
     generateMlDatasetPreview() {
-        return ResponseEntity.ok(
-                educationalMlDatasetPreviewService.generatePreview()
-        );
+        return ResponseEntity.ok(educationalMlDatasetPreviewService.generatePreview());
     }
 
     @GetMapping("/ml/feature-store-preview")
     public ResponseEntity<EducationalFeatureStorePreviewResponse>
     generateFeatureStorePreview() {
-        return ResponseEntity.ok(
-                educationalFeatureStorePreviewService.generatePreview()
-        );
+        return ResponseEntity.ok(educationalFeatureStorePreviewService.generatePreview());
     }
 
     @GetMapping("/ml/temporal-sequence-preview")
     public ResponseEntity<TemporalEducationalSequenceResponse>
     generateTemporalSequencePreview() {
-        return ResponseEntity.ok(
-                temporalEducationalSequenceService.generatePreview()
-        );
+        return ResponseEntity.ok(temporalEducationalSequenceService.generatePreview());
+    }
+
+    @GetMapping("/ml/support-forecast-preview")
+    public ResponseEntity<SupportForecastPreviewResponse>
+    generateSupportForecastPreview() {
+        return ResponseEntity.ok(supportForecastPreviewService.generatePreview());
     }
 }
