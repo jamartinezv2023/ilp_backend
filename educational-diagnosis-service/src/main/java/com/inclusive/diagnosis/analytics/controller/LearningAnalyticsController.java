@@ -16,6 +16,7 @@ import com.inclusive.diagnosis.analytics.dto.PedagogicalPriorityPlanResponse;
 import com.inclusive.diagnosis.analytics.dto.PsychopedagogicalProfileResponse;
 import com.inclusive.diagnosis.analytics.dto.SupportEvolutionResponse;
 import com.inclusive.diagnosis.analytics.dto.TeacherActionPlanResponse;
+import com.inclusive.diagnosis.analytics.dto.TemporalEducationalSequenceResponse;
 import com.inclusive.diagnosis.analytics.service.AdaptivePiarPlanService;
 import com.inclusive.diagnosis.analytics.service.AdaptiveSupportProfileService;
 import com.inclusive.diagnosis.analytics.service.ClassroomInclusionIntelligenceService;
@@ -32,6 +33,7 @@ import com.inclusive.diagnosis.analytics.service.PriorityRecommendationService;
 import com.inclusive.diagnosis.analytics.service.PsychopedagogicalProfileService;
 import com.inclusive.diagnosis.analytics.service.SupportEvolutionService;
 import com.inclusive.diagnosis.analytics.service.TeacherActionPlanService;
+import com.inclusive.diagnosis.analytics.service.TemporalEducationalSequenceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -83,6 +85,9 @@ public class LearningAnalyticsController {
 
     private final EducationalFeatureStorePreviewService
             educationalFeatureStorePreviewService;
+
+    private final TemporalEducationalSequenceService
+            temporalEducationalSequenceService;
 
     @GetMapping("/student/{studentId}/learning-profile")
     public ResponseEntity<LearningProfileSummaryResponse>
@@ -197,6 +202,14 @@ public class LearningAnalyticsController {
     generateFeatureStorePreview() {
         return ResponseEntity.ok(
                 educationalFeatureStorePreviewService.generatePreview()
+        );
+    }
+
+    @GetMapping("/ml/temporal-sequence-preview")
+    public ResponseEntity<TemporalEducationalSequenceResponse>
+    generateTemporalSequencePreview() {
+        return ResponseEntity.ok(
+                temporalEducationalSequenceService.generatePreview()
         );
     }
 }
