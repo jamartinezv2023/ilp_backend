@@ -12,6 +12,10 @@ plugins {
 group = "com.inclusive.platform"
 version = "1.0.0-SNAPSHOT"
 
+repositories {
+    mavenCentral()
+}
+
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
@@ -27,7 +31,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
-    runtimeOnly("com.h2database:h2")
+    runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
@@ -35,3 +39,9 @@ dependencies {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+
+
+
+
+
