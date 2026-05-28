@@ -1,19 +1,19 @@
-﻿FROM maven:3.9.8-eclipse-temurin-21 AS build
+FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
-COPY pom.xml ./
-COPY build.gradle.kts ./
-COPY src ./src
+RUN addgroup -S ilp && adduser -S ilp -G ilp
 
-RUN mvn clean package -DskipTests
+COPY adaptive-education-service/build/libs/*.jar app.jar
 
-FROM eclipse-temurin:21-jdk
+ENV SERVER_PORT=8083
+ENV SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/msf
+ENV SPRING_DATASOURCE_USERNAME=msf
+ENV SPRING_DATASOURCE_PASSWORD=msf
+ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
-WORKDIR /app
+EXPOSE 8083
 
-COPY --from=build /app/target/*.jar /app/app.jar
-
-EXPOSE 8080
+USER ilp
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
