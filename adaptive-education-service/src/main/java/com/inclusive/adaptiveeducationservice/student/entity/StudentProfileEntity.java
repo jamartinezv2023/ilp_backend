@@ -53,6 +53,14 @@ public class StudentProfileEntity {
     @Column(name = "recommendation", nullable = false, length = 1000)
     private List<String> pedagogicalRecommendations = new ArrayList<>();
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "student_learning_preferences",
+            joinColumns = @JoinColumn(name = "student_id")
+    )
+    @Column(name = "preference", nullable = false, length = 500)
+    private List<String> learningPreferences = new ArrayList<>();
+
     protected StudentProfileEntity() {
     }
 
@@ -113,6 +121,14 @@ public class StudentProfileEntity {
 
     public List<String> getPedagogicalRecommendations() {
         return List.copyOf(pedagogicalRecommendations);
+    }
+
+    public List<String> getLearningPreferences() {
+        return List.copyOf(learningPreferences);
+    }
+
+    public void updateLearningPreferences(List<String> learningPreferences) {
+        this.learningPreferences = new ArrayList<>(learningPreferences);
     }
 
     public void updateLearningProfile(String learningProfile) {
