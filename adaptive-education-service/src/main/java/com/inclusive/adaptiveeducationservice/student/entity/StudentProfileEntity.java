@@ -114,4 +114,25 @@ public class StudentProfileEntity {
     public List<String> getPedagogicalRecommendations() {
         return List.copyOf(pedagogicalRecommendations);
     }
+
+    public void updateProfile(
+            String fullName,
+            String grade,
+            Integer age,
+            String learningProfile,
+            String vocationalInterest,
+            String supportLevel,
+            List<String> inclusiveStrategies,
+            List<String> pedagogicalRecommendations
+    ) {
+        this.fullName = fullName;
+        this.grade = grade;
+        this.age = age;
+        this.learningProfile = learningProfile;
+        this.vocationalInterest = vocationalInterest;
+        this.supportLevel = supportLevel;
+        this.inclusiveStrategies = new ArrayList<>(inclusiveStrategies);
+        this.pedagogicalRecommendations =
+                new ArrayList<>(pedagogicalRecommendations);
+    }
 }
