@@ -115,6 +115,10 @@ public class StudentProfileEntity {
         return List.copyOf(pedagogicalRecommendations);
     }
 
+    public void updateLearningProfile(String learningProfile) {
+        this.learningProfile = learningProfile;
+    }
+
     public void updateProfile(
             String fullName,
             String grade,
