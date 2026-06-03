@@ -135,6 +135,10 @@ public class StudentProfileEntity {
         this.learningProfile = learningProfile;
     }
 
+    public void updateVocationalInterest(String vocationalInterest) {
+        this.vocationalInterest = vocationalInterest;
+    }
+
     public void updateProfile(
             String fullName,
             String grade,
