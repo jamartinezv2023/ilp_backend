@@ -1,0 +1,4 @@
+﻿"Url","StatusCode","Length","Result"
+"http://localhost:9080/api/v1/students","200","2","[]"
+"http://localhost:9080/api/v1/assessment-definitions/KOLB_V1","200","9404","{""id"":""DEF-KOLB-V1"",""code"":""KOLB_V1"",""name"":""Kolb Learning Style Inventory"",""description"":""Ipsative learning style inventory for experiential learning classification."",""assessmentType"":""IPSATIVE_RANKING"",""version"":""1.0"",""active"":true,""estimatedMinutes"":20,""instructions"":""Rank each group of four stat"
+"http://localhost:9080/api/v1/instruments/kolb/questions","200","843","[{""id"":""KOLB-Q001"",""instrument"":""KOLB"",""dimension"":""CE"",""questionOrder"":1,""text"":""When learning something new, I prefer concrete experiences."",""options"":[""1"",""2"",""3"",""4""],""instrumentVersion"":""KOLB_BASELINE_V1""},{""id"":""KOLB-Q002"",""instrument"":""KOLB"",""dimension"":""RO"",""questionOrder"":2,""text"":""When lea"

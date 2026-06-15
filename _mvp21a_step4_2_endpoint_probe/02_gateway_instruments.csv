@@ -1,0 +1,4 @@
+"Url","Status","Length"
+"http://localhost:9080/api/v1/instruments/kolb/questions","200","843"
+"http://localhost:9080/api/v1/instruments/felder-silverman/questions","200","898"
+"http://localhost:9080/api/v1/instruments/kuder/questions","200","254"
