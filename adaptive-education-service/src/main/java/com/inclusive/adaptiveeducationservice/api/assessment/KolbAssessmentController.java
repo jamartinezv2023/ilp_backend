@@ -6,14 +6,10 @@ import com.inclusive.adaptiveeducationservice.assessment.service.KolbAssessmentS
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,6 +17,11 @@ import java.util.List;
 public class KolbAssessmentController {
 
     private final KolbAssessmentService kolbAssessmentService;
+
+    @GetMapping("/ping")
+    public ResponseEntity<Map<String, String>> ping() {
+        return ResponseEntity.ok(Map.of("status", "KOLB_CONTROLLER_OK"));
+    }
 
     @PostMapping
     public ResponseEntity<KolbAssessmentResponse> submit(
@@ -33,8 +34,6 @@ public class KolbAssessmentController {
     public ResponseEntity<List<KolbAssessmentResponse>> findByStudentId(
             @PathVariable String studentId
     ) {
-        return ResponseEntity.ok(
-                kolbAssessmentService.findByStudentId(studentId)
-        );
+        return ResponseEntity.ok(kolbAssessmentService.findByStudentId(studentId));
     }
 }

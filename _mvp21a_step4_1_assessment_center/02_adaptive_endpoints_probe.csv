@@ -1,0 +1,5 @@
+﻿"Url","StatusCode","Length","Result"
+"http://localhost:9083/api/v1/instruments/kolb/questions","200","843","[{""id"":""KOLB-Q001"",""instrument"":""KOLB"",""dimension"":""CE"",""questionOrder"":1,""text"":""When learning something new, I prefer concrete experiences."",""options"":[""1"",""2"",""3"",""4""],""instrumentVersion"":""KOLB_BASELINE_V1""},{""id"":""KOLB-Q002"",""instrument"":""KOLB"",""dimension"":""RO"",""questionOrder"":2,""text"":""When lea"
+"Error en el servidor remoto: (405) Método no permitido.","ERROR","0","Error en el servidor remoto: (405) Método no permitido."
+"Error en el servidor remoto: (405) Método no permitido.","ERROR","0","Error en el servidor remoto: (405) Método no permitido."
+"Error en el servidor remoto: (405) Método no permitido.","ERROR","0","Error en el servidor remoto: (405) Método no permitido."
