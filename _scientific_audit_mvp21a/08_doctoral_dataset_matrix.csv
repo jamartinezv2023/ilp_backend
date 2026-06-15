@@ -1,0 +1,11 @@
+﻿NIVEL,ELEMENTO,ESTADO,DECISION,DATASET,PAPER
+Microservicio,adaptive-education-service,Funcional,CONGELAR,CORE_EDUCATIONAL_DATASET,Paper 1 Arquitectura ILP
+Instrumento,KOLB_V1,Funcional,CONGELAR,DATASET_KOLB_LONGITUDINAL,Paper 2 Psicometría digital
+Instrumento,Felder-Silverman,Funcional,CONGELAR,DATASET_LEARNING_PREFERENCES,Paper 3 ML educativo
+Instrumento,Kuder,Funcional,CONGELAR,DATASET_VOCATIONAL_PROFILE,Paper 3 ML educativo
+Entidad,StudentFeatureEntity,Alta relevancia científica,AUDITAR,DATASET_FEATURE_STORE,Paper 4 XAI
+Entidad,EducationalInterventionEntity,Requiere ampliación futura,MVP-22,DATASET_INTERVENTIONS,Paper 5 Motor adaptativo
+Frontend,Assessment Center,Funcional,CONGELAR,DATA_CAPTURE_UI,Paper 1 Arquitectura ILP
+Frontend,Adaptive Intelligence,Funcional,CONGELAR,DATASET_RECOMMENDATIONS,Paper 5 Motor adaptativo
+Frontend,Research Center,Parcial,AUDITAR,DATASET_RESEARCH_EVIDENCE,Paper 6 Gobernanza IA
+Frontend,MFA,Mock,MVP-22,DATASET_SECURITY_EVENTS,Paper futuro
