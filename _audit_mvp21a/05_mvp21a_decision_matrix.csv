@@ -1,0 +1,12 @@
+﻿COMPONENTE,TIPO,ESTADO,DECISION,MVP
+Student API,Backend,Funcional,CONGELAR,MVP-21A
+Assessment Definition KOLB,Backend,Funcional,CONGELAR,MVP-21A
+Kolb Submit,Backend,Funcional,CONGELAR,MVP-21A
+Kolb History,Backend,Funcional,CONGELAR,MVP-21A
+Assessment Center,Frontend,Funcional,CONGELAR,MVP-21A
+Form Engine Preview,Frontend,Funcional,CONGELAR,MVP-21A
+Adaptive Intelligence,Frontend,Funcional,CONGELAR,MVP-21A
+Research & Evaluation,Frontend,Parcialmente mock,POSPONER/HARDENING,MVP-22
+Security MFA,Frontend mock,POSPONER,MVP-22
+Administration,Frontend vacío,POSPONER,MVP-22
+Gateway,Infraestructura,Funcional pero sensible,CONGELAR CON PRECAUCION,MVP-21A

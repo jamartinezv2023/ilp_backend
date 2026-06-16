@@ -1,19 +1,39 @@
 services:
-  postgres-db:
+  postgres:
     image: postgres:16
-    container_name: ilp-postgres
+    container_name: ilp-adaptive-postgres
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me}
+      POSTGRES_USER: ilp
+      POSTGRES_PASSWORD: ilp
+      POSTGRES_DB: adaptive_education_db
     ports:
-      - "5433:5432"
+      - "5434:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      - ilp_adaptive_postgres_data:/var/lib/postgresql/data
+    networks:
+      - ilp-network
+
+  adaptive-education-service:
+    build:
+      context: .
+      dockerfile: adaptive-education-service/Dockerfile
+    container_name: ilp-adaptive-education-service
+    depends_on:
+      - postgres
+    environment:
+      SERVER_PORT: 8083
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/adaptive_education_db
+      SPRING_DATASOURCE_USERNAME: ilp
+      SPRING_DATASOURCE_PASSWORD: ilp
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8083:8083"
+    networks:
+      - ilp-network
 
 volumes:
-  postgres_data:
+  ilp_adaptive_postgres_data:
+
+networks:
+  ilp-network:
+    driver: bridge

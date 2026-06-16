@@ -1,0 +1,10 @@
+﻿CAPA,ENDPOINT,METODO,DTO_ENTRADA,DTO_SALIDA,VARIABLE_CIENTIFICA,DATASET,PAPER,DECISION
+Student Profile,/api/v1/students,GET,N/A,StudentProfileResponse,perfil_estudiante,CORE_EDUCATIONAL_DATASET,Paper 1,CONGELAR
+Kolb Definition,/api/v1/assessment-definitions/KOLB_V1,GET,N/A,AssessmentDefinitionResponse,instrumento_kolb_versionado,DATASET_KOLB_LONGITUDINAL,Paper 2,CONGELAR
+Kolb Submit,/api/v1/assessments/kolb,POST,KolbAssessmentRequest,KolbAssessmentResponse,respuestas_ipsativas_kolb,DATASET_KOLB_LONGITUDINAL,Paper 2,CONGELAR
+Kolb History,/api/v1/assessments/kolb/students/{studentId},GET,N/A,KolbAssessmentResponse,historial_kolb_estudiante,DATASET_KOLB_LONGITUDINAL,Paper 2,CONGELAR
+Felder Submit,/api/v1/assessments/felder-silverman,POST,FelderSilvermanAssessmentRequest,FelderSilvermanAssessmentResponse,preferencias_procesamiento,DATASET_LEARNING_PREFERENCES,Paper 3,CONGELAR
+Kuder Submit,/api/v1/assessments/kuder,POST,KuderAssessmentRequest,KuderAssessmentResponse,interes_vocacional,DATASET_VOCATIONAL_PROFILE,Paper 3,CONGELAR
+Adaptive Plan,/api/v1/adaptive-learning-plans,POST,AdaptiveLearningPlanRequest,AdaptiveLearningPlanResponse,ruta_adaptativa,DATASET_RECOMMENDATIONS,Paper 5,AUDITAR
+Recommendations,/api/v1/recommendations,GET,N/A,RecommendationResponse,recomendacion_pedagogica,DATASET_RECOMMENDATIONS,Paper 5,AUDITAR
+Research Analytics,/api/v1/research/**,GET,N/A,ResearchAnalyticsResponse,evidencia_gobernanza,DATASET_RESEARCH_EVIDENCE,Paper 6,MVP-22

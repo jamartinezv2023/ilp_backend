@@ -1,0 +1,5 @@
+﻿"Url","StatusCode","Result"
+"http://localhost:9080/actuator/health","200","System.Byte[]"
+"http://localhost:9080/api/v1/students","200","[]"
+"http://localhost:9081/actuator/health","200","System.Byte[]"
+"http://localhost:9081/api/v1/students","200","[]"
