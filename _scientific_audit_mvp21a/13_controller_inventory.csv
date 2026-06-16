@@ -1,0 +1,17 @@
+﻿CONTROLLER,ENDPOINT_COUNT,STATUS,DATASET,PAPER,DECISION
+StudentProfileController,4,Stable,CORE_EDUCATIONAL_DATASET,Paper1 Architecture,FREEZE
+AssessmentDefinitionController,2,Stable,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics,FREEZE
+KolbAssessmentController,3,Stable,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics,FREEZE
+FelderSilvermanAssessmentController,2,Stable,DATASET_LEARNING_PREFERENCES,Paper3 Educational ML,FREEZE
+KuderAssessmentController,2,Stable,DATASET_VOCATIONAL_PROFILE,Paper3 Educational ML,FREEZE
+AssessmentResponseController,3,Audit,DATASET_RAW_ASSESSMENT_RESPONSES,Paper2 Digital Psychometrics,AUDIT
+AssessmentHistoryController,3,Stable,DATASET_LONGITUDINAL_HISTORY,Paper2 Digital Psychometrics,FREEZE
+AdaptiveLearningPlanController,2,Stable,DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine,AUDIT
+FeatureStoreController,2,Audit,DATASET_FEATURE_STORE,Paper4 Explainable AI,AUDIT
+EducationalDatasetController,1,Audit,DATASET_FEATURE_STORE,Paper4 Explainable AI,AUDIT
+EducationalRecommendationController,1,Audit,DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine,AUDIT
+EducationalInterventionController,3,Future,DATASET_INTERVENTIONS,Paper5 Adaptive Engine,MVP22
+ResearchAnalyticsController,3,Audit,DATASET_RESEARCH_EVIDENCE,Paper6 AI Governance,AUDIT
+RandomForestKolbController,1,Experimental,DATASET_KOLB_LONGITUDINAL,Paper4 Explainable AI,AUDIT
+KolbMlPipelineController,1,Experimental,DATASET_KOLB_LONGITUDINAL,Paper4 Explainable AI,AUDIT
+MlExperimentController,2,Audit,DATASET_EXPERIMENT_REGISTRY,Paper4 Explainable AI,AUDIT

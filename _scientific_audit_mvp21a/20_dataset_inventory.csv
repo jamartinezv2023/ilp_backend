@@ -1,0 +1,12 @@
+﻿DATASET,DESCRIPTION,PAPER,STATUS,DECISION
+CORE_EDUCATIONAL_DATASET,Student demographic academic and inclusion profile,Paper1 Architecture,Available,FREEZE
+DATASET_KOLB_LONGITUDINAL,Kolb ipsative answers scores styles and history,Paper2 Digital Psychometrics,Available,FREEZE
+DATASET_LEARNING_PREFERENCES,Felder-Silverman preferences and derived profiles,Paper3 Educational ML,Available,FREEZE
+DATASET_VOCATIONAL_PROFILE,Kuder vocational interest scores and dominant areas,Paper3 Educational ML,Available,FREEZE
+DATASET_RAW_ASSESSMENT_RESPONSES,Raw item-level assessment responses,Paper2 Digital Psychometrics,Partial,AUDIT
+DATASET_FEATURE_STORE,Student feature vectors for ML and XAI,Paper4 Explainable AI,Partial,AUDIT
+DATASET_RECOMMENDATIONS,Adaptive pathways recommendations and resources,Paper5 Adaptive Engine,Partial,AUDIT
+DATASET_INTERVENTIONS,Educational interventions and follow-up actions,Paper5 Adaptive Engine,Future,MVP22
+DATASET_RESEARCH_EVIDENCE,Governance ethics fairness explainability readiness metrics,Paper6 AI Governance,Partial,AUDIT
+DATASET_EXPERIMENT_REGISTRY,ML experiment metadata algorithms and metrics,Paper4 Explainable AI,Partial,AUDIT
+DATASET_MULTIMODAL,Text audio image interaction and temporal learning signals,Paper7 Deep Learning,Future,MVP22

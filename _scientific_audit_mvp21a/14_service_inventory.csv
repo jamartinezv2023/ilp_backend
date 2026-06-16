@@ -1,0 +1,21 @@
+﻿SERVICE,RESPONSIBILITY,COHESION,COUPLING,DECISION
+StudentProfileService,Student profile management,HIGH,LOW,FREEZE
+KolbAssessmentService,Kolb scoring and persistence,HIGH,LOW,FREEZE
+KolbAssessmentEngine,Kolb score calculation,HIGH,LOW,FREEZE
+FelderSilvermanAssessmentService,Felder-Silverman scoring and persistence,HIGH,LOW,FREEZE
+FelderSilvermanAssessmentEngine,Felder-Silverman score calculation,HIGH,LOW,FREEZE
+KuderAssessmentService,Kuder scoring and persistence,HIGH,LOW,FREEZE
+KuderAssessmentEngine,Kuder vocational score calculation,HIGH,LOW,FREEZE
+AssessmentDefinitionService,Digital instrument definition,HIGH,LOW,FREEZE
+AssessmentResponseService,Raw assessment response capture,MEDIUM,MEDIUM,AUDIT
+AssessmentHistoryService,Assessment longitudinal history,HIGH,LOW,FREEZE
+AdaptiveLearningPlanService,Adaptive route generation,MEDIUM,MEDIUM,AUDIT
+AdaptiveLearningEngine,Adaptive decision engine,MEDIUM,MEDIUM,AUDIT
+FeatureStoreService,Student feature generation,MEDIUM,MEDIUM,AUDIT
+EducationalDatasetService,ML training snapshot export,MEDIUM,MEDIUM,AUDIT
+EducationalRecommendationService,Pedagogical recommendation engine,MEDIUM,MEDIUM,AUDIT
+EducationalInterventionService,Intervention tracking,MEDIUM,MEDIUM,MVP22
+ResearchAnalyticsService,Research analytics summaries,MEDIUM,MEDIUM,AUDIT
+RandomForestKolbService,Random Forest baseline evaluation,MEDIUM,MEDIUM,AUDIT
+KolbBaselineMlService,Kolb ML baseline evaluation,MEDIUM,MEDIUM,AUDIT
+MlExperimentQueryService,ML experiment registry query,HIGH,LOW,AUDIT

@@ -1,0 +1,21 @@
+﻿PACKAGE,RESPONSIBILITY,HEXAGONAL_ROLE,DECISION
+api.student,REST layer,Inbound,FREEZE
+api.assessment,Assessment REST layer,Inbound,FREEZE
+api.assessmentdefinition,Instrument definition REST layer,Inbound,FREEZE
+api.assessmentresponse,Raw response capture REST layer,Inbound,AUDIT
+api.assessmenthistory,Longitudinal assessment history,Inbound,FREEZE
+assessment.service,Business scoring logic,Application,FREEZE
+assessment.entity,Psychometric persistence model,Domain,FREEZE
+assessment.repository,Psychometric persistence,Outbound,FREEZE
+assessmentdefinition,Digital instrument engine,Domain,FREEZE
+assessmentresponse,Raw response engine,Domain,AUDIT
+student,Student profile domain,Domain,FREEZE
+adaptive,Adaptive learning plan domain,Application,AUDIT
+featurestore,ML feature layer,Domain,AUDIT
+recommendation,Adaptive recommendation engine,Application,AUDIT
+intervention,Educational intervention layer,Domain,MVP22
+dataset,ML dataset export layer,Application,AUDIT
+mlmodels,Experiment registry and ML models,Application,AUDIT
+mlpipeline,ML baseline evaluation pipeline,Application,AUDIT
+researchanalytics,Research analytics module,Application,AUDIT
+research,Governance and doctoral evidence module,Application,MVP22
