@@ -1,0 +1,13 @@
+﻿ITEM,TYPE,FINDING,DECISION,RATIONALE
+adaptive-education-service,Microservice,Core scientific engine is functional,FREEZE,Protect working MVP21A baseline
+KolbAssessmentController,Controller,Functional ipsative assessment endpoint,FREEZE,Validated by live API tests
+AssessmentDefinitionController,Controller,KOLB_V1 definition works,FREEZE,Stable digital instrument source
+StudentProfileController,Controller,Student API works,FREEZE,Core dataset entry point
+AssessmentResponseController,Controller,Raw responses are scientifically valuable,AUDIT,Needed for psychometrics and item-level analysis
+FeatureStoreService,Service,High scientific potential,AUDIT,Needed for ML XAI and reproducibility
+EducationalDatasetService,Service,Training snapshot exists,AUDIT,Foundation for ML datasets
+Research controllers,Controllers,Large governance evidence surface,MVP22,Do not expand before scientific validation
+EducationalInterventionEntity,Entity,Future causal intervention dataset,MVP22,Requires field protocol and ethical approval
+DATASET_MULTIMODAL,Dataset,Not yet instrumented,MVP22,Requires new consent protocol and capture design
+Gateway,Infrastructure,Functional but sensitive,FREEZE_WITH_CAUTION,Keep stable and avoid unnecessary changes
+Legacy backup folders,Technical debt,Potential noise in audit,DO_NOT_TOUCH_NOW,Remove only after archival strategy

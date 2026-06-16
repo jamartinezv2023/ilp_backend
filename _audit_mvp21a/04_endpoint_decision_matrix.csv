@@ -1,0 +1,8 @@
+﻿ENDPOINT,RESULTADO,DECISION
+GET http://localhost:8083/actuator/health,OK,CONGELAR
+GET http://localhost:8083/api/v1/students,OK,CONGELAR
+GET http://localhost:8083/api/v1/assessment-definitions/KOLB_V1,OK,CONGELAR
+POST http://localhost:8083/api/v1/assessments/kolb,OK,CONGELAR
+GET http://localhost:8083/api/v1/assessments/kolb/students/ST-001,OK,CONGELAR
+GET http://localhost:9080/actuator/health,OK,CONGELAR CON PRECAUCION
+GET http://localhost:9080/api/v1/students,OK,CONGELAR SI NO DA 500

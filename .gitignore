@@ -155,3 +155,26 @@ _diag/
 **/keys/
 **/security/keys/
 .env
+
+# Local thesis/report artifacts
+Informe_Avance_Tesis_ILP_*.docx
+Informe_Avance_Tesis_ILP_*.pdf
+Presentacion_*.pptx
+full-log.txt
+
+# Microsoft Office temporary files
+~$*.docx
+~$*.pptx
+~$*.xlsx
+
+# Environment and secrets
+.env
+*.env
+.env.*
+application-local.properties
+application-local.yml
+application-secret.properties
+application-secret.yml
+
+# Generated local OpenAPI exports unless intentionally versioned
+*-openapi-local.json
