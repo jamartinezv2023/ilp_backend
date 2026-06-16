@@ -1,0 +1,8 @@
+PAPER,DATASET,MAIN_VARIABLES,STATUS
+Paper1 Architecture ILP,CORE_EDUCATIONAL_DATASET,student profile architecture readiness,Ready
+Paper2 Digital Psychometrics,DATASET_KOLB_LONGITUDINAL,CE RO AC AE learning_style,Ready
+Paper3 Educational ML,DATASET_LEARNING_PREFERENCES + DATASET_VOCATIONAL_PROFILE,Felder Kuder preferences interests,Ready
+Paper4 Explainable AI,DATASET_FEATURE_STORE,feature vectors explainability,Audit
+Paper5 Adaptive Engine,DATASET_RECOMMENDATIONS,recommendation_type adaptive_path risk_level,Audit
+Paper6 AI Governance,DATASET_RESEARCH_EVIDENCE,governance evidence readiness metrics,Audit
+Paper7 Deep Learning,DATASET_MULTIMODAL,multimodal signals,Planned MVP22
