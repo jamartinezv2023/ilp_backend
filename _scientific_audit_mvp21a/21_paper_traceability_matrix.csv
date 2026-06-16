@@ -1,0 +1,8 @@
+﻿PAPER,WORKING_TITLE,DATASET,VARIABLES,STATUS
+Paper1 Architecture,Inclusive Learning Platform architecture for AI-supported inclusive education,CORE_EDUCATIONAL_DATASET,student profile architecture quality,READY_FOR_PROTOCOL
+Paper2 Digital Psychometrics,Digital longitudinal psychometrics of ipsative and adaptive learning instruments,DATASET_KOLB_LONGITUDINAL,CE RO AC AE style raw answers,READY_FOR_PROTOCOL
+Paper3 Educational ML,Machine Learning for educational preferences and vocational profiling,DATASET_LEARNING_PREFERENCES + DATASET_VOCATIONAL_PROFILE,Felder Kuder profile variables,READY_FOR_PROTOCOL
+Paper4 Explainable AI,Explainable AI and feature store for inclusive educational decision support,DATASET_FEATURE_STORE + DATASET_EXPERIMENT_REGISTRY,feature vectors ML metrics,READY_FOR_PROTOCOL
+Paper5 Adaptive Engine,Adaptive recommendation engine for inclusive education and intervention planning,DATASET_RECOMMENDATIONS + DATASET_INTERVENTIONS,recommendations pathways interventions,PRE_PROTOCOL
+Paper6 AI Governance,Governance fairness trustworthiness and ethics for AI in inclusive education,DATASET_RESEARCH_EVIDENCE,governance fairness explainability metrics,PRE_PROTOCOL
+Paper7 Deep Learning,Longitudinal and multimodal Deep Learning for inclusive learning trajectories,DATASET_MULTIMODAL,multimodal temporal signals,MVP22

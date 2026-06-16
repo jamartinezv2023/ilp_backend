@@ -1,0 +1,12 @@
+﻿MICROSERVICE,ROLE,STATUS,DECISION
+adaptive-education-service,Core scientific engine,Stable,FREEZE
+assessment-service,Assessment domain,Audit,AUDIT
+student-service,Student domain,Stable,FREEZE
+auth-service,Security,Stable,FREEZE
+tenant-service,Multitenancy,Stable,FREEZE
+report-service,Reporting,Audit,AUDIT
+notification-service,Infrastructure,Stable,FREEZE
+gateway-service,API Gateway,Stable,FREEZE
+monitoring-service,Observability,Stable,FREEZE
+commons-service,Shared kernel,Stable,FREEZE
+educational-diagnosis-service,Complementary diagnosis engine,Audit,MVP22
