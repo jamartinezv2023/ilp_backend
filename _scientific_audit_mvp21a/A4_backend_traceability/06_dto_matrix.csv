@@ -1,0 +1,7 @@
+DTO,DIRECTION,VARIABLE,DATASET,PAPER,DECISION
+KolbAssessmentRequest,INPUT,answers,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics,FREEZE
+KolbAssessmentResponse,OUTPUT,learning_style,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics,FREEZE
+StudentProfileResponse,OUTPUT,student_profile,CORE_EDUCATIONAL_DATASET,Paper1 Architecture ILP,FREEZE
+FelderSilvermanAssessmentResponse,OUTPUT,learning_preferences,DATASET_LEARNING_PREFERENCES,Paper3 Educational ML,FREEZE
+KuderAssessmentResponse,OUTPUT,vocational_interest,DATASET_VOCATIONAL_PROFILE,Paper3 Educational ML,FREEZE
+RecommendationResponse,OUTPUT,recommendations,DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine,AUDIT
