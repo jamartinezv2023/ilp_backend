@@ -1,0 +1,693 @@
+﻿
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\adaptive\AdaptiveLearningPlanController.java =====
+
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\adaptive\AdaptiveLearningPlanController.java:16:@RequestMapping("/api/v
+1/adaptive")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\adaptive\AdaptiveLearningPlanController.java:21:    
+@GetMapping("/students/{studentId}")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\adaptive\AdaptiveLearningPlanController.java:30:    
+@GetMapping("/students/{studentId}/history")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\FelderSilvermanAssessmentController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\FelderSilvermanAssessmentController.java:20:@RequestMapping(
+"/api/v1/assessments/felder-silverman")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\FelderSilvermanAssessmentController.java:25:    @PostMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\FelderSilvermanAssessmentController.java:32:    
+@GetMapping("/students/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentController.java:21:@RequestMapping("/api/v1/as
+sessments/kolb")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentController.java:26:    @GetMapping("/ping")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentController.java:31:    @PostMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentController.java:38:    
+@GetMapping("/students/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KuderAssessmentController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KuderAssessmentController.java:20:@RequestMapping("/api/v1/a
+ssessments/kuder")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KuderAssessmentController.java:25:    @PostMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KuderAssessmentController.java:32:    
+@GetMapping("/students/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentdefinition\AssessmentDefinitionController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentdefinition\AssessmentDefinitionController.java:16:@RequestMap
+ping("/api/v1/assessment-definitions")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentdefinition\AssessmentDefinitionController.java:21:    
+@GetMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentdefinition\AssessmentDefinitionController.java:26:    
+@GetMapping("/{code}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmenthistory\AssessmentHistoryController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmenthistory\AssessmentHistoryController.java:17:@RequestMapping("
+/api/v1/students/{studentId}")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmenthistory\AssessmentHistoryController.java:22:    
+@GetMapping("/assessment-history")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmenthistory\AssessmentHistoryController.java:30:    
+@GetMapping("/assessment-history/{assessmentCode}")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmenthistory\AssessmentHistoryController.java:44:    
+@GetMapping("/timeline")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentresponse\AssessmentResponseController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentresponse\AssessmentResponseController.java:20:@RequestMapping
+("/api/v1/assessment-responses")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentresponse\AssessmentResponseController.java:25:    
+@PostMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentresponse\AssessmentResponseController.java:32:    
+@GetMapping("/{id}")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessmentresponse\AssessmentResponseController.java:39:    
+@GetMapping("/students/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\dataset\EducationalDatasetController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\dataset\EducationalDatasetController.java:15:@RequestMapping("/api/v1/d
+atasets")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\dataset\EducationalDatasetController.java:20:    
+@GetMapping("/educational-ml/training-snapshot")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\education\EducationalSupportController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\education\EducationalSupportController.java:12:@RequestMapping("/api/v1
+/education")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\education\EducationalSupportController.java:18:    
+@GetMapping("/institutional-overview")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\education\EducationalSupportController.java:23:    
+@GetMapping("/teacher-workspace")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\education\EducationalSupportController.java:28:    
+@GetMapping("/student-support")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\education\EducationalSupportController.java:33:    
+@GetMapping("/inclusion-piar")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\education\EducationalSupportController.java:38:    
+@GetMapping("/family-engagement")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\featurestore\FeatureStoreController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\featurestore\FeatureStoreController.java:17:@RequestMapping("/api/v1/fe
+ature-store")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\featurestore\FeatureStoreController.java:22:    
+@PostMapping("/students/{studentId}/rebuild")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\featurestore\FeatureStoreController.java:31:    
+@GetMapping("/students/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\instrument\InstrumentQuestionController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\instrument\InstrumentQuestionController.java:15:@RequestMapping("/api/v
+1/instruments")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\instrument\InstrumentQuestionController.java:20:    
+@GetMapping("/kolb/questions")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\instrument\InstrumentQuestionController.java:25:    
+@GetMapping("/felder-silverman/questions")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\instrument\InstrumentQuestionController.java:33:    
+@GetMapping("/kuder/questions")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\intervention\EducationalInterventionController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\intervention\EducationalInterventionController.java:22:@RequestMapping(
+"/api/v1/interventions")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\intervention\EducationalInterventionController.java:27:    @PostMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\intervention\EducationalInterventionController.java:34:    
+@GetMapping("/students/{studentId}")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\intervention\EducationalInterventionController.java:40:    
+@PatchMapping("/{interventionId}/status")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\MlExperimentController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\MlExperimentController.java:16:@RequestMapping("/api/v1/ml/exp
+eriments")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\MlExperimentController.java:21:    @GetMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\MlExperimentController.java:30:    
+@GetMapping("/algorithm/{algorithm}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbController.java:13:@RequestMapping("/api/v1/ml
+/kolb/random-forest")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbController.java:18:    
+@PostMapping("/evaluate")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineController.java:13:@RequestMapping("/api/v1/ml
+/kolb")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineController.java:18:    
+@PostMapping("/baseline/evaluate")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\recommendation\EducationalRecommendationController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\recommendation\EducationalRecommendationController.java:14:@RequestMapp
+ing("/api/v1/recommendations")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\recommendation\EducationalRecommendationController.java:19:    
+@GetMapping("/students/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\AccountabilityResponsibilityController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\AccountabilityResponsibilityController.java:12:@RequestMapping
+("/analytics/accountability")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\AccountabilityResponsibilityController.java:18:    
+@GetMapping("/responsibility-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiLifecycleGovernanceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiLifecycleGovernanceController.java:12:@RequestMapping("/ana
+lytics/openapi")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiLifecycleGovernanceController.java:18:    
+@GetMapping("/lifecycle-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiSecurityGovernanceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiSecurityGovernanceController.java:12:@RequestMapping("/anal
+ytics/openapi")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiSecurityGovernanceController.java:18:    
+@GetMapping("/security-governance-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiVersioningReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiVersioningReadinessController.java:12:@RequestMapping("/ana
+lytics/quality")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ApiVersioningReadinessController.java:18:    
+@GetMapping("/api-versioning-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureDecisionRecordsController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureDecisionRecordsController.java:12:@RequestMapping(
+"/analytics/architecture")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureDecisionRecordsController.java:18:    
+@GetMapping("/adr-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureDocumentationController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureDocumentationController.java:12:@RequestMapping("/
+analytics/architecture")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureDocumentationController.java:18:    
+@GetMapping("/documentation-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureEvaluationMatrixController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureEvaluationMatrixController.java:12:@RequestMapping
+("/analytics/architecture")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureEvaluationMatrixController.java:18:    
+@GetMapping("/evaluation-matrix-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureRemediationRoadmapController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureRemediationRoadmapController.java:12:@RequestMappi
+ng("/analytics/architecture")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ArchitectureRemediationRoadmapController.java:18:    
+@GetMapping("/remediation-roadmap-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BackendQualityComplianceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BackendQualityComplianceController.java:12:@RequestMapping("/a
+nalytics/quality")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BackendQualityComplianceController.java:18:    
+@GetMapping("/backend-compliance-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BiasFairnessResearchController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BiasFairnessResearchController.java:12:@RequestMapping("/analy
+tics/fairness")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BiasFairnessResearchController.java:18:    
+@GetMapping("/bias-assessment-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BoundedContextModularDesignController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BoundedContextModularDesignController.java:12:@RequestMapping(
+"/analytics/architecture")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\BoundedContextModularDesignController.java:18:    
+@GetMapping("/bounded-context-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\CiCdPipelineReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\CiCdPipelineReadinessController.java:12:@RequestMapping("/anal
+ytics/quality")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\CiCdPipelineReadinessController.java:18:    
+@GetMapping("/cicd-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DependencyVulnerabilityScanController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DependencyVulnerabilityScanController.java:12:@RequestMapping(
+"/analytics/security")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DependencyVulnerabilityScanController.java:18:    
+@GetMapping("/dependency-scan-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DeploymentHealthCheckController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DeploymentHealthCheckController.java:12:@RequestMapping("/anal
+ytics/deployment")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DeploymentHealthCheckController.java:18:    
+@GetMapping("/health-check-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DeploymentReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DeploymentReadinessController.java:12:@RequestMapping("/analyt
+ics/quality")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DeploymentReadinessController.java:18:    
+@GetMapping("/deployment-readiness-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DevSecOpsQualityController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DevSecOpsQualityController.java:12:@RequestMapping("/analytics
+/quality")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DevSecOpsQualityController.java:18:    
+@GetMapping("/devsecops-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DockerComposeDeploymentController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DockerComposeDeploymentController.java:12:@RequestMapping("/an
+alytics/deployment")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DockerComposeDeploymentController.java:18:    
+@GetMapping("/docker-compose-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DockerfileHardeningController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DockerfileHardeningController.java:12:@RequestMapping("/analyt
+ics/deployment")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DockerfileHardeningController.java:18:    
+@GetMapping("/dockerfile-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralContributionController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralContributionController.java:12:@RequestMapping("/analy
+tics/doctoral")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralContributionController.java:18:    
+@GetMapping("/contribution-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralEvidenceTraceabilityController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralEvidenceTraceabilityController.java:12:@RequestMapping
+("/analytics/evidence")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralEvidenceTraceabilityController.java:18:    
+@GetMapping("/traceability-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralReviewPackageController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralReviewPackageController.java:12:@RequestMapping("/anal
+ytics/doctoral")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralReviewPackageController.java:18:    
+@GetMapping("/review-package-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralThesisReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralThesisReadinessController.java:12:@RequestMapping("/an
+alytics/doctoral")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\DoctoralThesisReadinessController.java:18:    
+@GetMapping("/thesis-readiness-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalAdoptionReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalAdoptionReadinessController.java:12:@RequestMapping
+("/analytics/adoption")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalAdoptionReadinessController.java:18:    
+@GetMapping("/readiness-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalComplianceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalComplianceController.java:12:@RequestMapping("/anal
+ytics/compliance")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalComplianceController.java:18:    
+@GetMapping("/educational-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalDataProtectionController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalDataProtectionController.java:12:@RequestMapping("/
+analytics/data-protection")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalDataProtectionController.java:18:    
+@GetMapping("/privacy-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalEvaluationMetricsController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalEvaluationMetricsController.java:12:@RequestMapping
+("/analytics/evaluation")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalEvaluationMetricsController.java:18:    
+@GetMapping("/metrics-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalImpactController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalImpactController.java:12:@RequestMapping("/analytic
+s/impact")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalImpactController.java:18:    
+@GetMapping("/educational-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalResilienceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalResilienceController.java:12:@RequestMapping("/anal
+ytics/resilience")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalResilienceController.java:18:    
+@GetMapping("/operational-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalRiskManagementController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalRiskManagementController.java:12:@RequestMapping("/
+analytics/risk-management")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalRiskManagementController.java:18:    
+@GetMapping("/educational-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalSustainabilityController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalSustainabilityController.java:12:@RequestMapping("/
+analytics/sustainability")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalSustainabilityController.java:18:    
+@GetMapping("/educational-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalTransparencyController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalTransparencyController.java:12:@RequestMapping("/an
+alytics/transparency")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EducationalTransparencyController.java:18:    
+@GetMapping("/disclosure-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EnterpriseArchitectureGovernanceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EnterpriseArchitectureGovernanceController.java:12:@RequestMap
+ping("/analytics/architecture")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EnterpriseArchitectureGovernanceController.java:18:    
+@GetMapping("/governance-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EthicsReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EthicsReadinessController.java:12:@RequestMapping("/analytics/
+research")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\EthicsReadinessController.java:18:    
+@GetMapping("/ethics-readiness-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExperimentalResearchController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExperimentalResearchController.java:12:@RequestMapping("/analy
+tics/research")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExperimentalResearchController.java:18:    
+@GetMapping("/experimental-design-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExpertValidationController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExpertValidationController.java:12:@RequestMapping("/analytics
+/research")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExpertValidationController.java:18:    
+@GetMapping("/expert-validation-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExplainabilityResearchController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExplainabilityResearchController.java:12:@RequestMapping("/ana
+lytics/xai")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ExplainabilityResearchController.java:18:    
+@GetMapping("/explainability-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\GovernanceResearchController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\GovernanceResearchController.java:12:@RequestMapping("/analyti
+cs/governance")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\GovernanceResearchController.java:18:    
+@GetMapping("/policy-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\HumanCenteredAssistanceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\HumanCenteredAssistanceController.java:12:@RequestMapping("/an
+alytics/human-centered")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\HumanCenteredAssistanceController.java:18:    
+@GetMapping("/assistance-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\KubernetesReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\KubernetesReadinessController.java:12:@RequestMapping("/analyt
+ics/deployment")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\KubernetesReadinessController.java:18:    
+@GetMapping("/kubernetes-readiness-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiArtifactExportController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiArtifactExportController.java:12:@RequestMapping("/anal
+ytics/openapi")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiArtifactExportController.java:18:    
+@GetMapping("/artifact-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiContractComplianceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiContractComplianceController.java:12:@RequestMapping("/
+analytics/quality")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiContractComplianceController.java:18:    
+@GetMapping("/openapi-contract-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiGovernanceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiGovernanceController.java:12:@RequestMapping("/analytic
+s/openapi")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiGovernanceController.java:18:    
+@GetMapping("/governance-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiVersioningController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiVersioningController.java:12:@RequestMapping("/analytic
+s/openapi")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OpenApiVersioningController.java:18:    
+@GetMapping("/versioning-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OperationalObservabilityController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OperationalObservabilityController.java:12:@RequestMapping("/a
+nalytics/observability")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\OperationalObservabilityController.java:18:    
+@GetMapping("/operational-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\PilotValidationReadinessController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\PilotValidationReadinessController.java:12:@RequestMapping("/a
+nalytics/pilot")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\PilotValidationReadinessController.java:18:    
+@GetMapping("/validation-readiness-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\RepositoryHygieneController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\RepositoryHygieneController.java:12:@RequestMapping("/analytic
+s/security")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\RepositoryHygieneController.java:18:    
+@GetMapping("/repository-hygiene-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ResearchInstrumentsValidationController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ResearchInstrumentsValidationController.java:12:@RequestMappin
+g("/analytics/research")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ResearchInstrumentsValidationController.java:18:    
+@GetMapping("/instruments-validation-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\SecretsGovernanceController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\SecretsGovernanceController.java:12:@RequestMapping("/analytic
+s/security")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\SecretsGovernanceController.java:18:    
+@GetMapping("/secrets-governance-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\SecureRuntimeConfigurationController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\SecureRuntimeConfigurationController.java:12:@RequestMapping("
+/analytics/security")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\SecureRuntimeConfigurationController.java:18:    
+@GetMapping("/runtime-config-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\TrustworthinessResearchController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\TrustworthinessResearchController.java:12:@RequestMapping("/an
+alytics/trustworthiness")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\TrustworthinessResearchController.java:18:    
+@GetMapping("/assessment-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ValidationReportPreviewController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ValidationReportPreviewController.java:12:@RequestMapping("/an
+alytics/validation")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ValidationReportPreviewController.java:18:    
+@GetMapping("/report-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ValidationResearchController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ValidationResearchController.java:12:@RequestMapping("/analyti
+cs/research")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\research\ValidationResearchController.java:18:    
+@GetMapping("/validation-preview")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\researchanalytics\ResearchAnalyticsController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\researchanalytics\ResearchAnalyticsController.java:15:@RequestMapping("
+/api/v1/analytics/research")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\researchanalytics\ResearchAnalyticsController.java:20:    
+@GetMapping("/kolb/distribution")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\researchanalytics\ResearchAnalyticsController.java:27:    
+@GetMapping("/kolb/statistics")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\researchanalytics\ResearchAnalyticsController.java:34:    
+@GetMapping("/summary")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\student\StudentProfileController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\student\StudentProfileController.java:21:@RequestMapping("/api/v1/stude
+nts")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\student\StudentProfileController.java:27:    @GetMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\student\StudentProfileController.java:32:    @GetMapping("/{id}")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\student\StudentProfileController.java:41:    @PostMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\student\StudentProfileController.java:51:    @PutMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\v1\StudentCharacterizationController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\v1\StudentCharacterizationController.java:13:@RequestMapping("/api/v1/c
+haracterizations")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\v1\StudentCharacterizationController.java:28:    
+@GetMapping("/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\AdaptationQueryController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\AdaptationQueryController.java:13:@RequestMapping("/api/v1/adaptation")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\AdaptationQueryController.java:19:    
+@GetMapping("/history/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\AdaptationRuleController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\AdaptationRuleController.java:13:@RequestMapping("/api/v1/adaptation-ru
+les")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\AdaptationRuleController.java:22:    @GetMapping
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\AdaptationRuleController.java:27:    @PostMapping
+
+===== C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\RecommendationController.java =====
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\RecommendationController.java:12:@RequestMapping("/api/v1/recommendatio
+ns")
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\RecommendationController.java:15:    
+@GetMapping("/student/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\auth\controller\AuthController.java =====
+auth-service\src\main\java\com\inclusive\authservice\auth\controller\AuthController.java:17:@RequestMapping("/auth")
+auth-service\src\main\java\com\inclusive\authservice\auth\controller\AuthController.java:23:    @PostMapping("/login")
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\auth\controller\MfaController.java =====
+auth-service\src\main\java\com\inclusive\authservice\auth\controller\MfaController.java:25:    @PostMapping("/auth/mfa/setup")
+auth-service\src\main\java\com\inclusive\authservice\auth\controller\MfaController.java:49:    @PostMapping("/auth/mfa/verify")
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\controller\authorization\PermissionController.java =====
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\PermissionController.java:19:@RequestMapping("/api/permissions")
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\PermissionController.java:25:    @PostMapping
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\PermissionController.java:30:    @GetMapping
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\PermissionController.java:35:    @GetMapping("/{code}")
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\PermissionController.java:40:    @DeleteMapping("/{permissionId}")
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RoleController.java =====
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RoleController.java:20:@RequestMapping("/api/roles")
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RoleController.java:27:    @PostMapping
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RoleController.java:32:    @GetMapping
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RoleController.java:37:    @GetMapping("/{roleId}")
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RoleController.java:42:    @GetMapping("/{roleId}/permissions")
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RoleController.java:49:    @DeleteMapping("/{roleId}")
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RolePermissionController.java =====
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RolePermissionController.java:18:@RequestMapping("/api/role-permissions")
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\RolePermissionController.java:26:    @PostMapping
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\controller\authorization\UserRoleController.java =====
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\UserRoleController.java:17:@RequestMapping("/api/user-roles")
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\UserRoleController.java:23:    @PostMapping
+auth-service\src\main\java\com\inclusive\authservice\controller\authorization\UserRoleController.java:33:    @DeleteMapping("/{userRoleId}")
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\controller\TestController.java =====
+auth-service\src\main\java\com\inclusive\authservice\controller\TestController.java:9:    @GetMapping("/api/user/test")
+auth-service\src\main\java\com\inclusive\authservice\controller\TestController.java:14:    @GetMapping("/api/admin/test")
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\controller\UserAccountController.java =====
+
+===== C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\security\jwt\JwksController.java =====
+auth-service\src\main\java\com\inclusive\authservice\security\jwt\JwksController.java:18:    @GetMapping("/.well-known/jwks.json")
+
+===== C:\TEAC2026\ilp_backend\commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonResourceController.java =====
+commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonResourceController.java:16:@RequestMapping("/api/common/resources")
+commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonResourceController.java:25:    @GetMapping
+commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonResourceController.java:30:    @GetMapping("/{id}")
+commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonResourceController.java:35:    @PostMapping
+commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonResourceController.java:40:    @PutMapping("/{id}")
+commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonResourceController.java:48:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonsServiceController.java =====
+commons-service\src\main\java\com\inclusive\learning\commons\controller\CommonsServiceController.java:9:    @GetMapping("/commons/status")
+
+===== C:\TEAC2026\ilp_backend\commons-service\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java =====
+commons-service\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:11:@RequestMapping("/api/resources")
+commons-service\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:20:    @GetMapping
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:57:@RequestMapping("/analytics")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:84:    
+@GetMapping("/student/{studentId}/learning-profile")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:90:    
+@GetMapping("/student/{studentId}/priority-plan")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:96:    
+@GetMapping("/student/{studentId}/evidence-trace")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:102:    
+@GetMapping("/student/{studentId}/action-plan")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:108:    
+@GetMapping("/student/{studentId}/learning-evolution")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:114:    
+@GetMapping("/student/{studentId}/risk-profile")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:120:    
+@GetMapping("/student/{studentId}/early-support-alert")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:126:    
+@GetMapping("/student/{studentId}/piar-plan")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:132:    
+@GetMapping("/student/{studentId}/support-profile")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:138:    
+@GetMapping("/student/{studentId}/support-evolution")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:144:    
+@GetMapping("/student/{studentId}/psychopedagogical-profile")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:150:    
+@GetMapping("/classroom/inclusion-profile")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:156:    
+@GetMapping("/institution/policy-recommendation")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:162:    
+@GetMapping("/institution/governance-report")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:168:    
+@GetMapping("/ml/dataset-preview")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:174:    
+@GetMapping("/ml/feature-store-preview")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:180:    
+@GetMapping("/ml/temporal-sequence-preview")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:186:    
+@GetMapping("/ml/support-forecast-preview")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:192:    
+@GetMapping("/ml/adaptive-recommendation-preview")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:198:    
+@GetMapping("/ml/intervention-orchestration-preview")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:204:    
+@GetMapping("/ml/policy-learning-preview")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\analytics\controller\LearningAnalyticsController.java:210:    
+@GetMapping("/ml/reinforcement-signal-preview")
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\diagnosis\controller\InclusiveDiagnosisController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\diagnosis\controller\InclusiveDiagnosisController.java:21:@RequestMapping("/diagnoses")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\diagnosis\controller\InclusiveDiagnosisController.java:27:    @PostMapping
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\diagnosis\controller\InclusiveDiagnosisController.java:71:    
+@GetMapping("/student/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\dua\controller\DuaRecommendationController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\dua\controller\DuaRecommendationController.java:21:@RequestMapping("/dua-recommendation
+s")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\dua\controller\DuaRecommendationController.java:27:    @PostMapping
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\dua\controller\DuaRecommendationController.java:68:    
+@GetMapping("/student/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\indicator\controller\LearningIndicatorController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\indicator\controller\LearningIndicatorController.java:21:@RequestMapping("/indicators")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\indicator\controller\LearningIndicatorController.java:27:    @PostMapping
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\indicator\controller\LearningIndicatorController.java:62:    
+@GetMapping("/student/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\intervention\controller\InterventionExecutionController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\intervention\controller\InterventionExecutionController.java:21:@RequestMapping("/inter
+ventions")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\intervention\controller\InterventionExecutionController.java:27:    @PostMapping
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\intervention\controller\InterventionExecutionController.java:68:    
+@GetMapping("/student/{studentId}")
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\questionnaire\controller\DiagnosticQuestionnaireController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\questionnaire\controller\DiagnosticQuestionnaireController.java:17:@RequestMapping("/qu
+estionnaires")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\questionnaire\controller\DiagnosticQuestionnaireController.java:23:    @PostMapping
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\response\controller\DiagnosticResponseController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\response\controller\DiagnosticResponseController.java:18:@RequestMapping("/responses")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\response\controller\DiagnosticResponseController.java:27:    @PostMapping
+
+===== C:\TEAC2026\ilp_backend\educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\student\controller\StudentProfileController.java =====
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\student\controller\StudentProfileController.java:20:@RequestMapping("/students")
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\student\controller\StudentProfileController.java:26:    @PostMapping
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\student\controller\StudentProfileController.java:56:    @GetMapping
+educational-diagnosis-service\src\main\java\com\inclusive\diagnosis\student\controller\StudentProfileController.java:63:    @GetMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\monitoring-service\src\main\java\com\inclusive\monitoringservice\controller\MonitoringEventController.java =====
+monitoring-service\src\main\java\com\inclusive\monitoringservice\controller\MonitoringEventController.java:18:@RequestMapping("/api/monitoring/events")
+monitoring-service\src\main\java\com\inclusive\monitoringservice\controller\MonitoringEventController.java:27:    @GetMapping
+monitoring-service\src\main\java\com\inclusive\monitoringservice\controller\MonitoringEventController.java:32:    @GetMapping("/{id}")
+monitoring-service\src\main\java\com\inclusive\monitoringservice\controller\MonitoringEventController.java:37:    @PostMapping
+monitoring-service\src\main\java\com\inclusive\monitoringservice\controller\MonitoringEventController.java:43:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\report-service\src\main\java\com\inclusive\reportservice\controller\ReportJobController.java =====
+report-service\src\main\java\com\inclusive\reportservice\controller\ReportJobController.java:19:@RequestMapping("/api/reports/jobs")
+report-service\src\main\java\com\inclusive\reportservice\controller\ReportJobController.java:28:    @GetMapping
+report-service\src\main\java\com\inclusive\reportservice\controller\ReportJobController.java:33:    @GetMapping("/{id}")
+report-service\src\main\java\com\inclusive\reportservice\controller\ReportJobController.java:38:    @PostMapping
+report-service\src\main\java\com\inclusive\reportservice\controller\ReportJobController.java:44:    @PutMapping("/{id}")
+report-service\src\main\java\com\inclusive\reportservice\controller\ReportJobController.java:50:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\student-service\src\main\java\com\inclusive\studentservice\controller\StudentController.java =====
+student-service\src\main\java\com\inclusive\studentservice\controller\StudentController.java:19:@RequestMapping("/api/v1/students")
+student-service\src\main\java\com\inclusive\studentservice\controller\StudentController.java:28:    @GetMapping
+student-service\src\main\java\com\inclusive\studentservice\controller\StudentController.java:33:    @PostMapping
+student-service\src\main\java\com\inclusive\studentservice\controller\StudentController.java:38:    @PutMapping("/{id}")
+student-service\src\main\java\com\inclusive\studentservice\controller\StudentController.java:51:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\tenant-service\src\main\java\com\inclusive\tenantservice\controller\TenantController.java =====
+tenant-service\src\main\java\com\inclusive\tenantservice\controller\TenantController.java:19:@RequestMapping("/api/tenants")
+tenant-service\src\main\java\com\inclusive\tenantservice\controller\TenantController.java:28:    @GetMapping
+tenant-service\src\main\java\com\inclusive\tenantservice\controller\TenantController.java:33:    @GetMapping("/{id}")
+tenant-service\src\main\java\com\inclusive\tenantservice\controller\TenantController.java:38:    @PostMapping
+tenant-service\src\main\java\com\inclusive\tenantservice\controller\TenantController.java:44:    @PutMapping("/{id}")
+tenant-service\src\main\java\com\inclusive\tenantservice\controller\TenantController.java:50:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\_legacy_backup_2026_01__IGNORED\controller\TenantController.java =====
+_legacy_backup_2026_01__IGNORED\controller\TenantController.java:10:@RequestMapping("/api/tenants")
+_legacy_backup_2026_01__IGNORED\controller\TenantController.java:20:    @GetMapping
+_legacy_backup_2026_01__IGNORED\controller\TenantController.java:25:    @GetMapping("/{id}")
+_legacy_backup_2026_01__IGNORED\controller\TenantController.java:31:    @PostMapping
+_legacy_backup_2026_01__IGNORED\controller\TenantController.java:36:    @PutMapping("/{id}")
+_legacy_backup_2026_01__IGNORED\controller\TenantController.java:41:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\_legacy_backup_2026_01__IGNORED\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java =====
+_legacy_backup_2026_01__IGNORED\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:9:@RequestMapping("/api/resource")
+_legacy_backup_2026_01__IGNORED\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:15:    @GetMapping
+_legacy_backup_2026_01__IGNORED\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:18:    @GetMapping("/{id}")
+_legacy_backup_2026_01__IGNORED\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:21:    @PostMapping
+_legacy_backup_2026_01__IGNORED\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:24:    @PutMapping("/{id}")
+_legacy_backup_2026_01__IGNORED\src\main\java\com\inclusive\learning\commons\entity\controller\ResourceController.java:30:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\_legacy_backup_2026_01__IGNORED\src\main\java\controller\inclusive-learning-platform-backendController.java =====
+_legacy_backup_2026_01__IGNORED\src\main\java\controller\inclusive-learning-platform-backendController.java:7:@RequestMapping("/api/inclusive-learning-plat
+form-backend")
+_legacy_backup_2026_01__IGNORED\src\main\java\controller\inclusive-learning-platform-backendController.java:10:    @GetMapping
+_legacy_backup_2026_01__IGNORED\src\main\java\controller\inclusive-learning-platform-backendController.java:15:    @GetMapping("/{id}")
+_legacy_backup_2026_01__IGNORED\src\main\java\controller\inclusive-learning-platform-backendController.java:20:    @PostMapping
+_legacy_backup_2026_01__IGNORED\src\main\java\controller\inclusive-learning-platform-backendController.java:25:    @PutMapping("/{id}")
+_legacy_backup_2026_01__IGNORED\src\main\java\controller\inclusive-learning-platform-backendController.java:30:    @DeleteMapping("/{id}")
+
+===== C:\TEAC2026\ilp_backend\ResourceController.java =====
+ResourceController.java:12:@RequestMapping("/resources")
+ResourceController.java:18:    @GetMapping
+ResourceController.java:23:    @GetMapping("/{id}")
+ResourceController.java:30:    @PostMapping
+ResourceController.java:35:    @PutMapping("/{id}")
+ResourceController.java:40:    @DeleteMapping("/{id}")
+
+
