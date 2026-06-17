@@ -1,0 +1,7 @@
+PHASE,OBJECTIVE,ENTRY_CRITERIA,EXIT_CRITERIA
+MVP21A_FREEZE,Protect stable platform,A1-A13 merged,No new functionality added
+EXPERT_REVIEW,Validate scientific architecture,Audit package complete,Expert feedback collected
+ETHICS_REVIEW,Approve data collection,Consent and anonymization plan ready,Ethics approval granted
+PILOT_PREPARATION,Prepare school fieldwork,Ethics approval and training,Teachers and cohort ready
+PILOT_EXECUTION,Capture initial dataset,Platform stable and consent collected,Dataset v1 generated
+MVP22_PLANNING,Plan next functional evolution,Pilot evidence available,Prioritized backlog approved
