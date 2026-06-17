@@ -1,0 +1,8 @@
+MICROSERVICE,PACKAGE,CONTROLLER,ENDPOINT,METHOD,STATUS,DECISION,DATASET,PAPER
+adaptive-education-service,api.student,StudentProfileController,/api/v1/students,GET,Stable,FREEZE,CORE_EDUCATIONAL_DATASET,Paper1 Architecture ILP
+adaptive-education-service,api.assessment,KolbAssessmentController,/api/v1/assessments/kolb,POST,Stable,FREEZE,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+adaptive-education-service,api.assessment,KolbAssessmentController,/api/v1/assessments/kolb/students/{studentId},GET,Stable,FREEZE,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+adaptive-education-service,api.assessment,FelderSilvermanAssessmentController,/api/v1/assessments/felder-silverman,POST,Stable,FREEZE,DATASET_LEARNING_PREFERENCES,Paper3 Educational ML
+adaptive-education-service,api.assessment,KuderAssessmentController,/api/v1/assessments/kuder,POST,Stable,FREEZE,DATASET_VOCATIONAL_PROFILE,Paper3 Educational ML
+adaptive-education-service,api.recommendation,EducationalRecommendationController,/api/v1/recommendations,GET,Audit,AUDIT,DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine
+adaptive-education-service,api.research,ResearchAnalyticsController,/api/v1/research/**,GET,Audit,AUDIT,DATASET_RESEARCH_EVIDENCE,Paper6 AI Governance

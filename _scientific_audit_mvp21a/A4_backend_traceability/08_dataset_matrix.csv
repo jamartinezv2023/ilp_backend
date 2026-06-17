@@ -1,0 +1,9 @@
+DATASET,PURPOSE,PAPER,STATUS,DECISION
+CORE_EDUCATIONAL_DATASET,Student educational profile baseline,Paper1 Architecture ILP,Stable,FREEZE
+DATASET_KOLB_LONGITUDINAL,Longitudinal Kolb psychometric records,Paper2 Digital Psychometrics,Stable,FREEZE
+DATASET_LEARNING_PREFERENCES,Felder-Silverman learning preferences,Paper3 Educational ML,Stable,FREEZE
+DATASET_VOCATIONAL_PROFILE,Kuder vocational profile,Paper3 Educational ML,Stable,FREEZE
+DATASET_FEATURE_STORE,Feature vectors for Explainable AI,Paper4 Explainable AI,Partial,AUDIT
+DATASET_RECOMMENDATIONS,Adaptive recommendation outputs,Paper5 Adaptive Engine,Partial,AUDIT
+DATASET_RESEARCH_EVIDENCE,Governance and research readiness evidence,Paper6 AI Governance,Partial,AUDIT
+DATASET_MULTIMODAL,Future multimodal learning signals,Paper7 Deep Learning,Planned,MVP22
