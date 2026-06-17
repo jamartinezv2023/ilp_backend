@@ -1,0 +1,10 @@
+ELEMENT,TYPE,REASON,DECISION
+KolbAssessmentController,Controller,Stable and tested,F??REEZE
+KolbAssessmentService,Service,High cohesion and low coupling,FREEZE
+FelderSilvermanAssessmentService,Service,Stable scoring logic,FREEZE
+KuderAssessmentService,Service,Stable vocational scoring,FREEZE
+FeatureStoreService,Service,Requires deeper XAI audit,AUDIT
+EducationalRecommendationService,Service,Requires recommendation quality validation,AUDIT
+ResearchAnalyticsController,Controller,Requires governance evidence validation,AUDIT
+EducationalInterventionEntity,Entity,Needs longitudinal intervention design,MVP22
+MultimodalSignals,Future dataset,Requires consent capture and multimodal architecture,MVP22
