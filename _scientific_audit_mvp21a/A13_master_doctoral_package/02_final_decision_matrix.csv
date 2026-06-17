@@ -1,0 +1,11 @@
+AREA,DECISION,RATIONALE
+MVP21A Core,FREEZE,Functional baseline already validated
+Student Data,FREEZE,Core educational dataset available
+Kolb Assessment,FREEZE,Digital ipsative instrument operational
+Felder Silverman,FREEZE,Learning preference dataset available
+Kuder,FREEZE,Vocational profile dataset available
+Feature Store,AUDIT,High value for ML and XAI but requires deeper validation
+Recommendation Engine,AUDIT,Needs human review and field validation
+Research Governance,AUDIT,Strong doctoral value but requires expert review
+Interventions,MVP22,Requires ethical protocol and field evidence
+Multimodal Dataset,MVP22,Requires separate consent and architecture
