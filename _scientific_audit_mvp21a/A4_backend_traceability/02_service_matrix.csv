@@ -1,0 +1,8 @@
+SERVICE,RESPONSIBILITY,SOLID_STATUS,COHESION,COUPLING,DECISION,DATASET,PAPER
+KolbAssessmentService,Submit and retrieve Kolb assessments,Good,HIGH,LOW,FREEZE,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+KolbAssessmentEngine,Calculate Kolb learning style,Good,HIGH,LOW,FREEZE,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+FelderSilvermanAssessmentService,Calculate processing preferences,Good,HIGH,LOW,FREEZE,DATASET_LEARNING_PREFERENCES,Paper3 Educational ML
+KuderAssessmentService,Calculate vocational profile,Good,HIGH,LOW,FREEZE,DATASET_VOCATIONAL_PROFILE,Paper3 Educational ML
+FeatureStoreService,Generate ML feature vectors,Partial,MEDIUM,MEDIUM,AUDIT,DATASET_FEATURE_STORE,Paper4 Explainable AI
+EducationalRecommendationService,Generate adaptive recommendations,Partial,MEDIUM,MEDIUM,AUDIT,DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine
+ResearchAnalyticsService,Expose research readiness signals,Partial,MEDIUM,MEDIUM,AUDIT,DATASET_RESEARCH_EVIDENCE,Paper6 AI Governance

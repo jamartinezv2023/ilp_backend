@@ -1,0 +1,7 @@
+XAI_METHOD,MODEL,DATASET,PURPOSE,PAPER,STATUS
+SHAP,RandomForest,DATASET_KOLB_LONGITUDINAL,Explain Kolb learning style prediction,Paper2 Digital Psychometrics,READY
+SHAP,RandomForest,CORE_EDUCATIONAL_DATASET,Explain support need prediction,Paper4 Explainable AI,READY
+SHAP,XGBoost,DATASET_RECOMMENDATIONS,Explain adaptive recommendation generation,Paper5 Adaptive Engine,AUDIT
+LIME,XGBoost,DATASET_RECOMMENDATIONS,Local recommendation explanation,Paper5 Adaptive Engine,AUDIT
+SHAP,LightGBM,DATASET_FEATURE_STORE,Global feature importance,Paper4 Explainable AI,AUDIT
+GradCAM,CNN_LSTM,DATASET_MULTIMODAL,Explain multimodal deep learning signals,Paper7 Deep Learning,MVP22

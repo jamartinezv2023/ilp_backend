@@ -1,0 +1,14 @@
+VARIABLE,TYPE,TEMPORAL,LONGITUDINAL,DATASET,PAPER
+age,Numeric,YES,YES,CORE_EDUCATIONAL_DATASET,Paper1 Architecture ILP
+support_level,Categorical,YES,YES,CORE_EDUCATIONAL_DATASET,Paper1 Architecture ILP
+kolb_ce,Numeric,YES,YES,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+kolb_ro,Numeric,YES,YES,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+kolb_ac,Numeric,YES,YES,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+kolb_ae,Numeric,YES,YES,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+kolb_style,Categorical,YES,YES,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics
+felder_preferences,Numeric,YES,YES,DATASET_LEARNING_PREFERENCES,Paper3 Educational ML
+kuder_interest,Categorical,YES,YES,DATASET_VOCATIONAL_PROFILE,Paper3 Educational ML
+feature_vector,Vector,YES,YES,DATASET_FEATURE_STORE,Paper4 Explainable AI
+recommendation_type,Categorical,YES,YES,DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine
+research_evidence,Categorical,YES,YES,DATASET_RESEARCH_EVIDENCE,Paper6 AI Governance
+multimodal_signal,Multimodal,YES,YES,DATASET_MULTIMODAL,Paper7 Deep Learning MVP22

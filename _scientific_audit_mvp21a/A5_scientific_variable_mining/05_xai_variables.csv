@@ -1,0 +1,9 @@
+VARIABLE,IMPORTANCE_EXPLAINABLE
+kolb_ce,HIGH
+kolb_ro,HIGH
+kolb_ac,HIGH
+kolb_ae,HIGH
+support_level,HIGH
+age,MEDIUM
+learning_style,HIGH
+kuder_interest,MEDIUM
