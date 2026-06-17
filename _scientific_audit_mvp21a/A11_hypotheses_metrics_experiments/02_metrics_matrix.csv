@@ -1,0 +1,14 @@
+PAPER,METRIC,TYPE,DATASET,DECISION
+Paper1,architecture_traceability_score,Quality,CORE_EDUCATIONAL_DATASET,AUDIT
+Paper1,ci_success_rate,DevOps,BACKEND_PLATFORM,FREEZE
+Paper2,kolb_style_stability,Longitudinal,DATASET_KOLB_LONGITUDINAL,AUDIT
+Paper2,internal_consistency_indicator,Psychometric,DATASET_KOLB_LONGITUDINAL,AUDIT
+Paper3,f1_score,ML,DATASET_LEARNING_PREFERENCES,AUDIT
+Paper3,balanced_accuracy,ML,DATASET_VOCATIONAL_PROFILE,AUDIT
+Paper4,auc,ML,DATASET_FEATURE_STORE,AUDIT
+Paper4,shap_global_importance,XAI,DATASET_FEATURE_STORE,AUDIT
+Paper5,recommendation_acceptance_rate,Adaptive,DATASET_RECOMMENDATIONS,AUDIT
+Paper5,teacher_validation_score,HumanReview,DATASET_RECOMMENDATIONS,AUDIT
+Paper6,consent_compliance_rate,Governance,DATASET_RESEARCH_EVIDENCE,AUDIT
+Paper6,fairness_gap,Fairness,DATASET_FEATURE_STORE,AUDIT
+Paper7,sequence_f1_score,DeepLearning,DATASET_MULTIMODAL,MVP22
