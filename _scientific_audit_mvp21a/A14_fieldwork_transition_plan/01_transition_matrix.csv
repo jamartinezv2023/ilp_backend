@@ -1,0 +1,9 @@
+TRANSITION_AREA,CURRENT_STATE,NEXT_ACTION,OWNER,DECISION
+MVP21A Core,Frozen functional baseline,Protect from new features,Technical Lead,FREEZE
+Scientific Audit,A1-A13 completed,Submit for expert review,Research Lead,READY
+Ethics Protocol,Drafted matrices,Prepare formal ethics submission,Research Lead,AUDIT
+Fieldwork Pilot,Not started,Design pilot cohort and schedule,Field Coordinator,MVP22
+Dataset Capture,Technically possible,Define anonymization and consent workflow,Data Steward,AUDIT
+Teacher Validation,Pending,Create teacher review rubric,Pedagogical Lead,MVP22
+ML Pipeline,Baseline identified,Run only after real dataset capture,ML Lead,MVP22
+Multimodal Data,Future candidate,Do not capture before separate approval,Ethics Committee,MVP22
