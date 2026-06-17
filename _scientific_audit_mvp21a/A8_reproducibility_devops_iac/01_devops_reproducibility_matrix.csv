@@ -1,0 +1,11 @@
+DIMENSION,ARTIFACT,STATUS,DECISION
+Build,Gradle wrapper,Active,FREEZE
+CI,GitHub Actions,Active,FREEZE
+Quality,Checkstyle PMD SpotBugs JaCoCo,Active,FREEZE
+Testing,JUnit Serenity Smoke tests,Active,FREEZE
+Gateway,Spring Cloud Gateway,Active,FREEZE
+Containerization,Docker Docker Compose,Partial,AUDIT
+IaC,Kubernetes Helm k3d,Partial,AUDIT
+Observability,Actuator health readiness liveness,Active,FREEZE
+Sonar,SonarCloud Quality Gate,Active,AUDIT
+Reproducibility,Experiment registry and dataset versioning,Partial,AUDIT

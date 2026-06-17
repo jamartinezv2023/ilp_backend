@@ -1,0 +1,10 @@
+QUALITY_GATE,TOOL,MINIMUM_CRITERION,STATUS,DECISION
+Compilation,Gradle,BUILD SUCCESSFUL,Active,FREEZE
+Unit Tests,JUnit,All tests pass,Active,FREEZE
+BDD Tests,Serenity,Reports generated,Active,FREEZE
+Coverage,JaCoCo,Coverage monitored,Active,AUDIT
+Static Analysis,Checkstyle,Zero style violations,Active,FREEZE
+Static Analysis,PMD,No blocking violations,Active,AUDIT
+Static Analysis,SpotBugs,No critical defects,Active,AUDIT
+SonarCloud,Quality Gate,Pass required,Active,AUDIT
+Security,Dependency scanning,Required for doctoral platform,Partial,AUDIT
