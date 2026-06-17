@@ -1,0 +1,7 @@
+RISK,IMPACT,MITIGATION,DECISION
+FeatureCreep,Breaks stable MVP21A,Freeze core and use feature branches,FREEZE
+UnapprovedDataCollection,Ethical and legal risk,No field data without consent,CRITICAL
+WeakDatasetQuality,Invalid research results,Define data dictionary and validation rules,AUDIT
+ModelBeforeData,Premature ML claims,Run ML only after real dataset capture,AUDIT
+TeacherOverload,Low field adoption,Minimal pilot workflow and training,MVP22
+MultimodalSensitivity,High privacy risk,Separate ethics protocol,MVP22
