@@ -1,0 +1,8 @@
+PAPER,FIELD_DATA_REQUIRED,MINIMUM_EVIDENCE,READINESS
+Paper1 Architecture ILP,System usage logs quality evidence architecture traceability,CI reports audit matrices screenshots,HIGH
+Paper2 Digital Psychometrics,Kolb responses scores history versions,Longitudinal Kolb records,HIGH
+Paper3 Educational ML,Felder Kuder student profile variables,Assessment and profile dataset,HIGH
+Paper4 Explainable AI,Feature store ML experiments explanations,Feature vectors experiment registry,MEDIUM
+Paper5 Adaptive Engine,Recommendations teacher feedback interventions,Recommendation logs and validation,MEDIUM
+Paper6 AI Governance,Consent audit traceability fairness explainability,Governance matrices and audit logs,MEDIUM
+Paper7 Deep Learning,Multimodal session data,Future multimodal protocol,LOW MVP22

@@ -1,0 +1,10 @@
+DATASET,UNIT_OF_ANALYSIS,FREQUENCY,MINIMUM_SAMPLE,MAIN_OUTPUT,PAPER,DECISION
+CORE_EDUCATIONAL_DATASET,Student,Initial and periodic,100+,Student baseline profile,Paper1 Architecture ILP,FREEZE
+DATASET_KOLB_LONGITUDINAL,Student assessment event,Each assessment,100+,Kolb style evolution,Paper2 Digital Psychometrics,FREEZE
+DATASET_LEARNING_PREFERENCES,Student assessment event,Each assessment,100+,Learning preference prediction,Paper3 Educational ML,FREEZE
+DATASET_VOCATIONAL_PROFILE,Student assessment event,Each assessment,100+,Vocational profile prediction,Paper3 Educational ML,FREEZE
+DATASET_FEATURE_STORE,Student snapshot,Monthly or term-based,100+,ML feature vectors,Paper4 Explainable AI,AUDIT
+DATASET_RECOMMENDATIONS,Recommendation event,Each recommendation,100+,Adaptive recommendation quality,Paper5 Adaptive Engine,AUDIT
+DATASET_INTERVENTIONS,Intervention event,Each intervention,100+,Intervention effectiveness,Paper5 Adaptive Engine,MVP22
+DATASET_RESEARCH_EVIDENCE,Audit event,Continuous,Project-level,Governance evidence,Paper6 AI Governance,AUDIT
+DATASET_MULTIMODAL,Multimodal learning event,Session-based,Future cohort,Deep learning signals,Paper7 Deep Learning,MVP22

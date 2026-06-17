@@ -1,0 +1,6 @@
+FIELD_PHASE,OBJECTIVE,DATA_CAPTURE,EXPECTED_EVIDENCE,DECISION
+Pilot1,Validate platform usability,Students assessments and teacher feedback,Screenshots logs surveys,AUDIT
+Pilot2,Validate instruments,Kolb Felder Kuder responses,Assessment consistency records,AUDIT
+Pilot3,Validate adaptive recommendations,Recommendations and teacher review,Recommendation usefulness evidence,AUDIT
+Pilot4,Validate feature store,Generated features and outcomes,ML-ready dataset snapshot,AUDIT
+Pilot5,Validate governance,Consent audit and traceability,Ethics and governance evidence,AUDIT

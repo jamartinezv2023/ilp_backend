@@ -1,0 +1,10 @@
+VARIABLE,REQUIRED_BEFORE_FIELDWORK,REASON,DECISION
+student_research_id,YES,Anonymized longitudinal tracking,AUDIT
+consent_status,YES,Ethical compliance,AUDIT
+assessment_timestamp,YES,Temporal modeling,FREEZE
+instrument_version,YES,Reproducible psychometrics,FREEZE
+teacher_review,YES,Human-in-the-loop validation,AUDIT
+recommendation_feedback,YES,Adaptive engine validation,AUDIT
+academic_period,YES,Longitudinal analysis,AUDIT
+intervention_outcome,NO,MVP22 causal analysis,MVP22
+multimodal_consent,NO,Future multimodal protocol,MVP22
