@@ -1,0 +1,8 @@
+PAPER,DATASET,VARIABLES
+Paper1 Architecture,CORE_EDUCATIONAL_DATASET,student profile
+Paper2 Psychometrics,DATASET_KOLB_LONGITUDINAL,CE RO AC AE
+Paper3 Educational ML,DATASET_LEARNING_PREFERENCES,Felder Kuder
+Paper4 Explainable AI,DATASET_FEATURE_STORE,feature vectors
+Paper5 Adaptive Engine,DATASET_RECOMMENDATIONS,recommendations
+Paper6 AI Governance,DATASET_RESEARCH_EVIDENCE,governance metrics
+Paper7 Deep Learning,DATASET_MULTIMODAL,multimodal variables

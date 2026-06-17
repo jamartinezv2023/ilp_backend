@@ -1,0 +1,5 @@
+VARIABLE,AI_GOVERNANCE
+consent,YES
+audit_timestamp,YES
+algorithm_version,YES
+experiment_id,YES
