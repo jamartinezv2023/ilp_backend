@@ -1,0 +1,9 @@
+PAPER,TITLE,DATASET,STATUS
+Paper1,Architecture of an Inclusive Learning Platform,CORE_EDUCATIONAL_DATASET,READY
+Paper2,Longitudinal Digital Psychometrics using Kolb Inventory,DATASET_KOLB_LONGITUDINAL,READY
+Paper3,Machine Learning for Educational Profiles and Vocational Interests,DATASET_LEARNING_PREFERENCES,READY
+Paper4,Explainable AI for Inclusive Education,DATASET_FEATURE_STORE,AUDIT
+Paper5,Adaptive Recommendation Engine for Inclusive Learning,DATASET_RECOMMENDATIONS,AUDIT
+Paper6,AI Governance and Traceability in Educational Systems,DATASET_RESEARCH_EVIDENCE,AUDIT
+Paper7,Multimodal Deep Learning for Inclusive Education,DATASET_MULTIMODAL,MVP22
+Paper8,Longitudinal Learning Analytics and Early Intervention,DATASET_INTERVENTIONS,MVP22

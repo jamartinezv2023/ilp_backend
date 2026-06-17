@@ -1,0 +1,9 @@
+DIMENSION,REQUIREMENT,DATASET,PAPER,STATUS,DECISION
+Consent,Informed consent for educational data collection,CORE_EDUCATIONAL_DATASET,Paper6 AI Governance,Required,AUDIT
+Privacy,Student identity protection,ALL_DATASETS,Paper6 AI Governance,Required,AUDIT
+Anonymization,Replace personal identifiers with research IDs,ALL_DATASETS,Paper6 AI Governance,Required,AUDIT
+Fairness,Detect bias by age grade support level,DATASET_FEATURE_STORE,Paper4 Explainable AI,Required,AUDIT
+Explainability,Explain ML predictions using SHAP or LIME,DATASET_FEATURE_STORE,Paper4 Explainable AI,Required,AUDIT
+Traceability,Link endpoint DTO variable dataset paper,ALL_DATASETS,Paper1 Architecture ILP,Active,FREEZE
+Reproducibility,Register experiments and model versions,DATASET_FEATURE_STORE,Paper4 Explainable AI,Required,AUDIT
+MultimodalConsent,Specific consent for audio video text behavioral data,DATASET_MULTIMODAL,Paper7 Deep Learning,Future,MVP22
