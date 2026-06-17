@@ -1,0 +1,7 @@
+MODEL,TASK,DATASET,INPUT_FEATURES,METRIC,XAI_METHOD,PAPER,STATUS
+RandomForest,learning_style_prediction,DATASET_KOLB_LONGITUDINAL,kolb_ce kolb_ro kolb_ac kolb_ae,F1_SCORE,SHAP,Paper2 Digital Psychometrics,READY
+RandomForest,support_need_prediction,CORE_EDUCATIONAL_DATASET,age grade support_level,F1_SCORE,SHAP,Paper4 Explainable AI,READY
+XGBoost,adaptive_recommendation,DATASET_RECOMMENDATIONS,learning_style support_level preferences,NDCG SHAP,SHAP,Paper5 Adaptive Engine,AUDIT
+LightGBM,feature_importance_model,DATASET_FEATURE_STORE,feature_vector,AUC,SHAP,Paper4 Explainable AI,AUDIT
+LogisticRegression,governance_readiness,DATASET_RESEARCH_EVIDENCE,research_evidence,BALANCED_ACCURACY,SHAP,Paper6 AI Governance,AUDIT
+CNN_LSTM,multimodal_prediction,DATASET_MULTIMODAL,audio video text behavior,F1_SCORE,GradCAM,Paper7 Deep Learning,MVP22
