@@ -1,0 +1,9 @@
+PIPELINE_STAGE,PURPOSE,SCIENTIFIC_VALUE,DECISION
+Build,Verify compilable system,Reproducible software baseline,FREEZE
+Test,Validate behavior,Research-grade reliability,FREEZE
+Coverage,Measure test confidence,IEEE730 quality evidence,AUDIT
+StaticAnalysis,Detect maintainability risks,Long-term scientific sustainability,AUDIT
+BDD,Validate user flows,Field study readiness,FREEZE
+Docker,Package execution environment,Reproducible deployment,AUDIT
+Kubernetes,Local orchestration,Scalable research infrastructure,AUDIT
+SonarCloud,External quality evidence,Publication-grade quality signal,AUDIT
