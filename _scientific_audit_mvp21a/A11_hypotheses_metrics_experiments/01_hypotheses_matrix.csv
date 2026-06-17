@@ -1,0 +1,8 @@
+PAPER,HYPOTHESIS,DATASET,VARIABLES,METHOD,STATUS
+Paper1,H1 ILP architecture supports reproducible inclusive educational data capture,CORE_EDUCATIONAL_DATASET,student profile quality evidence,Architecture evaluation,READY
+Paper2,H2 Kolb digital ipsative responses produce stable longitudinal learning style indicators,DATASET_KOLB_LONGITUDINAL,CE RO AC AE learning_style,Longitudinal psychometrics,READY
+Paper3,H3 Felder and Kuder variables improve prediction of educational and vocational profiles,DATASET_LEARNING_PREFERENCES + DATASET_VOCATIONAL_PROFILE,Felder Kuder student profile,ML classification,READY
+Paper4,H4 Feature store variables allow explainable prediction of support needs,DATASET_FEATURE_STORE,feature_vector support_level,RandomForest SHAP,AUDIT
+Paper5,H5 Adaptive recommendations improve educational support planning,DATASET_RECOMMENDATIONS,recommendation_type adaptive_pathway teacher_feedback,Recommendation evaluation,AUDIT
+Paper6,H6 Governance traceability improves trustworthiness of AI educational systems,DATASET_RESEARCH_EVIDENCE,consent audit fairness explainability,Governance evaluation,AUDIT
+Paper7,H7 Multimodal signals improve longitudinal prediction of learning trajectories,DATASET_MULTIMODAL,multimodal_signal temporal_sequence,Deep Learning,MVP22
