@@ -1,0 +1,13 @@
+VARIABLE,TYPE,SOURCE_ENTITY
+student_id,String,StudentProfileEntity
+age,Numeric,StudentProfileEntity
+grade,Numeric,StudentProfileEntity
+support_level,Categorical,StudentProfileEntity
+kolb_ce,Numeric,KolbAssessmentResultEntity
+kolb_ro,Numeric,KolbAssessmentResultEntity
+kolb_ac,Numeric,KolbAssessmentResultEntity
+kolb_ae,Numeric,KolbAssessmentResultEntity
+learning_style,Categorical,KolbAssessmentResultEntity
+felder_active_reflective,Numeric,FelderAssessmentResultEntity
+kuder_interest,Categorical,KuderAssessmentResultEntity
+recommendation_type,Categorical,LearningRecommendationEntity
