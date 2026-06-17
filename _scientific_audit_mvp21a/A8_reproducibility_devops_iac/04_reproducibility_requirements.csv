@@ -1,0 +1,7 @@
+REPRODUCIBILITY_ITEM,DESCRIPTION,DATASET_OR_SYSTEM,PAPER,DECISION
+DatasetVersioning,Every dataset must have version and timestamp,ALL_DATASETS,Paper6 AI Governance,AUDIT
+ExperimentRegistry,Every ML experiment must be registered,DATASET_FEATURE_STORE,Paper4 Explainable AI,AUDIT
+ModelVersioning,Every model must expose algorithm version,ML_PIPELINE,Paper4 Explainable AI,AUDIT
+SeedControl,Random seeds required for ML reproducibility,ML_PIPELINE,Paper3 Educational ML,AUDIT
+EnvironmentLock,Java Gradle Docker versions must be documented,BACKEND_PLATFORM,Paper1 Architecture ILP,FREEZE
+QualityEvidence,CI reports must be preserved,BACKEND_PLATFORM,Paper1 Architecture ILP,FREEZE
