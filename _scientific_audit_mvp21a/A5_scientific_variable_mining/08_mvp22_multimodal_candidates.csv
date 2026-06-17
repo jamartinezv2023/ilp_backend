@@ -1,0 +1,5 @@
+VARIABLE,MODALITY
+voice_signal,AUDIO
+face_expression,VIDEO
+writing_pattern,TEXT
+mouse_events,BEHAVIOR

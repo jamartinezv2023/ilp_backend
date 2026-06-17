@@ -1,0 +1,8 @@
+ENTITY,SCIENTIFIC_VARIABLES,DATASET,PAPER,DECISION
+StudentProfileEntity,"student_id grade age support_level learning_profile vocational_interest",CORE_EDUCATIONAL_DATASET,Paper1 Architecture ILP,FREEZE
+KolbAssessmentResultEntity,"score_ce score_ro score_ac score_ae learning_style created_at",DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics,FREEZE
+FelderSilvermanAssessmentResultEntity,"active reflective sensing intuitive visual verbal sequential global",DATASET_LEARNING_PREFERENCES,Paper3 Educational ML,FREEZE
+KuderAssessmentResultEntity,"vocational_area interest_score dominant_area",DATASET_VOCATIONAL_PROFILE,Paper3 Educational ML,FREEZE
+StudentFeatureEntity,"feature_name feature_value feature_timestamp",DATASET_FEATURE_STORE,Paper4 Explainable AI,AUDIT
+LearningRecommendationEntity,"recommendation_type recommendation_text risk_level",DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine,AUDIT
+EducationalInterventionEntity,"intervention_type intervention_date response",DATASET_INTERVENTIONS,Paper5 Adaptive Engine,MVP22

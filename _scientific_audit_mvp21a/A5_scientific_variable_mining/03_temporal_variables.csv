@@ -1,0 +1,7 @@
+VARIABLE,TIMESTAMP
+kolb_timestamp,YES
+recommendation_timestamp,YES
+assessment_date,YES
+intervention_date,YES
+academic_period,YES
+school_year,YES

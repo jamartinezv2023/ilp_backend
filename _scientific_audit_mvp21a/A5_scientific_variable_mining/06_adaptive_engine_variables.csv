@@ -1,0 +1,5 @@
+VARIABLE,ENGINE
+learning_style,AdaptiveEngine
+support_level,AdaptiveEngine
+recommendation_type,AdaptiveEngine
+intervention_type,AdaptiveEngine
