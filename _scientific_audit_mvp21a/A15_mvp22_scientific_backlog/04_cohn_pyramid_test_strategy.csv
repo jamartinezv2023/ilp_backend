@@ -1,0 +1,8 @@
+BACKLOG_ITEM,TEST_LEVEL,COHN_PYRAMID_LAYER,PRIORITY
+ConsentRegistry,Unit,Base,HIGH
+ConsentRegistry,Integration,Middle,HIGH
+ResearchStudentId,Unit,Base,HIGH
+DatasetV1Exporter,Integration,Middle,HIGH
+TeacherValidationRubric,Integration,Middle,MEDIUM
+RecommendationFeedbackLoop,E2E,Top,MEDIUM
+MultimodalProtocol,ManualReview,OutsideAutomation,LOW

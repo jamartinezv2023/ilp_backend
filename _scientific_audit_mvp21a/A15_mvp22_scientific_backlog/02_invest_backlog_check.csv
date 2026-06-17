@@ -1,0 +1,10 @@
+ITEM,INVEST_CRITERION,ASSESSMENT
+ConsentRegistry,Independent,Can be implemented without ML changes
+ConsentRegistry,Valuable,Required for ethical fieldwork
+ConsentRegistry,Small,Can start with minimal status entity
+ResearchStudentId,Independent,Can be added before dataset capture
+ResearchStudentId,Valuable,Protects student identity
+TeacherValidationRubric,Valuable,Needed for human-in-the-loop validation
+DatasetV1Exporter,Testable,Can be validated with sample anonymized export
+FeatureStoreVersioning,Testable,Can be verified by snapshot version assertions
+ExperimentRegistryHardening,Testable,Can be verified by experiment metadata tests
