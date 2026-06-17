@@ -1,0 +1,8 @@
+EXPERIMENT_ID,PAPER,DATASET,MODEL,METRIC,REPRODUCIBILITY_REQUIREMENT,STATUS
+EXP-P1-ARCH-001,Paper1,CORE_EDUCATIONAL_DATASET,None,architecture_traceability_score,CI evidence and audit matrices,READY
+EXP-P2-KOLB-001,Paper2,DATASET_KOLB_LONGITUDINAL,RandomForest,f1_score,Seed dataset version and instrument version,READY
+EXP-P3-FELDER-KUDER-001,Paper3,DATASET_LEARNING_PREFERENCES + DATASET_VOCATIONAL_PROFILE,XGBoost,balanced_accuracy,Seed dataset version model version,READY
+EXP-P4-XAI-001,Paper4,DATASET_FEATURE_STORE,RandomForest,auc,SHAP values and feature store version,AUDIT
+EXP-P5-RECOMM-001,Paper5,DATASET_RECOMMENDATIONS,XGBoost,recommendation_acceptance_rate,Teacher validation protocol,AUDIT
+EXP-P6-GOV-001,Paper6,DATASET_RESEARCH_EVIDENCE,None,consent_compliance_rate,Governance audit trail,AUDIT
+EXP-P7-DL-001,Paper7,DATASET_MULTIMODAL,Transformer,sequence_f1_score,Multimodal consent and versioned pipeline,MVP22
