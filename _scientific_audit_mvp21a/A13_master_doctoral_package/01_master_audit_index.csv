@@ -1,0 +1,14 @@
+PHASE,NAME,PURPOSE,STATUS
+A1,Scientific Dataset Readiness,Initial doctoral dataset framing,COMPLETED
+A2,Deep Backend Scientific Audit,Microservice to paper traceability,COMPLETED
+A3,Raw Backend Traceability,Real source code inventory,COMPLETED
+A4,Backend Traceability Matrices,Structured traceability matrices,COMPLETED
+A5,Scientific Variable Mining,Variable to dataset mapping,COMPLETED
+A6,Feature Store Model Map,ML XAI experiment mapping,COMPLETED
+A7,AI Governance Ethics,Consent fairness privacy governance,COMPLETED
+A8,Reproducibility DevOps IaC,Quality reproducibility infrastructure,COMPLETED
+A9,Longitudinal Field Protocol,Dataset fieldwork design,COMPLETED
+A10,Doctoral Roadmap,Article compendium roadmap,COMPLETED
+A11,Hypotheses Metrics Experiments,Scientific experiment design,COMPLETED
+A12,Expert Validation Doctoral Review,Committee and ethics readiness,COMPLETED
+A13,Master Doctoral Package,Final audit closure package,IN_PROGRESS
