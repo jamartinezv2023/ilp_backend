@@ -1,0 +1,7 @@
+AUDIT_EVENT,DESCRIPTION,DATASET,PAPER,STATUS
+DATA_CREATED,New educational record created,CORE_EDUCATIONAL_DATASET,Paper6 AI Governance,Required
+ASSESSMENT_SUBMITTED,Assessment submitted by student,ASSESSMENT_DATASETS,Paper6 AI Governance,Required
+RECOMMENDATION_GENERATED,Adaptive recommendation generated,DATASET_RECOMMENDATIONS,Paper6 AI Governance,Required
+MODEL_EXECUTED,ML model executed,DATASET_FEATURE_STORE,Paper4 Explainable AI,Required
+EXPLANATION_GENERATED,XAI explanation generated,DATASET_FEATURE_STORE,Paper4 Explainable AI,Required
+CONSENT_UPDATED,Consent status changed,ALL_DATASETS,Paper6 AI Governance,Required
