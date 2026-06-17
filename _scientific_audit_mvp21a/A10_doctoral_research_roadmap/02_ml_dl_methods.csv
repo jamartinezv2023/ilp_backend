@@ -1,0 +1,9 @@
+PAPER,STATISTICS,ML,DL,XAI
+Paper1,Descriptive,None,None,None
+Paper2,ANOVA PCA,RandomForest,None,SHAP
+Paper3,Correlation Regression,XGBoost CatBoost,None,SHAP
+Paper4,Feature Importance,RandomForest,XGBoost,None,SHAP LIME
+Paper5,Survival Analysis,GradientBoosting,None,SHAP
+Paper6,Fairness Metrics,None,None,None
+Paper7,Time Series,CNN-LSTM,Transformer,Attention
+Paper8,Causal Analysis,GNN,LSTM,SHAP
