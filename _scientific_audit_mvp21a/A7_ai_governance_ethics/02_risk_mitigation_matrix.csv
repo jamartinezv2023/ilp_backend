@@ -1,0 +1,7 @@
+RISK,DESCRIPTION,MITIGATION,DATASET,DECISION
+PrivacyLeakage,Student personal data exposure,Anonymization and access control,ALL_DATASETS,AUDIT
+AlgorithmicBias,Biased support need prediction,Fairness metrics and subgroup validation,DATASET_FEATURE_STORE,AUDIT
+OverdiagnosisRisk,System interpreted as clinical diagnosis,Pedagogical disclaimer and human review,CORE_EDUCATIONAL_DATASET,FREEZE
+ModelOpacity,Unexplained recommendations,XAI reports using SHAP LIME,DATASET_RECOMMENDATIONS,AUDIT
+ConsentGap,Data used without valid consent,Consent registry and audit trail,ALL_DATASETS,AUDIT
+MultimodalSensitivity,Audio video behavioral data sensitivity,Separate consent and strict governance,DATASET_MULTIMODAL,MVP22
