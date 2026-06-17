@@ -1,0 +1,11 @@
+BACKLOG_ITEM,DESCRIPTION,SCIENTIFIC_VALUE,PRIORITY,DECISION
+ConsentRegistry,Formal consent and assent registry for minors,CRITICAL,HIGH,MVP22
+ResearchStudentId,Anonymized research identifier for longitudinal tracking,CRITICAL,HIGH,MVP22
+TeacherValidationRubric,Rubric to validate adaptive recommendations,HIGH,HIGH,MVP22
+DatasetV1Exporter,Controlled export of dataset v1,HIGH,HIGH,MVP22
+FeatureStoreVersioning,Version feature snapshots for reproducible ML,HIGH,HIGH,MVP22
+ExperimentRegistryHardening,Register model algorithm metrics seed dataset version,HIGH,HIGH,MVP22
+InterventionTracking,Track educational interventions and outcomes,HIGH,MEDIUM,MVP22
+RecommendationFeedbackLoop,Collect teacher feedback on recommendations,HIGH,MEDIUM,MVP22
+FairnessMetrics,Subgroup fairness by age grade support level,HIGH,MEDIUM,MVP22
+MultimodalProtocol,Separate protocol for audio video text behavior,VERY_HIGH,LOW,MVP22_FUTURE

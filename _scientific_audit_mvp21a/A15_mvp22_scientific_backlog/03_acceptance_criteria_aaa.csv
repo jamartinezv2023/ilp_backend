@@ -1,0 +1,7 @@
+ITEM,ACCEPTANCE_CRITERIA,TEST_LAYER
+ConsentRegistry,Given a student when consent is registered then status and timestamp are persisted,Unit + Integration
+ResearchStudentId,Given a student when exported then personal id is replaced by research id,Unit + Integration
+TeacherValidationRubric,Given a recommendation when teacher reviews then score and comment are persisted,Integration
+DatasetV1Exporter,Given approved records when exporting then only anonymized fields are included,Integration + E2E
+FeatureStoreVersioning,Given a feature snapshot when rebuilt then version and timestamp are stored,Unit + Integration
+ExperimentRegistryHardening,Given an experiment when executed then seed dataset version and metrics are stored,Unit + Integration
