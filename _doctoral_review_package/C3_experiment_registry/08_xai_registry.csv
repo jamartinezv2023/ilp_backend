@@ -1,0 +1,7 @@
+XAI_OUTPUT,MODEL,DATASET,PAPER
+shap_summary,RandomForest,DATASET_KOLB_LONGITUDINAL,Paper2
+shap_summary,XGBoost,DATASET_LEARNING_PREFERENCES,Paper3
+feature_importance,RandomForest,DATASET_FEATURE_STORE,Paper4
+lime_local_report,XGBoost,DATASET_RECOMMENDATIONS,Paper5
+fairness_report,Any,DATASET_RESEARCH_EVIDENCE,Paper6
+attention_map,Transformer,DATASET_MULTIMODAL,Paper7
