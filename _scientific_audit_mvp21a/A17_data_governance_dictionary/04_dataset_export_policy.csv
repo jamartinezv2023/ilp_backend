@@ -1,0 +1,9 @@
+DATASET,EXPORT_ALLOWED,CONDITION,DECISION
+CORE_EDUCATIONAL_DATASET,YES,Only anonymized and consented records,AUDIT
+DATASET_KOLB_LONGITUDINAL,YES,Only instrument-versioned records,FREEZE
+DATASET_LEARNING_PREFERENCES,YES,Only anonymized assessment results,FREEZE
+DATASET_VOCATIONAL_PROFILE,YES,Only anonymized assessment results,FREEZE
+DATASET_FEATURE_STORE,YES,Only versioned feature snapshots,AUDIT
+DATASET_RECOMMENDATIONS,YES,Only anonymized recommendation logs,AUDIT
+DATASET_RESEARCH_EVIDENCE,YES,Only aggregated governance evidence,FREEZE
+DATASET_MULTIMODAL,NO,Requires separate protocol and approval,MVP22
