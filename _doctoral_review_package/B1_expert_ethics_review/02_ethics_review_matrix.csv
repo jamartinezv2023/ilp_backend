@@ -1,0 +1,8 @@
+ETHICS_ITEM,REQUIRED_EVIDENCE,STATUS,DECISION
+InformedConsent,Consent matrix and draft consent scope,READY_FOR_REVIEW,AUDIT
+AssentForMinors,Minor assent protocol,REQUIRED,MVP22
+GuardianConsent,Guardian authorization protocol,REQUIRED,MVP22
+Anonymization,Research student id and export policy,READY_FOR_REVIEW,AUDIT
+DataMinimization,Variable dictionary and dataset policy,READY_FOR_REVIEW,AUDIT
+RightToWithdraw,Withdrawal procedure,REQUIRED,MVP22
+MultimodalData,Separate protocol required,NOT_ALLOWED_YET,MVP22
