@@ -1,0 +1,9 @@
+CHECK_ID,CHECK_NAME,DATASET,EXPECTED_RESULT,TEST_LAYER,DECISION
+DQ-KOLB-001,KOLB ipsative no repeated rankings,DATASET_KOLB_LONGITUDINAL,Reject invalid repeated rankings,Unit,FREEZE
+DQ-KOLB-002,KOLB score consistency,DATASET_KOLB_LONGITUDINAL,Computed scores match answers,Unit,AUDIT
+DQ-STUDENT-001,Student profile completeness,CORE_EDUCATIONAL_DATASET,Reject incomplete profile,Integration,AUDIT
+DQ-EXPORT-001,Anonymized export only,ALL_DATASETS,No personal identifier in export,Integration,AUDIT
+DQ-FEATURE-001,Feature snapshot version exists,DATASET_FEATURE_STORE,Snapshot contains version timestamp,Integration,AUDIT
+DQ-EXP-001,Experiment reproducibility metadata,DATASET_EXPERIMENT_REGISTRY,Seed dataset version and metrics exist,Unit,AUDIT
+DQ-CONSENT-001,Consent required before export,ALL_DATASETS,Export blocked without consent,Integration,AUDIT
+DQ-MULTI-001,Multimodal consent required,DATASET_MULTIMODAL,No capture without explicit consent,ManualReview,MVP22
