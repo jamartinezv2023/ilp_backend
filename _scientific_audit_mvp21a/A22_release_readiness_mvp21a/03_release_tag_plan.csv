@@ -1,0 +1,4 @@
+TAG,DESCRIPTION,RECOMMENDED_ACTION
+v0.21.0-mvp21a-functional-baseline,Functional baseline already created,KEEP
+v0.21.1-mvp21a-scientific-audit,Recommended tag after A1-A22 merge,CREATE_AFTER_MERGE
+v0.22.0-mvp22-fieldwork-start,Future tag after ethics and pilot approval,CREATE_LATER
