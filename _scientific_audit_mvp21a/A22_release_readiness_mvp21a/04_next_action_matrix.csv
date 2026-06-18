@@ -1,0 +1,9 @@
+NEXT_STEP,DESCRIPTION,DECISION
+Merge_Audit_Branches,Merge A1-A22 into audit branch,DO_NOW
+Open_Final_PR,Open audit branch into main after green checks,DO_NEXT
+Create_Tag_v0211,Create scientific audit release tag after merge to main,DO_AFTER_MAIN_MERGE
+Freeze_MVP21A,Do not add new functionality,MANDATORY
+Prepare_Expert_Review,Use A12 package,DO_NEXT
+Prepare_Ethics_Submission,Use A7 A12 A17 packages,DO_NEXT
+Prepare_Fieldwork,Use A9 A14 packages,DO_AFTER_ETHICS
+Start_MVP22,Only after expert ethics and fieldwork readiness,WAIT
