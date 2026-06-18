@@ -1,0 +1,8 @@
+NOTEBOOK,DATASET,PURPOSE,PAPER,DECISION
+01_dataset_profile.ipynb,ALL_DATASETS,Profile missingness types distributions and schema,Paper1 Architecture ILP,AUDIT
+02_kolb_psychometrics.ipynb,DATASET_KOLB_LONGITUDINAL,Analyze Kolb scores stability and distributions,Paper2 Digital Psychometrics,FREEZE
+03_learning_preferences_ml.ipynb,DATASET_LEARNING_PREFERENCES + DATASET_VOCATIONAL_PROFILE,Train baseline ML models for learning and vocational profiles,Paper3 Educational ML,AUDIT
+04_feature_store_xai.ipynb,DATASET_FEATURE_STORE,Train explainable support prediction models,Paper4 Explainable AI,AUDIT
+05_adaptive_recommendations.ipynb,DATASET_RECOMMENDATIONS,Evaluate recommendation acceptance usefulness and teacher feedback,Paper5 Adaptive Engine,AUDIT
+06_ai_governance_metrics.ipynb,DATASET_RESEARCH_EVIDENCE,Analyze consent fairness traceability and governance readiness,Paper6 AI Governance,AUDIT
+07_multimodal_deep_learning.ipynb,DATASET_MULTIMODAL,Prototype future multimodal temporal learning models,Paper7 Deep Learning,MVP22
