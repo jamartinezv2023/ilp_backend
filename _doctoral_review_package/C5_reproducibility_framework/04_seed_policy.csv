@@ -1,0 +1,6 @@
+SEED_TYPE,DEFAULT_VALUE,REQUIRED
+global_random_seed,42,YES
+train_test_split_seed,42,YES
+cross_validation_seed,42,YES
+model_initialization_seed,42,YES
+deep_learning_seed,42,MVP22
