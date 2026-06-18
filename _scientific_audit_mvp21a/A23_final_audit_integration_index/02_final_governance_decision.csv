@@ -1,0 +1,8 @@
+DECISION_AREA,FINAL_DECISION,RATIONALE
+MVP21A_CORE,FREEZE,Functional and scientifically audited baseline
+NEW_FEATURES,STOP,No new functionality before expert and ethics review
+FIELDWORK,PREPARE,Protocol exists but requires formal approval
+DATASET_EXPORT,WAIT,Requires anonymization consent and data quality gates
+ML_EXPERIMENTS,WAIT,Requires real versioned dataset V1
+MVP22,PLAN,Backlog exists but must start after review approvals
+DOCTORAL_COMPENDIUM,READY_FOR_PROTOCOL,A1-A22 support research design
