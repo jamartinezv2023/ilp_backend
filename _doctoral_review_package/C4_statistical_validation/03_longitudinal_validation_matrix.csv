@@ -1,0 +1,6 @@
+VARIABLE,TIMEPOINTS,ANALYSIS,PAPER,DECISION
+kolb_style,T0 T1 T2 T3 T4,Stability and transition matrix,Paper2,AUDIT
+support_level,T0 T1 T2 T3 T4,Change over time,Paper4,AUDIT
+academic_performance,T0 T1 T2 T3 T4,Growth curve,Paper5,AUDIT
+recommendation_type,T0 T1 T2 T3 T4,Recommendation pattern analysis,Paper5,AUDIT
+feature_vector,T0 T1 T2 T3 T4,Feature drift analysis,Paper4,AUDIT

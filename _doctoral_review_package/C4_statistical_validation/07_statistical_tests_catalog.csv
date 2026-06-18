@@ -1,0 +1,10 @@
+TEST,PURPOSE
+DescriptiveStatistics,Dataset profiling
+ChiSquare,Categorical association
+ANOVA,Group mean comparison
+KruskalWallis,Non-parametric group comparison
+Correlation,Association between numeric variables
+Regression,Baseline predictive modeling
+TransitionMatrix,Longitudinal categorical stability
+GrowthCurve,Longitudinal numeric change
+FairnessGap,Subgroup model performance analysis

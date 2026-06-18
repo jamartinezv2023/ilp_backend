@@ -1,0 +1,6 @@
+INSTRUMENT,VALIDATION_METHOD,DATASET,PAPER,DECISION
+Kolb,Score distribution and longitudinal stability,DATASET_KOLB_LONGITUDINAL,Paper2,FREEZE
+Kolb,Ipsative response validity check,DATASET_KOLB_LONGITUDINAL,Paper2,FREEZE
+FelderSilverman,Dimension distribution and profile consistency,DATASET_LEARNING_PREFERENCES,Paper3,AUDIT
+Kuder,Vocational area distribution and dominant area stability,DATASET_VOCATIONAL_PROFILE,Paper3,AUDIT
+AssessmentDefinitions,Instrument version traceability,ASSESSMENT_DATASETS,Paper2,FREEZE
