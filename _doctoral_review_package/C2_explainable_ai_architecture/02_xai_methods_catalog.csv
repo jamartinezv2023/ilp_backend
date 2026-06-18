@@ -1,0 +1,7 @@
+METHOD,USE_CASE,PAPER
+SHAP,Global and local explanations for tree models,Paper4
+LIME,Local explanations for individual recommendations,Paper4
+FeatureImportance,Baseline interpretability for Random Forest,Paper4
+PartialDependence,Feature behavior analysis,Paper4
+Counterfactuals,Future intervention reasoning,Paper5
+AttentionVisualization,Future Deep Learning explanation,Paper7
