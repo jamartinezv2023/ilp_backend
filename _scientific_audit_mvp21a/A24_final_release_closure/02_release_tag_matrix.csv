@@ -1,0 +1,4 @@
+TAG,MEANING,ACTION
+v0.21.0-mvp21a-functional-baseline,Functional MVP21A baseline,ALREADY_CREATED
+v0.21.1-mvp21a-scientific-audit,Scientific audit A1-A24 completed,CREATE_AFTER_MAIN_MERGE
+v0.22.0-mvp22-fieldwork-start,Future fieldwork phase,CREATE_LATER
