@@ -1,0 +1,8 @@
+THREAT,DESCRIPTION,MITIGATION
+SelectionBias,Participants may not represent full population,Stratified sampling and reporting
+Attrition,Students may leave longitudinal study,Follow-up protocol and attrition analysis
+MissingData,Incomplete records may bias results,Missing data plan and sensitivity analysis
+InstrumentDrift,Instrument versions may change,Versioned instruments and traceability
+DataLeakage,Future information may enter training,Temporal validation
+Confounding,External factors may affect outcomes,Collect contextual variables
+Overfitting,Models may fit pilot data only,Cross-validation and external validation
