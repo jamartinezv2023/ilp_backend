@@ -1,0 +1,6 @@
+TEST_TYPE,PURPOSE,EXAMPLES,COHN_LAYER
+Unit,Validate isolated domain logic,Kolb scoring consent status feature versioning,Base
+Integration,Validate DB API and repositories,Dataset exporter consent registry feature store,Middle
+Contract,Validate DTO and endpoint compatibility,Assessment response student profile dataset export,Middle
+E2E,Validate critical user workflows,Assessment Center recommendation feedback,Top
+Manual Expert Review,Validate ethical and pedagogical decisions,Teacher rubric ethics committee review,OutsideAutomation
