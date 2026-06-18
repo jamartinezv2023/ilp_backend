@@ -1,0 +1,9 @@
+BACKLOG_ITEM,QUALITY_GATE,ACCEPTANCE_CRITERION,TEST_LAYER
+ConsentRegistry,Ethics Compliance,Consent status timestamp and version are persisted,Unit Integration
+ResearchStudentId,Privacy,Export never exposes personal identifier,Unit Integration
+DatasetV1Exporter,Reproducibility,Dataset export includes version timestamp and schema,Integration
+FeatureStoreVersioning,ML Reproducibility,Feature snapshot includes version and generation date,Unit Integration
+ExperimentRegistryHardening,ML Governance,Experiment stores algorithm seed metrics and dataset version,Unit Integration
+TeacherValidationRubric,Human Review,Teacher score and comment are stored,Integration
+RecommendationFeedbackLoop,Adaptive Validation,Recommendation feedback is traceable by student and timestamp,E2E
+FairnessMetrics,AI Fairness,Metrics are calculated by subgroup,Unit Integration

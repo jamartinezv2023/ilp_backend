@@ -1,0 +1,12 @@
+QUALITY_AREA,STANDARD_OR_PRINCIPLE,APPLICATION,DECISION
+Software Quality,IEEE730,Quality assurance plan for MVP22,FREEZE
+Testing Strategy,Cohn Pyramid,Unit integration E2E balance,FREEZE
+Unit Tests,FIRST,Fast isolated repeatable self-validating timely,FREEZE
+Test Structure,AAA,Arrange Act Assert in test cases,FREEZE
+User Stories,INVEST,Independent negotiable valuable estimable small testable,AUDIT
+Architecture,SOLID,Maintainable extensible backend,AUDIT
+Architecture,DDD,Bounded contexts and domain clarity,AUDIT
+Architecture,Hexagonal Architecture,Inbound outbound ports and adapters,AUDIT
+DevOps,CI/CD,Automated build test quality checks,FREEZE
+Infrastructure,IaC,Reproducible deployment environments,AUDIT
+Research,Reproducible Science,Versioned datasets experiments and models,AUDIT
