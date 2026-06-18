@@ -1,0 +1,12 @@
+DATA_FIELD,DESCRIPTION,SENSITIVITY,ANONYMIZATION_REQUIRED,DATASET,DECISION
+student_id,Internal platform student identifier,HIGH,YES,CORE_EDUCATIONAL_DATASET,AUDIT
+research_student_id,Anonymous longitudinal research identifier,LOW,NO,ALL_DATASETS,MVP22
+full_name,Student full name,HIGH,YES,CORE_EDUCATIONAL_DATASET,AUDIT
+age,Student age,MEDIUM,NO,CORE_EDUCATIONAL_DATASET,FREEZE
+grade,School grade,MEDIUM,NO,CORE_EDUCATIONAL_DATASET,FREEZE
+support_level,Educational support level,MEDIUM,NO,CORE_EDUCATIONAL_DATASET,FREEZE
+learning_profile,Learning profile or style,MEDIUM,NO,DATASET_KOLB_LONGITUDINAL,FREEZE
+assessment_answers,Raw assessment answers,MEDIUM,YES,DATASET_RAW_ASSESSMENT_RESPONSES,AUDIT
+recommendation_text,Adaptive recommendation output,MEDIUM,NO,DATASET_RECOMMENDATIONS,AUDIT
+teacher_feedback,Teacher validation comment,MEDIUM,YES,DATASET_RECOMMENDATIONS,MVP22
+multimodal_signal,Audio video text or behavior signal,HIGH,YES,DATASET_MULTIMODAL,MVP22
