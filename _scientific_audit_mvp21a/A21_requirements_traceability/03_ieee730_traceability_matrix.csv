@@ -1,0 +1,11 @@
+REQ_ID,QUALITY_EVIDENCE,IEEE730_AREA,DECISION
+REQ-001,Endpoint tests and data dictionary,Requirements Traceability,FREEZE
+REQ-002,Assessment definition endpoint and instrument version,Configuration Management,FREEZE
+REQ-003,Kolb tests and SmokeTestHandler,Verification and Validation,FREEZE
+REQ-004,Felder Kuder tests and DTO contracts,Verification and Validation,FREEZE
+REQ-005,Feature store audit matrices,Design Control,AUDIT
+REQ-006,Recommendation validation protocol,Validation Planning,AUDIT
+REQ-007,Governance and ethics matrices,Quality Records,AUDIT
+REQ-008,GitHub Actions Gradle reports,Process Assurance,FREEZE
+REQ-009,Anonymization policy and export plan,Data Quality Assurance,AUDIT
+REQ-010,Ethics committee approval before implementation,Ethics and Risk Control,MVP22
