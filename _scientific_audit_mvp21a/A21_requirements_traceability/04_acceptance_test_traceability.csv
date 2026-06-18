@@ -1,0 +1,11 @@
+REQ_ID,ACCEPTANCE_CRITERIA,TEST_STRATEGY,COHN_LAYER
+REQ-001,Student profile can be retrieved without exposing unnecessary personal data,Integration,Middle
+REQ-002,Assessment definition exposes code version type questions and options,Integration,Middle
+REQ-003,Kolb submission rejects invalid ipsative answers and persists valid results,Unit Integration,Base Middle
+REQ-004,Felder and Kuder submissions generate valid profiles,Unit Integration,Base Middle
+REQ-005,Feature snapshot includes version timestamp and student research id,Integration,Middle
+REQ-006,Recommendation links to feature snapshot and teacher validation,Integration E2E,Middle Top
+REQ-007,Governance evidence is traceable to audit event,Integration,Middle
+REQ-008,CI build test quality checks pass,CI,Pipeline
+REQ-009,Dataset export contains research_student_id not personal student_id,Integration,Middle
+REQ-010,Multimodal capture blocked without explicit protocol approval,ManualReview,Governance

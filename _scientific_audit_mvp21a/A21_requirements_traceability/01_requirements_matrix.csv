@@ -1,0 +1,11 @@
+REQ_ID,REQUIREMENT,TYPE,DATASET,PAPER,DECISION
+REQ-001,The platform shall capture anonymizable student educational profiles,Functional,CORE_EDUCATIONAL_DATASET,Paper1 Architecture ILP,FREEZE
+REQ-002,The platform shall version digital assessment instruments,Functional,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics,FREEZE
+REQ-003,The platform shall store Kolb ipsative assessment results,Functional,DATASET_KOLB_LONGITUDINAL,Paper2 Digital Psychometrics,FREEZE
+REQ-004,The platform shall support Felder and Kuder profile datasets,Functional,DATASET_LEARNING_PREFERENCES + DATASET_VOCATIONAL_PROFILE,Paper3 Educational ML,FREEZE
+REQ-005,The platform shall generate feature snapshots for ML,Functional,DATASET_FEATURE_STORE,Paper4 Explainable AI,AUDIT
+REQ-006,The platform shall trace recommendations to student features,Functional,DATASET_RECOMMENDATIONS,Paper5 Adaptive Engine,AUDIT
+REQ-007,The platform shall maintain governance and audit evidence,NonFunctional,DATASET_RESEARCH_EVIDENCE,Paper6 AI Governance,AUDIT
+REQ-008,The platform shall support reproducible builds and tests,NonFunctional,BACKEND_PLATFORM,Paper1 Architecture ILP,FREEZE
+REQ-009,The platform shall prevent personal identifiers in research exports,NonFunctional,ALL_DATASETS,Paper6 AI Governance,AUDIT
+REQ-010,The platform shall support future multimodal datasets only with separate consent,Ethical,DATASET_MULTIMODAL,Paper7 Deep Learning,MVP22
