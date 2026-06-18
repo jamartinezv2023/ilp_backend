@@ -1,0 +1,9 @@
+ITEM,GO_NO_GO,REASON
+MVP21A_Core,GO,Functional baseline validated
+Backend_Audit,GO,A1-A21 documentation complete
+New_Functionality,NO_GO,Must wait until expert and ethics review
+Field_Data_Capture,NO_GO,Requires consent and field protocol approval
+Dataset_Export,NO_GO,Requires anonymization workflow and ethics approval
+MVP22_Planning,GO,Backlog and QA plan available
+Expert_Review,GO,Expert validation package available
+Ethics_Review,GO,Ethics readiness matrices available
