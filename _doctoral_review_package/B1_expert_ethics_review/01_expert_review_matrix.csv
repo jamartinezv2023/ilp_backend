@@ -1,0 +1,7 @@
+REVIEW_AREA,EXPERT_PROFILE,EVIDENCE_PACKAGE,EXPECTED_OUTPUT
+Architecture,Software architect,A1 A2 A3 A4 A8 A21,Architecture validation report
+Psychometrics,Educational measurement expert,A5 A9 A11 A18,Instrument validity feedback
+MachineLearning,ML/XAI expert,A6 A11 A20,ML reproducibility feedback
+Ethics,Ethics committee,A7 A12 A17 A19,Ethics approval observations
+Fieldwork,School leadership and teachers,A9 A14 A15,Field feasibility feedback
+DoctoralCommittee,Doctoral advisors,A10 A13 A23 A24,Compendium approval feedback
