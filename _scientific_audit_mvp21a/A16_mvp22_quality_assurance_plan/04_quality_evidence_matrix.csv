@@ -1,0 +1,11 @@
+ARTIFACT,REQUIRED_EVIDENCE,OWNER,DECISION
+CI Pipeline,Successful build test quality reports,DevOps Lead,FREEZE
+JaCoCo Report,Coverage report per module,QA Lead,AUDIT
+Checkstyle Report,Zero blocking style violations,QA Lead,FREEZE
+PMD Report,No critical maintainability violations,QA Lead,AUDIT
+SpotBugs Report,No critical correctness defects,QA Lead,AUDIT
+Serenity Report,E2E evidence for critical flows,QA Lead,AUDIT
+SonarCloud,Quality gate status,DevOps Lead,AUDIT
+Dataset Schema,Versioned schema and data dictionary,Data Steward,AUDIT
+Experiment Registry,Versioned model experiment evidence,ML Lead,AUDIT
+Ethics Approval,Consent and anonymization approval,Research Lead,MVP22
