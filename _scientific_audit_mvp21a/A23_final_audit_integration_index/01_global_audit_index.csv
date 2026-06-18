@@ -1,0 +1,24 @@
+PHASE,PACKAGE,MAIN_PURPOSE,STATUS
+A1,Dataset Readiness,Initial scientific dataset framing,COMPLETED
+A2,Backend Scientific Audit,Microservice to paper traceability,COMPLETED
+A3,Raw Traceability,Real source code inventory,COMPLETED
+A4,Traceability Matrices,Structured backend traceability,COMPLETED
+A5,Variable Mining,Scientific variable dictionary,COMPLETED
+A6,Feature Store Model Map,ML and XAI mapping,COMPLETED
+A7,AI Governance Ethics,Consent privacy fairness governance,COMPLETED
+A8,DevOps IaC Reproducibility,Quality and reproducibility plan,COMPLETED
+A9,Field Dataset Protocol,Longitudinal fieldwork design,COMPLETED
+A10,Doctoral Roadmap,Article compendium structure,COMPLETED
+A11,Hypotheses Metrics Experiments,Scientific experiment design,COMPLETED
+A12,Expert Validation,Doctoral and ethics review package,COMPLETED
+A13,Master Package,Master closure package,COMPLETED
+A14,Fieldwork Transition,MVP21A to MVP22 transition,COMPLETED
+A15,MVP22 Backlog,Prioritized scientific backlog,COMPLETED
+A16,Quality Assurance,IEEE730 and QA strategy,COMPLETED
+A17,Data Governance,Dictionary anonymization export policy,COMPLETED
+A18,Data Quality,Dataset validation rules,COMPLETED
+A19,Dataset Export Plan,Dataset V1 publication readiness,COMPLETED
+A20,Reproducible Notebooks,Scientific notebooks plan,COMPLETED
+A21,Requirements Traceability,Requirements to code dataset paper,COMPLETED
+A22,Release Readiness,MVP21A release go no-go,COMPLETED
+A23,Final Integration Index,Global audit index,IN_PROGRESS
