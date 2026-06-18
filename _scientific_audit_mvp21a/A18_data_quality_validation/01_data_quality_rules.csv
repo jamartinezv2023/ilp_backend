@@ -1,0 +1,12 @@
+DATASET,QUALITY_DIMENSION,RULE,SEVERITY,DECISION
+CORE_EDUCATIONAL_DATASET,Completeness,student_id research_student_id age grade support_level must not be null,HIGH,AUDIT
+CORE_EDUCATIONAL_DATASET,Validity,age must be within approved school-age range,HIGH,AUDIT
+DATASET_KOLB_LONGITUDINAL,Completeness,assessment_id student_id instrument_version created_at must not be null,HIGH,FREEZE
+DATASET_KOLB_LONGITUDINAL,Validity,Kolb answers must be ipsative groups without repeated rankings,HIGH,FREEZE
+DATASET_KOLB_LONGITUDINAL,Consistency,scoreCE scoreRO scoreAC scoreAE must match raw answers,HIGH,AUDIT
+DATASET_LEARNING_PREFERENCES,Completeness,Felder assessment scores must be present,HIGH,FREEZE
+DATASET_VOCATIONAL_PROFILE,Completeness,Kuder dominant vocational area must be present,HIGH,FREEZE
+DATASET_FEATURE_STORE,Reproducibility,feature snapshot must have version and timestamp,HIGH,AUDIT
+DATASET_RECOMMENDATIONS,Traceability,recommendation must link to student feature snapshot,MEDIUM,AUDIT
+DATASET_RESEARCH_EVIDENCE,Traceability,governance metric must link to audit event or evidence source,MEDIUM,AUDIT
+DATASET_MULTIMODAL,Consent,multimodal data cannot exist without explicit consent,CRITICAL,MVP22

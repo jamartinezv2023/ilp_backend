@@ -1,0 +1,16 @@
+VARIABLE,VALIDATION_RULE,ERROR_TYPE,DECISION
+student_id,must_not_be_null,Completeness,AUDIT
+research_student_id,must_replace_personal_identifier,Privacy,AUDIT
+age,must_be_numeric_and_valid_range,Validity,AUDIT
+grade,must_match_school_grade_catalog,Validity,AUDIT
+support_level,must_match_allowed_values,Validity,FREEZE
+kolb_ce,must_be_numeric,Validity,FREEZE
+kolb_ro,must_be_numeric,Validity,FREEZE
+kolb_ac,must_be_numeric,Validity,FREEZE
+kolb_ae,must_be_numeric,Validity,FREEZE
+kolb_style,must_match_allowed_styles,Validity,FREEZE
+assessment_timestamp,must_be_iso_datetime,Temporal,AUDIT
+instrument_version,must_not_be_null,Reproducibility,FREEZE
+feature_snapshot_version,must_not_be_null,Reproducibility,AUDIT
+experiment_seed,must_not_be_null,Reproducibility,AUDIT
+consent_status,must_be_valid_before_export,Ethics,AUDIT
