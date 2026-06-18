@@ -1,0 +1,8 @@
+ANALYSIS_STEP,PURPOSE,TOOLING,DECISION
+DataLoading,Load anonymized versioned datasets,Python pandas pyarrow,FREEZE
+DataProfiling,Compute missingness distributions outliers,pandas matplotlib,AUDIT
+Psychometrics,Analyze instrument score stability,scipy statsmodels,AUDIT
+MLBaseline,Train reproducible classical ML models,scikit-learn,AUDIT
+XAI,Generate feature explanations,SHAP LIME,AUDIT
+GovernanceMetrics,Compute consent fairness traceability indicators,pandas sklearn,AUDIT
+DeepLearning,Future temporal multimodal modeling,PyTorch TensorFlow,MVP22

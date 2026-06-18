@@ -1,0 +1,8 @@
+OUTPUT_ARTIFACT,DESCRIPTION,USED_IN,DECISION
+data_quality_report.md,Dataset quality and missingness report,Paper1 Paper2,AUDIT
+kolb_distribution_plot.png,Kolb learning style distribution,Paper2,FREEZE
+ml_metrics_report.csv,Model metrics and evaluation summary,Paper3 Paper4,AUDIT
+shap_summary_plot.png,Feature importance explanation,Paper4,AUDIT
+recommendation_evaluation_report.md,Teacher recommendation validation evidence,Paper5,AUDIT
+governance_readiness_report.md,Consent fairness traceability report,Paper6,AUDIT
+reproducibility_manifest.json,Dataset model seed environment versions,ALL_PAPERS,AUDIT
