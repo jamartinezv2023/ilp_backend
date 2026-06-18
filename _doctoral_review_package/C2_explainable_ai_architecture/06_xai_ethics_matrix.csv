@@ -1,0 +1,6 @@
+RISK,MITIGATION,DECISION
+OpaquePrediction,SHAP and LIME reports,AUDIT
+OverrelianceOnModel,Human review required,AUDIT
+BiasAmplification,Fairness subgroup analysis,AUDIT
+SensitiveInference,Limit variables and anonymize data,AUDIT
+DeepLearningOpacity,Use attention and post-hoc XAI,MVP22

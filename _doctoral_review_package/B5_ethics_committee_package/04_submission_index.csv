@@ -1,0 +1,8 @@
+DOCUMENT,DESCRIPTION,STATUS
+01_ethics_submission_summary.md,General ethics submission summary,READY
+02_ethics_requirements_matrix.csv,Ethics requirements traceability,READY
+03_ethics_risk_matrix.csv,Ethical risk and mitigation matrix,READY
+B1_expert_ethics_review,Expert and ethics review package,REFERENCE
+B2_informed_consent_protocol,Consent and assent protocol,REFERENCE
+B3_data_governance,Data governance package,REFERENCE
+B4_longitudinal_protocol,Longitudinal study protocol,REFERENCE
