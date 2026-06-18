@@ -1,0 +1,7 @@
+DATASET,RETENTION_PERIOD,ACCESS_LEVEL,OWNER,DECISION
+CORE_EDUCATIONAL_DATASET,Doctoral project duration plus approved archive,Restricted,Research Lead,AUDIT
+DATASET_KOLB_LONGITUDINAL,Doctoral project duration plus approved archive,Restricted,Research Lead,FREEZE
+DATASET_FEATURE_STORE,Doctoral project duration plus approved archive,Restricted,ML Lead,AUDIT
+DATASET_RECOMMENDATIONS,Doctoral project duration plus approved archive,Restricted,Pedagogical Lead,AUDIT
+DATASET_RESEARCH_EVIDENCE,Long-term project evidence,Internal,Research Lead,FREEZE
+DATASET_MULTIMODAL,To be defined by ethics committee,Highly Restricted,Ethics Committee,MVP22
