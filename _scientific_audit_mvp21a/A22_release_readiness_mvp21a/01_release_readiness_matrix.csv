@@ -1,0 +1,10 @@
+READINESS_AREA,CRITERION,EVIDENCE,STATUS,DECISION
+BackendBuild,Gradle build succeeds,BUILD SUCCESSFUL,READY,FREEZE
+Tests,Unit and smoke tests pass,Gradle test reports,READY,FREEZE
+QualityGates,Checkstyle PMD SpotBugs JaCoCo available,Quality reports,READY,AUDIT
+ScientificAudit,A1 to A21 audit packages created,Audit matrices,READY,FREEZE
+DatasetPlan,Datasets and variables mapped,A5 A9 A19 matrices,READY,AUDIT
+EthicsPlan,Consent governance anonymization defined,A7 A12 A17 matrices,READY,AUDIT
+FieldworkPlan,Pilot and transition plan defined,A9 A14 matrices,READY,AUDIT
+MVP22Backlog,Future scientific backlog prioritized,A15 A16 matrices,READY,AUDIT
+ReleaseBaseline,Functional baseline tagged,v0.21.0-mvp21a-functional-baseline,READY,FREEZE
