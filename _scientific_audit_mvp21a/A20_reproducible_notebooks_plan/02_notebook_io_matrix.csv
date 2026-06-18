@@ -1,0 +1,8 @@
+NOTEBOOK,REQUIRED_INPUTS,REQUIRED_OUTPUTS,REPRODUCIBILITY_REQUIREMENT
+01_dataset_profile.ipynb,anonymized dataset v1,data quality report and plots,dataset_version schema_version
+02_kolb_psychometrics.ipynb,kolb_longitudinal_v1.csv,psychometric summary and style distribution,instrument_version dataset_version
+03_learning_preferences_ml.ipynb,learning_preferences_v1.csv vocational_profile_v1.csv,ML metrics and confusion matrix,seed model_version dataset_version
+04_feature_store_xai.ipynb,feature_store_snapshot_v1.parquet,SHAP summary and feature importance,seed feature_version model_version
+05_adaptive_recommendations.ipynb,recommendations_v1.csv,recommendation evaluation report,recommendation_engine_version dataset_version
+06_ai_governance_metrics.ipynb,research_evidence_v1.csv,governance readiness report,audit_version evidence_source
+07_multimodal_deep_learning.ipynb,multimodal_dataset_v1,DL experiment report,ethics_protocol_version model_version
