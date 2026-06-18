@@ -1,0 +1,10 @@
+PUBLICATION_ITEM,DESCRIPTION,REQUIRED_BEFORE_PUBLICATION,DECISION
+DataDictionary,Full variable dictionary and encoding rules,YES,AUDIT
+AnonymizationReport,Proof that personal identifiers were removed,YES,AUDIT
+ConsentEvidence,Proof of valid consent scope,YES,AUDIT
+SchemaVersion,Dataset schema version,YES,FREEZE
+DatasetVersion,Dataset version identifier,YES,FREEZE
+QualityReport,Missingness validity consistency report,YES,AUDIT
+ReproducibilityNotebook,Notebook or script to reproduce analysis,YES,MVP22
+RepositoryArchive,Tagged code version linked to dataset,YES,FREEZE
+EthicsApproval,Ethics committee approval reference,YES,MVP22
