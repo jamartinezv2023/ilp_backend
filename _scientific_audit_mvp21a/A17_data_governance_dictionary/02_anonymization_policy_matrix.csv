@@ -1,0 +1,9 @@
+DATASET,IDENTIFIER_POLICY,EXPORT_POLICY,DECISION
+CORE_EDUCATIONAL_DATASET,Replace student_id with research_student_id,Only anonymized export allowed,AUDIT
+DATASET_KOLB_LONGITUDINAL,Use research_student_id,No personal identifiers,FREEZE
+DATASET_LEARNING_PREFERENCES,Use research_student_id,No personal identifiers,FREEZE
+DATASET_VOCATIONAL_PROFILE,Use research_student_id,No personal identifiers,FREEZE
+DATASET_FEATURE_STORE,Use research_student_id,Versioned feature export only,AUDIT
+DATASET_RECOMMENDATIONS,Use research_student_id,Teacher feedback anonymized,MVP22
+DATASET_RESEARCH_EVIDENCE,Project-level identifiers only,No student identity,FREEZE
+DATASET_MULTIMODAL,Separate consent and anonymization required,No export before ethics approval,MVP22
