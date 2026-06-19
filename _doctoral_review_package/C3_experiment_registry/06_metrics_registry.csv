@@ -1,0 +1,11 @@
+METRIC,TASK,USED_FOR
+Accuracy,Classification,Baseline reporting
+F1,Classification,Class imbalance
+Precision,Classification,False positive control
+Recall,Classification,False negative control
+ROC_AUC,Classification,Ranking quality
+BalancedAccuracy,Classification,Imbalanced classes
+RMSE,Regression,Prediction error
+MAE,Regression,Robust error reporting
+NDCG,Recommendation,Recommendation ranking
+FairnessGap,Fairness,Subgroup performance difference

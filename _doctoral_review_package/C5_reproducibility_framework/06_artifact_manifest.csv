@@ -1,0 +1,10 @@
+ARTIFACT,FORMAT,REQUIRED_FOR
+dataset_profile_report,md,Paper1
+kolb_psychometric_report,md,Paper2
+ml_metrics_report,csv,Paper3
+confusion_matrix,png,Paper3
+shap_summary_plot,png,Paper4
+lime_local_report,html,Paper4
+recommendation_evaluation_report,md,Paper5
+governance_readiness_report,md,Paper6
+reproducibility_manifest,json,ALL_PAPERS

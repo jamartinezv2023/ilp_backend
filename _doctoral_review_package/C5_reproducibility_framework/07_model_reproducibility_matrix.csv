@@ -1,0 +1,8 @@
+MODEL,REPRODUCIBILITY_REQUIREMENTS
+RandomForest,dataset_version seed parameters metrics artifact
+XGBoost,dataset_version seed parameters metrics artifact
+LightGBM,dataset_version seed parameters metrics artifact
+CatBoost,dataset_version seed parameters metrics artifact
+LogisticRegression,dataset_version seed parameters metrics artifact
+Transformer,dataset_version seed architecture weights artifact MVP22
+CNN_LSTM,dataset_version seed architecture weights artifact MVP22

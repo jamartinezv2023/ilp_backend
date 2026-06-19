@@ -1,0 +1,9 @@
+ARTIFACT,FORMAT,PURPOSE
+trained_model,pkl,Serialized model
+metrics_report,csv,Experiment metrics
+confusion_matrix,png,Classification evidence
+roc_curve,png,Model discrimination evidence
+shap_summary,png,XAI global explanation
+lime_report,html,XAI local explanation
+experiment_manifest,json,Reproducibility manifest
+notebook,ipynb,Analysis workflow

@@ -1,0 +1,7 @@
+RISK,LEVEL,MITIGATION,DECISION
+PersonalDataExposure,HIGH,Anonymization and restricted access,AUDIT
+MinorParticipation,HIGH,Guardian consent and student assent,AUDIT
+AlgorithmicMisinterpretation,MEDIUM,Human-in-the-loop teacher validation,AUDIT
+RecommendationOverreliance,MEDIUM,Pedagogical disclaimer and expert review,AUDIT
+DatasetReidentification,HIGH,Research student id and no direct identifiers,AUDIT
+MultimodalSensitivity,CRITICAL,Not allowed before separate ethics approval,MVP22
