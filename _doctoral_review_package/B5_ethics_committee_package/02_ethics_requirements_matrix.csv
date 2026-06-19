@@ -1,0 +1,10 @@
+ETHICS_REQUIREMENT,EVIDENCE_PACKAGE,STATUS,DECISION
+InformedConsent,B2 informed consent protocol,READY_FOR_REVIEW,AUDIT
+GuardianConsent,B2 parent consent,READY_FOR_REVIEW,AUDIT
+StudentAssent,B2 student assent,READY_FOR_REVIEW,AUDIT
+DataGovernance,B3 data governance package,READY_FOR_REVIEW,AUDIT
+LongitudinalDesign,B4 longitudinal protocol,READY_FOR_REVIEW,AUDIT
+Anonymization,B2 B3 anonymization policy,READY_FOR_REVIEW,AUDIT
+RiskBenefit,B2 risk benefit analysis,READY_FOR_REVIEW,AUDIT
+DataMinimization,B3 data dictionary,READY_FOR_REVIEW,AUDIT
+MultimodalData,Separate protocol required,NOT_APPROVED,MVP22

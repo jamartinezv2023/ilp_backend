@@ -1,0 +1,11 @@
+ITEM,REQUIRED_BEFORE_PUBLICATION
+Dataset version,YES
+Code commit hash,YES
+Environment manifest,YES
+Notebook version,YES
+Random seed,YES
+Experiment id,YES
+Metrics report,YES
+XAI artifacts,YES_FOR_XAI_PAPERS
+Ethics approval reference,YES_FOR_FIELD_DATA
+Anonymization report,YES

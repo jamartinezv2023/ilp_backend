@@ -1,0 +1,14 @@
+FIELD,TYPE,REQUIRED
+experiment_id,String,YES
+paper_id,String,YES
+dataset_name,String,YES
+dataset_version,String,YES
+feature_set_version,String,YES
+model_name,String,YES
+model_version,String,YES
+random_seed,Integer,YES
+training_date,DateTime,YES
+validation_strategy,String,YES
+primary_metric,String,YES
+artifact_path,String,YES
+xai_artifact_path,String,NO
