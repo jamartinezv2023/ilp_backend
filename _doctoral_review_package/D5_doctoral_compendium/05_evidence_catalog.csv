@@ -1,0 +1,10 @@
+EVIDENCE,TYPE
+Dataset versions,CSV
+Experiment manifests,JSON
+Notebook versions,IPYNB
+Figures,PNG
+Tables,CSV
+Metrics reports,CSV
+Artifacts,PKL
+Ethics documents,PDF
+Publication letters,PDF
