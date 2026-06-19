@@ -1,0 +1,8 @@
+PAPER,STATUS,PRIMARY_DATASET,PRIMARY_EVIDENCE
+Paper1,PLANNED,CORE_EDUCATIONAL_DATASET,Architecture audit quality evidence
+Paper2,PLANNED,DATASET_KOLB_LONGITUDINAL,Kolb longitudinal psychometrics
+Paper3,PLANNED,DATASET_LEARNING_PREFERENCES + DATASET_VOCATIONAL_PROFILE,ML metrics and profile analysis
+Paper4,PLANNED,DATASET_FEATURE_STORE,XAI feature importance SHAP LIME
+Paper5,PLANNED,DATASET_RECOMMENDATIONS,Adaptive recommendation validation
+Paper6,PLANNED,DATASET_RESEARCH_EVIDENCE,AI governance and ethics traceability
+Paper7,MVP22,DATASET_MULTIMODAL,Deep learning multimodal evidence
