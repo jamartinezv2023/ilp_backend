@@ -1,0 +1,9 @@
+LEVEL,ARTIFACT
+Variable,Scientific variable inventory
+Dataset,Dataset inventory
+Notebook,Notebook Factory
+Experiment,Experiment Factory
+Figure,Figure Factory
+Paper,Publication Pipeline
+Chapter,Doctoral Compendium
+Defense,Defense Package
