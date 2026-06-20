@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,G
+Package,G4
+Folder,G4_Experiment_Registry_Operation
+Purpose,Operate reproducible experiment registry
+Status,DESIGN

@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,I
+Package,I2
+Folder,I2_XGBoost_Pipeline
+Purpose,Train XGBoost models
+Status,DESIGN
