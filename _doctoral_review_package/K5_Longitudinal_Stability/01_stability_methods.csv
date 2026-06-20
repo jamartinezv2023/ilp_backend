@@ -1,0 +1,6 @@
+﻿VARIABLE,STABILITY_METHOD
+kolb_style,Transition matrix across timepoints
+support_level,Change score and trajectory analysis
+academic_average,Growth curve analysis
+recommendation_type,Pattern persistence analysis
+feature_vector,Feature drift analysis

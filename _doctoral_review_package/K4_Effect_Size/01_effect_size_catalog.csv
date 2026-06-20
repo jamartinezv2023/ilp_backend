@@ -1,0 +1,7 @@
+﻿EFFECT_SIZE,USE_CASE
+CohensD,Mean differences
+EtaSquared,ANOVA effect size
+CramersV,Categorical association
+OddsRatio,Classification interpretation
+RMSEReduction,Regression improvement
+FairnessGapReduction,Fairness improvement

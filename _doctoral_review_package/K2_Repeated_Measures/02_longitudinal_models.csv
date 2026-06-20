@@ -1,0 +1,5 @@
+﻿MODEL,USE_CASE
+RepeatedMeasuresANOVA,Numeric repeated outcomes
+MixedEffectsModel,Longitudinal student-level effects
+TransitionMatrix,Categorical profile transitions
+GrowthCurve,Academic performance trajectory
