@@ -1,0 +1,5 @@
+﻿USER_STORY,ACCEPTANCE_CRITERIA
+As a backend service I can receive sync batches,POST sync push accepts valid operations
+As a backend service I can reject invalid payloads,Invalid operations are rejected and audited
+As a backend service I can detect version conflicts,Version mismatch creates conflict record
+As a researcher I can trust synchronized data,Only validated synced records enter datasets

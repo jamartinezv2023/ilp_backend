@@ -1,0 +1,8 @@
+﻿STORY,TEST_LEVEL
+Open ILP offline,E2E
+Complete assessment offline,E2E
+Persist local response,Unit
+Push sync batch,Integration
+Detect conflict,Unit
+Resolve conflict,Integration
+Audit sync event,Integration

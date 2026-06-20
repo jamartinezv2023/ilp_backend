@@ -1,0 +1,5 @@
+﻿USER_STORY,ACCEPTANCE_CRITERIA
+As a device I can push pending operations,Pending operations become synced or failed
+As a device I can pull server changes,Client receives changes since last sync
+As the system I can retry failed sync,Retry count increases and no data is lost
+As the system I can avoid duplicate sync,Operation id guarantees idempotency
