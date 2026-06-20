@@ -1,0 +1,7 @@
+﻿CONSISTENCY_AREA,CONTROL
+Assessments,Append-only responses and versioned corrections
+Profiles,Optimistic locking and merge review
+Recommendations,Event trace and teacher validation
+Datasets,Export only validated synchronized records
+Analytics,Use dataset version snapshots
+AIModels,Train only with approved dataset versions
