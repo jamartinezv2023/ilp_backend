@@ -1,0 +1,9 @@
+﻿FIELD,DESCRIPTION
+model_id,Unique model identifier
+model_name,Algorithm name
+model_version,Semantic version
+dataset_version,Dataset used
+feature_set_version,Feature set used
+seed,Random seed
+metrics_path,Metrics artifact
+artifact_path,Serialized model artifact

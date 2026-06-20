@@ -1,0 +1,6 @@
+﻿DECISION_CRITERION,DESCRIPTION
+Performance,Best balanced metric
+Explainability,Model compatible with SHAP or feature importance
+Stability,Consistent across folds
+Fairness,Acceptable subgroup gap
+Reproducibility,Same result with fixed seed

@@ -1,0 +1,5 @@
+﻿COMPARISON,MODELS,METRICS
+Baseline,RandomForest Accuracy F1 ROC_AUC
+Boosting,XGBoost Accuracy F1 ROC_AUC
+Regression,RandomForestRegressor RMSE MAE
+Fairness,AllModels FairnessGap
