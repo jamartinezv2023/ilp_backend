@@ -1,0 +1,7 @@
+﻿TEST_CASE,EXPECTED_RESULT
+OpenAppOffline,Application shell loads without network
+CompleteAssessmentOffline,Assessment response is stored locally
+CreateTeacherObservationOffline,Observation enters sync queue
+ReconnectAndSync,Pending operations are synchronized
+ShowOfflineBanner,User sees connectivity state
+MarkConflictRecord,Conflicting record is visible for review
