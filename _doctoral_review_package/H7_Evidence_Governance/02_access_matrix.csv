@@ -1,0 +1,7 @@
+﻿ROLE,PERMISSION
+PrincipalResearcher,Read write export anonymized datasets
+Teacher,Read assigned pedagogical summaries only
+DataSteward,Manage anonymization and quality
+EthicsCommittee,Audit access
+Student,Own participation information
+Parent,Consent-related information

@@ -1,0 +1,7 @@
+﻿DATASET,STORAGE_POLICY
+CORE_EDUCATIONAL_DATASET,Anonymized structured storage
+DATASET_KOLB_LONGITUDINAL,Versioned longitudinal storage
+DATASET_LEARNING_PREFERENCES,Versioned psychometric storage
+DATASET_FEATURE_STORE,Derived features only
+DATASET_RECOMMENDATIONS,Recommendation traces
+DATASET_RESEARCH_EVIDENCE,Audit and governance evidence

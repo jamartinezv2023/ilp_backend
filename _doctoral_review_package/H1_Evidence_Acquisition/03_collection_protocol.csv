@@ -1,0 +1,8 @@
+﻿STEP,DESCRIPTION
+Recruitment,Identify eligible participants
+Consent,Validate informed consent and assent
+Collection,Apply instruments and record evidence
+Anonymization,Replace identity with research UUID
+Storage,Store evidence in protected repository
+Backup,Generate secure backup
+Audit,Register provenance and collection event

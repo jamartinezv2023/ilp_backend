@@ -1,0 +1,6 @@
+﻿VALIDATION_RULE,DESCRIPTION
+ConsentRequired,No record is valid without consent
+UUIDRequired,Every record must have anonymous student UUID
+InstrumentVersionRequired,Every answer must reference instrument version
+TimestampRequired,Every evidence item must include collection timestamp
+NoDirectIdentifiers,Names documents and emails must not enter research dataset

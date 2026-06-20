@@ -1,0 +1,6 @@
+﻿STATUS,MEANING
+RAW,Collected but not validated
+VALIDATED,Passed structural validation
+REJECTED,Failed mandatory validation
+CORRECTED,Corrected after audit
+ANONYMIZED,Ready for research processing
