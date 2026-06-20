@@ -1,0 +1,7 @@
+﻿QUALITY_GATE,REQUIRED
+BackendBuildPasses,YES
+FrontendBuildPasses,YES
+ExistingTestsPass,YES
+NoDatabaseMigration,YES
+NoEndpointRemoved,YES
+FeatureFlagDefaultOff,YES
