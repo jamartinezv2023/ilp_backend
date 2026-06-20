@@ -1,0 +1,4 @@
+﻿CLASS,RESPONSIBILITY
+SyncController,Expose sync status endpoint
+SyncService,Return current sync status
+SyncStatusResponse,DTO for endpoint response
