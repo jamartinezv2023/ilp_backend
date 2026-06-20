@@ -1,0 +1,5 @@
+﻿FLAG,DEFAULT,DESCRIPTION
+offline_first_enabled,false,Enable offline-first features progressively
+sync_status_enabled,false,Enable sync status diagnostics
+offline_banner_enabled,false,Enable offline banner in UI
+local_persistence_enabled,false,Enable IndexedDB persistence later

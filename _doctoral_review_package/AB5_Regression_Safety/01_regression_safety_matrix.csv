@@ -1,0 +1,7 @@
+﻿SAFETY_CHECK,REQUIRED
+BackendBuildPasses,YES
+FrontendBuildPasses,YES
+ExistingTestsPass,YES
+NoEndpointRemoved,YES
+NoCurrentPageBroken,YES
+NoDatabaseDestructiveMigration,YES
