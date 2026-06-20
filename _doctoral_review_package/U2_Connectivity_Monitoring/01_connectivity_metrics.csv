@@ -1,0 +1,6 @@
+﻿METRIC,DESCRIPTION
+offline_sessions,Number of sessions without internet
+intermittent_sessions,Number of sessions with unstable connectivity
+average_offline_duration,Average offline time per session
+reconnect_events,Number of reconnection events
+failed_network_requests,Number of failed requests due connectivity

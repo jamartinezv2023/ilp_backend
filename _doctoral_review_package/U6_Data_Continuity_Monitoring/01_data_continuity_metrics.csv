@@ -1,0 +1,6 @@
+﻿CONTINUITY_METRIC,DESCRIPTION
+records_captured_offline,Records generated offline
+records_successfully_synced,Offline records synchronized
+records_rejected,Records rejected by validation
+dataset_eligible_records,Records ready for dataset export
+missing_evidence_rate,Expected evidence not collected

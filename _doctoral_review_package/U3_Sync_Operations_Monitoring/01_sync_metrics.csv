@@ -1,0 +1,6 @@
+﻿METRIC,DESCRIPTION
+pending_operations,Operations waiting for sync
+synced_operations,Operations successfully synchronized
+failed_operations,Operations failed after retries
+retry_count,Number of sync retries
+average_sync_latency,Time between local operation and server sync

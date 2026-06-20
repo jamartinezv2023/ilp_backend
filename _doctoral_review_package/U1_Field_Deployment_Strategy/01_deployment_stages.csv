@@ -1,0 +1,6 @@
+﻿STAGE,DESCRIPTION
+InternalValidation,Offline-first tested by development team
+TeacherDryRun,Teachers simulate offline activities
+ControlledPilot,Small cohort uses offline-first in real context
+ExpandedPilot,More groups use offline-first with monitoring
+OperationalFieldDeployment,Offline-first becomes standard field capability

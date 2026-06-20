@@ -1,0 +1,6 @@
+﻿ADOPTION_METRIC,DESCRIPTION
+teacher_active_users,Teachers using offline-first flows
+student_completed_offline_tasks,Student tasks completed offline
+offline_assessment_completion_rate,Assessments completed without connectivity
+teacher_feedback_score,Teacher evaluation of offline usability
+support_requests,Requests related to offline-first usage
