@@ -1,0 +1,10 @@
+﻿FIELD,DESCRIPTION
+operation_id,Client generated UUID for idempotency
+entity_type,Affected entity type
+entity_id,Local or server entity id
+operation_type,CREATE UPDATE DELETE
+payload,Serialized entity payload
+base_version,Last known server version
+created_at,Local timestamp
+sync_status,PENDING SYNCED FAILED CONFLICT
+retry_count,Retry attempts
