@@ -1,0 +1,7 @@
+﻿INCIDENT_TYPE,ACTION
+SyncFailure,Keep operation pending and report
+ConflictDetected,Do not manually alter data outside system
+DeviceFailure,Record incident and preserve local evidence if possible
+ConsentIssue,Stop participation and report
+ConnectivityLoss,Continue offline if workflow allows
+DataQualityIssue,Mark for review and do not export
