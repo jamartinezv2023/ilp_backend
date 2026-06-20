@@ -1,0 +1,6 @@
+﻿CONFLICT_SCENARIO,EXPECTED_BEHAVIOR
+TwoDevicesSameField,Conflict is detected
+TwoDevicesDifferentFields,Compatible merge is proposed
+DeletedAndUpdated,Manual reconciliation required
+DuplicateCreate,Duplicate is detected using UUID or natural key
+InvalidStateTransition,Operation is rejected and audited

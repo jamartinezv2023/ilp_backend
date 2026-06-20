@@ -1,0 +1,6 @@
+﻿VALIDATION_RULE,EXPECTED_RESULT
+NoDataLoss,All offline records appear after sync
+NoDuplicateRecords,No duplicated entity after retry
+VersionConsistency,Entity version increases correctly
+AuditCompleteness,Every sync event has audit record
+DatasetEligibility,Only validated synchronized records enter datasets

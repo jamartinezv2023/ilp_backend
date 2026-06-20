@@ -1,0 +1,6 @@
+﻿TEST_CASE,EXPECTED_RESULT
+PushPendingOperations,Backend receives batch operations
+PullServerChanges,Client receives incremental updates
+RejectInvalidPayload,Backend rejects invalid sync operation
+RegisterSyncAudit,Backend creates audit event
+PreventDuplicateOperation,Duplicate operation is ignored or marked
