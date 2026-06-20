@@ -1,0 +1,7 @@
+﻿ASSET,PRESERVATION_METHOD
+Datasets,Versioned repository and DOI
+Notebooks,Git and reproducibility manifest
+Models,Model registry and artifact storage
+Papers,Publication archive and DOI
+EthicsEvidence,Restricted institutional archive
+GovernanceRecords,Audit log and controlled access
