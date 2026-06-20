@@ -1,0 +1,7 @@
+﻿CONFLICT_TYPE,DESCRIPTION
+VersionMismatch,Client base version differs from server current version
+ConcurrentUpdate,Same entity updated by different devices
+DeletedAndUpdated,Entity deleted on server but updated locally
+DuplicateCreate,Same logical record created more than once
+InvalidStateTransition,Operation violates domain workflow
+SemanticConflict,Values are valid but pedagogically inconsistent
