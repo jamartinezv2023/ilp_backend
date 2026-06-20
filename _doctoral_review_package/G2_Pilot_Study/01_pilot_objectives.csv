@@ -1,6 +1,6 @@
 ﻿OBJECTIVE,DESCRIPTION
-Feasibility,Validate field workflow
-Usability,Validate student and teacher interaction
-DataQuality,Validate completeness and consistency
-Ethics,Validate consent and anonymization workflow
-ResearchReadiness,Validate dataset V1 design
+Feasibility,Validate operational workflow before real scale deployment
+Usability,Validate teacher and student interaction with ILP
+DataQuality,Validate completeness consistency and traceability
+Ethics,Validate consent anonymization and privacy workflow
+ResearchReadiness,Validate dataset V1 design before longitudinal expansion
