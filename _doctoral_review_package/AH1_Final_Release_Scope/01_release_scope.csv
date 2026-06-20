@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+ReleaseGoal,Close offline-first implementation preparation
+ImplementationScope,AA to AG
+ProductionRelease,NO
+FieldPilot,ONLY_AFTER_APPROVAL
+PrimaryRisk,Premature release without evidence
+SafetyRule,No production use before QA field and ethics gates

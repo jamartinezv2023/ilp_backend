@@ -1,0 +1,8 @@
+﻿GATE,REQUIRED_STATUS
+FeatureFlagsDefined,READY
+BackendSyncSkeleton,READY
+FrontendOfflineSkeleton,READY
+IndexedDBDesign,READY
+SyncQueueDesign,READY
+ConflictWorkflowDesign,READY
+AuditTrailDesign,READY

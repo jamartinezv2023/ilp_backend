@@ -1,0 +1,8 @@
+﻿FIELD_GATE,REQUIRED_STATUS
+EthicsApproval,APPROVED
+ConsentProtocol,READY
+TeacherTraining,COMPLETED
+DeviceCheck,COMPLETED
+ConnectivitySimulation,COMPLETED
+IncidentProtocol,READY
+PilotSuccessCriteria,DEFINED
