@@ -1,0 +1,6 @@
+﻿CONFLICT_RULE,DESCRIPTION
+VersionMismatch,Client version differs from server version
+ConcurrentUpdate,Same entity updated in two devices
+DeletedEntityUpdate,Entity deleted in server but updated locally
+DuplicateOperation,Same operation submitted more than once
+InvalidStateTransition,Operation violates domain workflow

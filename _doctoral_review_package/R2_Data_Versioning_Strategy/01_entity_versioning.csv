@@ -1,0 +1,6 @@
+﻿ENTITY,VERSION_FIELD,STRATEGY
+StudentProfile,version,Optimistic locking
+AssessmentResponse,version,Append-only plus correction
+TeacherObservation,version,Conflict-aware update
+RecommendationFeedback,version,Event-sourced audit
+SyncOperation,operation_version,Immutable operation log

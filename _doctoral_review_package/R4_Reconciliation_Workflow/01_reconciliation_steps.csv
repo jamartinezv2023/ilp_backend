@@ -1,0 +1,7 @@
+﻿STEP,ACTION
+Detect,Identify conflicting operation
+Classify,Determine conflict type
+Preserve,Keep both client and server evidence
+Resolve,Apply merge or manual review
+Audit,Register final decision
+Notify,Inform affected user if needed
