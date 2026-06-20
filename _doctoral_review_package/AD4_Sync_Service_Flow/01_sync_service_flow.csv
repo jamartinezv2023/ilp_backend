@@ -1,0 +1,8 @@
+﻿STEP,DESCRIPTION
+ReceiveBatch,Backend receives sync batch
+ValidatePayload,Validate structure entity type and operation type
+CheckIdempotency,Reject or ignore already processed operation_id
+CheckVersion,Compare client base_version with server version
+ApplyOperation,Apply safe operation or create conflict
+Audit,Register sync event
+ReturnResult,Return per-operation result

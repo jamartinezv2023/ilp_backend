@@ -1,0 +1,9 @@
+﻿DTO,DIRECTION,PURPOSE
+SyncOperationRequest,INPUT,Client pending operation
+SyncBatchRequest,INPUT,Batch of pending operations
+SyncOperationResultResponse,OUTPUT,Result per operation
+SyncBatchResponse,OUTPUT,Aggregated sync result
+SyncStatusResponse,OUTPUT,Sync feature status
+SyncPullResponse,OUTPUT,Incremental server changes
+ConflictResponse,OUTPUT,Detected conflict description
+ReconciliationRequest,INPUT,Manual or rule-based resolution decision

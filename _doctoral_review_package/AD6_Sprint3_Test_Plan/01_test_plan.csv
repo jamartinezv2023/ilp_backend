@@ -1,0 +1,8 @@
+﻿TEST,TYPE
+SyncStatusEndpoint,Integration
+PushValidBatch,Integration
+RejectInvalidPayload,Integration
+IgnoreDuplicateOperation,Integration
+DetectVersionMismatch,Unit
+CreateSyncAuditEvent,Unit
+PullIncrementalChanges,Integration
