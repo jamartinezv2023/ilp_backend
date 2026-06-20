@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,H
+Package,H2
+Folder,H2_Evidence_Validation
+Purpose,Validate and clean evidence
+Status,DESIGN
