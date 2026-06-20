@@ -1,0 +1,6 @@
+﻿SIMULATION,DESCRIPTION
+NoConnection,Application starts and operates offline
+IntermittentConnection,Network alternates between online and offline
+SlowConnection,Sync works with latency
+ConnectionDropDuringSync,Retry policy preserves pending operations
+MultiDeviceConflict,Two devices generate conflicting changes

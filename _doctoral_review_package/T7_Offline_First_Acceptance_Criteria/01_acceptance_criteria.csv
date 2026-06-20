@@ -1,0 +1,8 @@
+﻿CRITERION,ACCEPTANCE_RULE
+OfflineUsage,Core assessment flow works without internet
+LocalStorage,Data persists after browser reload
+SyncCompletion,Pending queue reaches SYNCED state after reconnect
+ConflictVisibility,Conflicts are visible to authorized reviewer
+AuditTrail,Every operation has audit event
+DatasetIntegrity,Only validated records feed research datasets
+TeacherUsability,Teacher can understand offline and sync status
