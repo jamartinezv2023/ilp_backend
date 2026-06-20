@@ -1,0 +1,7 @@
+﻿FRONTEND_CAPABILITY,PURPOSE
+IndexedDB,Local structured persistence
+ServiceWorker,Offline access and cache strategy
+SyncQueue,Store pending mutations
+RetryPolicy,Retry failed synchronization
+ConflictState,Mark records requiring reconciliation
+OfflineBanner,Inform user connectivity status

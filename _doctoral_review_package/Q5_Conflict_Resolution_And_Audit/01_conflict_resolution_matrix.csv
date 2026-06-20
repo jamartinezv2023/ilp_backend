@@ -1,0 +1,6 @@
+﻿CONFLICT_TYPE,RESOLUTION_STRATEGY
+SameFieldUpdated,Latest valid version plus audit review
+DifferentFieldsUpdated,Merge when semantically compatible
+DeletedAndUpdated,Escalate to reconciliation workflow
+DuplicateCreate,Detect by UUID and natural keys
+InvalidPayload,Reject and log validation error
