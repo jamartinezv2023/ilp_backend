@@ -1,0 +1,2 @@
+﻿ENDPOINT,METHOD,RESPONSE
+/api/v1/sync/status,GET,SyncStatusResponse
