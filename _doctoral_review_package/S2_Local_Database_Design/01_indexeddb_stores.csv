@@ -1,0 +1,8 @@
+﻿STORE,ENTITY
+students,StudentProfile
+assessment_responses,AssessmentResponse
+teacher_observations,TeacherObservation
+recommendation_feedback,RecommendationFeedback
+sync_queue,SyncOperation
+conflict_records,ConflictRecord
+audit_events,OfflineAuditEvent

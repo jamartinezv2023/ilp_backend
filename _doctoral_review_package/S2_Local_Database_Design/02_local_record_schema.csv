@@ -1,0 +1,8 @@
+﻿FIELD,DESCRIPTION
+local_id,Client generated UUID
+server_id,Server identifier when available
+entity_type,Domain entity name
+payload,Serialized entity snapshot
+version,Local version
+sync_status,PENDING SYNCED FAILED CONFLICT
+updated_at,Local update timestamp
