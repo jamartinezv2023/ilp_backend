@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+SprintGoal,Prepare offline-first controlled field pilot
+FunctionalChange,Controlled pilot only
+RealDataCollection,Only after ethics approval
+ExistingFlowsAffected,NO
+PrimaryRisk,Field use before readiness
+SafetyRule,No pilot without ethics consent training backup and monitoring

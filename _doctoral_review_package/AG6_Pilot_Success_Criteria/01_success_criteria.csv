@@ -1,0 +1,9 @@
+﻿SUCCESS_CRITERION,MINIMUM_EXPECTATION
+TeacherTrainingCompleted,YES
+OfflineActivityCompleted,YES
+PendingOperationsVisible,YES
+SyncAfterReconnect,YES
+NoDataLoss,YES
+AuditEventsGenerated,YES
+CriticalIncidents,0
+TeacherFeedbackCollected,YES

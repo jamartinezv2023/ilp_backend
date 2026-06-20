@@ -1,0 +1,8 @@
+﻿STEP,ACTION
+Prepare,Verify devices browser and local storage
+Consent,Confirm authorized participation
+DryRun,Simulate offline assessment
+OfflineUse,Complete controlled offline activity
+Reconnect,Trigger synchronization
+Review,Check sync status conflicts and audit logs
+Close,Document pilot evidence and lessons learned
