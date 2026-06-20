@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+SprintGoal,Create offline-first technical skeleton
+FunctionalChange,NO
+RealDataCollection,NO
+ExistingFlowsAffected,NO
+FeatureFlagRequired,YES
+MainRisk,Breaking current MVP21A

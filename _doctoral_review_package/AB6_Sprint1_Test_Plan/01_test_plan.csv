@@ -1,0 +1,6 @@
+﻿TEST,TYPE
+SyncStatusEndpointTest,Backend unit or integration
+SyncServiceSkeletonTest,Backend unit
+ConnectivityStoreTest,Frontend unit
+OfflineBannerRenderTest,Frontend unit
+ExistingAssessmentFlowRegression,E2E regression

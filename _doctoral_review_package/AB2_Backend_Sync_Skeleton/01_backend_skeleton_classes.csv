@@ -1,0 +1,6 @@
+﻿CLASS,RESPONSIBILITY
+SyncController,Expose placeholder sync endpoints
+SyncStatusResponse,Return sync service status
+SyncOperationRequest,Represent future sync operation
+SyncOperationResponse,Represent sync result
+SyncService,Provide initial sync orchestration skeleton
