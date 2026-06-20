@@ -1,0 +1,7 @@
+﻿SCENARIO,EXPECTED_CONTROL
+NoConnection,Local workflow continues
+SlowConnection,Sync waits and retries
+IntermittentConnection,Queue preserves operations
+ServerUnavailable,Operations remain pending
+BrowserReload,Local data persists
+DuplicateSubmit,Idempotency prevents duplicate records

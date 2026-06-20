@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+SprintGoal,Validate offline-first implementation through automated testing
+FunctionalChange,NO
+RealDataCollection,NO
+ExistingFlowsAffected,NO
+PrimaryRisk,False confidence without E2E offline evidence
+SafetyRule,No offline-first release without regression and no-data-loss evidence

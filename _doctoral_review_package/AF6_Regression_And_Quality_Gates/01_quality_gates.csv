@@ -1,0 +1,9 @@
+﻿QUALITY_GATE,REQUIRED
+BackendBuild,YES
+FrontendBuild,YES
+UnitTests,YES
+IntegrationTests,YES
+E2EOfflineFlow,YES
+RegressionCurrentMVP,YES
+NoDataLossEvidence,YES
+AuditTrailEvidence,YES
