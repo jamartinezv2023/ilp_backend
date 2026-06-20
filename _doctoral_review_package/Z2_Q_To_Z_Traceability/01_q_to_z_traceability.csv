@@ -1,0 +1,11 @@
+﻿TRACE_LEVEL,ARTIFACT
+Requirement,Q1 Offline First Requirement
+Architecture,Q2-Q7 Architecture Packages
+Synchronization,R1-R7 Sync Packages
+Implementation,S1-S7 Implementation Roadmap
+Quality,T1-T7 QA Validation
+Deployment,U1-U7 Field Monitoring
+Release,V1-V7 Final Integration
+Backlog,W1-X7 Epics Sprint Planning
+Evidence,Y1-Y7 Evidence Control
+Closure,Z1-Z7 Final Closure
