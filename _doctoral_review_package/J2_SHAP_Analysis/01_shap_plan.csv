@@ -1,0 +1,5 @@
+﻿MODEL,DATASET,SHAP_SCOPE
+RandomForest,DATASET_KOLB_LONGITUDINAL,Global and local
+XGBoost,DATASET_LEARNING_PREFERENCES,Global and local
+RandomForest,DATASET_FEATURE_STORE,Global and local
+XGBoost,DATASET_RECOMMENDATIONS,Global and local

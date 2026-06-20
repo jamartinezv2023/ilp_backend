@@ -1,0 +1,7 @@
+﻿GOVERNANCE_RULE,DESCRIPTION
+NoBlackBoxDecision,No automatic educational decision without explanation
+HumanReviewRequired,Teacher or expert review required for recommendations
+ExplanationStored,Every model explanation must be stored as artifact
+DatasetVersionRequired,Every explanation must reference dataset version
+ModelVersionRequired,Every explanation must reference model version
+EthicsReviewRequired,High-impact recommendations require ethics oversight
