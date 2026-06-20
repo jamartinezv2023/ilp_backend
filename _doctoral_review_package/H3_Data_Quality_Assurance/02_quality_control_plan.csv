@@ -1,0 +1,6 @@
+﻿CHECK,FREQUENCY
+Completeness check,Each collection batch
+Duplicate check,Each collection batch
+Allowed values check,Each collection batch
+Temporal consistency check,Each timepoint
+Dataset version audit,Before every export

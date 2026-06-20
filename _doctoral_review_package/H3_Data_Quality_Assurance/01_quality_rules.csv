@@ -1,0 +1,6 @@
+﻿QUALITY_DIMENSION,RULE
+Completeness,Mandatory fields must not be empty
+Consistency,Values must respect allowed domains
+Uniqueness,No duplicated UUID timepoint instrument
+Timeliness,Measurements must follow schedule
+Traceability,Every item must link to source and dataset version
