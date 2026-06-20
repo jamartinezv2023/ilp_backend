@@ -1,0 +1,6 @@
+﻿METRIC,DESCRIPTION
+conflict_count,Number of detected conflicts
+conflict_rate,Conflicts divided by synced operations
+manual_review_required,Conflicts requiring human decision
+resolved_conflicts,Conflicts resolved
+average_resolution_time,Time to resolve conflicts
