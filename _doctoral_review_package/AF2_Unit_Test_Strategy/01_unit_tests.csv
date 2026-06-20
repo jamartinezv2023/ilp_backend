@@ -1,0 +1,7 @@
+﻿TEST_TARGET,TEST_CASE
+SyncQueue,Queue pending CREATE operation
+SyncQueue,Retry failed operation
+SyncQueue,Prevent duplicate operation
+ConnectivityStore,Detect offline state
+ConflictDetector,Detect version mismatch
+ReconciliationService,Preserve client and server payload

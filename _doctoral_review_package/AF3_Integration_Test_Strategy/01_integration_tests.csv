@@ -1,0 +1,7 @@
+﻿TEST_TARGET,TEST_CASE
+SyncController,GET sync status returns enabled state
+SyncController,POST push accepts valid batch
+SyncController,POST push rejects invalid payload
+SyncController,GET pull returns incremental changes
+ConflictController,GET conflicts returns pending conflicts
+ReconciliationController,POST reconcile records audit event
