@@ -1,0 +1,9 @@
+﻿TASK,TEST_LEVEL
+TestOfflineShell,E2E
+TestLocalPersistence,Unit
+TestSyncQueue,Unit
+TestPushEndpoint,Integration
+TestPullEndpoint,Integration
+TestConflictDetection,Unit
+TestReconciliationFlow,E2E
+TestNoDataLoss,E2E

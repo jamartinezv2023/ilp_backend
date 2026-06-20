@@ -1,0 +1,6 @@
+﻿TASK,DESCRIPTION
+AddSyncMetrics,Track pending synced failed conflict operations
+AddSyncLogs,Trace sync operations with correlation id
+AddConflictDashboard,Monitor conflict rate and resolution time
+AddFeatureFlag,Enable offline-first progressively
+AddCIQualityGate,Run offline-first test suite in CI

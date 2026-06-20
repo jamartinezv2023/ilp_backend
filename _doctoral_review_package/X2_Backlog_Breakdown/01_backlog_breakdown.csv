@@ -1,0 +1,11 @@
+﻿BACKLOG_ITEM,SPRINT,PRIORITY
+ServiceWorkerAppShell,Sprint1,HIGH
+OfflineBanner,Sprint1,HIGH
+IndexedDBSchema,Sprint2,HIGH
+SyncQueueService,Sprint2,HIGH
+SyncPushEndpoint,Sprint3,HIGH
+SyncPullEndpoint,Sprint3,HIGH
+ConflictDetection,Sprint4,HIGH
+ReconciliationUI,Sprint4,MEDIUM
+OfflineE2ETests,Sprint5,HIGH
+FieldPilotChecklist,Sprint6,HIGH
