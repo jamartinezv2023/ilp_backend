@@ -1,0 +1,8 @@
+﻿GOVERNANCE_ITEM,DECISION
+Consent,Required before evidence collection
+Anonymization,Required before research processing
+AccessControl,Restricted to authorized roles
+AuditLog,Required for each evidence operation
+EthicsReview,Required before field deployment
+Publication,Only anonymized and approved outputs
+MultimodalData,MVP22 and separate ethics approval

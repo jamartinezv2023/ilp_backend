@@ -1,0 +1,8 @@
+﻿SOURCE,TYPE,DATASET
+Kolb Instrument,Psychometric,DATASET_KOLB_LONGITUDINAL
+Felder-Silverman Instrument,Psychometric,DATASET_LEARNING_PREFERENCES
+Kuder Instrument,Vocational,DATASET_VOCATIONAL_PROFILE
+Academic Records,Academic,CORE_EDUCATIONAL_DATASET
+Teacher Observations,Qualitative,DATASET_RESEARCH_EVIDENCE
+Adaptive Recommendations,System,DATASET_RECOMMENDATIONS
+Family Participation,Contextual,CORE_EDUCATIONAL_DATASET

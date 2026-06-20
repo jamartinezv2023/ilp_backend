@@ -1,0 +1,6 @@
+﻿INDICATOR,DESCRIPTION
+RetentionRate,Percentage of students remaining in study
+CompletionRate,Percentage of completed instruments
+MissingDataRate,Percentage of missing fields
+InstrumentStability,Consistency of instrument versions
+EvidenceGrowth,Records accumulated over time

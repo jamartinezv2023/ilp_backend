@@ -1,0 +1,6 @@
+﻿WAREHOUSE_LAYER,PURPOSE
+Raw Evidence,Preserve original collected data
+Validated Evidence,Store validated evidence
+Anonymized Evidence,Store research-safe records
+Feature Store,Store derived ML features
+Publication Dataset,Store exportable dataset versions
