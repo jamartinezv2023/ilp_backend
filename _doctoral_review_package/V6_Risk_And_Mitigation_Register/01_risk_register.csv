@@ -1,0 +1,8 @@
+﻿RISK,LEVEL,MITIGATION
+LocalDataLoss,HIGH,IndexedDB persistence backup and sync queue audit
+DuplicateSync,HIGH,Idempotent operation id
+ConflictExplosion,MEDIUM,Conflict classification and manual review
+PrivacyLeakage,HIGH,Anonymization and payload minimization
+TeacherConfusion,MEDIUM,Offline banner and training
+RuralConnectivityFailure,HIGH,Delayed sync and retry strategy
+DatasetInconsistency,HIGH,Only validated synced records enter datasets
