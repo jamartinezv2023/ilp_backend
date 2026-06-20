@@ -1,0 +1,9 @@
+﻿TEST,TYPE
+DetectVersionMismatch,Unit
+DetectDuplicateOperation,Unit
+PreserveClientAndServerPayloads,Unit
+CreateConflictRecord,Integration
+ListPendingConflicts,Integration
+SubmitReconciliationDecision,Integration
+AuditResolutionDecision,Integration
+NoDataLossDuringConflict,E2E

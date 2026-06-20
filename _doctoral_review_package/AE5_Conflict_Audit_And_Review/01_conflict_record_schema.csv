@@ -1,0 +1,12 @@
+﻿FIELD,DESCRIPTION
+conflict_id,Unique conflict identifier
+operation_id,Original sync operation
+entity_type,Affected entity type
+entity_id,Affected entity id
+client_payload,Client version of data
+server_payload,Server version of data
+conflict_type,Detected conflict category
+resolution_decision,ACCEPT_CLIENT ACCEPT_SERVER MERGE MANUAL_REJECT
+reviewer_id,Authorized reviewer
+resolved_at,Resolution timestamp
+rationale,Reason for decision

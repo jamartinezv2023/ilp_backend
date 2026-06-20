@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+SprintGoal,Implement conflict detection and reconciliation design
+FunctionalChange,New conflict workflow only
+RealDataCollection,NO
+ExistingEndpointsAffected,NO
+FeatureFlagRequired,YES
+PrimaryRisk,Incorrect merge or data loss
+SafetyRule,Preserve both client and server evidence before resolution
