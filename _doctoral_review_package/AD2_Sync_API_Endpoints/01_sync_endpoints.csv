@@ -1,0 +1,6 @@
+﻿ENDPOINT,METHOD,PURPOSE
+/api/v1/sync/status,GET,Return sync service health and feature flag state
+/api/v1/sync/push,POST,Receive pending client operations
+/api/v1/sync/pull,GET,Return server changes since last sync token
+/api/v1/sync/conflicts,GET,List conflicts for authorized review
+/api/v1/sync/reconcile,POST,Submit reconciliation decision
