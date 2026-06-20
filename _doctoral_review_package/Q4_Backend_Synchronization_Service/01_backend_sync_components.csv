@@ -1,0 +1,7 @@
+﻿BACKEND_COMPONENT,PURPOSE
+SyncController,Receives queued operations
+SyncService,Applies operations safely
+VersionService,Controls entity versions
+AuditService,Records synchronization events
+ConflictService,Detects divergent changes
+ReconciliationService,Resolves accepted changes
