@@ -1,0 +1,6 @@
+﻿GROUP,VARIABLES
+Demographic,student_uuid age grade_level
+Psychometric,kolb_style kolb_ce kolb_ro kolb_ac kolb_ae
+Academic,academic_average
+Temporal,measurement_date
+Adaptive,recommendation_type intervention_type
