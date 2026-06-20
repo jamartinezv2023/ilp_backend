@@ -1,0 +1,7 @@
+﻿EVIDENCE_AREA,REQUIRED_ARTIFACT
+FrontendOfflineImplementation,Commit PR test report screenshots
+BackendSyncImplementation,Commit PR integration test report
+ConflictResolutionImplementation,Unit integration and E2E evidence
+OfflineQAEvidence,Serenity reports Jest reports build logs
+DevOpsEvidence,CI logs Docker compose evidence deployment logs
+FieldPilotEvidence,Pilot logs teacher feedback sync metrics
