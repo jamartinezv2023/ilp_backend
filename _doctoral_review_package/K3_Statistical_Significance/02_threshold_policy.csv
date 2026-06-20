@@ -1,0 +1,4 @@
+﻿THRESHOLD,DESCRIPTION
+p_less_0_05,Exploratory statistical threshold
+confidence_95,Standard confidence interval
+adjusted_p_value,Multiple comparison correction when needed

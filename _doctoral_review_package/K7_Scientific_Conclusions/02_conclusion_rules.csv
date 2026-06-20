@@ -1,0 +1,5 @@
+﻿RULE,DESCRIPTION
+NoOverclaiming,Conclusions must match evidence level
+TraceabilityRequired,Every conclusion must link to dataset experiment and paper
+EthicsRequired,No conclusion from unauthorized data
+ReproducibilityRequired,Conclusion must be reproducible from versioned artifacts
