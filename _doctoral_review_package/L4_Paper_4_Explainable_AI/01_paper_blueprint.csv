@@ -1,0 +1,6 @@
+﻿SECTION,CONTENT
+Title,Explainable AI for Inclusive Education using Feature Store Evidence
+Dataset,DATASET_FEATURE_STORE
+Method,Random Forest XGBoost SHAP LIME
+Evidence,Feature importance SHAP summaries LIME reports fairness analysis
+Contribution,Transparent educational AI decision support
