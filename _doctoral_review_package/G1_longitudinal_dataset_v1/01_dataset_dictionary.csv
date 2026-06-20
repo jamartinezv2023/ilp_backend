@@ -1,0 +1,11 @@
+﻿VARIABLE,TYPE,DATASET,PAPER
+student_uuid,UUID,DATASET_V1_LONGITUDINAL,Paper1
+age,Integer,CORE_EDUCATIONAL_DATASET,Paper1
+grade_level,Categorical,CORE_EDUCATIONAL_DATASET,Paper1
+kolb_style,Categorical,DATASET_KOLB_LONGITUDINAL,Paper2
+kolb_ce,Numeric,DATASET_KOLB_LONGITUDINAL,Paper2
+kolb_ro,Numeric,DATASET_KOLB_LONGITUDINAL,Paper2
+kolb_ac,Numeric,DATASET_KOLB_LONGITUDINAL,Paper2
+kolb_ae,Numeric,DATASET_KOLB_LONGITUDINAL,Paper2
+academic_average,Numeric,DATASET_FEATURE_STORE,Paper4
+measurement_date,Date,DATASET_V1_LONGITUDINAL,Paper2
