@@ -1,0 +1,5 @@
+﻿FIELD,TYPE
+enabled,Boolean
+status,String
+version,String
+timestamp,String
