@@ -1,0 +1,5 @@
+﻿TEST,TYPE
+SyncStatusReturns200,Integration
+SyncStatusDefaultDisabled,Unit
+SyncStatusContainsTimestamp,Unit
+ExistingHealthEndpointStillWorks,Regression

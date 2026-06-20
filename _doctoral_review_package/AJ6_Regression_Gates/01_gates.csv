@@ -1,0 +1,7 @@
+﻿GATE,REQUIRED
+CompileJava,YES
+Checkstyle,YES
+PMD,YES
+SpotBugs,YES
+Tests,YES
+NoExistingEndpointRemoved,YES

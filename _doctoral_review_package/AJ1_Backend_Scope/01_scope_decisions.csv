@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+Goal,Create backend sync status skeleton
+FunctionalChange,Additive only
+DatabaseMigration,NO
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+Risk,Breaking stable MVP21A
