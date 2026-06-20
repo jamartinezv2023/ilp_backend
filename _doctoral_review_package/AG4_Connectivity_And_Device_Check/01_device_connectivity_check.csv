@@ -1,0 +1,7 @@
+﻿CHECK,EXPECTED_RESULT
+BrowserCompatibility,Supported browser available
+LocalStorageAvailable,IndexedDB available
+DeviceBattery,Device can complete pilot session
+ConnectivityBaseline,Online offline intermittent states identified
+BackupPlan,Manual incident log available
+TimeSync,Device time reasonably correct

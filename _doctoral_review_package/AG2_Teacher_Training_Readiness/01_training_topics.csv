@@ -1,0 +1,6 @@
+﻿TRAINING_TOPIC,OBJECTIVE
+OfflineMode,Teacher understands offline behavior
+SyncStatus,Teacher identifies pending synced failed and conflict states
+DataProtection,Teacher avoids direct identifiers in research evidence
+IncidentReporting,Teacher reports sync or device problems
+PilotWorkflow,Teacher follows controlled pilot steps
