@@ -1,0 +1,8 @@
+﻿TEST,TYPE
+ConnectivityStoreInitialState,Frontend unit
+ConnectivityStoreOnlineOfflineEvents,Frontend unit
+OfflineBannerHiddenWhenFlagOff,Frontend unit
+OfflineBannerShowsOfflineState,Frontend unit
+SyncStatusApiHandlesSuccess,Frontend unit
+SyncStatusApiHandlesFailure,Frontend unit
+ExistingAssessmentPageStillRenders,Regression

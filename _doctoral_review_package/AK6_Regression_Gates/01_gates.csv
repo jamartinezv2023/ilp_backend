@@ -1,0 +1,7 @@
+﻿GATE,REQUIRED
+FrontendBuild,YES
+FrontendTests,YES
+NoCurrentRouteRemoved,YES
+OfflineFeatureFlagDefaultOff,YES
+ExistingAssessmentFlowStable,YES
+ExistingStudentFlowStable,YES
