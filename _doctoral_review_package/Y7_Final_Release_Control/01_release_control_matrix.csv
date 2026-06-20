@@ -1,0 +1,9 @@
+﻿RELEASE_CONTROL_ITEM,REQUIRED
+AllPRsMerged,YES
+AllQualityGatesGreen,YES
+OfflineE2EPassed,YES
+SyncAuditVerified,YES
+ConflictWorkflowVerified,YES
+FieldPilotApproved,YES
+ReleaseTagCreated,YES
+RollbackPlanReady,YES

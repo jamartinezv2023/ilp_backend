@@ -1,0 +1,6 @@
+﻿DEPLOYMENT_STAGE,EVIDENCE
+LocalDockerCompose,Screenshot log and health checks
+DevEnvironment,Deployment log
+StagingEnvironment,Smoke test evidence
+FieldPilotEnvironment,Monitoring and backup evidence
+ProductionReadiness,Release approval
