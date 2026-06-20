@@ -1,0 +1,9 @@
+﻿QUEUE_FIELD,DESCRIPTION
+operation_id,Unique local operation id
+entity_type,Entity affected
+entity_id,Local or server id
+operation_type,CREATE UPDATE DELETE
+payload,Serialized data
+created_at,Local timestamp
+sync_status,PENDING SYNCED FAILED CONFLICT
+retry_count,Number of synchronization attempts
