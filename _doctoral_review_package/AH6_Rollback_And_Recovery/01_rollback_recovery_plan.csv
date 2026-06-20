@@ -1,0 +1,7 @@
+﻿FAILURE_SCENARIO,RECOVERY_ACTION
+SyncFailure,Keep operations pending and retry
+ConflictOverflow,Pause sync and review conflict queue
+FrontendRegression,Disable offline feature flag
+BackendRegression,Disable sync endpoints behind flag
+DataIntegrityIssue,Stop export and audit synchronized records
+FieldIncident,Stop pilot and document incident
