@@ -1,0 +1,5 @@
+﻿CLIENT,RESPONSIBILITY
+syncStatusApi,Call GET /api/v1/sync/status
+SyncStatusResponse,Represent backend sync state
+SyncStatusHook,Expose sync status to UI
+SyncStatusErrorState,Handle unavailable backend gracefully

@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+Goal,Create frontend connectivity skeleton
+FunctionalChange,Additive only
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+ExistingPagesAffected,NO
+Risk,Breaking stable assessment or student flows

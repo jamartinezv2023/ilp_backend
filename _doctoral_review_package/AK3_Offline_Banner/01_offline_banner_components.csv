@@ -1,0 +1,5 @@
+﻿COMPONENT,RESPONSIBILITY
+OfflineBanner,Show connectivity state
+SyncPendingIndicator,Future indicator for pending operations
+ConflictIndicator,Future indicator for conflicts
+FeatureFlagWrapper,Hide offline UI when disabled
