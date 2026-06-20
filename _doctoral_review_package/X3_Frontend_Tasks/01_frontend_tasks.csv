@@ -1,0 +1,7 @@
+﻿TASK,DESCRIPTION
+ImplementServiceWorker,Cache application shell and static assets
+ImplementConnectivityStore,Track online offline degraded state
+ImplementIndexedDBStores,Create local stores for assessments observations and sync queue
+ImplementSyncQueue,Queue CREATE UPDATE DELETE operations
+ImplementOfflineBanner,Show connectivity and sync state
+ImplementConflictUI,Show records needing reconciliation

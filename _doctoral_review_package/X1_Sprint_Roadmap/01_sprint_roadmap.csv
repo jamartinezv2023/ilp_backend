@@ -1,0 +1,7 @@
+﻿SPRINT,GOAL
+Sprint1,Implement frontend offline shell and connectivity status
+Sprint2,Implement IndexedDB local persistence and sync queue
+Sprint3,Implement backend sync push and pull APIs
+Sprint4,Implement conflict detection and reconciliation workflow
+Sprint5,Implement offline-first tests and monitoring
+Sprint6,Prepare field pilot readiness
