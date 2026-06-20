@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+PhaseGoal,Start real offline-first technical implementation
+ImplementationMode,Incremental
+FeatureFlagRequired,YES
+ProductionRelease,NO
+RealDataCollection,NO
+PrimaryRisk,Breaking stable MVP21A
+SafetyRule,Only additive changes allowed in first implementation cycle

@@ -1,0 +1,7 @@
+﻿TEST,TYPE
+SyncStatusEndpointReturns200,Backend integration
+SyncServiceDefaultDisabled,Backend unit
+ConnectivityDetectorOnlineOffline,Frontend unit
+OfflineBannerRendersDisabled,Frontend unit
+ExistingStudentFlowStillWorks,Regression
+ExistingAssessmentFlowStillWorks,Regression
