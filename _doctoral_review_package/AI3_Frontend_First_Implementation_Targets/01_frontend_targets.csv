@@ -1,0 +1,6 @@
+﻿TARGET,DESCRIPTION
+ConnectivityDetector,Detect online offline browser state
+OfflineBanner,Show connectivity status
+SyncStatusApi,Call backend sync status endpoint
+FeatureFlagWrapper,Hide offline features by default
+FrontendSmokeTest,Verify current UI remains stable
