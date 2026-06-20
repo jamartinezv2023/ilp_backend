@@ -1,0 +1,7 @@
+﻿FLOW,EXPECTED_RESULT
+OpenApplicationOffline,Application shell loads
+CompleteAssessmentOffline,Response is saved locally
+ReconnectAndSync,Pending response is synchronized
+ConnectionDropDuringSync,Operation remains pending and retries
+TwoDevicesConflict,Conflict is detected and shown
+ResolveConflict,Resolved record becomes dataset eligible
