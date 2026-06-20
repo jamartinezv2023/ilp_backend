@@ -1,0 +1,9 @@
+﻿AUDIT_FIELD,DESCRIPTION
+audit_id,Unique audit event id
+operation_id,Original sync operation
+entity_type,Affected entity
+entity_id,Affected entity id
+actor_id,User or device actor
+event_type,SYNC_SUCCESS SYNC_FAILED CONFLICT RESOLVED
+timestamp,Server timestamp
+decision,Resolution decision
