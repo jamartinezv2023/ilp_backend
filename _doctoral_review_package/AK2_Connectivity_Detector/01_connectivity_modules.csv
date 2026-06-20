@@ -1,0 +1,5 @@
+﻿MODULE,RESPONSIBILITY
+connectivityStore,Track online offline degraded state
+useConnectivity,Expose connectivity state to components
+networkEvents,Listen to browser online and offline events
+connectivityStatus,Represent ONLINE OFFLINE DEGRADED UNKNOWN
