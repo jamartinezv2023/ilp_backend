@@ -1,0 +1,11 @@
+﻿BACKLOG_ITEM,AREA,PRIORITY
+ServiceWorker,Frontend,HIGH
+IndexedDBLocalStore,Frontend,HIGH
+SyncQueue,Frontend,HIGH
+SyncController,Backend,HIGH
+SyncService,Backend,HIGH
+ConflictDetectionService,Backend,HIGH
+ReconciliationWorkflow,Backend,HIGH
+OfflineE2ETests,QA,HIGH
+SyncMonitoring,Observability,MEDIUM
+FieldPilotOfflineMode,Fieldwork,HIGH
