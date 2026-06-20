@@ -1,0 +1,6 @@
+﻿SYNC_MODE,DESCRIPTION
+Push,Client sends pending local operations to backend
+Pull,Client downloads server-side changes
+Bidirectional,Client and server exchange changes
+BatchSync,Multiple operations synchronized together
+IncrementalSync,Only changes since last sync are exchanged
