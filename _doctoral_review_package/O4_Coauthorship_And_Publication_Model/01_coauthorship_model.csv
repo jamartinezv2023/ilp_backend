@@ -1,0 +1,6 @@
+﻿MODEL,DESCRIPTION
+LeadAuthor,Responsible for manuscript leadership
+CoAuthor,Contributes data methods analysis or writing
+SeniorAdvisor,Provides scientific supervision
+DataContributor,Provides ethically approved anonymized data
+MethodsReviewer,Reviews statistics ML XAI or governance
