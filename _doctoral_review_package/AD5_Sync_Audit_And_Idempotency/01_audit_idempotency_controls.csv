@@ -1,0 +1,7 @@
+﻿CONTROL,DESCRIPTION
+operation_id,Ensures idempotent processing
+payload_hash,Detects repeated equivalent payload
+audit_event_id,Links operation to audit record
+server_timestamp,Defines authoritative sync time
+actor_id,Identifies user or device actor
+correlation_id,Traces request across logs
