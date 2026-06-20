@@ -1,0 +1,4 @@
+﻿METHOD,USE_CASE
+GridSearch,Small search space
+RandomSearch,Medium search space
+BayesianOptimization,Advanced optimization MVP22
