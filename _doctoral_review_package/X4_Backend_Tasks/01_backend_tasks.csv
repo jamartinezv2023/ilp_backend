@@ -1,0 +1,7 @@
+﻿TASK,DESCRIPTION
+CreateSyncController,Expose sync endpoints
+CreateSyncService,Process push and pull operations
+CreateSyncOperationEntity,Persist immutable operation log
+CreateConflictDetectionService,Detect version and state conflicts
+CreateReconciliationService,Apply resolution decisions
+CreateSyncAuditService,Record audit events
