@@ -1,0 +1,6 @@
+﻿ARTIFACT,REQUIRED
+Model explanation report,YES
+Fairness report,YES
+Bias audit report,YES
+Teacher interpretation record,YES
+Reproducibility manifest,YES

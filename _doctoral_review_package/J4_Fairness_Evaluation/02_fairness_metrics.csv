@@ -1,0 +1,5 @@
+﻿METRIC,PURPOSE
+FairnessGap,Measure subgroup performance difference
+EqualOpportunity,Compare recall by subgroup
+DemographicParity,Compare positive prediction rates
+CalibrationByGroup,Compare probability calibration

@@ -1,0 +1,6 @@
+﻿BIAS_TYPE,DESCRIPTION,MITIGATION
+SelectionBias,Sample may not represent all students,Stratified reporting
+MeasurementBias,Instrument may behave differently by group,Psychometric validation
+HistoricalBias,Academic records may reflect prior inequities,Contextual analysis
+AlgorithmicBias,Model may amplify disparities,Fairness metrics and human review
+ConfirmationBias,Teacher interpretation may reinforce assumptions,Structured review protocol
