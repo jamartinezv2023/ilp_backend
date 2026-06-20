@@ -1,0 +1,8 @@
+﻿CLOSURE_CRITERION,REQUIRED
+BuildPasses,YES
+UnitTestsPass,YES
+IntegrationTestsPass,YES
+E2ETestsPass,YES
+NoCriticalDataLossScenario,YES
+AuditTrailAvailable,YES
+DocumentationUpdated,YES
