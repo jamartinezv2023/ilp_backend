@@ -1,0 +1,8 @@
+﻿QA_GATE,REQUIRED_STATUS
+BackendBuild,PASSED
+FrontendBuild,PASSED
+UnitTests,PASSED
+IntegrationTests,PASSED
+OfflineE2E,PASSED
+RegressionTests,PASSED
+NoDataLossEvidence,VERIFIED
