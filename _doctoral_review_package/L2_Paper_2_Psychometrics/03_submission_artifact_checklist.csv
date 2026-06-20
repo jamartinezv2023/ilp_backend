@@ -1,0 +1,10 @@
+﻿ARTIFACT,REQUIRED
+Dataset version,YES
+Data dictionary,YES
+Notebook,YES
+Experiment manifest,YES
+Figures,YES
+Tables,YES
+Metrics report,YES
+Ethics evidence,YES
+Reproducibility manifest,YES
