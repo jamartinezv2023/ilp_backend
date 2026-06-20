@@ -1,0 +1,5 @@
+﻿ARTIFACT,FORMAT
+shap_summary_plot,png
+shap_beeswarm_plot,png
+shap_dependence_plot,png
+shap_local_explanation,json

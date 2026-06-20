@@ -1,0 +1,9 @@
+﻿FIELD,DESCRIPTION
+review_id,Unique review identifier
+teacher_id,Anonymized reviewer id
+student_uuid,Anonymized student id
+model_id,Model version reviewed
+recommendation_id,Recommendation reviewed
+teacher_decision,Accept reject revise
+comment,Pedagogical observation
+timestamp,Review date

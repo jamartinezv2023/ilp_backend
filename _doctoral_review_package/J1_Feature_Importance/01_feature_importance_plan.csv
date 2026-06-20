@@ -1,0 +1,8 @@
+﻿FEATURE,EXPECTED_ROLE,DATASET,PAPER
+kolb_ce,Learning experience dimension,DATASET_KOLB_LONGITUDINAL,Paper4
+kolb_ro,Reflective observation dimension,DATASET_KOLB_LONGITUDINAL,Paper4
+kolb_ac,Abstract conceptualization dimension,DATASET_KOLB_LONGITUDINAL,Paper4
+kolb_ae,Active experimentation dimension,DATASET_KOLB_LONGITUDINAL,Paper4
+support_level,Inclusive support need,CORE_EDUCATIONAL_DATASET,Paper4
+academic_average,Academic outcome,CORE_EDUCATIONAL_DATASET,Paper4
+recommendation_type,Adaptive decision output,DATASET_RECOMMENDATIONS,Paper5
