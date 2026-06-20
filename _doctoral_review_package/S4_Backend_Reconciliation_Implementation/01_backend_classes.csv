@@ -1,0 +1,7 @@
+﻿BACKEND_CLASS,RESPONSIBILITY
+SyncController,Expose synchronization endpoints
+SyncService,Coordinate push and pull operations
+SyncOperationEntity,Persist immutable sync operation log
+ConflictDetectionService,Detect conflicting versions
+ReconciliationService,Apply accepted resolution
+SyncAuditService,Record synchronization audit trail

@@ -1,0 +1,7 @@
+﻿DEVOPS_ITEM,PURPOSE
+OfflineProfile,Run frontend with mock connectivity states
+DockerCompose,Support local backend and database for sync tests
+CI,Run sync service tests automatically
+ArtifactStorage,Store test reports and evidence
+Monitoring,Observe sync failures and conflict rates
+FeatureFlag,Enable offline-first progressively

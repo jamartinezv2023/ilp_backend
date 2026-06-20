@@ -1,0 +1,7 @@
+﻿COMPONENT,IMPLEMENTATION_DECISION
+ServiceWorker,Enable offline cache and application shell
+IndexedDB,Store local assessments observations and sync queue
+NetworkDetector,Detect online offline degraded states
+SyncWorker,Process pending operations when connectivity returns
+ConflictUI,Show records requiring manual reconciliation
+OfflineBanner,Inform user about current connectivity state
