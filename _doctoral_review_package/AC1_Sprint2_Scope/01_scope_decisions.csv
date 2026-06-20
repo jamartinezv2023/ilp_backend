@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+SprintGoal,Implement local persistence and sync queue design
+FunctionalChange,Limited behind feature flag
+RealDataCollection,NO
+ExistingFlowsAffected,NO
+FeatureFlagRequired,YES
+PrimaryRisk,Local data inconsistency

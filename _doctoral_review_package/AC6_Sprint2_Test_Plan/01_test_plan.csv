@@ -1,0 +1,7 @@
+﻿TEST,TYPE
+IndexedDBSchemaCreation,Frontend unit
+SaveAssessmentOffline,Frontend unit
+QueueCreateOperation,Frontend unit
+RetryFailedOperation,Frontend unit
+PreventDuplicateOperation,Frontend unit
+PersistAfterReload,E2E
