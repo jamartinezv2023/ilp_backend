@@ -1,0 +1,6 @@
+﻿MODEL,PARAMETER,SEARCH_SPACE
+RandomForest,n_estimators,100 200 500
+RandomForest,max_depth,None 5 10 20
+XGBoost,n_estimators,100 200 500
+XGBoost,learning_rate,0.01 0.05 0.1
+XGBoost,max_depth,3 6 10

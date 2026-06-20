@@ -1,0 +1,8 @@
+﻿MLOPS_COMPONENT,PURPOSE
+DatasetVersioning,Control dataset lineage
+FeatureStore,Control feature lineage
+ExperimentRegistry,Control experiment execution
+ModelRegistry,Control trained models
+MetricsStore,Control model quality
+ArtifactStore,Control outputs
+Monitoring,Detect drift and degradation

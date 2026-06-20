@@ -1,0 +1,6 @@
+﻿STEP,DESCRIPTION
+Cleaning,Remove invalid records
+Encoding,Encode categorical variables
+Scaling,Scale numeric variables when needed
+FeatureSelection,Remove leakage and redundant variables
+FeatureVersioning,Register feature set version
