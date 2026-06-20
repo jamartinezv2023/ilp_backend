@@ -1,0 +1,7 @@
+﻿GOVERNANCE_ITEM,REQUIREMENT
+DataSharing,Only anonymized and approved datasets
+EthicsApproval,Local and partner approval required
+ConsentScope,Must allow international research use
+Repository,Versioned and access controlled
+FAIRCompliance,Metadata and DOI required
+MultimodalData,Restricted and separately approved
