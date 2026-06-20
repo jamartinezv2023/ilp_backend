@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,J
+Package,J5
+Folder,J5_Bias_Detection
+Purpose,Detect model bias
+Status,DESIGN

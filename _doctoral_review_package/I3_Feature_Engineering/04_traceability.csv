@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,I
+Package,I3
+Folder,I3_Feature_Engineering
+Purpose,Build ML features
+Status,DESIGN

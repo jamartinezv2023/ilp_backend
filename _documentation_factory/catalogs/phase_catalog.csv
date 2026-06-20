@@ -1,0 +1,43 @@
+﻿PHASE,PACKAGE,FOLDER,PURPOSE
+G,G1,Longitudinal Dataset V1,Design first longitudinal dataset
+G,G2,Pilot Study,Design initial pilot study
+G,G3,Field Deployment,Prepare controlled field deployment
+G,G4,Experiment Registry Operation,Operate reproducible experiment registry
+G,G5,Q1 Paper Factory,Prepare Q1 publication production
+G,G6,Doctoral Compendium Execution,Execute doctoral compendium
+G,G7,Operational Scientific Program,Consolidate operational research program
+H,H1,Evidence Acquisition,Acquire real scientific evidence
+H,H2,Evidence Validation,Validate and clean evidence
+H,H3,Data Quality Assurance,Assure data quality
+H,H4,Evidence Warehouse,Organize trusted evidence
+H,H5,Longitudinal Monitoring,Monitor longitudinal evidence
+H,H6,Statistical Readiness,Prepare statistical evidence
+H,H7,Evidence Governance,Govern real evidence
+I,I1,Random Forest Baseline,Train baseline ML models
+I,I2,XGBoost Pipeline,Train XGBoost models
+I,I3,Feature Engineering,Build ML features
+I,I4,Experiment Comparison,Compare model experiments
+I,I5,Hyperparameter Optimization,Optimize model parameters
+I,I6,Model Registry,Register trained models
+I,I7,MLOps Readiness,Prepare ML operations
+J,J1,Feature Importance,Explain feature relevance
+J,J2,SHAP Analysis,Generate SHAP explanations
+J,J3,LIME Analysis,Generate LIME explanations
+J,J4,Fairness Evaluation,Evaluate fairness
+J,J5,Bias Detection,Detect model bias
+J,J6,XAI Governance,Govern explainability outputs
+J,J7,Teacher Interpretability,Validate explanations with teachers
+K,K1,Temporal Cohorts,Define longitudinal cohorts
+K,K2,Repeated Measures,Analyze repeated measurements
+K,K3,Statistical Significance,Evaluate significance
+K,K4,Effect Size,Estimate effect sizes
+K,K5,Longitudinal Stability,Assess temporal stability
+K,K6,Generalization,Assess generalization
+K,K7,Scientific Conclusions,Generate longitudinal conclusions
+L,L1,Paper 1 Architecture,Prepare architecture paper
+L,L2,Paper 2 Psychometrics,Prepare psychometrics paper
+L,L3,Paper 3 Educational ML,Prepare ML paper
+L,L4,Paper 4 Explainable AI,Prepare XAI paper
+L,L5,Paper 5 Adaptive Engine,Prepare adaptive engine paper
+L,L6,Paper 6 AI Governance,Prepare governance paper
+L,L7,Paper 7 Multimodal DL,Prepare multimodal deep learning paper

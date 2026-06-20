@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,I
+Package,I1
+Folder,I1_Random_Forest_Baseline
+Purpose,Train baseline ML models
+Status,DESIGN

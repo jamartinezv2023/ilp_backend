@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,J
+Package,J7
+Folder,J7_Teacher_Interpretability
+Purpose,Validate explanations with teachers
+Status,DESIGN
