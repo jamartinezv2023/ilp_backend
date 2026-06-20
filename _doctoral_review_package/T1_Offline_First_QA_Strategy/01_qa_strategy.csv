@@ -1,0 +1,8 @@
+﻿QA_AREA,OBJECTIVE
+OfflineAvailability,Verify application works without internet
+LocalPersistence,Verify data is safely stored locally
+SyncReliability,Verify queued operations synchronize correctly
+ConflictResolution,Verify conflicts are detected and resolved
+DataIntegrity,Verify no data loss or duplication
+Auditability,Verify every offline operation is traceable
+FieldReadiness,Verify behavior under rural or intermittent connectivity
