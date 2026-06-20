@@ -1,0 +1,6 @@
+﻿SECTION,CONTENT
+Title,Educational Machine Learning with Learning Preferences and Vocational Profiles
+Dataset,DATASET_LEARNING_PREFERENCES DATASET_VOCATIONAL_PROFILE
+Method,Supervised ML classification and validation
+Evidence,Model metrics confusion matrices and statistical validation
+Contribution,Predictive modeling for educational personalization
