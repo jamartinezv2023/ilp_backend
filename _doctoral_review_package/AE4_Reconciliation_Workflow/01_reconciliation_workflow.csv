@@ -1,0 +1,8 @@
+﻿STEP,ACTION
+Detect,Identify conflict during sync
+Classify,Assign conflict type
+Preserve,Store client payload and server payload
+Notify,Expose conflict to authorized reviewer
+Resolve,Apply merge reject client accept client or manual decision
+Audit,Register decision actor timestamp and rationale
+Finalize,Mark operation as RESOLVED or REJECTED

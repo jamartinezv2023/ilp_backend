@@ -1,0 +1,7 @@
+﻿RULE,DETECTION_LOGIC
+DetectVersionMismatch,client_base_version != server_version
+DetectDuplicateOperation,operation_id already processed
+DetectDuplicateCreate,client_uuid or natural key already exists
+DetectDeletedAndUpdated,server_state = DELETED and operation_type = UPDATE
+DetectInvalidTransition,operation not allowed for current entity state
+DetectSemanticConflict,manual review required for pedagogical inconsistency
