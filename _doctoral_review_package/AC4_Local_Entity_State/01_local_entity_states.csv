@@ -1,0 +1,7 @@
+﻿STATE,MEANING
+LOCAL_ONLY,Created locally and not yet synced
+PENDING_SYNC,Queued for synchronization
+SYNCED,Successfully synchronized
+FAILED,Failed after retry
+CONFLICT,Server detected conflict
+RECONCILED,Conflict resolved

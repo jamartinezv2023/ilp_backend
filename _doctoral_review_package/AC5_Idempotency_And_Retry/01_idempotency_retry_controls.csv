@@ -1,0 +1,6 @@
+﻿CONTROL,PURPOSE
+operation_id,Prevents duplicate operation processing
+retry_count,Limits repeated attempts
+exponential_backoff,Reduces server pressure
+payload_hash,Detects accidental duplicate payload
+last_attempt_at,Supports retry scheduling
