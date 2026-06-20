@@ -1,0 +1,8 @@
+﻿ITEM,STATUS
+Folder created,DONE
+Sprint 2 files populated,DONE
+IndexedDB schema defined,DONE
+Sync queue model defined,DONE
+Local entity states defined,DONE
+Retry and idempotency defined,DONE
+Ready for technical implementation,DONE
