@@ -1,0 +1,6 @@
+﻿ADR,DECISION
+ADR-Q,Adopt offline-first architecture for Colombian educational contexts
+ADR-R,Use bidirectional sync with versioning audit and reconciliation
+ADR-S,Implement frontend local persistence and backend sync services
+ADR-T,Require offline-first QA before field deployment
+ADR-U,Monitor connectivity sync conflicts adoption and data continuity
