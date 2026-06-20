@@ -1,0 +1,6 @@
+﻿TEST_TYPE,GOAL
+Unit,Validate sync queue logic
+Integration,Validate backend sync endpoints
+E2E,Complete assessment offline then sync
+Regression,Ensure existing flows still work
+Resilience,Simulate connection drop during sync

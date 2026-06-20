@@ -1,0 +1,6 @@
+﻿DEVOPS_ITEM,DECISION
+FeatureFlag,offline_first_enabled
+CI,Run existing tests before offline tests
+Docker,Keep current services stable
+Monitoring,Add sync metrics later
+ReleaseStrategy,No production release before QA gate
