@@ -1,0 +1,6 @@
+﻿EPIC,DESCRIPTION
+EPIC_OFFLINE_FRONTEND,Frontend supports offline work local persistence and sync queue
+EPIC_SYNC_BACKEND,Backend supports secure synchronization versioning and audit
+EPIC_CONFLICT_RESOLUTION,System detects resolves and audits conflicts
+EPIC_OFFLINE_QA,Offline flows are covered by unit integration and E2E tests
+EPIC_FIELD_READINESS,Offline-first is validated before field deployment
