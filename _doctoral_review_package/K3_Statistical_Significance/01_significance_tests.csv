@@ -1,0 +1,7 @@
+﻿TEST,USE_CASE
+ChiSquare,Categorical association
+ANOVA,Group mean comparison
+KruskalWallis,Non-parametric group comparison
+Correlation,Numeric association
+MixedEffectsSignificance,Longitudinal effects
+PermutationTest,Robust significance testing

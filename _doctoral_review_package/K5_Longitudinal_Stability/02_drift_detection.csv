@@ -1,0 +1,5 @@
+﻿DRIFT_TYPE,DETECTION_METHOD
+FeatureDrift,Distribution comparison by timepoint
+ConceptDrift,Model performance degradation over time
+InstrumentDrift,Instrument version audit
+PopulationDrift,Cohort profile change

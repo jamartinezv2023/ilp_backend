@@ -1,0 +1,7 @@
+﻿CONCLUSION_TYPE,EVIDENCE_REQUIRED
+Psychometric,Instrument stability and distribution evidence
+Predictive,Metrics effect size and validation evidence
+Explainable,SHAP LIME feature importance evidence
+Adaptive,Recommendation evaluation and teacher validation
+Governance,Ethics fairness audit evidence
+Longitudinal,Repeated measurement and stability evidence

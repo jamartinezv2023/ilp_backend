@@ -1,0 +1,5 @@
+﻿INTERPRETATION_RULE,DESCRIPTION
+SmallEffect,Report but avoid overclaiming
+MediumEffect,Potential educational relevance
+LargeEffect,Strong educational relevance if valid
+PracticalSignificance,Always interpret with pedagogy and ethics

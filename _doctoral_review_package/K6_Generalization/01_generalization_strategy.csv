@@ -1,0 +1,6 @@
+﻿GENERALIZATION_LEVEL,VALIDATION_STRATEGY
+WithinCohort,Cross-validation inside cohort
+AcrossCohort,Train one cohort validate another
+Temporal,Train 2026 validate 2027 and 2028
+Institutional,Future multi-school validation
+International,Future cross-country validation
