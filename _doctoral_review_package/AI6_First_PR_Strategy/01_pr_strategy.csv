@@ -1,0 +1,6 @@
+﻿PR_ITEM,DESCRIPTION
+SmallScope,Only sync status and offline banner skeleton
+NoLargeRefactor,Do not refactor unrelated modules
+EvidenceRequired,Build tests and screenshots if applicable
+ReviewFocus,Regression safety and additive architecture
+MergeCondition,All quality gates green

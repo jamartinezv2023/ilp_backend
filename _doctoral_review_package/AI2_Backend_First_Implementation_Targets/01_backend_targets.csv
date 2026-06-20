@@ -1,0 +1,6 @@
+﻿TARGET,DESCRIPTION
+SyncStatusEndpoint,Implement GET /api/v1/sync/status
+SyncStatusResponse,Return enabled disabled and service status
+SyncControllerSkeleton,Create controller without business mutation
+SyncServiceSkeleton,Create service layer placeholder
+SyncSmokeTest,Verify endpoint responds safely
