@@ -1,0 +1,6 @@
+﻿FIELD_EVIDENCE,DESCRIPTION
+TeacherDryRunLog,Teacher simulated offline use
+PilotSyncMetrics,Pending synced failed conflict operations
+ConnectivityReport,Offline intermittent and reconnect events
+IncidentLog,Operational issues and resolutions
+DatasetContinuityReport,Records captured offline and synchronized

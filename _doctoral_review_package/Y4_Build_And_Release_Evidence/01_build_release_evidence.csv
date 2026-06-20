@@ -1,0 +1,7 @@
+﻿BUILD_ARTIFACT,REQUIRED
+BackendBuildLog,YES
+FrontendBuildLog,YES
+DockerImageTag,YES
+ReleaseTag,YES
+QualityGateReport,YES
+DependencyAudit,YES
