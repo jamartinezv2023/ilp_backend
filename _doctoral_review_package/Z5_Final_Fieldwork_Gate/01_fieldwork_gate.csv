@@ -1,0 +1,9 @@
+﻿FIELDWORK_GATE,REQUIRED_STATUS
+ExpertReview,APPROVED
+EthicsReview,APPROVED
+ConsentProtocol,READY
+OfflineQA,PASSED
+SyncMonitoring,ENABLED
+ConflictWorkflow,ENABLED
+TeacherTraining,COMPLETED
+PilotPlan,APPROVED

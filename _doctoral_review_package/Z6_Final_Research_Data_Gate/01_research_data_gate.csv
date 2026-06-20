@@ -1,0 +1,8 @@
+﻿DATA_GATE,REQUIRED_STATUS
+Anonymization,VERIFIED
+ValidationRules,ACTIVE
+SyncAudit,ACTIVE
+DatasetVersioning,ACTIVE
+NoDirectIdentifiers,VERIFIED
+ResearchExportPolicy,APPROVED
+EthicsScope,VALIDATED
