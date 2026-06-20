@@ -1,0 +1,6 @@
+﻿MODULE,RESPONSIBILITY
+offlineDb.ts,IndexedDB abstraction placeholder
+syncQueue.ts,Queue pending operations placeholder
+connectivityStore.ts,Track online offline state
+offlineBanner.tsx,Display connection status
+syncStatusApi.ts,Call backend sync status endpoint
