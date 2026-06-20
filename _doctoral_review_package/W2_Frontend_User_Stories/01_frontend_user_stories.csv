@@ -1,0 +1,5 @@
+﻿USER_STORY,ACCEPTANCE_CRITERIA
+As a teacher I can open ILP without internet,The application shell loads offline
+As a student I can complete an assessment offline,The response is stored locally
+As a teacher I can see pending sync status,The UI displays pending synced failed and conflict states
+As a user I can continue working after connection loss,Data is preserved locally
