@@ -1,0 +1,6 @@
+﻿RISK,MITIGATION
+MissingConsent,Do not collect data
+MissingData,Document and validate
+DataLeakage,Anonymization and access control
+LowParticipation,Pilot adjustment
+OperationalFailure,Incident log and backup

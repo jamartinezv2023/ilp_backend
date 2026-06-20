@@ -1,0 +1,9 @@
+﻿METRIC,TASK
+Accuracy,Classification
+F1,Classification
+Precision,Classification
+Recall,Classification
+ROC_AUC,Classification
+RMSE,Regression
+MAE,Regression
+FairnessGap,Fairness
