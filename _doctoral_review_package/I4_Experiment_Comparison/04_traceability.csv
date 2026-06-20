@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,I
+Package,I4
+Folder,I4_Experiment_Comparison
+Purpose,Compare model experiments
+Status,DESIGN

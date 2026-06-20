@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,J
+Package,J2
+Folder,J2_SHAP_Analysis
+Purpose,Generate SHAP explanations
+Status,DESIGN

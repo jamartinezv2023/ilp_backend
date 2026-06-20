@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,J
+Package,J6
+Folder,J6_XAI_Governance
+Purpose,Govern explainability outputs
+Status,DESIGN

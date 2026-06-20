@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,VALUE
+Phase,I
+Package,I6
+Folder,I6_Model_Registry
+Purpose,Register trained models
+Status,DESIGN
