@@ -1,0 +1,6 @@
+﻿ROLLOUT_STAGE,DESCRIPTION
+Stage1,Internal technical validation
+Stage2,Teacher dry run with simulated offline mode
+Stage3,Small pilot with controlled offline usage
+Stage4,Field deployment in intermittent connectivity context
+Stage5,Longitudinal dataset capture under real conditions
