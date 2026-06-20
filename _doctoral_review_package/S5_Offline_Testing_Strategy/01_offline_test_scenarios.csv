@@ -1,0 +1,8 @@
+﻿TEST_LEVEL,SCENARIO
+UnitTest,Sync queue stores pending operation
+UnitTest,Conflict detector identifies version mismatch
+IntegrationTest,Push endpoint receives batch operations
+IntegrationTest,Pull endpoint returns incremental changes
+E2ETest,User completes assessment offline and syncs later
+E2ETest,Two devices update same record and conflict is resolved
+ResilienceTest,Connection drops during sync and retry works
