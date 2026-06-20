@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+ImplementationMode,Incremental
+FunctionalFreeze,Protect current MVP21A
+BranchingStrategy,Feature branches per module
+FirstGoal,Offline-first skeleton without business disruption
+RiskLevel,High
+SafetyRule,No existing endpoint or UI flow may be broken

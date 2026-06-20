@@ -1,0 +1,6 @@
+﻿RISK,SAFETY_CONTROL
+BreakingCurrentFrontend,Feature flag and isolated offline module
+BreakingCurrentBackend,New sync endpoints only
+DataLoss,No real data collection during implementation
+MigrationFailure,No destructive migration in first sprint
+TestInstability,Add tests incrementally
