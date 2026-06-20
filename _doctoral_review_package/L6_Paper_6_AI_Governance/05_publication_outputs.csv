@@ -1,0 +1,7 @@
+﻿OUTPUT,FORMAT
+Manuscript,DOCX_OR_LATEX
+Figures,PNG_SVG_PDF
+Tables,CSV
+Supplementary material,ZIP
+Code repository,GIT_TAG
+Dataset repository,DOI
