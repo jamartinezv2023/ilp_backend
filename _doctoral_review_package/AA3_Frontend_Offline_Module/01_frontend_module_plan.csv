@@ -1,0 +1,7 @@
+﻿COMPONENT,RESPONSIBILITY
+offlineDb,IndexedDB wrapper
+syncQueue,Pending operation queue
+connectivityStore,Online offline degraded state
+syncWorker,Retry and push pending operations
+conflictStore,Local conflict state
+offlineBanner,User connectivity feedback

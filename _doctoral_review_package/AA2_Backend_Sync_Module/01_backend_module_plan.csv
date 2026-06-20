@@ -1,0 +1,7 @@
+﻿COMPONENT,RESPONSIBILITY
+SyncController,Expose push pull status conflict endpoints
+SyncService,Coordinate synchronization workflow
+SyncOperationEntity,Persist operation log
+ConflictRecordEntity,Persist detected conflicts
+SyncAuditEntity,Persist audit trail
+ReconciliationService,Resolve conflicts safely
