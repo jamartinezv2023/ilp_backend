@@ -1,0 +1,6 @@
+﻿TRACE_ITEM,DESCRIPTION
+CommitHash,Every implementation unit must reference commit
+PullRequest,Every feature must enter through PR
+IssueOrBacklogItem,Every PR must trace to backlog item
+QualityGate,Every PR must pass build and tests
+ReviewDecision,Every PR must include review decision

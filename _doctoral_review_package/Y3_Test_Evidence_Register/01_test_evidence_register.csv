@@ -1,0 +1,7 @@
+﻿TEST_EVIDENCE,FORMAT
+UnitTestReport,HTML_OR_XML
+IntegrationTestReport,HTML_OR_XML
+E2ETestReport,Serenity_HTML
+OfflineSimulationEvidence,Markdown_or_Screenshot
+ConflictResolutionEvidence,Markdown_or_TestReport
+NoDataLossEvidence,TestReport
