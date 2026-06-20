@@ -1,0 +1,8 @@
+﻿QUALITY_GATE,ACCEPTANCE_RULE
+Build,Backend and frontend build must pass
+UnitTests,Offline persistence and sync logic tested
+IntegrationTests,Sync endpoints and reconciliation tested
+E2E,Offline assessment completion and later sync tested
+Security,No direct identifiers in research sync payload
+Auditability,Every sync operation has audit event
+DataIntegrity,No data loss no duplicate records

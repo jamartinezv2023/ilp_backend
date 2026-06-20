@@ -1,0 +1,9 @@
+﻿READINESS_AREA,STATUS_REQUIRED
+ExpertReview,APPROVED
+EthicsReview,APPROVED
+ConsentProtocol,READY
+OfflineQA,PASSED
+SyncMonitoring,ENABLED
+ConflictWorkflow,ENABLED
+TeacherTraining,COMPLETED
+PilotPlan,APPROVED
