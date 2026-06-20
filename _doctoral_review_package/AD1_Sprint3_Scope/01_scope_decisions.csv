@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+SprintGoal,Implement backend sync API design
+FunctionalChange,New sync endpoints only
+RealDataCollection,NO
+ExistingEndpointsAffected,NO
+FeatureFlagRequired,YES
+PrimaryRisk,Invalid or duplicated sync operations
