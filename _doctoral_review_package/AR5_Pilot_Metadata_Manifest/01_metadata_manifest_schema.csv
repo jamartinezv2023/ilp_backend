@@ -1,0 +1,10 @@
+﻿FIELD,DESCRIPTION
+pilot_dataset_id,Unique pilot dataset identifier
+dataset_version,Version of pilot dataset
+created_at,Generation timestamp
+source_commit,Git commit used for generation
+records_included,Number of included records
+records_excluded,Number of excluded records
+ethics_reference,Ethics approval reference
+checksum,Integrity hash
+status,DESIGN PILOT GENERATED ARCHIVED
