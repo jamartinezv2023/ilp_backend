@@ -1,0 +1,5 @@
+﻿SHAP_ARTIFACT,PURPOSE
+shap_summary_plot,Global model explanation
+shap_beeswarm_plot,Feature contribution distribution
+shap_dependence_plot,Feature interaction exploration
+shap_local_explanation,Individual prediction explanation
