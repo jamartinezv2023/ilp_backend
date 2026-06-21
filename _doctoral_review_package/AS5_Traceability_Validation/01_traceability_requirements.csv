@@ -1,0 +1,8 @@
+﻿TRACEABILITY_ITEM,REQUIRED
+GitCommit,YES
+DatasetSnapshotId,YES
+ExportManifest,YES
+AuditTrail,YES
+EligibilityRules,YES
+EthicsReference,YES
+Checksum,YES
