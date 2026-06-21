@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Prepare sync queue implementation
+FunctionalChange,Additive only
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+ExistingPagesAffected,NO
+PrimaryRisk,Duplicated or lost sync operations
+SafetyRule,Every queued operation must be idempotent and auditable

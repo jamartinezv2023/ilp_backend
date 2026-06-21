@@ -1,0 +1,6 @@
+﻿CONTROL,DESCRIPTION
+max_retry_count,Maximum retry attempts before FAILED
+exponential_backoff,Increase wait time after each failure
+network_guard,Do not sync when offline
+server_guard,Pause queue when backend unavailable
+manual_retry,Allow authorized retry for failed records
