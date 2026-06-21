@@ -1,0 +1,6 @@
+﻿TOKEN_FIELD,DESCRIPTION
+sync_token,Opaque token representing last server change position
+issued_at,Token generation timestamp
+scope,User device or tenant scope
+expires_at,Optional expiration timestamp
+next_sync_token,Token returned after successful pull
