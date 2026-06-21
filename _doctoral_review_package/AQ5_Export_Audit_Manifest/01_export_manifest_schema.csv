@@ -1,0 +1,9 @@
+﻿MANIFEST_FIELD,DESCRIPTION
+snapshot_id,Dataset snapshot identifier
+git_commit,Code version used for export
+dataset_version,Dataset version exported
+exported_by,Authorized actor
+exported_at,Export timestamp
+eligibility_rules,Rules applied
+excluded_records,Summary of exclusions
+checksum,Integrity hash of export file

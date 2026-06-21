@@ -1,0 +1,6 @@
+﻿CONTROL,PURPOSE
+RemoveDirectIdentifiers,Prevent exposure of names emails documents
+UseStudentUUID,Use anonymous research identifier
+MinimizePayload,Export only required scientific variables
+SeparateKeyStore,Keep identity mapping outside research dataset
+AggregateWhenPossible,Reduce re-identification risk
