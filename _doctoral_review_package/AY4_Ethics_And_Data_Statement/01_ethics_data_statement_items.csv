@@ -1,0 +1,7 @@
+﻿STATEMENT_ITEM,REQUIRED
+EthicsApprovalReference,YES
+ConsentProtocolDescription,YES
+AnonymizationDescription,YES
+DataProtectionDescription,YES
+DataUseLimitation,YES
+NoDirectIdentifiersConfirmation,YES
