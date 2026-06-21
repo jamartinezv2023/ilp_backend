@@ -1,0 +1,7 @@
+﻿SECTION,CONTENT
+Purpose,Describe feasibility of ILP offline-first longitudinal evidence pipeline
+Dataset,Approved pilot dataset snapshot only
+Methods,Descriptive statistics baseline ML and preliminary XAI
+Results,Report feasibility data quality and preliminary model behavior
+Limitations,Small sample pilot single-context and non-generalizable findings
+Contribution,Evidence pipeline for future longitudinal Q1 papers
