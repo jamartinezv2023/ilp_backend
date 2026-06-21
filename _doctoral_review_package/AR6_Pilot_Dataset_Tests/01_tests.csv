@@ -1,0 +1,8 @@
+﻿TEST,TYPE
+FilterEligibleRecords,Unit
+RejectDirectIdentifiers,Unit
+GeneratePilotSnapshot,Integration
+GenerateMetadataManifest,Integration
+VerifyChecksum,Integration
+RejectUnresolvedConflict,Unit
+RejectMissingAuditTrail,Unit

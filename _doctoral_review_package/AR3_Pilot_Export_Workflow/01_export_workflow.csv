@@ -1,0 +1,8 @@
+﻿STEP,ACTION
+SelectEligibleRecords,Filter synchronized validated anonymized audited records
+CreateSnapshot,Assign pilot dataset snapshot id
+GenerateDataDictionary,Export variable dictionary
+GenerateDatasetFiles,Export CSV JSON or PARQUET
+GenerateManifest,Create metadata and audit manifest
+VerifyChecksum,Validate file integrity
+ArchiveSnapshot,Store immutable pilot snapshot
