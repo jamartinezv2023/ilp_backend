@@ -1,0 +1,8 @@
+﻿RULE,DESCRIPTION
+SyncedOnly,Record must have sync_status SYNCED
+ValidatedOnly,Record must pass validation rules
+ConflictFree,Record must not have unresolved conflict
+ConsentVerified,Consent or authorization must be valid
+AuditRequired,Record must have traceable audit events
+AnonymizedOnly,No direct identifiers allowed
+VersionAssigned,Record must belong to dataset version
