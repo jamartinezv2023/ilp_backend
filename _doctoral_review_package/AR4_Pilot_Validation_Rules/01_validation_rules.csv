@@ -1,0 +1,7 @@
+﻿RULE,DESCRIPTION
+MinimumCompleteness,Required variables must be present
+NoDirectIdentifiers,Names emails and documents must be excluded
+ValidInstrumentVersion,Each response references instrument version
+ValidTimestamp,Each record includes collection timestamp
+ConflictFree,No unresolved conflict allowed
+AuditTraceAvailable,Each record links to audit trail
