@@ -1,0 +1,7 @@
+﻿METRIC,PURPOSE
+Accuracy,General classification performance
+BalancedAccuracy,Imbalanced class control
+F1,Class imbalance sensitivity
+Precision,False positive control
+Recall,False negative control
+ConfusionMatrix,Class-level evidence
