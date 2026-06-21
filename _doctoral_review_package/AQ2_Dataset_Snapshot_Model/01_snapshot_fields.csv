@@ -1,0 +1,9 @@
+﻿FIELD,TYPE,DESCRIPTION
+snapshot_id,UUID,Unique dataset snapshot id
+dataset_name,String,Dataset identifier
+dataset_version,String,Semantic version
+created_at,DateTime,Snapshot creation timestamp
+source_records_count,Integer,Eligible records included
+excluded_records_count,Integer,Rejected records count
+export_format,String,CSV JSON PARQUET
+audit_manifest_path,String,Path to export audit manifest
