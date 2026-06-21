@@ -1,0 +1,8 @@
+﻿PUBLICATION_GATE,REQUIRED_STATUS
+PilotResultsReport,APPROVED
+LimitationsDocumented,YES
+ThreatsToValidityDocumented,YES
+EthicsStatementReady,YES
+ReproducibilityStatementReady,YES
+FiguresTablesReady,YES
+DataAvailabilityStatementReady,YES
