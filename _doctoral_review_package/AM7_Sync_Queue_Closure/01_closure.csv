@@ -1,0 +1,8 @@
+﻿CRITERION,STATUS
+Scope documented,DONE
+Operation model documented,DONE
+State machine documented,DONE
+Retry strategy documented,DONE
+Idempotency controls documented,DONE
+Tests documented,DONE
+Ready for implementation,YES

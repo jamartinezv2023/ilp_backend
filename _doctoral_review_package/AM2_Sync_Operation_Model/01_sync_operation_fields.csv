@@ -1,0 +1,12 @@
+﻿FIELD,TYPE,DESCRIPTION
+operation_id,UUID,Client generated idempotency key
+entity_type,String,Affected entity type
+entity_id,String,Local or server entity id
+operation_type,String,CREATE UPDATE DELETE
+payload,JSON,Serialized change payload
+base_version,Number,Last known server version
+payload_hash,String,Hash to detect equivalent duplicate payload
+created_at,DateTime,Local creation timestamp
+last_attempt_at,DateTime,Last sync attempt timestamp
+retry_count,Integer,Number of retries
+sync_status,String,PENDING SYNCING SYNCED FAILED CONFLICT

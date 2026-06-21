@@ -1,0 +1,8 @@
+﻿TEST,TYPE
+CreatePendingOperation,Frontend unit
+MovePendingToSyncing,Frontend unit
+MarkSyncedAfterAck,Frontend unit
+RetryFailedOperation,Frontend unit
+StopWhenOffline,Frontend unit
+PreventDuplicateOperation,Frontend unit
+PersistQueueAfterReload,E2E
