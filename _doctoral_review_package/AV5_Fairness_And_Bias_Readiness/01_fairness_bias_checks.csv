@@ -1,0 +1,6 @@
+﻿CHECK,PURPOSE
+SubgroupPerformance,Compare model behavior by grade or support level
+MissingnessBySubgroup,Detect data quality imbalance
+PredictionDistribution,Detect skewed prediction behavior
+FairnessGap,Quantify subgroup performance differences
+BiasAudit,Document possible sources of bias

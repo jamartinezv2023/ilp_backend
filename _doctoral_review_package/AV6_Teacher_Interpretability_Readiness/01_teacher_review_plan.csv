@@ -1,0 +1,6 @@
+﻿REVIEW_ITEM,TEACHER_ACTION
+FeatureImportance,Review whether top features make pedagogical sense
+SHAPSummary,Validate global explanation plausibility
+LIMELocalCase,Review individual explanation for educational usefulness
+FairnessWarning,Escalate if subgroup risk appears
+RecommendationExplanation,Accept revise or reject pedagogical interpretation
