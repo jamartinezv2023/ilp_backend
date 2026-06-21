@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+Goal,Prepare first pilot dataset generation plan
+FunctionalChange,Documentation only
+RealDataCollection,Only after ethics approval
+FeatureFlagDefault,OFF
+PrimaryRisk,Generating dataset from incomplete or unauthorized records
+SafetyRule,No pilot dataset may include unsynced unvalidated non-anonymized or unaudited records
