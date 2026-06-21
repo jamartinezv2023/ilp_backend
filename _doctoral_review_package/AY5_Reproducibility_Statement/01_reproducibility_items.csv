@@ -1,0 +1,9 @@
+﻿ITEM,REQUIRED
+DatasetVersion,YES
+GitCommit,YES
+NotebookVersion,YES
+ExperimentId,YES
+RandomSeed,YES
+MetricsArtifacts,YES
+ExportManifest,YES
+Checksum,YES

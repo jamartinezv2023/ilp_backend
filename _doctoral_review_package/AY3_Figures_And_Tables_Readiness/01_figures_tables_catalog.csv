@@ -1,0 +1,7 @@
+﻿ARTIFACT,PURPOSE
+DatasetSummaryTable,Describe records variables and timepoints
+MissingnessTable,Report data quality
+ClassDistributionFigure,Show target balance
+BaselineMetricsTable,Report ML feasibility metrics
+FeatureImportanceFigure,Show preliminary explanation evidence
+WorkflowDiagram,Show offline-first data pipeline

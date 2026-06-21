@@ -1,0 +1,6 @@
+﻿ITEM,DECISION
+Goal,Prepare pilot evidence for publication readiness
+FunctionalChange,Documentation only
+RealDataCollection,NO
+PrimaryRisk,Submitting premature or overclaimed evidence
+SafetyRule,Pilot evidence must be reported as preliminary feasibility evidence
