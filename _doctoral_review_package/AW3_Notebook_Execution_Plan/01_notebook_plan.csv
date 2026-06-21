@@ -1,0 +1,6 @@
+﻿NOTEBOOK,PURPOSE
+01_pilot_dataset_profile.ipynb,Dataset profiling
+02_ml_baseline_training.ipynb,Baseline model training
+03_model_evaluation.ipynb,Metrics and validation
+04_xai_analysis.ipynb,SHAP LIME and feature importance
+05_teacher_interpretability.ipynb,Human review evidence
