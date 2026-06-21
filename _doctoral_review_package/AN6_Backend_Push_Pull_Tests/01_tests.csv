@@ -1,0 +1,7 @@
+﻿TEST,TYPE
+PushValidBatchReturnsResults,Integration
+PushInvalidPayloadRejected,Integration
+PushDuplicateOperationIdempotent,Integration
+PullWithoutTokenReturnsInitialChanges,Integration
+PullWithTokenReturnsIncrementalChanges,Integration
+BatchProcessingCreatesAuditEvents,Integration

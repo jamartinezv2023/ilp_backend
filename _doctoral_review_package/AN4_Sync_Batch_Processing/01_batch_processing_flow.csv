@@ -1,0 +1,8 @@
+﻿STEP,DESCRIPTION
+ReceiveBatch,Receive SyncBatchRequest
+ValidateBatch,Validate batch size and required fields
+ValidateOperation,Validate entity type operation type and payload
+CheckIdempotency,Ignore or return previous result for duplicated operation_id
+ApplyOrConflict,Apply safe operation or create conflict
+AuditResult,Register result for each operation
+ReturnBatchResponse,Return operation results and sync summary
