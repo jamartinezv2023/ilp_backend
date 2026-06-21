@@ -1,0 +1,7 @@
+﻿TEST,TYPE
+CreateIndexedDBStores,Frontend unit
+SaveLocalAssessmentResponse,Frontend unit
+ReadLocalAssessmentResponse,Frontend unit
+PersistAfterBrowserReload,E2E
+QueueOperationAfterLocalSave,Frontend unit
+MarkRecordAsPendingSync,Frontend unit
