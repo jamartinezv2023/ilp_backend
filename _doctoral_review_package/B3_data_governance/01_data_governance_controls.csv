@@ -1,0 +1,7 @@
+﻿AREA,CONTROL
+Anonymization,Use research UUID
+AccessControl,Restrict sensitive data access
+AuditTrail,Register data operations
+DatasetVersioning,Version every export
+RetentionPolicy,Define storage and deletion periods
+OpenScience,Publish only approved anonymized artifacts
