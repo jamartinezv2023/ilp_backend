@@ -1,0 +1,6 @@
+﻿ITEM,DECISION
+Goal,Prepare pilot dataset validation and quality report
+FunctionalChange,Documentation only
+RealDataCollection,Only after ethics approval
+PrimaryRisk,Publishing or using low-quality pilot dataset
+SafetyRule,No pilot dataset may be used for ML or publication before validation report

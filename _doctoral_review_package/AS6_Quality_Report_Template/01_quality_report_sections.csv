@@ -1,0 +1,7 @@
+﻿REPORT_SECTION,CONTENT
+DatasetSummary,Snapshot version records included and excluded
+Completeness,Missingness by variable
+Consistency,Invalid values duplicates and temporal issues
+Anonymization,Identifier scan results
+Traceability,Commit manifest checksum and audit trail
+QualityDecision,APPROVED REQUIRES_CORRECTION REJECTED
