@@ -1,0 +1,6 @@
+﻿REPORT_ITEM,DESCRIPTION
+DatasetSummary,Records participants variables and timepoints
+MissingnessReport,Missing values by variable and subgroup
+DistributionReport,Variable distributions and class balance
+OutlierReport,Potential anomalous values
+PilotQualitySummary,Overall quality decision

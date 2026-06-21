@@ -1,0 +1,6 @@
+﻿ITEM,DECISION
+Goal,Prepare pilot results analysis and scientific reporting
+FunctionalChange,Documentation only
+RealDataCollection,NO
+PrimaryRisk,Overclaiming pilot results
+SafetyRule,Pilot findings must be reported as preliminary and non-generalizable

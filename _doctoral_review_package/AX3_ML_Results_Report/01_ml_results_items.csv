@@ -1,0 +1,6 @@
+﻿RESULT_ITEM,DESCRIPTION
+BaselineMetrics,Accuracy balanced accuracy F1 precision recall
+ConfusionMatrix,Class-level model behavior
+CrossValidationSummary,If sample size permits
+ErrorAnalysis,Review incorrect predictions
+ModelComparison,Compare baseline models without overclaiming
