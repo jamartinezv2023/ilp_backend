@@ -1,0 +1,9 @@
+﻿DOCUMENT,STATUS
+ResearchProtocol,REQUIRED
+ConsentForms,REQUIRED
+DataGovernancePlan,REQUIRED
+RiskAssessment,REQUIRED
+AnonymizationProtocol,REQUIRED
+FieldworkProtocol,REQUIRED
+ResearcherCV,REQUIRED
+InstitutionalApproval,REQUIRED
