@@ -1,0 +1,5 @@
+﻿ENDPOINT,METHOD,PURPOSE
+/api/v1/sync/pull,GET,Return server changes since last sync token
+QUERY_PARAM,since_token
+RESPONSE_DTO,SyncPullResponse
+NEXT_TOKEN,next_sync_token

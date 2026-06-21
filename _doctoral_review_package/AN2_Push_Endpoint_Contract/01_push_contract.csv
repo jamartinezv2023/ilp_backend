@@ -1,0 +1,5 @@
+﻿ENDPOINT,METHOD,PURPOSE
+/api/v1/sync/push,POST,Receive client pending operations
+REQUEST_DTO,SyncBatchRequest
+RESPONSE_DTO,SyncBatchResponse
+IDEMPOTENCY_KEY,operation_id

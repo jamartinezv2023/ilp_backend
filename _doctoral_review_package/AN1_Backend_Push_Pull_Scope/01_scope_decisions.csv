@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Prepare backend push and pull implementation
+FunctionalChange,Additive only
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+ExistingEndpointsAffected,NO
+PrimaryRisk,Invalid sync operations entering backend
+SafetyRule,Reject invalid payloads and audit every operation
