@@ -1,0 +1,6 @@
+﻿ITEM,DECISION
+Goal,Prepare reproducible ML and XAI experiment execution
+FunctionalChange,Documentation only
+RealDataCollection,NO
+PrimaryRisk,Irreproducible experiment results
+SafetyRule,No experiment result is valid without dataset version seed notebook version metrics and manifest
