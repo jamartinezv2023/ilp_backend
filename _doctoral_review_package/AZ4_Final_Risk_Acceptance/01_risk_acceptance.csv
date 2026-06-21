@@ -1,0 +1,8 @@
+﻿RISK,DECISION
+PrematureRealDataCollection,NOT_ACCEPTED
+DatasetWithoutEthicsApproval,NOT_ACCEPTED
+ModelTrainingWithoutApprovedDataset,NOT_ACCEPTED
+XAIWithoutValidatedModel,NOT_ACCEPTED
+PublicationOverclaiming,NOT_ACCEPTED
+OfflineSyncFailure,ACCEPT_WITH_QA_AND_MONITORING
+ConflictResolutionError,ACCEPT_WITH_AUDIT_AND_HUMAN_REVIEW

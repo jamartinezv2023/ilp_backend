@@ -1,0 +1,15 @@
+﻿TRACE_LEVEL,ARTIFACT
+Architecture,Q-Z Offline First Architecture
+Implementation,AA-AH Implementation Readiness
+TechnicalStart,AI-AK First Technical Skeleton
+LocalPersistence,AL-AM Local DB and Sync Queue
+BackendSync,AN Backend Push Pull
+ConflictResolution,AO Conflict Resolution
+AuditIntegrity,AP Audit and Research Integrity
+DatasetExport,AQ Export Snapshot
+PilotDataset,AR-AS Dataset Generation and Validation
+Approval,AT Approval Gate
+MLXAI,AU-AV ML and XAI Readiness
+Experiments,AW Reproducible Experiment Execution
+Reporting,AX-AY Scientific Reporting and Publication Readiness
+Closure,AZ Final Closure
