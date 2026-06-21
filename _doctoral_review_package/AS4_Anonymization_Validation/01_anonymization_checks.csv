@@ -1,0 +1,6 @@
+﻿CHECK,ACCEPTANCE_RULE
+NoNames,No names in exported dataset
+NoEmails,No email addresses in exported dataset
+NoDocumentNumbers,No identity document numbers in exported dataset
+ResearchUUIDOnly,Only anonymous research identifier is allowed
+NoFreeTextIdentifiers,Free text must not contain direct identifiers
