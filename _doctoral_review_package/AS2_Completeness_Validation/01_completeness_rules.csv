@@ -1,0 +1,6 @@
+﻿CHECK,ACCEPTANCE_RULE
+RequiredFields,All mandatory fields present
+StudentUUID,No missing anonymous identifier
+MeasurementDate,No missing timestamp
+InstrumentVersion,Every instrument response has version
+DatasetVersion,Every record belongs to snapshot version

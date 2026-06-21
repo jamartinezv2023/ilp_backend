@@ -1,0 +1,6 @@
+﻿CHECK,ACCEPTANCE_RULE
+AllowedValues,Categorical values match catalog
+ValidRanges,Numeric values remain in expected range
+NoDuplicateUUIDTimepoint,No duplicate student timepoint instrument record
+TemporalOrder,Measurements follow longitudinal order
+ForeignKeys,Referenced dataset and instrument versions exist
