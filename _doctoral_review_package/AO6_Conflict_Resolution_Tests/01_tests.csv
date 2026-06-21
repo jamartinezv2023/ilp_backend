@@ -1,0 +1,8 @@
+﻿TEST,TYPE
+CreateConflictOnVersionMismatch,Integration
+PreserveClientAndServerPayload,Unit
+ListPendingConflicts,Integration
+SubmitAcceptServerDecision,Integration
+SubmitAcceptClientDecision,Integration
+RejectInvalidDecision,Integration
+AuditReconciliationDecision,Integration

@@ -1,0 +1,6 @@
+﻿ROLE,RESPONSIBILITY
+Teacher,Review pedagogical conflict when authorized
+DataSteward,Review data integrity conflict
+Researcher,Review dataset eligibility impact
+EthicsCommittee,Review sensitive or high-impact cases
+System,Apply low-risk automated resolutions only
