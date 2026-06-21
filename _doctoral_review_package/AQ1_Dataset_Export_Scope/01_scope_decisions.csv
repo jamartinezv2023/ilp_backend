@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Prepare dataset export and snapshot readiness
+FunctionalChange,Additive only
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+ExistingEndpointsAffected,NO
+PrimaryRisk,Invalid records entering scientific datasets
+SafetyRule,Only synchronized validated anonymized audited records may enter dataset snapshots

@@ -1,0 +1,8 @@
+﻿TEST,TYPE
+RejectUnsyncedRecord,Unit
+RejectUnvalidatedRecord,Unit
+RejectUnresolvedConflict,Unit
+RejectDirectIdentifier,Unit
+CreateDatasetSnapshot,Integration
+GenerateExportManifest,Integration
+VerifyExportChecksum,Integration
