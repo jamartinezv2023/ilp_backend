@@ -1,0 +1,9 @@
+﻿READINESS_ITEM,REQUIRED_STATUS
+EthicsApproval,APPROVED
+ConsentProtocol,READY
+AnonymizationWorkflow,READY
+DataDictionary,READY
+ValidationRules,READY
+ExportManifest,READY
+DatasetVersioning,READY
+PilotProtocol,READY
