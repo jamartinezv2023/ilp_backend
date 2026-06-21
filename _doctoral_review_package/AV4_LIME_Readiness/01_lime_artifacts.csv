@@ -1,0 +1,4 @@
+﻿LIME_ARTIFACT,PURPOSE
+lime_html_report,Local explanation report
+lime_feature_weights,Feature contribution for individual case
+lime_case_summary,Pedagogical summary for expert review

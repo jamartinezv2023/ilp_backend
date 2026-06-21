@@ -1,0 +1,9 @@
+﻿FEATURE,EXPECTED_INTERPRETATION
+kolb_ce,Concrete experience dimension
+kolb_ro,Reflective observation dimension
+kolb_ac,Abstract conceptualization dimension
+kolb_ae,Active experimentation dimension
+age,Demographic control variable
+grade_level,Educational stage variable
+academic_average,Academic performance context
+support_level,Inclusive support context

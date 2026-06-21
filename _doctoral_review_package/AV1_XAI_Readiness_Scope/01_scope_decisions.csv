@@ -1,0 +1,6 @@
+﻿ITEM,DECISION
+Goal,Prepare pilot dataset and baseline models for XAI analysis
+FunctionalChange,Documentation only
+RealDataCollection,NO
+PrimaryRisk,Producing explanations before model and dataset approval
+SafetyRule,No XAI claim without approved dataset snapshot baseline model metrics and reproducibility manifest
