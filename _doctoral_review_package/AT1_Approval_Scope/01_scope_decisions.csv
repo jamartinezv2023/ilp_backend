@@ -1,0 +1,6 @@
+﻿ITEM,DECISION
+Goal,Prepare pilot dataset approval and release gate
+FunctionalChange,Documentation only
+RealDataCollection,Only after ethics approval
+PrimaryRisk,Using dataset before formal approval
+SafetyRule,No ML training publication or thesis evidence without approval gate

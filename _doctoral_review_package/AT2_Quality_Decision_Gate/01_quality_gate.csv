@@ -1,0 +1,7 @@
+﻿QUALITY_ITEM,REQUIRED_STATUS
+CompletenessValidation,PASSED
+ConsistencyValidation,PASSED
+AnonymizationValidation,PASSED
+TraceabilityValidation,PASSED
+QualityReport,APPROVED
+ChecksumVerified,YES
