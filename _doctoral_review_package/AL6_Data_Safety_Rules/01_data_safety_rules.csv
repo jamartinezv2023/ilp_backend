@@ -1,0 +1,6 @@
+﻿RULE,DESCRIPTION
+NoDirectIdentifiers,Do not store names or sensitive direct identifiers in research payload
+LocalEncryptionFuture,Consider local encryption for MVP22
+FeatureFlagRequired,Local persistence disabled unless flag enabled
+NoDatasetExport,Local-only records are not dataset eligible
+AuditLocalWrites,Every local write creates audit event
