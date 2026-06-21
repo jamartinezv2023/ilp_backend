@@ -1,0 +1,6 @@
+﻿CONTROL,PURPOSE
+operation_id,Prevents duplicate processing
+payload_hash,Detects duplicate equivalent payload
+entity_version,Detects stale update
+server_ack,Confirms operation accepted by backend
+audit_event,Links sync result to traceability
