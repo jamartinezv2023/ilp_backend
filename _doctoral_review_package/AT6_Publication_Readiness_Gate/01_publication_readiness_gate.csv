@@ -1,0 +1,7 @@
+﻿PUBLICATION_ITEM,REQUIRED_STATUS
+DatasetDescriptionReady,YES
+EthicsStatementReady,YES
+ReproducibilityManifestReady,YES
+DataAvailabilityStatementReady,YES
+LimitationsDocumented,YES
+ThreatsToValidityDocumented,YES

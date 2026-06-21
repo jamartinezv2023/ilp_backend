@@ -1,0 +1,7 @@
+﻿ETHICS_ITEM,REQUIRED_STATUS
+EthicsCommitteeApproval,APPROVED
+ConsentProtocol,VALIDATED
+AnonymizationProtocol,VALIDATED
+DataProtectionPlan,APPROVED
+ResearchUseScope,DEFINED
+SensitiveDataReview,COMPLETED
