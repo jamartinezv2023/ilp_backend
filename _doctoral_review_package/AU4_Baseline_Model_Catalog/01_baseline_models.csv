@@ -1,0 +1,6 @@
+﻿MODEL,TASK,STATUS
+LogisticRegression,Classification,PLANNED
+RandomForest,Classification,PLANNED
+XGBoost,Classification,PLANNED
+DecisionTree,Interpretable baseline,PLANNED
+DummyClassifier,Naive baseline,PLANNED

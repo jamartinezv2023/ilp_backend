@@ -1,0 +1,6 @@
+﻿STRATEGY,DESCRIPTION
+HoldoutSplit,Initial pilot train validation split
+CrossValidation,Use when sample size permits
+TemporalValidation,Future validation by timepoint
+LeakageReview,Remove future or target-derived variables
+SeedControl,Use fixed seed 42 for reproducibility

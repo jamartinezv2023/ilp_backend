@@ -1,0 +1,11 @@
+﻿VARIABLE,ROLE
+kolb_ce,Feature
+kolb_ro,Feature
+kolb_ac,Feature
+kolb_ae,Feature
+age,Feature
+grade_level,Feature
+academic_average,Feature
+support_level,Feature
+kolb_style,Target
+recommendation_type,FutureTarget
