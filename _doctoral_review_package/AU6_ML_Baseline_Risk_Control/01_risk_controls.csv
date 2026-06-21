@@ -1,0 +1,6 @@
+﻿RISK,CONTROL
+SmallSample,Avoid overclaiming and report pilot nature
+ClassImbalance,Use balanced metrics
+DataLeakage,Perform leakage review before training
+Overfitting,Use validation strategy and simple baselines
+UnapprovedData,Train only on approved dataset snapshot
