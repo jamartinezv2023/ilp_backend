@@ -1,0 +1,8 @@
+﻿CRITERION,STATUS
+Scope documented,DONE
+Conflict record model documented,DONE
+Detection service documented,DONE
+Reconciliation API documented,DONE
+Human review workflow documented,DONE
+Tests documented,DONE
+Ready for implementation,YES
