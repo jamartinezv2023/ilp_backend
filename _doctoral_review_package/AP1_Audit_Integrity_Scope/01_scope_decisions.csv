@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Prepare audit trail and research data integrity implementation
+FunctionalChange,Additive only
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+ExistingEndpointsAffected,NO
+PrimaryRisk,Untraceable data entering research datasets
+SafetyRule,No record becomes dataset eligible without validation sync and audit trail

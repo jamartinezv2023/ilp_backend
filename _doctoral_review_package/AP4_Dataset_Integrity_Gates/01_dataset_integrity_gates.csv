@@ -1,0 +1,6 @@
+﻿DATASET_GATE,REQUIRED_CONTROL
+CORE_EDUCATIONAL_DATASET,Validated anonymized synchronized profile records
+DATASET_KOLB_LONGITUDINAL,Validated instrument version and timestamp
+DATASET_FEATURE_STORE,Derived only from eligible records
+DATASET_RECOMMENDATIONS,Teacher-reviewed recommendation evidence
+DATASET_RESEARCH_EVIDENCE,Governance and audit evidence available

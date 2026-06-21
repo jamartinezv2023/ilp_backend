@@ -1,0 +1,7 @@
+﻿TEST,TYPE
+CreateAuditOnSyncAccepted,Integration
+CreateAuditOnSyncRejected,Integration
+CreateAuditOnConflictResolved,Integration
+RejectDatasetEligibilityWithoutAudit,Unit
+RejectDatasetEligibilityWithUnresolvedConflict,Unit
+GenerateDatasetEligibilityReport,Integration

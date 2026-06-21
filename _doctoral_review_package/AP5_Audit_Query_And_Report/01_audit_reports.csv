@@ -1,0 +1,6 @@
+﻿REPORT,DESCRIPTION
+SyncAuditReport,Summary of sync events by period
+ConflictAuditReport,Conflict creation and resolution evidence
+DatasetEligibilityReport,Records eligible or rejected for datasets
+DataQualityAuditReport,Validation and missingness summary
+FieldPilotAuditReport,Offline use sync and incident evidence
