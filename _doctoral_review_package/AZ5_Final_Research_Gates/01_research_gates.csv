@@ -1,0 +1,8 @@
+﻿RESEARCH_GATE,REQUIRED_STATUS
+EthicsApproval,APPROVED
+ConsentProtocol,READY
+AnonymizationWorkflow,VERIFIED
+SyncAuditTrail,ACTIVE
+DatasetValidationReport,APPROVED
+PilotQualityReport,APPROVED
+DatasetSnapshotManifest,AVAILABLE
