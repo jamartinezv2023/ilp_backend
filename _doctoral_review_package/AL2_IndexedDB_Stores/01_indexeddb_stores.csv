@@ -1,0 +1,8 @@
+﻿STORE,ENTITY,PURPOSE
+students,StudentProfile,Cache student profile summaries
+assessment_responses,AssessmentResponse,Store offline assessment responses
+teacher_observations,TeacherObservation,Store teacher observations
+recommendation_feedback,RecommendationFeedback,Store recommendation feedback
+sync_queue,SyncOperation,Store pending mutations
+conflict_records,ConflictRecord,Store records needing reconciliation
+audit_events,OfflineAuditEvent,Store local audit trail

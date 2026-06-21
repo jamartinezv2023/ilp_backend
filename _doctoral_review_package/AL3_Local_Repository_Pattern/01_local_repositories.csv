@@ -1,0 +1,8 @@
+﻿REPOSITORY,RESPONSIBILITY
+StudentLocalRepository,Read and write cached student profiles
+AssessmentLocalRepository,Persist offline assessment responses
+ObservationLocalRepository,Persist teacher observations
+RecommendationFeedbackLocalRepository,Persist feedback
+SyncQueueRepository,Manage pending operations
+ConflictLocalRepository,Manage local conflict records
+AuditLocalRepository,Store local audit events

@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Prepare IndexedDB local database implementation
+FunctionalChange,Additive only
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+ExistingPagesAffected,NO
+PrimaryRisk,Local persistence inconsistency
+SafetyRule,No research export from local-only records
