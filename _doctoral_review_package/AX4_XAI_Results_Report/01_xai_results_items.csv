@@ -1,0 +1,6 @@
+﻿XAI_RESULT,DESCRIPTION
+FeatureImportanceSummary,Top predictive features
+SHAPSummary,Global explanation evidence
+LIMECaseExamples,Local explanation examples
+FairnessSummary,Subgroup behavior review
+TeacherInterpretabilityNotes,Human validation feedback

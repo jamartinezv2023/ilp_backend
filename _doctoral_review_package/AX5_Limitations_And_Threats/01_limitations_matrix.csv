@@ -1,0 +1,7 @@
+﻿THREAT,MITIGATION
+SmallSample,Report as pilot evidence only
+SingleInstitution,Limit generalization claims
+SelectionBias,Document sampling process
+MissingData,Report missingness and sensitivity
+ModelInstability,Avoid definitive model claims
+TeacherInterpretationBias,Use structured review protocol
