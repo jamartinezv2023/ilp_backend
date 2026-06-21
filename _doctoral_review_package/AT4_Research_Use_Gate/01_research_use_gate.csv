@@ -1,0 +1,8 @@
+﻿USE_CASE,APPROVAL_REQUIRED
+DescriptiveStatistics,YES
+PilotReport,YES
+MLBaselineTraining,YES
+XAIAnalysis,YES
+Q1PaperEvidence,YES
+DoctoralThesisEvidence,YES
+OpenScienceRelease,SEPARATE_APPROVAL_REQUIRED

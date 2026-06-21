@@ -1,0 +1,7 @@
+﻿ML_ITEM,REQUIRED_STATUS
+DatasetSnapshotApproved,YES
+FeatureDictionaryAvailable,YES
+TargetVariablesDefined,YES
+MissingDataReportAvailable,YES
+LeakageReviewCompleted,YES
+TrainValidationPlanDefined,YES
