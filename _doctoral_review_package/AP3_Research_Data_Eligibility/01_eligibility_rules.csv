@@ -1,0 +1,8 @@
+﻿ELIGIBILITY_RULE,DESCRIPTION
+ConsentVerified,Participant consent must be valid
+Anonymized,No direct identifiers in research payload
+Synced,Record must be successfully synchronized
+Validated,Record must pass structural and domain validation
+ConflictFree,Record must not have unresolved conflicts
+Audited,Record must have complete audit trail
+DatasetVersionAssigned,Record must belong to a dataset snapshot

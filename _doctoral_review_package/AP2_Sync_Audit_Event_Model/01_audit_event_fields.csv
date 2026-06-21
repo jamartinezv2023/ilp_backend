@@ -1,0 +1,10 @@
+﻿FIELD,TYPE,DESCRIPTION
+audit_id,UUID,Unique audit event identifier
+operation_id,UUID,Linked sync operation
+entity_type,String,Affected entity type
+entity_id,String,Affected entity id
+actor_id,String,User device or service actor
+event_type,String,SYNC_RECEIVED SYNC_ACCEPTED SYNC_REJECTED CONFLICT_CREATED CONFLICT_RESOLVED DATASET_ELIGIBLE
+event_payload,JSON,Non-sensitive event details
+created_at,DateTime,Server timestamp
+correlation_id,String,Trace across services and logs
