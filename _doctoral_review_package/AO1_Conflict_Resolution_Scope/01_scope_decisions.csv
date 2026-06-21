@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Prepare conflict resolution implementation
+FunctionalChange,Additive only
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+ExistingEndpointsAffected,NO
+PrimaryRisk,Incorrect reconciliation or data loss
+SafetyRule,Preserve both client and server payload before resolution

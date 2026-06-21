@@ -1,0 +1,7 @@
+﻿SERVICE_METHOD,PURPOSE
+detectVersionMismatch,Detect stale client version
+detectDuplicateOperation,Detect already processed operation
+detectDeletedAndUpdated,Detect update over deleted entity
+detectDuplicateCreate,Detect repeated logical creation
+classifyConflict,Assign conflict type
+createConflictRecord,Persist conflict for review

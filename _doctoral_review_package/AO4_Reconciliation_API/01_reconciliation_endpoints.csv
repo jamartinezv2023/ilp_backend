@@ -1,0 +1,4 @@
+﻿ENDPOINT,METHOD,PURPOSE
+/api/v1/sync/conflicts,GET,List pending conflicts
+/api/v1/sync/conflicts/{id},GET,Read conflict details
+/api/v1/sync/reconcile,POST,Submit reconciliation decision
