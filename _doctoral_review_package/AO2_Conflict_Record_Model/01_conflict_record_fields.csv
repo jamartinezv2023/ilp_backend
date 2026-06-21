@@ -1,0 +1,11 @@
+﻿FIELD,TYPE,DESCRIPTION
+conflict_id,UUID,Unique conflict identifier
+operation_id,UUID,Original sync operation id
+entity_type,String,Affected entity type
+entity_id,String,Affected entity id
+client_payload,JSON,Client-submitted data
+server_payload,JSON,Current server data
+conflict_type,String,Conflict category
+status,String,PENDING RESOLVED REJECTED
+created_at,DateTime,Conflict creation timestamp
+resolved_at,DateTime,Resolution timestamp

@@ -1,0 +1,6 @@
+﻿DECISION,MEANING
+ACCEPT_CLIENT,Use client payload
+ACCEPT_SERVER,Keep server payload
+MERGE,Apply reviewed combined payload
+REJECT_OPERATION,Reject client operation
+ESCALATE,Require expert or ethics review
