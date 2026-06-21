@@ -1,0 +1,7 @@
+﻿TEST,TYPE
+ValidateExperimentManifest,Unit
+CheckDatasetVersionPresent,Unit
+CheckSeedPresent,Unit
+CheckMetricsGenerated,Integration
+CheckArtifactsGenerated,Integration
+CheckNotebookExecutionRecorded,Integration

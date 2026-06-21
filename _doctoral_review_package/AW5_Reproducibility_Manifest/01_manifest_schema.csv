@@ -1,0 +1,10 @@
+﻿FIELD,REQUIRED
+experiment_id,YES
+dataset_version,YES
+git_commit,YES
+notebook_version,YES
+random_seed,YES
+model_parameters,YES
+metrics_path,YES
+artifact_paths,YES
+execution_timestamp,YES

@@ -1,0 +1,8 @@
+﻿ARTIFACT,FORMAT
+metrics_report,csv
+confusion_matrix,png
+feature_importance,csv
+shap_summary,png
+lime_report,html
+trained_model,pkl
+experiment_manifest,json
