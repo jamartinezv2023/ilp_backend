@@ -1,0 +1,9 @@
+﻿VARIABLE,TYPE,DATASET
+student_uuid,UUID,CORE_EDUCATIONAL_DATASET
+grade_level,Categorical,CORE_EDUCATIONAL_DATASET
+kolb_style,Categorical,DATASET_KOLB_LONGITUDINAL
+felder_profile,Categorical,DATASET_LEARNING_PREFERENCES
+kuder_area,Categorical,DATASET_VOCATIONAL_PROFILE
+academic_average,Numeric,DATASET_FEATURE_STORE
+recommendation_type,Categorical,DATASET_RECOMMENDATIONS
+teacher_observation,Text,DATASET_RESEARCH_EVIDENCE
