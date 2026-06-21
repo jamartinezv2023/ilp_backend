@@ -1,0 +1,6 @@
+﻿ITEM,DECISION
+Goal,Prepare approved pilot dataset for ML baseline experiments
+FunctionalChange,Documentation only
+RealDataCollection,NO
+PrimaryRisk,Training models before dataset readiness
+SafetyRule,No ML baseline without approved dataset snapshot and leakage review
