@@ -1,0 +1,7 @@
+﻿EVIDENCE,REQUIRED
+BackendBuildLog,YES
+FrontendBuildLog,YES
+BackendTestReport,YES
+FrontendTestReport,YES
+RegressionEvidence,YES
+ScreenshotOptional,YES

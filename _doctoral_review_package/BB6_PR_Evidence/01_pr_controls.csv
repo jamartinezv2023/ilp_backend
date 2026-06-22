@@ -1,0 +1,7 @@
+﻿PR_CONTROL,REQUIRED
+SmallScope,YES
+OneConcernPerPR,YES
+NoUnrelatedRefactor,YES
+QualityGateGreen,YES
+ReviewCompleted,YES
+RollbackPossible,YES

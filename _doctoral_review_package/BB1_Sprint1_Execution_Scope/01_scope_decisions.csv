@@ -1,0 +1,7 @@
+﻿ITEM,DECISION
+Goal,Execute first controlled offline-first implementation sprint
+Scope,Sync status backend and connectivity frontend
+ProductionRelease,NO
+RealDataCollection,NO
+FeatureFlagDefault,OFF
+SafetyRule,Only additive changes no regression allowed
