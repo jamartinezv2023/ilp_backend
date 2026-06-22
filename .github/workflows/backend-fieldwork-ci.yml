@@ -1,0 +1,34 @@
+﻿name: ILP Backend Fieldwork CI
+
+on:
+  push:
+    branches:
+      - main
+      - deployment/**
+      - implementation/**
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  backend-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Grant Gradle permission
+        run: chmod +x ./gradlew
+
+      - name: Build and test adaptive service
+        run: ./gradlew --no-configuration-cache :adaptive-education-service:clean :adaptive-education-service:test :adaptive-education-service:checkstyleMain :adaptive-education-service:pmdMain :adaptive-education-service:spotbugsMain
+
+      - name: Build Docker image
+        run: docker build -f adaptive-education-service/Dockerfile -t ilp-adaptive-education-service:ci .

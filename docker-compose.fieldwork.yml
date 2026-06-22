@@ -1,0 +1,30 @@
+﻿services:
+  ilp-postgres:
+    image: postgres:16
+    container_name: ilp-fieldwork-postgres
+    environment:
+      POSTGRES_DB: ilp_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+    ports:
+      - "5434:5432"
+    volumes:
+      - ilp_fieldwork_postgres_data:/var/lib/postgresql/data
+
+  adaptive-education-service:
+    build:
+      context: .
+      dockerfile: adaptive-education-service/Dockerfile
+    container_name: ilp-adaptive-education-service
+    depends_on:
+      - ilp-postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://ilp-postgres:5432/ilp_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres_password
+      SERVER_PORT: 8083
+    ports:
+      - "8083:8083"
+
+volumes:
+  ilp_fieldwork_postgres_data:
