@@ -1,0 +1,8 @@
+﻿WORKFLOW,STEPS
+ConsentWorkflow,Register consent verify authorization enable participation
+BaselineWorkflow,Create student UUID capture grade age support level
+KolbWorkflow,Apply Kolb instrument calculate dimensions store style
+FelderWorkflow,Apply Felder-Silverman preferences store profile
+KuderWorkflow,Apply vocational profile store area
+TeacherObservationWorkflow,Capture observation validate sync audit
+DatasetExportWorkflow,Validate anonymize snapshot export manifest checksum
