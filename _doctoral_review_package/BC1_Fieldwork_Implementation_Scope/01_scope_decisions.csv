@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Prepare real fieldwork data capture implementation
+ImplementationMode,Incremental and controlled
+RealDataCollection,ONLY_AFTER_ETHICS_APPROVAL
+OfflineFirst,REQUIRED
+BackendAndFrontend,REQUIRED
+PrimaryRisk,Collecting real data without governance
+SafetyRule,No real student data may be captured before ethics consent anonymization audit and field protocol approval
