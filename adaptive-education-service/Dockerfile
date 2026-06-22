@@ -1,13 +1,7 @@
-﻿FROM eclipse-temurin:17-jdk AS build
+﻿FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-COPY . .
-RUN ./gradlew :adaptive-education-service:bootJar --no-daemon
-
-FROM eclipse-temurin:17-jre
-WORKDIR /app
-
-COPY --from=build /app/adaptive-education-service/build/libs/*.jar app.jar
+COPY build/libs/*.jar app.jar
 
 EXPOSE 8083
 
