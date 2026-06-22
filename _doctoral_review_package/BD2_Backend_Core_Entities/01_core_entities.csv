@@ -1,0 +1,11 @@
+﻿ENTITY,RESPONSIBILITY
+ResearchParticipant,Represents anonymized participant in fieldwork study
+ConsentRecord,Stores consent assent authorization and withdrawal status
+ResearchStudentProfile,Stores non-identifying baseline educational variables
+InstrumentResponse,Stores Kolb Felder Kuder or custom instrument responses
+TeacherObservation,Stores structured pedagogical observation evidence
+RecommendationFeedback,Stores teacher feedback on adaptive recommendations
+FieldworkSession,Groups capture events by date context and responsible actor
+SyncOperation,Stores offline-first pending operations
+SyncAuditEvent,Stores traceability of every capture sync and export action
+DatasetSnapshot,Represents approved exportable dataset version

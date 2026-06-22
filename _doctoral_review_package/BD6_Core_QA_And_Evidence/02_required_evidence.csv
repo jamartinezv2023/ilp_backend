@@ -1,0 +1,8 @@
+﻿EVIDENCE,REQUIRED
+BackendBuildLog,YES
+FrontendBuildLog,YES
+APIIntegrationReports,YES
+OfflineE2EReport,YES
+AuditTrailEvidence,YES
+DatasetReadinessReport,YES
+EthicsGateEvidence,YES
