@@ -1,0 +1,7 @@
+﻿BACKEND_ITEM,DESCRIPTION
+ConsentRecord,Entity for consent status
+ResearchParticipant,Entity for anonymized participant
+ConsentController,REST API for consent
+ParticipantController,REST API for participant
+ConsentService,Business rules
+ParticipantService,Anonymous UUID creation

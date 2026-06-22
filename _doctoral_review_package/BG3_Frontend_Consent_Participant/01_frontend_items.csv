@@ -1,0 +1,5 @@
+﻿FRONTEND_ITEM,DESCRIPTION
+ConsentPage,Form to register demo consent
+ParticipantPage,Form to create anonymized participant
+ParticipantStatusCard,Shows consent and participant state
+FieldworkDashboard,Visible evaluator dashboard
