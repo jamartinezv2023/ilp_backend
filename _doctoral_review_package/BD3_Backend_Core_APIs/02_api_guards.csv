@@ -1,0 +1,9 @@
+﻿API,GUARD
+participants,Requires anonymized UUID and no direct identifiers
+consents,Requires authorized role and audit event
+profiles,Requires consent verified
+instrument-responses,Requires consent verified and instrument version
+teacher-observations,Requires authorized teacher actor
+recommendation-feedback,Requires recommendation reference
+sessions,Requires fieldwork protocol enabled
+readiness,Requires researcher or data steward role

@@ -1,0 +1,7 @@
+﻿WORKFLOW,DATASET_IMPACT
+ConsentToParticipant,Enables participant eligibility but exports no research data alone
+ParticipantBaseline,Feeds CORE_EDUCATIONAL_DATASET after validation
+InstrumentCapture,Feeds psychometric datasets after validation
+TeacherObservation,Feeds DATASET_RESEARCH_EVIDENCE after review
+RecommendationFeedback,Feeds DATASET_RECOMMENDATIONS after validation
+DatasetReadiness,Controls snapshot eligibility

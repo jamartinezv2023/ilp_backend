@@ -1,0 +1,9 @@
+﻿TEST,TYPE
+CreateParticipantWithConsent,Integration
+RejectParticipantWithoutConsent,Integration
+SubmitInstrumentResponse,Integration
+SaveInstrumentResponseOffline,E2E
+SyncOfflineTeacherObservation,E2E
+RejectDirectIdentifierPayload,Unit
+CreateAuditForEveryCapture,Integration
+DatasetReadinessExcludesPendingSync,Unit

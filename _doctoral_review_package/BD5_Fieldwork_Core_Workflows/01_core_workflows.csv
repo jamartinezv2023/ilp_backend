@@ -1,0 +1,7 @@
+﻿WORKFLOW,STEPS
+ConsentToParticipant,Verify consent create participant_uuid audit creation enable capture
+ParticipantBaseline,Capture profile validate local save sync audit
+InstrumentCapture,Select instrument apply wizard calculate scores save response sync audit
+TeacherObservation,Capture structured observation validate save sync audit
+RecommendationFeedback,Teacher reviews recommendation submits feedback sync audit
+DatasetReadiness,Validate synced records check consent anonymization conflict-free status
