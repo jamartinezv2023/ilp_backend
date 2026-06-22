@@ -1,0 +1,10 @@
+﻿BACKEND_MODULE,RESPONSIBILITY
+StudentResearchProfile,Manage anonymized student research profile
+ConsentRegistry,Track consent and assent status
+AssessmentCapture,Store Kolb Felder Kuder and custom instrument responses
+AcademicEvidenceCapture,Store academic indicators
+TeacherObservationCapture,Store pedagogical observations
+RecommendationFeedbackCapture,Store teacher feedback on recommendations
+SyncService,Receive offline queued operations
+AuditTrail,Trace every fieldwork data operation
+DatasetSnapshotService,Export validated anonymized dataset versions
