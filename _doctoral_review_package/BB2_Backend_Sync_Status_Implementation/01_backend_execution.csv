@@ -1,0 +1,5 @@
+﻿IMPLEMENTATION_TARGET,EXPECTED_RESULT
+SyncStatusEndpoint,GET /api/v1/sync/status available
+SyncStatusResponse,Returns enabled status version timestamp
+SyncService,Provides current sync capability state
+BackendTests,Endpoint and service tests pass
