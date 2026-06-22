@@ -1,0 +1,10 @@
+﻿.git
+.gradle
+**/build
+**/.idea
+**/.vscode
+**/node_modules
+_mvp*
+_audit*
+_doctoral_review_package
+_documentation_factory
