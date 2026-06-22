@@ -1,0 +1,5 @@
+﻿ENDPOINT,METHOD
+/api/v1/fieldwork/consents,POST
+/api/v1/fieldwork/participants,POST
+/api/v1/fieldwork/participants/{uuid},GET
+/api/v1/fieldwork/readiness,GET

@@ -1,0 +1,7 @@
+﻿EVIDENCE,REQUIRED
+BackendBuild,YES
+FrontendBuild,YES
+APIHealth,YES
+ConsentDemoScreenshot,YES
+ParticipantDemoScreenshot,YES
+PublicURL,YES

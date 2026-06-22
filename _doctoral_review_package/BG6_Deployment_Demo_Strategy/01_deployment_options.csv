@@ -1,0 +1,4 @@
+﻿OPTION,USE
+Railway,Fast MVP deployment with PostgreSQL and env vars
+Render,Docker web service plus managed PostgreSQL
+LocalDockerCompose,Safe local evaluator demo
