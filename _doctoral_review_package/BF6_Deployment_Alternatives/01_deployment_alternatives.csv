@@ -1,0 +1,6 @@
+﻿OPTION,RECOMMENDATION
+Railway,Best for fastest MVP with app plus PostgreSQL
+Render,Good for Docker backend and managed PostgreSQL
+DigitalOceanAppPlatform,Best institutional medium-term option
+FlyIO,Best for advanced Docker control
+LocalDockerCompose,Best for school demo and offline technical validation
