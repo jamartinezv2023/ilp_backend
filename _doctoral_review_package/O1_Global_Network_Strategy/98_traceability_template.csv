@@ -1,0 +1,6 @@
+﻿TRACE_LEVEL,DESCRIPTION
+Requirement,Must map to an educational scientific or technical requirement
+Artifact,Must produce or reference a concrete artifact
+Evidence,Must preserve evidence for audit or research
+Quality,Must support review validation or reproducibility
+Publication,Must support paper thesis or scientific reporting when applicable
