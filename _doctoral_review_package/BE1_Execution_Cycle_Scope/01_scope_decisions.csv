@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Execute controlled implementation cycle for fieldwork data capture
+ImplementationMode,Incremental
+BackendRequired,YES
+FrontendRequired,YES
+OfflineFirstRequired,YES
+RealDataCollection,ONLY_AFTER_ETHICS_APPROVAL
+SafetyRule,No real field data capture without consent anonymization audit and QA evidence

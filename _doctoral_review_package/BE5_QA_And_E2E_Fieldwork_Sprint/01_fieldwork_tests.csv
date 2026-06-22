@@ -1,0 +1,8 @@
+﻿TEST,TYPE
+CreateParticipantWithConsent,Integration
+RejectCaptureWithoutConsent,Integration
+SubmitKolbResponse,Integration
+CompleteInstrumentOffline,E2E
+ReconnectAndSyncFieldworkData,E2E
+ResolveFieldworkConflict,E2E
+DatasetReadinessExcludesInvalidRecords,Unit

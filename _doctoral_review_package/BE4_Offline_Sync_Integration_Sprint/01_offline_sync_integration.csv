@@ -1,0 +1,7 @@
+﻿INTEGRATION_ITEM,PURPOSE
+IndexedDBPersistence,Store fieldwork records locally
+SyncQueue,Queue participant profile responses observations and feedback
+PushPullSync,Synchronize offline records with backend
+ConflictResolution,Resolve divergent records
+AuditTrail,Trace all offline and online operations
+DatasetEligibility,Allow only validated synced records into datasets
