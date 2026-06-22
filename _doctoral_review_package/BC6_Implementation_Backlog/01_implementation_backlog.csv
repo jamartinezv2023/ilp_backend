@@ -1,0 +1,13 @@
+﻿PRIORITY,IMPLEMENTATION_ITEM,AREA
+1,ConsentRegistry backend,Backend
+2,StudentResearchProfile backend,Backend
+3,AssessmentCapture backend,Backend
+4,FieldworkDashboard frontend,Frontend
+5,AssessmentWizard frontend,Frontend
+6,TeacherObservationForm frontend,Frontend
+7,Offline sync queue integration,Frontend
+8,Sync push pull backend,Backend
+9,AuditTrail backend,Backend
+10,DatasetSnapshotService backend,Backend
+11,DatasetReadinessView frontend,Frontend
+12,E2E fieldwork capture tests,QA

@@ -1,0 +1,8 @@
+﻿FRONTEND_MODULE,RESPONSIBILITY
+FieldworkDashboard,Show study status and capture progress
+ConsentStatusView,Show whether participant is authorized
+StudentResearchForm,Capture anonymized student baseline variables
+AssessmentWizard,Capture psychometric instruments
+TeacherObservationForm,Capture pedagogical observations
+OfflineSyncPanel,Show pending synced failed and conflict records
+DatasetReadinessView,Show data completeness and quality indicators

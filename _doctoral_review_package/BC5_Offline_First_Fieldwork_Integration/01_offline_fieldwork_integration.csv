@@ -1,0 +1,7 @@
+﻿OFFLINE_FEATURE,FIELDWORK_VALUE
+IndexedDB,Preserve fieldwork data during connectivity loss
+SyncQueue,Queue assessments observations and feedback
+ConflictResolution,Protect concurrent edits from multiple devices
+AuditTrail,Preserve provenance of offline operations
+DatasetContinuity,Reduce missing data in rural and intermittent contexts
+TeacherUsability,Allow continuous classroom work
