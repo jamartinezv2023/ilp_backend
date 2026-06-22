@@ -1,16 +1,20 @@
+﻿server:
+  port: ${PORT:8083}
+
 spring:
+  application:
+    name: adaptive-education-service
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/ilp_adaptive_db
-    username: ilp_user
-    password: ${DB_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
+
   jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
     properties:
-      hibernate.format_sql: true
-  sql:
-    init:
-      mode: always
+      hibernate:
+        format_sql: false
