@@ -1,0 +1,5 @@
+﻿FLAG,DEFAULT,SPRINT1_USAGE
+offline_first_enabled,false,Global guard
+sync_status_enabled,false,Backend and frontend diagnostics
+offline_banner_enabled,false,Connectivity UI guard
+local_persistence_enabled,false,Not enabled in Sprint1

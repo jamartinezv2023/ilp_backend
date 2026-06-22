@@ -1,0 +1,5 @@
+﻿IMPLEMENTATION_TARGET,EXPECTED_RESULT
+ConnectivityDetector,Detects online offline state
+OfflineBanner,Displays connectivity state when enabled
+SyncStatusClient,Consumes backend sync status
+FrontendTests,Connectivity and banner tests pass
