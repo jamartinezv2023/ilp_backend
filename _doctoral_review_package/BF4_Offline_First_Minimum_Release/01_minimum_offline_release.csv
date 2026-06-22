@@ -1,0 +1,8 @@
+﻿OFFLINE_FEATURE,MINIMUM_RELEASE_RULE
+ConnectivityDetector,Required
+OfflineBanner,Required
+IndexedDBLocalStore,Required for fieldwork forms
+SyncQueue,Required for offline captured records
+PushPullSync,Required before field pilot
+ConflictDetection,Required before multi-device use
+AuditTrail,Required before dataset export
