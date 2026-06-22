@@ -1,0 +1,9 @@
+﻿EVIDENCE_TYPE,EXPECTED_SOURCE
+GitCommit,Version control history
+PullRequest,Review and integration evidence
+BuildReport,CI or local build output
+TestReport,Unit integration E2E or QA report
+DatasetManifest,Versioned dataset snapshot
+AuditLog,Traceability and governance event
+EthicsEvidence,Approval consent or governance documentation
+PublicationArtifact,Paper table figure or supplementary material

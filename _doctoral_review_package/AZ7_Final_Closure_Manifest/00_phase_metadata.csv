@@ -1,7 +1,9 @@
 ﻿FIELD,VALUE
 Package,AZ7_Final_Closure_Manifest
+PhasePrefix,AZ7
 Repository,ilp_backend
-GeneratedBy,complete_all_phases_population
+GeneratedBy,master_populate_all_phases_complete
+Lifecycle,Scientific and technical research infrastructure
 Status,POPULATED
-Traceability,REQUIRED
-Review,REQUIRED
+ReviewRequired,YES
+TraceabilityRequired,YES
