@@ -1,4 +1,4 @@
-﻿server:
+server:
   port: ${PORT:8083}
 
 spring:
@@ -17,4 +17,9 @@ spring:
     show-sql: false
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: false
+
+logging:
+  level:
+    root: INFO
