@@ -1,0 +1,6 @@
+﻿SPRINT,TARGET
+BackendSprint1,ResearchParticipant and ConsentRecord
+BackendSprint2,ResearchStudentProfile and InstrumentResponse
+BackendSprint3,TeacherObservation and RecommendationFeedback
+BackendSprint4,FieldworkSession and readiness indicators
+BackendSprint5,Audit trail and dataset eligibility

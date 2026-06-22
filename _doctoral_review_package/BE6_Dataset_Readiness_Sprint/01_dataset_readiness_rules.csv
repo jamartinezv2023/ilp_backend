@@ -1,0 +1,8 @@
+﻿READINESS_ITEM,REQUIRED_STATUS
+ConsentVerified,YES
+AnonymizedUUID,YES
+SynchronizedRecord,YES
+ValidationPassed,YES
+ConflictFree,YES
+AuditTrailAvailable,YES
+DatasetSnapshotEligible,YES
