@@ -1,0 +1,10 @@
+﻿SCREEN,PURPOSE
+FieldworkDashboard,Show participants sessions completion sync and quality status
+ParticipantRegistrationScreen,Create anonymized participant after consent verification
+ConsentStatusScreen,Display consent status without exposing sensitive identifiers
+ResearchProfileForm,Capture baseline educational variables
+InstrumentResponseWizard,Capture Kolb Felder Kuder and custom instruments
+TeacherObservationForm,Capture structured teacher observations
+RecommendationFeedbackForm,Capture teacher validation of recommendations
+OfflineSyncPanel,Show pending synced failed and conflict records
+DatasetReadinessPanel,Show records eligible rejected or pending validation

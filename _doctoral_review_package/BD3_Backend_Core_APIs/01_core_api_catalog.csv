@@ -1,0 +1,11 @@
+﻿API,METHOD,PURPOSE
+/api/v1/fieldwork/participants,POST,Create anonymized research participant
+/api/v1/fieldwork/participants/{uuid},GET,Read participant research state
+/api/v1/fieldwork/consents,POST,Register consent or assent status
+/api/v1/fieldwork/profiles,POST,Create or update research student profile
+/api/v1/fieldwork/instrument-responses,POST,Submit instrument response
+/api/v1/fieldwork/teacher-observations,POST,Submit teacher observation
+/api/v1/fieldwork/recommendation-feedback,POST,Submit recommendation feedback
+/api/v1/fieldwork/sessions,POST,Open fieldwork capture session
+/api/v1/fieldwork/sessions/{id}/close,POST,Close fieldwork capture session
+/api/v1/fieldwork/readiness,GET,Return fieldwork readiness indicators

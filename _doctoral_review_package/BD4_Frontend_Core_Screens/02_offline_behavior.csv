@@ -1,0 +1,8 @@
+﻿SCREEN,OFFLINE_BEHAVIOR
+ParticipantRegistrationScreen,Queue locally if network unavailable
+ResearchProfileForm,Save locally and sync later
+InstrumentResponseWizard,Save response locally and prevent data loss
+TeacherObservationForm,Allow offline capture and later sync
+RecommendationFeedbackForm,Allow offline capture and later sync
+OfflineSyncPanel,Display local queue and sync status
+DatasetReadinessPanel,Read only from synchronized validated backend state

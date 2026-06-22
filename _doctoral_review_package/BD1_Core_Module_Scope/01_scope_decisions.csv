@@ -1,0 +1,9 @@
+﻿ITEM,DECISION
+Goal,Define minimum functional modules for controlled fieldwork data capture
+ImplementationMode,Incremental controlled offline-first
+RealDataCollection,ONLY_AFTER_ETHICS_APPROVAL
+PrimaryRisk,Activating fieldwork capture without consent governance or audit
+SafetyRule,No fieldwork record may be created without consent status anonymized UUID audit trail and dataset eligibility controls
+BackendRequired,YES
+FrontendRequired,YES
+OfflineFirstRequired,YES
