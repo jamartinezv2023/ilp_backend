@@ -1,19 +1,14 @@
-FROM eclipse-temurin:17-jre-alpine
-
+﻿FROM eclipse-temurin:17-jdk AS build
 WORKDIR /app
 
-RUN addgroup -S ilp && adduser -S ilp -G ilp
+COPY . .
+RUN ./gradlew :adaptive-education-service:bootJar --no-daemon
 
-COPY adaptive-education-service/build/libs/*.jar app.jar
+FROM eclipse-temurin:17-jre
+WORKDIR /app
 
-ENV SERVER_PORT=8083
-ENV SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/msf
-ENV SPRING_DATASOURCE_USERNAME=msf
-ENV SPRING_DATASOURCE_PASSWORD=msf
-ENV SPRING_JPA_HIBERNATE_DDL_AUTO=update
+COPY --from=build /app/adaptive-education-service/build/libs/*.jar app.jar
 
 EXPOSE 8083
 
-USER ilp
-
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
