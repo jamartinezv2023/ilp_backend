@@ -1,0 +1,8 @@
+﻿ITEM,DECISION
+Goal,Build first real deployable MVP vertical
+Vertical,Consent plus anonymized participant
+BackendRequired,YES
+FrontendRequired,YES
+PublicDemoRequired,YES
+RealDataCollection,NO_DEMO_DATA_ONLY
+SafetyRule,Use demo data until ethics approval
