@@ -1,7 +1,9 @@
 ﻿FIELD,VALUE
 Package,AI6_First_PR_Strategy
+PhasePrefix,AI6
 Repository,ilp_backend
-GeneratedBy,complete_all_phases_population
+GeneratedBy,master_populate_all_phases_complete
+Lifecycle,Scientific and technical research infrastructure
 Status,POPULATED
-Traceability,REQUIRED
-Review,REQUIRED
+ReviewRequired,YES
+TraceabilityRequired,YES

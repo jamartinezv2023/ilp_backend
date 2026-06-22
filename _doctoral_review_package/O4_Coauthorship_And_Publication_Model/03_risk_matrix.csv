@@ -1,0 +1,7 @@
+﻿RISK,MITIGATION
+IncompleteDocumentation,Populate required documents and review before use
+WeakTraceability,Link each artifact to requirement dataset experiment or paper
+EthicsGap,Do not use for fieldwork without ethics approval
+DataQualityGap,Do not export datasets without validation rules
+ImplementationRisk,Use feature flags tests and rollback strategy
+PublicationOverclaiming,Report only evidence supported by data

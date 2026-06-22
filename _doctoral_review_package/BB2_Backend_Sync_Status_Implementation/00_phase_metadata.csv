@@ -1,0 +1,9 @@
+﻿FIELD,VALUE
+Package,BB2_Backend_Sync_Status_Implementation
+PhasePrefix,BB2
+Repository,ilp_backend
+GeneratedBy,master_populate_all_phases_complete
+Lifecycle,Scientific and technical research infrastructure
+Status,POPULATED
+ReviewRequired,YES
+TraceabilityRequired,YES

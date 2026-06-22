@@ -1,0 +1,9 @@
+﻿FIELD,VALUE
+Package,BB6_PR_Evidence
+PhasePrefix,BB6
+Repository,ilp_backend
+GeneratedBy,master_populate_all_phases_complete
+Lifecycle,Scientific and technical research infrastructure
+Status,POPULATED
+ReviewRequired,YES
+TraceabilityRequired,YES

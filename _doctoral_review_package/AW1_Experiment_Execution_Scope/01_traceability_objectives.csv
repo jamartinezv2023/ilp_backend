@@ -1,0 +1,6 @@
+﻿OBJECTIVE,DESCRIPTION
+ScientificTraceability,Connect this package to research evidence
+EthicsTraceability,Ensure ethical and consent dependencies are visible
+DatasetTraceability,Connect records to dataset versions when applicable
+ImplementationTraceability,Connect plans to code commits and PRs when applicable
+PublicationTraceability,Connect outputs to papers and doctoral compendium
