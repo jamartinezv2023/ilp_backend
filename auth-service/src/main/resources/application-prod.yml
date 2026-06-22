@@ -1,16 +1,19 @@
-server:
-  port: 8083
+﻿server:
+  port: ${PORT:8083}
 
 spring:
+  application:
+    name: auth-service
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/authdb
+    url: ${SPRING_DATASOURCE_URL}
     driver-class-name: org.postgresql.Driver
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: false
 
 logging:
@@ -21,6 +24,6 @@ logging:
 security:
   jwt:
     secret: ${JWT_SECRET}
-    issuer: "inclusive-learning-platform"
+    issuer: inclusive-learning-platform
     access-token-minutes: 15
     refresh-token-days: 7
