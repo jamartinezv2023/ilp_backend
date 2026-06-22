@@ -13,8 +13,8 @@
 
   adaptive-education-service:
     build:
-      context: .
-      dockerfile: adaptive-education-service/Dockerfile
+      context: ./adaptive-education-service
+      dockerfile: Dockerfile
     container_name: ilp-adaptive-education-service
     depends_on:
       - ilp-postgres
