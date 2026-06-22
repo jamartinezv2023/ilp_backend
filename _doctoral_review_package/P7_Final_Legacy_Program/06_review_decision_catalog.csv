@@ -1,0 +1,5 @@
+﻿DECISION,MEANING
+APPROVED,Package may be used as supporting evidence
+APPROVED_WITH_OBSERVATIONS,Package may be used after minor corrections
+REQUIRES_CORRECTION,Package must be corrected before use
+REJECTED,Package is not valid as evidence

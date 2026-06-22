@@ -1,7 +1,9 @@
 ﻿FIELD,VALUE
 Package,E2_open_science_pipeline
+PhasePrefix,E2
 Repository,ilp_backend
-GeneratedBy,complete_all_phases_population
+GeneratedBy,master_populate_all_phases_complete
+Lifecycle,Scientific and technical research infrastructure
 Status,POPULATED
-Traceability,REQUIRED
-Review,REQUIRED
+ReviewRequired,YES
+TraceabilityRequired,YES
