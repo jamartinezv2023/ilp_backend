@@ -1,0 +1,9 @@
+﻿FIELD,VALUE
+Package,BB5_Test_Evidence
+PhasePrefix,BB5
+Repository,ilp_backend
+GeneratedBy,master_populate_all_phases_complete
+Lifecycle,Scientific and technical research infrastructure
+Status,POPULATED
+ReviewRequired,YES
+TraceabilityRequired,YES

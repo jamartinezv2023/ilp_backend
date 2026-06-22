@@ -2,24 +2,16 @@
 
 ## Purpose
 
-This package is part of the ILP scientific, ethical, architectural, implementation or research evidence lifecycle.
+This package belongs to the ILP scientific, ethical, architectural, operational, implementation, publication or legacy lifecycle.
 
-## Role in ILP
+## Strategic Role
 
-It contributes to the transition from software platform to reproducible scientific infrastructure.
+It supports the transformation of ILP from a software platform into a reproducible scientific infrastructure for inclusive education, longitudinal datasets, machine learning, explainable AI, offline-first operation and doctoral research.
 
-## Status
+## Current Status
 
 POPULATED_BY_MASTER_FACTORY
 
-## Traceability
+## Review Requirement
 
-This folder must remain connected to:
-
-- requirements
-- datasets
-- experiments
-- evidence
-- papers
-- doctoral compendium
-- implementation readiness
+This package must be reviewed before being used as evidence for fieldwork, datasets, machine learning experiments, publications or doctoral defense.

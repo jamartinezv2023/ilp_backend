@@ -1,0 +1,7 @@
+﻿QUALITY_GATE,REQUIRED_STATUS
+Completeness,DONE
+Traceability,DONE
+EthicsDependency,IDENTIFIED
+DatasetDependency,IDENTIFIED_WHEN_APPLICABLE
+ImplementationDependency,IDENTIFIED_WHEN_APPLICABLE
+ReviewReadiness,READY
