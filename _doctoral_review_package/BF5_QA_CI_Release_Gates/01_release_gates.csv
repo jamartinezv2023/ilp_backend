@@ -1,0 +1,9 @@
+﻿QUALITY_GATE,REQUIRED_STATUS
+BackendBuild,PASSED
+FrontendBuild,PASSED
+BackendTests,PASSED
+FrontendTests,PASSED
+OfflineE2E,PASSED
+SecuritySmoke,PASSED
+DatasetExportDryRun,PASSED
+RollbackPlan,READY

@@ -1,0 +1,9 @@
+﻿VERTICAL,FRONTEND_COMPONENTS
+FieldworkDashboard,Dashboard summary cards readiness indicators sync state
+ConsentManagement,Consent status view and authorized workflow
+ParticipantRegistration,Participant anonymized registration form
+ResearchProfile,Student research profile form
+InstrumentCapture,Assessment wizard Kolb Felder Kuder
+TeacherObservation,Teacher observation form
+OfflineSync,Offline banner sync queue panel conflict panel
+DatasetReadiness,Dataset quality and export readiness view

@@ -1,0 +1,9 @@
+﻿ITEM,DECISION
+Goal,Prepare first complete deployable version for fieldwork
+ReleaseType,MVP controlled fieldwork release
+RealDataCollection,ONLY_AFTER_ETHICS_APPROVAL
+BackendRequired,YES
+FrontendRequired,YES
+OfflineFirstRequired,YES
+PrimaryRisk,Deploying without functional data capture and governance
+SafetyRule,No field deployment without consent audit sync QA and rollback
