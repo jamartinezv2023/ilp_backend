@@ -1,0 +1,17 @@
+package com.inclusive.adaptiveeducationservice.assessmentengine.generic.exception;
+
+public class DuplicateAssessmentDefinitionException
+        extends RuntimeException {
+
+    public DuplicateAssessmentDefinitionException(
+            String assessmentCode,
+            String version
+    ) {
+        super(
+                "Assessment definition already exists: "
+                        + assessmentCode
+                        + " version "
+                        + version
+        );
+    }
+}

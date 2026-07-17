@@ -1,0 +1,107 @@
+package com.inclusive.adaptiveeducationservice.assessmentengine.generic.application;
+
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentDefinition;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentOption;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestion;
+import org.springframework.stereotype.Component;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Component
+public class AssessmentDefinitionValidator {
+
+    public void validate(AssessmentDefinition definition) {
+        if (definition.active() && definition.questions().isEmpty()) {
+            throw new IllegalArgumentException(
+                    "An active assessment definition must contain questions"
+            );
+        }
+
+        validateQuestionCodes(definition);
+        validateQuestionOrder(definition);
+        validateOptions(definition);
+    }
+
+    private void validateQuestionCodes(
+            AssessmentDefinition definition
+    ) {
+        Set<String> questionCodes = new HashSet<>();
+
+        for (AssessmentQuestion question : definition.questions()) {
+            if (!questionCodes.add(question.code())) {
+                throw new IllegalArgumentException(
+                        "Duplicated question code: " + question.code()
+                );
+            }
+        }
+    }
+
+    private void validateQuestionOrder(
+            AssessmentDefinition definition
+    ) {
+        Set<Integer> orderIndexes = new HashSet<>();
+
+        for (AssessmentQuestion question : definition.questions()) {
+            if (question.orderIndex() < 1) {
+                throw new IllegalArgumentException(
+                        "Question order index must be greater than zero: "
+                                + question.code()
+                );
+            }
+
+            if (!orderIndexes.add(question.orderIndex())) {
+                throw new IllegalArgumentException(
+                        "Duplicated question order index: "
+                                + question.orderIndex()
+                );
+            }
+        }
+    }
+
+    private void validateOptions(
+            AssessmentDefinition definition
+    ) {
+        for (AssessmentQuestion question : definition.questions()) {
+            Set<String> optionIds = new HashSet<>();
+            Set<String> optionCodes = new HashSet<>();
+            Set<Integer> optionOrderIndexes = new HashSet<>();
+
+            for (AssessmentOption option : question.options()) {
+                if (!optionIds.add(option.id())) {
+                    throw new IllegalArgumentException(
+                            "Duplicated option id in question "
+                                    + question.code()
+                                    + ": "
+                                    + option.id()
+                    );
+                }
+
+                if (!optionCodes.add(option.code())) {
+                    throw new IllegalArgumentException(
+                            "Duplicated option code in question "
+                                    + question.code()
+                                    + ": "
+                                    + option.code()
+                    );
+                }
+
+                if (option.orderIndex() < 1) {
+                    throw new IllegalArgumentException(
+                            "Option order index must be greater than zero: "
+                                    + option.code()
+                    );
+                }
+
+                if (!optionOrderIndexes.add(option.orderIndex())) {
+                    throw new IllegalArgumentException(
+                            "Duplicated option order index in question "
+                                    + question.code()
+                                    + ": "
+                                    + option.orderIndex()
+                    );
+                }
+            }
+        }
+    }
+}
