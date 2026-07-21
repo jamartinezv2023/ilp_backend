@@ -11,23 +11,34 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebCorsConfig {
 
-    @Value("${app.cors.allowed-origins:http://localhost:5173}")
-    private String allowedOrigins;
+    @Value("${app.cors.allowed-origin-patterns:http://localhost:*,http://127.0.0.1:*,http://192.168.*:*}")
+    private String allowedOriginPatterns;
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                List<String> origins = Arrays.stream(allowedOrigins.split(","))
-                        .map(String::trim)
-                        .filter(origin -> !origin.isBlank())
-                        .toList();
+                List<String> originPatterns =
+                        Arrays.stream(allowedOriginPatterns.split(","))
+                                .map(String::trim)
+                                .filter(origin -> !origin.isBlank())
+                                .toList();
 
                 registry.addMapping("/api/**")
-                        .allowedOrigins(origins.toArray(String[]::new))
-                        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
-                        .allowedHeaders("*");
+                        .allowedOriginPatterns(
+                                originPatterns.toArray(String[]::new)
+                        )
+                        .allowedMethods(
+                                "GET",
+                                "POST",
+                                "PUT",
+                                "PATCH",
+                                "DELETE",
+                                "OPTIONS"
+                        )
+                        .allowedHeaders("*")
+                        .maxAge(1800);
             }
         };
     }
