@@ -6,6 +6,7 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.As
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentOption;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestion;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestionType;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.exception.InvalidAssessmentSubmissionException;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.AssessmentDefinitionRepositoryPort;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.AssessmentSubmissionValidator;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -59,7 +61,7 @@ class KolbGenericAssessmentFacadeTest {
         List<Integer> answers = new ArrayList<>();
 
         for (int index = 0; index < 12; index++) {
-            answers.addAll(List.of(4, 4, 1, 1));
+            answers.addAll(List.of(4, 3, 2, 1));
         }
 
         var result =
@@ -78,7 +80,19 @@ class KolbGenericAssessmentFacadeTest {
                 .isEqualTo(48.0);
 
         assertThat(result.scores().get("RO"))
-                .isEqualTo(48.0);
+                .isEqualTo(36.0);
+
+        assertThat(result.scores().get("AC"))
+                .isEqualTo(24.0);
+
+        assertThat(result.scores().get("AE"))
+                .isEqualTo(12.0);
+
+        assertThat(result.scores().get("AC_MINUS_CE"))
+                .isEqualTo(-24.0);
+
+        assertThat(result.scores().get("AE_MINUS_RO"))
+                .isEqualTo(-24.0);
 
         assertThat(result.scoringAlgorithmVersion())
                 .isEqualTo("KOLB_BASELINE_V1");
