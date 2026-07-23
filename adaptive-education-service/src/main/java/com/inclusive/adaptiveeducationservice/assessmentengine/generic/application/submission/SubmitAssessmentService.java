@@ -8,6 +8,8 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.As
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestion;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentResult;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentSubmission;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.scientific.PersistAssessmentScientificObservationCommand;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.AssessmentScientificObservationPort;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.persistence.AssessmentDefinitionPersistenceMapper;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.entity.AssessmentAnswerEntity;
@@ -37,13 +39,17 @@ public class SubmitAssessmentService {
 
     private final SubmitAssessmentMapper submissionMapper;
 
+    private final AssessmentScientificObservationPort
+            scientificObservationPort;
+
     public SubmitAssessmentService(
             AssessmentResponseRepository responseRepository,
             AssessmentDefinitionRepository definitionRepository,
             AssessmentDefinitionPersistenceMapper definitionMapper,
             StudentProfileRepository studentProfileRepository,
             GenericAssessmentEngine assessmentEngine,
-            SubmitAssessmentMapper submissionMapper
+            SubmitAssessmentMapper submissionMapper,
+            AssessmentScientificObservationPort scientificObservationPort
     ) {
         this.responseRepository = responseRepository;
         this.definitionRepository = definitionRepository;
@@ -51,6 +57,8 @@ public class SubmitAssessmentService {
         this.studentProfileRepository = studentProfileRepository;
         this.assessmentEngine = assessmentEngine;
         this.submissionMapper = submissionMapper;
+        this.scientificObservationPort =
+                scientificObservationPort;
     }
 
     @Transactional
@@ -81,6 +89,13 @@ public class SubmitAssessmentService {
                         submission
                 );
 
+        scientificObservationPort.save(
+                new PersistAssessmentScientificObservationCommand(
+                        submission,
+                        result
+                )
+        );
+
         return new SubmitAssessmentResponse(
                 result.administrationId(),
                 result.participantId(),
@@ -100,7 +115,13 @@ public class SubmitAssessmentService {
     private void validateIdempotency(
             String administrationId
     ) {
-        if (responseRepository.existsById(administrationId)) {
+        if (
+                responseRepository.existsById(administrationId)
+                        || scientificObservationPort
+                        .existsByAdministrationId(
+                                administrationId
+                        )
+        ) {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
                     "Assessment submission already exists"
