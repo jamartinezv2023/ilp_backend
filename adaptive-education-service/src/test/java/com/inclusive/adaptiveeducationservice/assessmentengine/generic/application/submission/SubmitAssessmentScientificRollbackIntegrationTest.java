@@ -1,9 +1,14 @@
 package com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.submission;
 
+import com.inclusive.adaptiveeducationservice.api.assessmentsubmission.SubmitAssessmentQuestionRequest;
 import com.inclusive.adaptiveeducationservice.api.assessmentsubmission.SubmitAssessmentRequest;
 import com.inclusive.adaptiveeducationservice.assessmentdefinition.entity.AssessmentDefinitionEntity;
 import com.inclusive.adaptiveeducationservice.assessmentdefinition.repository.AssessmentDefinitionRepository;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentDefinition;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentOption;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestion;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestionType;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentResponse;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentResult;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentSubmission;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.persistence.AssessmentDefinitionPersistenceMapper;
@@ -19,6 +24,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.time.Instant;
@@ -68,6 +74,9 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
     @Autowired
     private EntityManager entityManager;
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     @MockBean
     private AssessmentDefinitionRepository definitionRepository;
 
@@ -107,18 +116,58 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
         resultRepository.deleteAll();
         responseRepository.deleteAll();
 
+        Integer orphanAnswerCount =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT COUNT(*)
+                        FROM assessment_answers
+                        """,
+                        Integer.class
+                );
+
+        assertThat(orphanAnswerCount)
+                .isZero();
+
+        SubmitAssessmentQuestionRequest questionRequest =
+                new SubmitAssessmentQuestionRequest(
+                        "Q1",
+                        List.of(),
+                        Map.of(
+                                "Q1-CE", 4,
+                                "Q1-RO", 3,
+                                "Q1-AC", 2,
+                                "Q1-AE", 1
+                        ),
+                        null,
+                        null
+                );
+
         request =
                 new SubmitAssessmentRequest(
                         ADMINISTRATION_ID,
                         PARTICIPANT_ID,
                         "KOLB_V1",
                         "1.0",
-                        List.of(),
+                        List.of(questionRequest),
                         Map.of(
                                 "source",
                                 "ROLLBACK_INTEGRATION_TEST"
                         ),
                         SUBMITTED_AT
+                );
+
+        AssessmentResponse domainResponse =
+                new AssessmentResponse(
+                        "Q1",
+                        List.of(),
+                        Map.of(
+                                "Q1-CE", 4,
+                                "Q1-RO", 3,
+                                "Q1-AC", 2,
+                                "Q1-AE", 1
+                        ),
+                        null,
+                        null
                 );
 
         submission =
@@ -127,7 +176,7 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                         PARTICIPANT_ID,
                         "KOLB_V1",
                         "1.0",
-                        List.of(),
+                        List.of(domainResponse),
                         Map.of(
                                 "source",
                                 "ROLLBACK_INTEGRATION_TEST"
@@ -143,8 +192,12 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                         "1.0",
                         "DIVERGENT",
                         Map.of(
-                                "CE",
-                                48.0
+                                "CE", 4.0,
+                                "RO", 3.0,
+                                "AC", 2.0,
+                                "AE", 1.0,
+                                "AC_MINUS_CE", -2.0,
+                                "AE_MINUS_RO", -2.0
                         ),
                         Map.of(
                                 "PRIMARY_PROFILE",
@@ -153,6 +206,58 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                         List.of(),
                         "KOLB_BASELINE_V1",
                         SUBMITTED_AT.plusSeconds(1)
+                );
+
+        List<AssessmentOption> options =
+                List.of(
+                        new AssessmentOption(
+                                "Q1-CE",
+                                "Q1-CE",
+                                "Experiencia concreta",
+                                "CE",
+                                null,
+                                1.0,
+                                1
+                        ),
+                        new AssessmentOption(
+                                "Q1-RO",
+                                "Q1-RO",
+                                "Observación reflexiva",
+                                "RO",
+                                null,
+                                1.0,
+                                2
+                        ),
+                        new AssessmentOption(
+                                "Q1-AC",
+                                "Q1-AC",
+                                "Conceptualización abstracta",
+                                "AC",
+                                null,
+                                1.0,
+                                3
+                        ),
+                        new AssessmentOption(
+                                "Q1-AE",
+                                "Q1-AE",
+                                "Experimentación activa",
+                                "AE",
+                                null,
+                                1.0,
+                                4
+                        )
+                );
+
+        AssessmentQuestion question =
+                new AssessmentQuestion(
+                        "Q1",
+                        "Q1",
+                        "Ordene las alternativas",
+                        null,
+                        AssessmentQuestionType.IPSATIVE_RANKING,
+                        true,
+                        1,
+                        options
                 );
 
         definition =
@@ -197,7 +302,9 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
         ).thenReturn(definition);
 
         when(definition.questions())
-                .thenReturn(List.of());
+                .thenReturn(
+                        List.of(question)
+                );
 
         when(submissionMapper.toDomain(request))
                 .thenReturn(submission);
@@ -209,11 +316,38 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                 )
         ).thenReturn(result);
     }
-
     @Test
-    void shouldRollbackRawResponseWhenScientificPersistenceFails() {
+    void shouldRollbackRawResponseAndAnswersWhenScientificPersistenceFails() {
         doAnswer(invocation -> {
             entityManager.flush();
+
+            Integer responseCount =
+                    jdbcTemplate.queryForObject(
+                            """
+                            SELECT COUNT(*)
+                            FROM assessment_responses
+                            WHERE id = ?
+                            """,
+                            Integer.class,
+                            ADMINISTRATION_ID
+                    );
+
+            Integer answerCount =
+                    jdbcTemplate.queryForObject(
+                            """
+                            SELECT COUNT(*)
+                            FROM assessment_answers
+                            WHERE assessment_response_id = ?
+                            """,
+                            Integer.class,
+                            ADMINISTRATION_ID
+                    );
+
+            assertThat(responseCount)
+                    .isEqualTo(1);
+
+            assertThat(answerCount)
+                    .isEqualTo(4);
 
             throw new IllegalStateException(
                     "Forced scientific persistence failure"
@@ -238,6 +372,20 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                 )
         ).isFalse();
 
+        Integer answerCountAfterRollback =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT COUNT(*)
+                        FROM assessment_answers
+                        WHERE assessment_response_id = ?
+                        """,
+                        Integer.class,
+                        ADMINISTRATION_ID
+                );
+
+        assertThat(answerCountAfterRollback)
+                .isZero();
+
         assertThat(
                 resultRepository.existsByAdministrationId(
                         ADMINISTRATION_ID
@@ -250,7 +398,6 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                 )
         ).isFalse();
     }
-
     @Test
     void shouldCommitRawResponseWhenScientificPersistenceSucceeds() {
         doAnswer(invocation -> {
@@ -267,4 +414,18 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                         ADMINISTRATION_ID
                 )
         ).isTrue();
+
+        Integer answerCountAfterCommit =
+                jdbcTemplate.queryForObject(
+                        """
+                        SELECT COUNT(*)
+                        FROM assessment_answers
+                        WHERE assessment_response_id = ?
+                        """,
+                        Integer.class,
+                        ADMINISTRATION_ID
+                );
+
+        assertThat(answerCountAfterCommit)
+                .isEqualTo(4);
     }}
