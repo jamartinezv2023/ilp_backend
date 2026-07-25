@@ -38,4 +38,14 @@ public interface AssessmentScientificResultRepository
             String participantId,
             String assessmentCode
     );
-}
+
+    @EntityGraph(
+            attributePaths = {
+                    "scores",
+                    "interpretations"
+            }
+    )
+    List<AssessmentScientificResultEntity>
+    findByParticipantIdOrderBySubmittedAtDescAdministrationIdAsc(
+            String participantId
+    );}
