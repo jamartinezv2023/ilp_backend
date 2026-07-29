@@ -71,12 +71,8 @@ public record ScientificFeatureGenerationRequest(
             );
         }
 
-        extractedFeatures =
-                extractedFeatures == null
-                        ? List.of()
-                        : List.copyOf(extractedFeatures);
-
-        if (extractedFeatures.isEmpty()) {
+        if (extractedFeatures == null
+                || extractedFeatures.isEmpty()) {
             throw new IllegalArgumentException(
                     "At least one extracted feature is required"
             );
@@ -87,6 +83,9 @@ public record ScientificFeatureGenerationRequest(
                     "extractedFeatures must not contain null elements"
             );
         }
+
+        extractedFeatures =
+                List.copyOf(extractedFeatures);
     }
 
     public int featureCount() {

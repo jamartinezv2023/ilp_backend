@@ -85,7 +85,7 @@ class ScientificFeatureGeneratorTest {
         assertThat(result.generatedAt())
                 .isEqualTo(GENERATED_AT);
 
-        assertThat(result.inputObservationCount())
+        assertThat(result.sourceObservationCount())
                 .isEqualTo(1);
 
         assertThat(result.featureCount())
