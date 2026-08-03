@@ -1,15 +1,65 @@
 package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.result;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.Objects;
 
+@Schema(
+        name = "ScientificFeatureItem",
+        description = "Single scientific feature and its typed value."
+)
 public record ScientificFeatureItemResult(
+        @Schema(
+                description = "Stable identifier of the feature item.",
+                example = "ITEM-REST-001"
+        )
         String itemId,
+
+        @Schema(
+                description = "Scientific code that identifies the feature.",
+                example = "KOLB_CE"
+        )
         String featureCode,
+
+        @Schema(
+                description = "Data type used by the scientific value.",
+                example = "NUMERIC",
+                allowableValues = {
+                        "NUMERIC",
+                        "TEXT",
+                        "BOOLEAN"
+                }
+        )
         DataType dataType,
+
+        @Schema(
+                description = "Numeric value when dataType is NUMERIC.",
+                example = "25.0"
+        )
         Double numericValue,
+
+        @Schema(
+                description = "Text value when dataType is TEXT.",
+                example = "DIVERGING"
+        )
         String textValue,
+
+        @Schema(
+                description = "Boolean value when dataType is BOOLEAN.",
+                example = "true"
+        )
         Boolean booleanValue,
+
+        @Schema(
+                description = "Assessment code from which the feature was derived.",
+                example = "KOLB"
+        )
         String sourceAssessmentCode,
+
+        @Schema(
+                description = "Administration identifier supporting scientific traceability.",
+                example = "ADMIN-REST-001"
+        )
         String sourceAdministrationId
 ) {
 
@@ -45,17 +95,30 @@ public record ScientificFeatureItemResult(
                         sourceAdministrationId
                 );
 
-        validateValue(
-                dataType,
-                numericValue,
-                textValue,
-                booleanValue
-        );
-
-        if (textValue != null) {
-            textValue = requireText(
+        switch (dataType) {
+            case NUMERIC -> validateNumeric(
+                    numericValue,
                     textValue,
-                    "textValue"
+                    booleanValue
+            );
+
+            case TEXT -> {
+                validateText(
+                        numericValue,
+                        textValue,
+                        booleanValue
+                );
+
+                textValue = requireText(
+                        textValue,
+                        "textValue"
+                );
+            }
+
+            case BOOLEAN -> validateBoolean(
+                    numericValue,
+                    textValue,
+                    booleanValue
             );
         }
     }
@@ -67,12 +130,6 @@ public record ScientificFeatureItemResult(
             String sourceAssessmentCode,
             String sourceAdministrationId
     ) {
-        if (!Double.isFinite(value)) {
-            throw new IllegalArgumentException(
-                    "numericValue must be finite"
-            );
-        }
-
         return new ScientificFeatureItemResult(
                 itemId,
                 featureCode,
@@ -123,54 +180,57 @@ public record ScientificFeatureItemResult(
         );
     }
 
-    private static void validateValue(
-            DataType dataType,
+    private static void validateNumeric(
             Double numericValue,
             String textValue,
             Boolean booleanValue
     ) {
-        switch (dataType) {
-            case NUMERIC -> {
-                if (
-                        numericValue == null
-                                || textValue != null
-                                || booleanValue != null
-                ) {
-                    throw new IllegalArgumentException(
-                            "NUMERIC requires only numericValue"
-                    );
-                }
+        if (
+                numericValue == null
+                        || textValue != null
+                        || booleanValue != null
+        ) {
+            throw new IllegalArgumentException(
+                    "NUMERIC requires only numericValue"
+            );
+        }
 
-                if (!Double.isFinite(numericValue)) {
-                    throw new IllegalArgumentException(
-                            "numericValue must be finite"
-                    );
-                }
-            }
+        if (!Double.isFinite(numericValue)) {
+            throw new IllegalArgumentException(
+                    "numericValue must be finite"
+            );
+        }
+    }
 
-            case TEXT -> {
-                if (
-                        textValue == null
-                                || numericValue != null
-                                || booleanValue != null
-                ) {
-                    throw new IllegalArgumentException(
-                            "TEXT requires only textValue"
-                    );
-                }
-            }
+    private static void validateText(
+            Double numericValue,
+            String textValue,
+            Boolean booleanValue
+    ) {
+        if (
+                textValue == null
+                        || numericValue != null
+                        || booleanValue != null
+        ) {
+            throw new IllegalArgumentException(
+                    "TEXT requires only textValue"
+            );
+        }
+    }
 
-            case BOOLEAN -> {
-                if (
-                        booleanValue == null
-                                || numericValue != null
-                                || textValue != null
-                ) {
-                    throw new IllegalArgumentException(
-                            "BOOLEAN requires only booleanValue"
-                    );
-                }
-            }
+    private static void validateBoolean(
+            Double numericValue,
+            String textValue,
+            Boolean booleanValue
+    ) {
+        if (
+                booleanValue == null
+                        || numericValue != null
+                        || textValue != null
+        ) {
+            throw new IllegalArgumentException(
+                    "BOOLEAN requires only booleanValue"
+            );
         }
     }
 
