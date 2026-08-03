@@ -1,0 +1,8 @@
+﻿* audit/ILP-2026-2028-frontend-radiography   b24b01f fix(vercel): enable SPA fallback for direct React routes
+  audit/mvp21a-frontend-scientific-readiness abd0d8b docs(audit): add mvp21a frontend scientific readiness inventory
+  backup/mvp21a-functional-baseline          f009b45 chore(mvp21a): freeze functional frontend assessment and adaptive baseline
+  deployment/BJ-frontend-docker-public-demo  4c36792 fix(frontend): move ipsative validation outside component file
+  feat/bootstrap-frontend                    b24b01f [origin/feat/bootstrap-frontend] fix(vercel): enable SPA fallback for direct React routes
+  hardening/mvp-21a-cierre-frontend          f009b45 chore(mvp21a): freeze functional frontend assessment and adaptive baseline
+  hardening/mvp-21a-quality-freeze           fd0ca83 fix(assessment): correct ipsative ranking value typing
+  implementation/BI-fieldwork-demo-ui        abd0d8b docs(audit): add mvp21a frontend scientific readiness inventory

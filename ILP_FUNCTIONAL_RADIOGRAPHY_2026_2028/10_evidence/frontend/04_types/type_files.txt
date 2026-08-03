@@ -1,0 +1,6 @@
+﻿src/types/adaptive.ts
+src/types/assessment.ts
+src/types/assessmentDefinition.ts
+src/types/recommendation.ts
+src/types/research.ts
+src/types/student.ts

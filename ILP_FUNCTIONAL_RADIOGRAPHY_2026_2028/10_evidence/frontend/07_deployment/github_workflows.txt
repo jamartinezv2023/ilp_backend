@@ -1,0 +1,4 @@
+﻿.github/workflows/frontend-ci.yml
+.github/workflows/frontend-enterprise-ci.yml
+.github/workflows/frontend-fieldwork-ci.yml
+.github/workflows/playwright-e2e.yml

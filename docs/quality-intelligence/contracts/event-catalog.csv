@@ -1,0 +1,17 @@
+event_name,producer,consumer,purpose,minimum_payload,phase,status
+ParticipantRegistered,Fieldwork,Research Analytics,Create participant timeline,participantId;cohortId;registeredAt;protocolVersion,1,TO_AUDIT
+ConsentGranted,Fieldwork,Research Analytics,Confirm ethical eligibility,participantId;consentVersion;acceptedAt;status,1,TO_AUDIT
+ConsentRevoked,Fieldwork,Research Analytics,Stop future processing,participantId;consentVersion;revokedAt;reason,1,PLANNED
+AssessmentStarted,Assessment,Research Analytics,Track assessment process,participantId;administrationId;instrumentCode;instrumentVersion;startedAt,1,PLANNED
+AssessmentResponseRecorded,Assessment,Research Analytics,Preserve item response,participantId;administrationId;questionCode;value;recordedAt,1,PLANNED
+AssessmentCompleted,Assessment,Feature Store and Research Analytics,Generate longitudinal observation,participantId;administrationId;instrumentCode;instrumentVersion;completedAt,1,TO_AUDIT
+FeatureSnapshotCreated,Feature Store,Quality Intelligence,Analyze feature stability,participantId;snapshotId;featureVersion;capturedAt,2,PLANNED
+InterventionAssigned,Adaptive Education,Research Analytics,Register educational intervention,participantId;interventionId;type;assignedAt,2,PLANNED
+InterventionOutcomeRecorded,Adaptive Education,Quality Intelligence,Measure intervention result,participantId;interventionId;metricCode;baseline;result;measuredAt,2,PLANNED
+RecommendationGenerated,Recommendation Engine,Research Analytics,Audit recommendation,recommendationId;participantId;ruleVersion;generatedAt,2,PLANNED
+RecommendationAccepted,Frontend and Adaptive Education,Quality Intelligence,Measure recommendation adoption,recommendationId;participantId;acceptedAt;actorRole,2,PLANNED
+ModelPredictionCreated,ML Pipeline,Quality Intelligence,Monitor inference,predictionId;participantId;modelVersion;prediction;probability;createdAt,4,PLANNED
+ModelPerformanceEvaluated,ML Pipeline,Quality Intelligence,Monitor model performance,modelVersion;datasetVersion;metric;value;evaluatedAt,4,PLANNED
+DataQualityViolationDetected,Quality Intelligence,Decision Intelligence,Report data quality problem,datasetVersion;ruleCode;severity;detectedAt,3,PLANNED
+ControlLimitViolationDetected,Quality Intelligence,Decision Intelligence,Report special-cause signal,chartId;metricCode;value;ucl;lcl;detectedAt,3,PLANNED
+DriftDetected,Quality Intelligence,MLOps and Decision Intelligence,Report model or data drift,modelVersion;driftType;score;threshold;detectedAt,4,PLANNED

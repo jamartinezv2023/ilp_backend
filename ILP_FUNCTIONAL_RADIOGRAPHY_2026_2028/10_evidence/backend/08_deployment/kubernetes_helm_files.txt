@@ -1,0 +1,8 @@
+﻿_legacy_backup_2026_01__IGNORED/k8s/adaptive-education-service-deployment.yml
+_legacy_backup_2026_01__IGNORED/k8s/adaptive-education-service-service.yml
+adaptive-education-service/src/main/resources/application-prod.yml
+auth-service/docker-compose.yml
+auth-service/src/main/resources/application-dev.yml
+auth-service/src/main/resources/application-prod.yml
+k8s/adaptive-education-service.yaml
+student-service/src/main/resources/application.yml

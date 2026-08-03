@@ -1,0 +1,20 @@
+﻿
+Name                          FullName                                             
+----                          --------                                             
+adaptive-education-service    C:\TEAC2026\ilp_backend\adaptive-education-service   
+assessment-service            C:\TEAC2026\ilp_backend\assessment-service           
+auth-service                  C:\TEAC2026\ilp_backend\auth-service                 
+bdd-tests                     C:\TEAC2026\ilp_backend\bdd-tests                    
+common-events                 C:\TEAC2026\ilp_backend\common-events                
+common-libs                   C:\TEAC2026\ilp_backend\common-libs                  
+commons-service               C:\TEAC2026\ilp_backend\commons-service              
+educational-diagnosis-service C:\TEAC2026\ilp_backend\educational-diagnosis-service
+gateway-service               C:\TEAC2026\ilp_backend\gateway-service              
+monitoring-service            C:\TEAC2026\ilp_backend\monitoring-service           
+notification-service          C:\TEAC2026\ilp_backend\notification-service         
+report-service                C:\TEAC2026\ilp_backend\report-service               
+student-service               C:\TEAC2026\ilp_backend\student-service              
+tenant-service                C:\TEAC2026\ilp_backend\tenant-service               
+
+
+

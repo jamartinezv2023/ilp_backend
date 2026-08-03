@@ -1,0 +1,15 @@
+﻿adaptive-education-service/Dockerfile
+assessment-service/Dockerfile
+auth-service/Dockerfile
+commons-service/Dockerfile
+docker-compose.dev.yml
+docker-compose.fieldwork.yml
+docker-compose.yml
+docker-compose10102025.yml
+docker-compose11102025.yml
+docker-compose_18102025.yml
+gateway-service/Dockerfile
+monitoring-service/Dockerfile
+notification-service/Dockerfile
+report-service/Dockerfile
+tenant-service/Dockerfile
