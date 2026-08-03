@@ -1,5 +1,6 @@
 package com.inclusive.adaptiveeducationservice.featurestore.scientific.application.query;
 
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.application.query.mapper.ScientificFeatureVectorResultMapper;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureItem;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureCode;
@@ -11,6 +12,8 @@ import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.val
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificFeatureVectorId;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model.FindExactScientificFeatureVectorQuery;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model.FindLatestScientificFeatureVectorQuery;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.result.ScientificFeatureItemResult;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.result.ScientificFeatureVectorResult;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out.ScientificFeatureVectorQueryPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +48,9 @@ class ScientificFeatureVectorQueryServiceTest {
             );
 
     private ScientificFeatureVectorQueryPort queryPort;
+
+    private ScientificFeatureVectorResultMapper resultMapper;
+
     private ScientificFeatureVectorQueryService service;
 
     @BeforeEach
@@ -54,9 +60,13 @@ class ScientificFeatureVectorQueryServiceTest {
                         ScientificFeatureVectorQueryPort.class
                 );
 
+        resultMapper =
+                new ScientificFeatureVectorResultMapper();
+
         service =
                 new ScientificFeatureVectorQueryService(
-                        queryPort
+                        queryPort,
+                        resultMapper
                 );
     }
 
@@ -65,7 +75,8 @@ class ScientificFeatureVectorQueryServiceTest {
         assertThatNullPointerException()
                 .isThrownBy(() ->
                         new ScientificFeatureVectorQueryService(
-                                null
+                                null,
+                                resultMapper
                         )
                 )
                 .withMessageContaining(
@@ -74,7 +85,21 @@ class ScientificFeatureVectorQueryServiceTest {
     }
 
     @Test
-    void shouldFindExactVector() {
+    void shouldRejectNullResultMapper() {
+        assertThatNullPointerException()
+                .isThrownBy(() ->
+                        new ScientificFeatureVectorQueryService(
+                                queryPort,
+                                null
+                        )
+                )
+                .withMessageContaining(
+                        "resultMapper"
+                );
+    }
+
+    @Test
+    void shouldFindExactVectorAsResultModel() {
         FindExactScientificFeatureVectorQuery query =
                 new FindExactScientificFeatureVectorQuery(
                         PARTICIPANT_ID,
@@ -82,7 +107,7 @@ class ScientificFeatureVectorQueryServiceTest {
                         FEATURE_CUTOFF_AT
                 );
 
-        ScientificFeatureVector vector =
+        ScientificFeatureVector domainVector =
                 vector(
                         "VECTOR-EXACT-001"
                 );
@@ -94,14 +119,43 @@ class ScientificFeatureVectorQueryServiceTest {
                         FEATURE_CUTOFF_AT
                 )
         ).thenReturn(
-                Optional.of(vector)
+                Optional.of(domainVector)
         );
 
-        Optional<ScientificFeatureVector> result =
+        Optional<ScientificFeatureVectorResult> result =
                 service.findExact(query);
 
         assertThat(result)
-                .containsSame(vector);
+                .isPresent();
+
+        ScientificFeatureVectorResult queryResult =
+                result.orElseThrow();
+
+        assertThat(queryResult.vectorId())
+                .isEqualTo(
+                        "VECTOR-EXACT-001"
+                );
+
+        assertThat(queryResult.participantId())
+                .isEqualTo(
+                        PARTICIPANT_ID.value()
+                );
+
+        assertThat(queryResult.featureSetVersion())
+                .isEqualTo(
+                        FEATURE_SET_VERSION.value()
+                );
+
+        assertThat(queryResult.features())
+                .hasSize(1);
+
+        assertThat(queryResult.features().get(0).dataType())
+                .isEqualTo(
+                        ScientificFeatureItemResult.DataType.NUMERIC
+                );
+
+        assertThat(queryResult.features().get(0).numericValue())
+                .isEqualTo(25.0);
 
         verify(queryPort)
                 .findExact(
@@ -135,17 +189,26 @@ class ScientificFeatureVectorQueryServiceTest {
         assertThat(
                 service.findExact(query)
         ).isEmpty();
+
+        verify(queryPort)
+                .findExact(
+                        PARTICIPANT_ID,
+                        FEATURE_SET_VERSION,
+                        FEATURE_CUTOFF_AT
+                );
+
+        verifyNoMoreInteractions(queryPort);
     }
 
     @Test
-    void shouldFindLatestCompletedVector() {
+    void shouldFindLatestCompletedVectorAsResultModel() {
         FindLatestScientificFeatureVectorQuery query =
                 new FindLatestScientificFeatureVectorQuery(
                         PARTICIPANT_ID,
                         FEATURE_SET_VERSION
                 );
 
-        ScientificFeatureVector vector =
+        ScientificFeatureVector domainVector =
                 vector(
                         "VECTOR-LATEST-001"
                 );
@@ -156,14 +219,27 @@ class ScientificFeatureVectorQueryServiceTest {
                         FEATURE_SET_VERSION
                 )
         ).thenReturn(
-                Optional.of(vector)
+                Optional.of(domainVector)
         );
 
-        Optional<ScientificFeatureVector> result =
+        Optional<ScientificFeatureVectorResult> result =
                 service.findLatestCompleted(query);
 
         assertThat(result)
-                .containsSame(vector);
+                .isPresent();
+
+        ScientificFeatureVectorResult queryResult =
+                result.orElseThrow();
+
+        assertThat(queryResult.vectorId())
+                .isEqualTo(
+                        "VECTOR-LATEST-001"
+                );
+
+        assertThat(queryResult.checksum())
+                .isEqualTo(
+                        "CHECKSUM-QUERY-001"
+                );
 
         verify(queryPort)
                 .findLatestCompleted(
@@ -194,6 +270,14 @@ class ScientificFeatureVectorQueryServiceTest {
         assertThat(
                 service.findLatestCompleted(query)
         ).isEmpty();
+
+        verify(queryPort)
+                .findLatestCompleted(
+                        PARTICIPANT_ID,
+                        FEATURE_SET_VERSION
+                );
+
+        verifyNoMoreInteractions(queryPort);
     }
 
     @Test
@@ -220,6 +304,56 @@ class ScientificFeatureVectorQueryServiceTest {
                 );
 
         verifyNoInteractions(queryPort);
+    }
+
+    @Test
+    void shouldRejectNullExactResultFromPort() {
+        FindExactScientificFeatureVectorQuery query =
+                new FindExactScientificFeatureVectorQuery(
+                        PARTICIPANT_ID,
+                        FEATURE_SET_VERSION,
+                        FEATURE_CUTOFF_AT
+                );
+
+        when(
+                queryPort.findExact(
+                        PARTICIPANT_ID,
+                        FEATURE_SET_VERSION,
+                        FEATURE_CUTOFF_AT
+                )
+        ).thenReturn(null);
+
+        assertThatNullPointerException()
+                .isThrownBy(() ->
+                        service.findExact(query)
+                )
+                .withMessageContaining(
+                        "queryPort result"
+                );
+    }
+
+    @Test
+    void shouldRejectNullLatestResultFromPort() {
+        FindLatestScientificFeatureVectorQuery query =
+                new FindLatestScientificFeatureVectorQuery(
+                        PARTICIPANT_ID,
+                        FEATURE_SET_VERSION
+                );
+
+        when(
+                queryPort.findLatestCompleted(
+                        PARTICIPANT_ID,
+                        FEATURE_SET_VERSION
+                )
+        ).thenReturn(null);
+
+        assertThatNullPointerException()
+                .isThrownBy(() ->
+                        service.findLatestCompleted(query)
+                )
+                .withMessageContaining(
+                        "queryPort result"
+                );
     }
 
     private ScientificFeatureVector vector(
@@ -249,7 +383,7 @@ class ScientificFeatureVectorQueryServiceTest {
                                 FeatureValue.numeric(
                                         25.0
                                 ),
-                                "QUERY_TEST",
+                                "KOLB",
                                 "ADMIN-QUERY-001"
                         )
                 )
