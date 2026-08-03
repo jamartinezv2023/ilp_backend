@@ -1,0 +1,18 @@
+control_id,category,quality_objective,verification_method,evidence,status
+SFS-QRM-001,Architecture,Prevent domain aggregate exposure,Inspect input-port return types,ScientificFeatureVectorQueryUseCase.java,PASSED
+SFS-QRM-002,Integrity,Preserve vector identity and metadata,Mapper and service unit tests,ScientificFeatureVectorResultMapperTest.java,PASSED
+SFS-QRM-003,Integrity,Preserve numeric text and boolean values,Mapper and item-result tests,ScientificFeatureItemResultTest.java;ScientificFeatureVectorResultMapperTest.java,PASSED
+SFS-QRM-004,Immutability,Guarantee immutable feature collections,Defensive-copy and mutation tests,ScientificFeatureVectorResultTest.java,PASSED
+SFS-QRM-005,Validation,Reject invalid result construction,Invariant null blank and finite-value tests,ScientificFeatureItemResultTest.java;ScientificFeatureVectorResultTest.java,PASSED
+SFS-QRM-006,Architecture,Keep result layer framework-free,Forbidden-dependency source scan,Main query result files,PASSED
+SFS-QRM-007,Compatibility,Keep persistence contracts unchanged,Git diff and output-port inspection,ScientificFeatureVectorQueryPort.java,PASSED
+SFS-QRM-008,Behavior,Maintain exact-vector query behavior,Query-service unit tests,ScientificFeatureVectorQueryServiceTest.java,PASSED
+SFS-QRM-009,Behavior,Maintain latest-completed query behavior,Query-service unit tests,ScientificFeatureVectorQueryServiceTest.java,PASSED
+SFS-QRM-010,Regression,Maintain module test integrity,Adaptive education service test task,Gradle BUILD SUCCESSFUL,PASSED
+SFS-QRM-011,Packaging,Maintain executable artifact generation,Adaptive education service bootJar,Gradle BUILD SUCCESSFUL,PASSED
+SFS-QRM-012,Configuration,Isolate functional baseline,Expected-versus-actual staged and committed file comparison,Commit f741bed,PASSED
+SFS-QRM-013,Security,Exclude audit and sensitive files from functional baseline,Forbidden-path staging inspection,Commit f741bed,PASSED
+SFS-QRM-014,Publication,Publish identifiable functional baseline,Remote head comparison,github/feature/scientific-feature-store,PASSED
+SFS-QRM-015,Documentation,Record objective cycle evidence,Document inspection,SFS_3_3_3_7_2_CYCLE_EVIDENCE.md,PASSED
+SFS-QRM-016,Standard transition,Complete authorized IEEE 730-2026 gap analysis,Formal controlled review,IEEE_730_2026_TRANSITION_REGISTER.md,IN_PROGRESS
+SFS-QRM-017,Independent review,Obtain independent quality review,Review and approval record,IEEE_730_2026_TRANSITION_REGISTER.md,PENDING
