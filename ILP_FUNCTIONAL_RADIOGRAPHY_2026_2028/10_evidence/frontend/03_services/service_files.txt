@@ -1,0 +1,8 @@
+﻿src/features/auth/services/authApi.ts
+src/features/fieldwork/api/fieldworkApi.ts
+src/services/adaptiveApi.ts
+src/services/assessmentApi.ts
+src/services/assessmentDefinitionApi.ts
+src/services/recommendationApi.ts
+src/services/researchApi.ts
+src/services/studentApi.ts

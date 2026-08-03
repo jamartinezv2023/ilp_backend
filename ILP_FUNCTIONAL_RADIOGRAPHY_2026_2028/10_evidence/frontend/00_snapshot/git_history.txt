@@ -1,0 +1,65 @@
+﻿* b24b01f (HEAD -> audit/ILP-2026-2028-frontend-radiography, origin/feat/bootstrap-frontend, feat/bootstrap-frontend) fix(vercel): enable SPA fallback for direct React routes
+* 2c381c8 fix(frontend): connect fieldwork and application services to render
+* 49acede fix(frontend): connect services to render adaptive backend
+*   5eef7e5 Merge pull request #7 from jamartinezv2023/v0/jamartinezv2020-2f7e0a6a
+|\  
+| * ed1e143 init
+* |   13dfd38 Merge pull request #8 from jamartinezv2023/deployment/BK-vercel-frontend-public-demo
+|\ \  
+| * | 4c36792 (origin/deployment/BK-vercel-frontend-public-demo, deployment/BJ-frontend-docker-public-demo) fix(frontend): move ipsative validation outside component file
+* | | 2941aa5 Merge pull request #6 from jamartinezv2023/deployment/BK-vercel-frontend-public-demo
+|\| | 
+| |/  
+|/|   
+| * 086e9c8 chore(deploy): prepare frontend for vercel
+* |   c4c2c36 Merge pull request #5 from jamartinezv2023/v0/jamartinezv2020-a39f8c24
+|\ \  
+| * | b7bc447 init
+|/ /  
+* |   03f8e5b Merge pull request #4 from jamartinezv2023/v0/jamartinezv2020-b9a17e72
+|\ \  
+| * | a5e6997 init
+|/ /  
+* |   44f6c9b Merge pull request #3 from jamartinezv2023/v0/jamartinezv2020-21e05d05
+|\ \  
+| * | faa2af0 init
+|/ /  
+* |   26e41d8 Merge pull request #2 from jamartinezv2023/v0/jamartinezv2020-8d890bb0
+|\ \  
+| * | 959054c init
+|/ /  
+* | 78f6e97 Merge pull request #1 from jamartinezv2023/deployment/BJ-frontend-docker-public-demo
+|\| 
+| * efed70a (origin/deployment/BJ-frontend-docker-public-demo) chore(devops): add frontend docker and fieldwork CI
+| * abd0d8b (origin/audit/mvp21a-frontend-scientific-readiness, implementation/BI-fieldwork-demo-ui, audit/mvp21a-frontend-scientific-readiness) docs(audit): add mvp21a frontend scientific readiness inventory
+| * f009b45 (tag: v0.21.0-mvp21a-functional-baseline, origin/backup/mvp21a-functional-baseline, hardening/mvp-21a-cierre-frontend, backup/mvp21a-functional-baseline) chore(mvp21a): freeze functional frontend assessment and adaptive baseline
+|/  
+* fd0ca83 (hardening/mvp-21a-quality-freeze) fix(assessment): correct ipsative ranking value typing
+* 0aac1d1 fix(assessment): correct ipsative ranking value typing
+* 406034a feat(assessment): render assessment definition preview
+* 0ff7240 fix(assessment): remove obsolete simulated kolb runner
+* 22cd3e9 feat(assessment): connect assessments with adaptive plan flow
+* a5a4fb2 feat(assessment): add assessment center frontend
+* 71d43e2 feat(adaptive): add adaptive intelligence center frontend
+* 1ccf6a5 feat(student): show intelligent recommendations in support profile
+* 013463d feat(family): connect family engagement to student profiles
+* a2a2b35 feat(inclusion): connect piar center to student profiles
+* 17355fd feat(student): connect student support profile to backend
+* a3e2523 feat(teacher): connect teacher workspace to student profiles
+* 4d9bcab feat(domain): add stakeholder-centered navigation and institutional overview
+* f047e52 feat(research): convert evidence cards to executive accordions
+* 6f1cfc4 feat(research): add research analytics dashboard
+* 85739a5 feat(research): add doctoral research roadmap
+* 8de091f feat(research): add evidence filters to research center
+* 5c25305 feat(ui): add collapsible navigation and compact research kpis
+* 209be0d feat(ui): apply unified research identity to app shell
+* 19e24d3 feat(ui): add unified research visual identity constants
+* 3ec2c81 feat(ui): unify institutional navigation labels
+* 9df9c34 fix(ui): remove unused dashboard icon import
+* d5b04a3 feat(ui): modernize doctoral research login experience
+* a79f39d feat(research): add executive dashboard metrics
+* 31ad9bf feat(ui): polish research platform branding and mfa experience
+* e847aaf feat(research): humanize research center evidence labels
+* 1bf56c7 fix(research): polish research center ux and encoding
+* f517372 feat(research): show expert validation in research center
+* 75e8ea4 feat(research): show ethics readiness in research center

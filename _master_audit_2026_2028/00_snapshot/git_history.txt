@@ -1,0 +1,93 @@
+﻿* 9ff5223 (HEAD -> audit/ILP-2026-2028-backend-radiography, github/deployment/BJ-docker-compose-devops-public-demo, deployment/BJ-docker-compose-devops-public-demo) fix(deploy): stabilize adaptive render configuration
+* 116edc6 fix(deploy): remove duplicate cors configuration
+* f60a505 fix(deploy): build adaptive jar inside docker image
+* d1db610 chore(deploy): prepare auth service for render
+* 346c9a3 chore(deploy): prepare backend for render and vercel
+* c5a5e2d fix(devops): enable docker compose fieldwork demo
+* 66479cb chore(devops): add backend docker compose and fieldwork CI
+* 14e3a2a (github/implementation/BH-real-consent-participant-backend, implementation/BH-real-consent-participant-backend) fix(fieldwork): place controller in api layer
+*   1f2511b (main) Merge pull request #97 from jamartinezv2023/implementation/BG-real-mvp-vertical1-consent-participant
+|\  
+| * 2809c1e (github/implementation/BG-real-mvp-vertical1-consent-participant, implementation/BG-real-mvp-vertical1-consent-participant) docs(implementation): add real MVP vertical 1 consent participant
+|/  
+*   7972902 Merge pull request #96 from jamartinezv2023/implementation/BF-full-implementation-deployment-readiness
+|\  
+| * 8c557ca (github/implementation/BF-full-implementation-deployment-readiness, implementation/BF-full-implementation-deployment-readiness) docs(deployment): add full implementation and deployment readiness plan
+|/  
+*   5caf5ba Merge pull request #95 from jamartinezv2023/implementation/BE-fieldwork-implementation-execution-cycle
+|\  
+| * 38c87b9 (github/implementation/BE-fieldwork-implementation-execution-cycle, implementation/BE-fieldwork-implementation-execution-cycle) docs(implementation): add fieldwork implementation execution cycle
+|/  
+*   1bc85c8 Merge pull request #94 from jamartinezv2023/implementation/BD-fieldwork-core-functional-modules
+|\  
+| * e65e037 (github/implementation/BD-fieldwork-core-functional-modules, implementation/BD-fieldwork-core-functional-modules) docs(implementation): add fieldwork core functional modules
+|/  
+*   456442f Merge pull request #93 from jamartinezv2023/implementation/BC-fieldwork-data-capture-implementation-program
+|\  
+| * 9429018 (github/implementation/BC-fieldwork-data-capture-implementation-program, implementation/BC-fieldwork-data-capture-implementation-program) docs(implementation): add fieldwork data capture implementation program
+|/  
+*   f60c762 Merge pull request #92 from jamartinezv2023/docs/master-populate-all-phases-complete
+|\  
+| * 31b80d1 (github/docs/master-populate-all-phases-complete, docs/master-populate-all-phases-complete) docs(factory): massively populate all phases with master audit layer
+|/  
+*   916b999 Merge pull request #91 from jamartinezv2023/implementation/BB-controlled-sprint1-execution-package
+|\  
+| * 24ebe57 (github/implementation/BB-controlled-sprint1-execution-package, implementation/BB-controlled-sprint1-execution-package) docs(implementation): add controlled sprint 1 execution package
+|/  
+*   30f46d0 Merge pull request #90 from jamartinezv2023/docs/complete-all-phases-population
+|\  
+| * 3acadc5 (github/docs/complete-all-phases-population, docs/complete-all-phases-population) docs(factory): populate all existing phases with master documentation layer
+|/  
+*   a844d51 Merge pull request #89 from jamartinezv2023/review/B-complete-ethics-governance-fieldwork
+|\  
+| * 45adbeb (github/review/B-complete-ethics-governance-fieldwork, review/B-complete-ethics-governance-fieldwork) docs(review): complete phase B ethics governance and fieldwork package
+|/  
+*   b33d898 Merge pull request #88 from jamartinezv2023/implementation/AZ-pilot-evidence-final-closure
+|\  
+| * dc3fee9 (github/implementation/AZ-pilot-evidence-final-closure, implementation/AZ-pilot-evidence-final-closure) docs(implementation): close pilot evidence preparation sequence
+|/  
+*   b80eae4 Merge pull request #87 from jamartinezv2023/implementation/AY-pilot-evidence-publication-readiness
+|\  
+| * 89ee632 (github/implementation/AY-pilot-evidence-publication-readiness, implementation/AY-pilot-evidence-publication-readiness) docs(implementation): add pilot evidence publication readiness
+|/  
+*   8fed2c3 Merge pull request #86 from jamartinezv2023/implementation/AX-pilot-results-analysis-reporting
+|\  
+| * 15edd92 (github/implementation/AX-pilot-results-analysis-reporting, implementation/AX-pilot-results-analysis-reporting) docs(implementation): add pilot results analysis reporting plan
+|/  
+*   a96c06e Merge pull request #83 from jamartinezv2023/implementation/AU-pilot-dataset-ml-baseline-readiness
+|\  
+| * cbf6981 (github/implementation/AU-pilot-dataset-ml-baseline-readiness, implementation/AU-pilot-dataset-ml-baseline-readiness) docs(implementation): add pilot dataset ML baseline readiness
+* |   4cafc4a Merge pull request #85 from jamartinezv2023/implementation/AW-reproducible-experiment-execution-plan
+|\ \  
+| * | 45408ed (github/implementation/AW-reproducible-experiment-execution-plan, implementation/AW-reproducible-experiment-execution-plan) docs(implementation): add reproducible experiment execution plan
+| |/  
+* |   afb3227 Merge pull request #84 from jamartinezv2023/implementation/AV-pilot-dataset-xai-readiness
+|\ \  
+| |/  
+|/|   
+| * 825af81 (github/implementation/AV-pilot-dataset-xai-readiness, implementation/AV-pilot-dataset-xai-readiness) docs(implementation): add pilot dataset XAI readiness
+|/  
+*   871197a Merge pull request #82 from jamartinezv2023/implementation/AT-pilot-dataset-approval-release-gate
+|\  
+| * 90e2dbe (github/implementation/AT-pilot-dataset-approval-release-gate, implementation/AT-pilot-dataset-approval-release-gate) docs(implementation): add pilot dataset approval release gate
+|/  
+*   fc66f83 Merge pull request #81 from jamartinezv2023/implementation/AS-pilot-dataset-validation-quality-report
+|\  
+| * 109bab6 (github/implementation/AS-pilot-dataset-validation-quality-report, implementation/AS-pilot-dataset-validation-quality-report) docs(implementation): add pilot dataset validation quality report plan
+|/  
+*   6584b47 Merge pull request #80 from jamartinezv2023/implementation/AR-pilot-dataset-generation-plan
+|\  
+| * ef8caca (github/implementation/AR-pilot-dataset-generation-plan, implementation/AR-pilot-dataset-generation-plan) docs(implementation): add pilot dataset generation plan
+|/  
+*   d370fdf Merge pull request #79 from jamartinezv2023/implementation/AQ-dataset-export-snapshot-readiness
+|\  
+| * 9626d3a (github/implementation/AQ-dataset-export-snapshot-readiness, implementation/AQ-dataset-export-snapshot-readiness) docs(implementation): add dataset export and snapshot readiness plan
+|/  
+*   80db1ed Merge pull request #78 from jamartinezv2023/implementation/AP-audit-trail-research-data-integrity
+|\  
+| * 1d72792 (github/implementation/AP-audit-trail-research-data-integrity, implementation/AP-audit-trail-research-data-integrity) docs(implementation): add audit trail and research data integrity plan
+|/  
+*   0555cee Merge pull request #77 from jamartinezv2023/implementation/AO-conflict-resolution-implementation-plan
+|\  
+| * 602ca77 (github/implementation/AO-conflict-resolution-implementation-plan, implementation/AO-conflict-resolution-implementation-plan) docs(implementation): add conflict resolution implementation plan
+|/  

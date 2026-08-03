@@ -1,0 +1,11 @@
+﻿entity,description,minimum_fields,source,frequency,contains_personal_data,retention_policy,status
+Participant,Research participant,participantId;institutionId;cohortId;status,Fieldwork,Once,YES,To define,TO_AUDIT
+Consent,Informed consent,consentId;participantId;version;acceptedAt;status,Fieldwork,Per version,YES,To define,TO_AUDIT
+AssessmentAdministration,Assessment event,administrationId;participantId;instrumentCode;instrumentVersion;startedAt;completedAt,Assessment,Per application,YES,Research protocol,TO_AUDIT
+AssessmentResponse,Question response,responseId;administrationId;questionCode;value;recordedAt,Assessment,Per response,YES,Research protocol,TO_AUDIT
+EducationalObservation,Pedagogical observation,observationId;participantId;indicatorCode;value;observedAt,Fieldwork,Periodic,YES,Research protocol,PLANNED
+Intervention,Educational intervention,interventionId;participantId;type;startedAt;endedAt,Adaptive,Event based,YES,Research protocol,TO_AUDIT
+InterventionOutcome,Intervention result,outcomeId;interventionId;metricCode;baseline;result;measuredAt,Adaptive,Event based,YES,Research protocol,PLANNED
+StudentFeatureSnapshot,Feature vector,snapshotId;participantId;featureVersion;capturedAt;features,Feature Store,Periodic,YES,Research protocol,TO_AUDIT
+ModelPrediction,Prediction audit,predictionId;participantId;modelVersion;prediction;probability;createdAt,ML,Per inference,YES,Research protocol,PLANNED
+AuditEvent,Scientific audit,eventId;actor;action;entity;entityId;timestamp;correlationId,All modules,Per action,POSSIBLE,Audit policy,TO_AUDIT

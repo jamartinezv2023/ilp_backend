@@ -1,0 +1,10 @@
+data_type,subgroup_size,objective,recommended_chart,educational_example
+Continuous,1,Monitor individual longitudinal observations,I-MR,Intervention response for one student over time
+Continuous,2-10,Monitor subgroup means and ranges,Xbar-R,Completion time by small classroom subgroup
+Continuous,Greater than 10,Monitor subgroup means and standard deviations,Xbar-S,Assessment score by cohort
+Binary proportion,Variable sample size,Monitor proportion nonconforming,P,Incomplete assessment proportion
+Binary count,Constant sample size,Monitor number nonconforming,NP,Students lacking valid consent in equal cohorts
+Count,Constant opportunity,Monitor event count,C,Data quality violations per fixed batch
+Count,Variable opportunity,Monitor event rate,U,Errors per 1000 processed records
+Continuous time ordered,Individual observations,Detect gradual persistent shifts,EWMA,Progressive degradation in model accuracy
+Continuous cumulative deviation,Individual or subgroup data,Detect small sustained shifts,CUSUM,Concept drift in prediction residuals

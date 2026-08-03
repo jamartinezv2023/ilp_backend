@@ -1,0 +1,12 @@
+﻿Priority,FrontendRoute,FrontendPage,FrontendService,HttpMethod,BackendEndpoint,BackendController,DatabaseEntity,ExpectedStatus,CurrentStatus,Evidence,RequiredAction
+1,/students,StudentSupportPage,studentApi,GET,/api/v1/students,,,200,TO_VERIFY,,
+1,/teacher,TeacherWorkspacePage,studentApi,GET,/api/v1/students,,,200,TO_VERIFY,,
+1,/family,FamilyEngagementPage,studentApi and recommendationApi,GET,/api/v1/students,,,200,TO_VERIFY,,
+1,/inclusion,InclusionPiarPage,studentApi and recommendationApi,GET,/api/v1/students,,,200,TO_VERIFY,,
+1,/assessments,AssessmentCenterPage,assessmentApi,GET,/api/v1/assessment-definitions/KOLB_V1,,,200,TO_VERIFY,,
+1,/assessments,AssessmentCenterPage,assessmentApi,POST,/api/v1/assessments/kolb,,,200_OR_201,TO_VERIFY,,
+1,/adaptive,AdaptiveIntelligencePage,adaptiveApi,GET,/api/v1/adaptive/students/{studentId},,,200,TO_VERIFY,,
+1,/research,ResearchCenterPage,researchApi,GET,/analytics/**,,,200,TO_VERIFY,,
+1,/fieldwork,FieldworkDemoPage,fieldworkApi,GET,/api/v1/fieldwork/readiness,,,200,TO_VERIFY,,
+1,/fieldwork,FieldworkDemoPage,fieldworkApi,POST,/api/v1/fieldwork/consents,,,201,TO_VERIFY,,
+1,/fieldwork,FieldworkDemoPage,fieldworkApi,POST,/api/v1/fieldwork/participants,,,201,TO_VERIFY,,

@@ -1,0 +1,16 @@
+﻿src/pages/adaptive/AdaptiveIntelligencePage.tsx
+src/pages/administration/AdministrationPage.tsx
+src/pages/assessment-definition-preview/AssessmentDefinitionPreviewPage.tsx
+src/pages/assessment/AssessmentCenterPage.tsx
+src/pages/assessment/components/KolbRealForm.tsx
+src/pages/dashboard/DashboardPage.tsx
+src/pages/family/FamilyEngagementPage.tsx
+src/pages/inclusion/InclusionPiarPage.tsx
+src/pages/institutional/InstitutionalOverviewPage.tsx
+src/pages/permissions/PermissionsPage.tsx
+src/pages/research/ResearchCenterPage.tsx
+src/pages/roles/RolesPage.tsx
+src/pages/security/MfaPage.tsx
+src/pages/students/StudentSupportPage.tsx
+src/pages/teacher/TeacherWorkspacePage.tsx
+src/pages/users/UsersPage.tsx

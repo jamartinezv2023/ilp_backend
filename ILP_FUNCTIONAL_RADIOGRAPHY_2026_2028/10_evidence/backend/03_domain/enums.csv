@@ -1,0 +1,6 @@
+﻿"Path","LineNumber","Line"
+"C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\entity\KolbLearningStyle.java","3","public enum KolbLearningStyle {"
+"C:\TEAC2026\ilp_backend\auth-service\src\main\java\com\inclusive\authservice\events\outbox\domain\OutboxEventStatus.java","3","public enum OutboxEventStatus {"
+"C:\TEAC2026\ilp_backend\notification-service\src\main\java\com\inclusive\notificationservice\domain\notification\model\NotificationChannel.java","3","public enum NotificationChannel {"
+"C:\TEAC2026\ilp_backend\notification-service\src\main\java\com\inclusive\notificationservice\domain\notification\model\NotificationPriority.java","3","public enum NotificationPriority {"
+"C:\TEAC2026\ilp_backend\notification-service\src\main\java\com\inclusive\notificationservice\domain\notification\model\NotificationType.java","3","public enum NotificationType {"

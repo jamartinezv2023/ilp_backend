@@ -1,0 +1,126 @@
+﻿  architecture/Q-offline-first-architecture                       d678f48 docs(architecture): add offline-first architecture program
+  architecture/R-data-sync-conflict-resolution                    ff353ac docs(architecture): add data sync and conflict resolution program
+  architecture/S-offline-first-implementation-roadmap             5198a87 docs(architecture): add offline-first implementation roadmap
+  architecture/T-offline-first-quality-validation                 11a120d docs(architecture): add offline-first quality validation program
+  architecture/U-offline-first-field-deployment-monitoring        cd8ddcb docs(architecture): add offline-first field deployment monitoring
+  architecture/V-offline-first-final-integration                  9f0313a docs(architecture): add offline-first final integration readiness
+  architecture/W-offline-first-epics-user-stories                 711dc31 docs(architecture): add offline-first epics and user stories
+  architecture/X-offline-first-sprint-planning                    026a2ba docs(architecture): add offline-first sprint planning
+  architecture/Y-offline-first-implementation-evidence            a50a51c docs(architecture): add offline-first implementation evidence control
+  architecture/Z-offline-first-final-closure                      c466202 docs(architecture): close offline-first architecture program
+* audit/ILP-2026-2028-backend-radiography                         9ff5223 fix(deploy): stabilize adaptive render configuration
+  audit/mvp21a-doctoral-dataset-readiness                         cc416e8 test(adaptive): stabilize H2 test profile for CI
+  backup/mvp21a-functional-baseline                               3fd7147 chore(mvp21a): freeze functional adaptive education backend baseline
+  backup/v0.21.1-mvp21a-scientific-audit                          083ec01 Merge pull request #35 from jamartinezv2023/hotfix/mvp21a-ci-h2-test-profile
+  chore/cleanup-structure-2026-01                                 559936f chore(commons-service): remove REST controllers and cleanup domain boundaries
+  deployment/BJ-docker-compose-devops-public-demo                 9ff5223 fix(deploy): stabilize adaptive render configuration
+  develop                                                         6571794 test(security): cover tenant validation filter behavior
+  docs/complete-all-phases-population                             3acadc5 docs(factory): populate all existing phases with master documentation layer
+  docs/master-populate-all-phases-complete                        31b80d1 docs(factory): massively populate all phases with master audit layer
+  feat/auth-oauth2-rs256                                          d623019 chore: harden gitignore for security and build artifacts
+  feat/mvp-001-educational-diagnosis                              75ccca2 [origin/feat/mvp-001-educational-diagnosis] build(quality): enable jacoco xml reports for sonarcloud
+  feat/mvp-4-doctoral-validation-intelligence                     bef37b7 feat(ml): add random forest kolb experiment pipeline
+  feat/sec-003-google-authenticator-mfa                           398d1f6 [origin/feat/sec-003-google-authenticator-mfa] feat(auth): complete MFA login flow and CORS integration
+  feature/render-deployment                                       1e69fe8 fix(deploy): build adaptive jar inside docker image
+  feature/student-persistence                                     c67acf1 feat: persistencia funcional 201 en student-service
+  fix/student-service-and-ci                                      2cfd492 fix: corregir sintaxis de condiciones if en workflow de auditoria
+  hardening/mvp-21a-cierre-backend                                3fd7147 chore(mvp21a): freeze functional adaptive education backend baseline
+  hardening/mvp-21a-quality-freeze                                bef37b7 feat(ml): add random forest kolb experiment pipeline
+  hotfix/mvp21a-ci-h2-test-profile                                cc416e8 test(adaptive): stabilize H2 test profile for CI
+  hotfix/mvp21a-ci-quality-gates                                  6c290a4 test(adaptive): make data-test SQL compatible with H2
+  implementation/AA-offline-first-kickoff                         32335e3 docs(implementation): add offline-first implementation kickoff
+  implementation/AB-offline-first-technical-skeleton              247c0c0 docs(implementation): add offline-first sprint 1 technical skeleton
+  implementation/AC-offline-first-local-persistence-sync-queue    440d913 docs(implementation): add offline-first sprint 2 local persistence and sync queue
+  implementation/AD-offline-first-backend-sync-api                f8716df docs(implementation): add offline-first sprint 3 backend sync API
+  implementation/AE-offline-first-conflict-reconciliation         d40b540 docs(implementation): add offline-first sprint 4 conflict reconciliation
+  implementation/AF-offline-first-qa-e2e-resilience               97832cd docs(implementation): add offline-first sprint 5 QA and resilience testing
+  implementation/AG-offline-first-field-pilot-readiness           e5aca23 docs(implementation): add offline-first sprint 6 field pilot readiness
+  implementation/AH-offline-first-final-release                   8454e33 docs(implementation): close offline-first implementation release readiness
+  implementation/AI-offline-first-technical-start                 b7599dd docs(implementation): add offline-first technical implementation start
+  implementation/AJ-backend-sync-status-skeleton                  16b9a8e docs(implementation): add backend sync status skeleton plan
+  implementation/AK-frontend-connectivity-skeleton                a6d420a docs(implementation): add frontend connectivity skeleton plan
+  implementation/AL-local-database-implementation-plan            fbe50b3 docs(implementation): add offline-first local database implementation plan
+  implementation/AM-sync-queue-implementation-plan                4962313 docs(implementation): add offline-first sync queue implementation plan
+  implementation/AN-backend-push-pull-implementation-plan         d42266f docs(implementation): add backend push pull sync implementation plan
+  implementation/AO-conflict-resolution-implementation-plan       602ca77 docs(implementation): add conflict resolution implementation plan
+  implementation/AP-audit-trail-research-data-integrity           1d72792 docs(implementation): add audit trail and research data integrity plan
+  implementation/AQ-dataset-export-snapshot-readiness             9626d3a docs(implementation): add dataset export and snapshot readiness plan
+  implementation/AR-pilot-dataset-generation-plan                 ef8caca docs(implementation): add pilot dataset generation plan
+  implementation/AS-pilot-dataset-validation-quality-report       109bab6 docs(implementation): add pilot dataset validation quality report plan
+  implementation/AT-pilot-dataset-approval-release-gate           90e2dbe docs(implementation): add pilot dataset approval release gate
+  implementation/AU-pilot-dataset-ml-baseline-readiness           cbf6981 docs(implementation): add pilot dataset ML baseline readiness
+  implementation/AV-pilot-dataset-xai-readiness                   825af81 docs(implementation): add pilot dataset XAI readiness
+  implementation/AW-reproducible-experiment-execution-plan        45408ed docs(implementation): add reproducible experiment execution plan
+  implementation/AX-pilot-results-analysis-reporting              15edd92 docs(implementation): add pilot results analysis reporting plan
+  implementation/AY-pilot-evidence-publication-readiness          89ee632 docs(implementation): add pilot evidence publication readiness
+  implementation/AZ-pilot-evidence-final-closure                  dc3fee9 docs(implementation): close pilot evidence preparation sequence
+  implementation/BB-controlled-sprint1-execution-package          24ebe57 docs(implementation): add controlled sprint 1 execution package
+  implementation/BC-fieldwork-data-capture-implementation-program 9429018 docs(implementation): add fieldwork data capture implementation program
+  implementation/BD-fieldwork-core-functional-modules             e65e037 docs(implementation): add fieldwork core functional modules
+  implementation/BE-fieldwork-implementation-execution-cycle      38c87b9 docs(implementation): add fieldwork implementation execution cycle
+  implementation/BF-full-implementation-deployment-readiness      8c557ca docs(deployment): add full implementation and deployment readiness plan
+  implementation/BG-real-mvp-vertical1-consent-participant        2809c1e docs(implementation): add real MVP vertical 1 consent participant
+  implementation/BH-real-consent-participant-backend              14e3a2a fix(fieldwork): place controller in api layer
+  main                                                            1f2511b [origin/main: ahead 299] Merge pull request #97 from jamartinezv2023/implementation/BG-real-mvp-vertical1-consent-participant
+  research/C1-ml-pipeline-architecture                            3febcfc docs(review): add B1 expert and ethics review package
+  research/C2-explainable-ai-architecture                         9a825dd docs(research): add C2 explainable AI architecture
+  research/C3-experiment-registry                                 481b92d docs(research): add C3 experiment registry design
+  research/C4-statistical-validation                              e859230 docs(research): add C4 statistical validation plan
+  research/C5-reproducibility-framework                           3940015 docs(research): add C5 reproducibility framework
+  research/C6-paper-factory                                       3940015 docs(research): add C5 reproducibility framework
+  research/D1-notebook-factory                                    3940015 docs(research): add C5 reproducibility framework
+  research/D2-experiment-factory                                  3940015 docs(research): add C5 reproducibility framework
+  research/D3-figure-factory                                      3940015 docs(research): add C5 reproducibility framework
+  research/D4-publication-pipeline                                4ec88d6 docs(research): add D4 publication pipeline
+  research/D5-doctoral-compendium                                 988f311 docs(research): add D5 doctoral compendium assembly
+  research/E-complete-scientific-ecosystem                        2b29ea2 docs(research): complete phase E scientific ecosystem packages
+  research/E1-doctoral-defense-factory                            988f311 docs(research): add D5 doctoral compendium assembly
+  research/E2-open-science-pipeline                               988f311 docs(research): add D5 doctoral compendium assembly
+  research/E3-research-group-expansion                            988f311 docs(research): add D5 doctoral compendium assembly
+  research/E4-postdoctoral-program                                988f311 docs(research): add D5 doctoral compendium assembly
+  research/F-complete-consolidation                               1c8eb7d docs(research): complete phase F strategic consolidation
+  research/F-complete-strategic-closure                           8afcef6 docs(research): complete phase F strategic closure
+  research/F1-final-scientific-ecosystem-index                    c3ba781 docs(research): add F1 final scientific ecosystem index
+  research/G-complete-operational-research-program                a6333ce docs(research): complete phase G operational research program
+  research/G1-longitudinal-dataset-v1                             0799b20 Merge pull request #40 from jamartinezv2023/research/F-complete-consolidation
+  research/H-complete-real-evidence-factory                       9efd1aa docs(research): complete phase H real evidence factory
+  research/H1-evidence-acquisition                                fdf471d Merge pull request #39 from jamartinezv2023/research/F-complete-strategic-closure
+  research/I-complete-machine-learning-production                 b96d825 docs(research): complete phase I machine learning production
+  research/J-complete-explainable-ai-production                   1c5ebb5 docs(research): complete phase J explainable AI production
+  research/K-complete-longitudinal-scientific-evidence            6cb9f6a docs(research): complete phase K longitudinal scientific evidence
+  research/L-complete-q1-publication-program                      0e208de docs(research): complete phase L Q1 publication program
+  research/M-complete-doctoral-thesis-production                  a66031e docs(research): complete phase M doctoral thesis production
+  research/N-complete-postdoctoral-expansion                      b9234d0 docs(research): complete phase N postdoctoral expansion
+  research/O-complete-international-scientific-network            39c9362 docs(research): complete phase O international scientific network
+  research/P-complete-scientific-school-legacy                    5149fb0 docs(research): complete phase P scientific school legacy
+  review/B-complete-ethics-governance-fieldwork                   45adbeb docs(review): complete phase B ethics governance and fieldwork package
+  review/B1-expert-ethics-package                                 3febcfc docs(review): add B1 expert and ethics review package
+  review/B2-informed-consent-protocol                             3febcfc docs(review): add B1 expert and ethics review package
+  review/B3-data-governance                                       3febcfc docs(review): add B1 expert and ethics review package
+  review/B4-longitudinal-study-protocol                           3febcfc docs(review): add B1 expert and ethics review package
+  review/B5-ethics-committee-package                              3febcfc docs(review): add B1 expert and ethics review package
+  review/B6-pilot-dataset-design                                  3febcfc docs(review): add B1 expert and ethics review package
+  review/B7-field-deployment-protocol                             3febcfc docs(review): add B1 expert and ethics review package
+  review/B8-dataset-v1-readiness                                  3febcfc docs(review): add B1 expert and ethics review package
+  scientific-audit/A10-doctoral-roadmap                           94d9653 docs(audit): add A10 doctoral research roadmap
+  scientific-audit/A11-hypotheses-metrics-experiments             16ea0fe docs(audit): add A11 hypotheses metrics and experiments
+  scientific-audit/A12-expert-validation-doctoral-review          38db38c docs(audit): add A12 expert validation and doctoral review
+  scientific-audit/A13-master-doctoral-package                    c67b811 docs(audit): add A13 master doctoral package
+  scientific-audit/A14-fieldwork-transition-plan                  466b465 docs(audit): add A14 fieldwork transition plan
+  scientific-audit/A15-mvp22-scientific-backlog                   41a0f5b docs(audit): add A15 MVP22 scientific backlog
+  scientific-audit/A16-mvp22-quality-assurance-plan               3547363 docs(audit): add A16 MVP22 quality assurance plan
+  scientific-audit/A17-data-governance-dictionary                 1a8ef08 docs(audit): add A17 data governance and dictionary
+  scientific-audit/A18-data-quality-validation                    0a09e63 docs(audit): add A18 data quality validation matrices
+  scientific-audit/A19-dataset-v1-export-plan                     8795a7a docs(audit): add A19 dataset v1 export plan
+  scientific-audit/A20-reproducible-notebooks-plan                4e8a893 docs(audit): add A20 reproducible notebooks plan
+  scientific-audit/A21-requirements-traceability                  9f4fec3 docs(audit): add A21 doctoral requirements traceability
+  scientific-audit/A22-release-readiness-mvp21a                   05e0123 docs(audit): add A22 MVP21A release readiness
+  scientific-audit/A23-final-audit-integration-index              a3ed5dd docs(audit): add A23 final audit integration index
+  scientific-audit/A24-final-merge-and-release-tag                ea29e80 docs(audit): add A24 final release closure
+  scientific-audit/A4-backend-traceability-matrices               fb0d432 docs(audit): add A4 backend traceability matrices
+  scientific-audit/A5-scientific-variable-mining                  e0d6087 docs(audit): add A5 scientific variable mining
+  scientific-audit/A6-feature-store-model-map                     c421ac7 docs(audit): add A6 feature store and model map
+  scientific-audit/A7-ai-governance-ethics                        494d07e docs(audit): add A7 AI governance and ethics matrices
+  scientific-audit/A8-reproducibility-devops-iac                  4271987 docs(audit): add A8 reproducibility DevOps and IaC matrices
+  scientific-audit/A9-longitudinal-field-dataset-protocol         2e3bbed docs(audit): add A9 longitudinal field dataset protocol
+  scientific-audit/level2-backend-traceability                    067ec12 docs(audit): add A3 backend traceability raw inventory

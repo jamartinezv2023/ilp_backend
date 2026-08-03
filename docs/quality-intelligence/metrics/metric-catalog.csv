@@ -1,0 +1,20 @@
+metric_code,metric_name,unit,entity,frequency,direction,control_chart_candidate,minimum_observations,phase,status
+ASSESSMENT_COMPLETION_RATE,Assessment completion rate,percent,Cohort,Weekly,HIGHER_IS_BETTER,P,20,3,PLANNED
+RESPONSE_MISSING_RATE,Missing response rate,percent,Cohort,Weekly,LOWER_IS_BETTER,P,20,3,PLANNED
+AVERAGE_COMPLETION_TIME,Average completion time,seconds,Instrument,Weekly,CONTEXTUAL,XBAR_S,25,3,PLANNED
+INDIVIDUAL_COMPLETION_TIME,Individual completion time,seconds,Participant,Per assessment,CONTEXTUAL,I_MR,20,3,PLANNED
+INTERVENTION_RESPONSE_SCORE,Intervention response score,score,Participant,Per observation,HIGHER_IS_BETTER,I_MR,20,3,PLANNED
+SUPPORT_LEVEL_CHANGE,Support level change,ordinal,Participant,Monthly,CONTEXTUAL,I_MR,20,3,PLANNED
+RECOMMENDATION_ACCEPTANCE_RATE,Recommendation acceptance rate,percent,Cohort,Monthly,HIGHER_IS_BETTER,P,20,3,PLANNED
+CONSENT_COMPLETENESS_RATE,Complete consent rate,percent,Cohort,Weekly,HIGHER_IS_BETTER,P,20,3,PLANNED
+FEATURE_MISSING_RATE,Feature missing rate,percent,Dataset,Daily,LOWER_IS_BETTER,P,20,3,PLANNED
+FEATURE_OUTLIER_RATE,Feature outlier rate,percent,Dataset,Daily,LOWER_IS_BETTER,P,20,3,PLANNED
+DUPLICATE_RECORD_RATE,Duplicate record rate,percent,Dataset,Daily,LOWER_IS_BETTER,P,20,3,PLANNED
+API_ERROR_RATE,API error rate,percent,Service,Hourly,LOWER_IS_BETTER,P,20,1,PLANNED
+API_RESPONSE_TIME,API response time,milliseconds,Service,Hourly,LOWER_IS_BETTER,I_MR,20,1,PLANNED
+MODEL_ACCURACY,Model accuracy,percent,Model,Per evaluation,HIGHER_IS_BETTER,I_MR,20,4,PLANNED
+MODEL_F1,Model F1 score,score,Model,Per evaluation,HIGHER_IS_BETTER,I_MR,20,4,PLANNED
+MODEL_CALIBRATION_ERROR,Model calibration error,score,Model,Per evaluation,LOWER_IS_BETTER,I_MR,20,4,PLANNED
+PREDICTION_ERROR,Prediction error,error,Model,Per batch,LOWER_IS_BETTER,XBAR_S,25,4,PLANNED
+DATA_DRIFT_SCORE,Data drift score,index,Feature,Per batch,LOWER_IS_BETTER,EWMA,30,4,PLANNED
+CONCEPT_DRIFT_SCORE,Concept drift score,index,Model,Per batch,LOWER_IS_BETTER,CUSUM,30,4,PLANNED

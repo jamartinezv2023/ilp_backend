@@ -1,0 +1,14 @@
+metric,category,description,frequency,threshold_strategy,phase,status
+Accuracy,Performance,Classification accuracy,Per evaluation,Baseline confidence interval,4,PLANNED
+Precision,Performance,Positive prediction precision,Per evaluation,Baseline confidence interval,4,PLANNED
+Recall,Performance,Sensitivity,Per evaluation,Baseline confidence interval,4,PLANNED
+F1,Performance,Harmonic mean of precision and recall,Per evaluation,Baseline confidence interval,4,PLANNED
+CalibrationError,Performance,Probability calibration error,Per evaluation,Baseline plus tolerance,4,PLANNED
+PSI,Data Drift,Population Stability Index,Per batch,Warning and critical thresholds,4,PLANNED
+KSStatistic,Data Drift,Distribution difference,Per batch,Statistical threshold,4,PLANNED
+JensenShannon,Data Drift,Distribution divergence,Per batch,Baseline threshold,4,PLANNED
+PredictionDistributionShift,Prediction Drift,Change in prediction distribution,Per batch,EWMA or PSI,4,PLANNED
+ResidualMean,Concept Drift,Mean prediction residual,Per batch,I-MR or EWMA,4,PLANNED
+ResidualVariance,Concept Drift,Residual variance,Per batch,I-MR or Xbar-S,4,PLANNED
+MissingFeatureRate,Data Quality,Missing inference features,Daily,P chart,4,PLANNED
+OutOfRangeFeatureRate,Data Quality,Invalid feature values,Daily,P chart,4,PLANNED
