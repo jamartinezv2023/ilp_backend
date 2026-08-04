@@ -1,7 +1,6 @@
 package com.inclusive.adaptiveeducationservice.featurestore.scientific.persistence.mapper;
 
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureGenerationRun;
-import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureGenerationStatus;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureSetVersion;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.GeneratorVersion;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ParticipantId;

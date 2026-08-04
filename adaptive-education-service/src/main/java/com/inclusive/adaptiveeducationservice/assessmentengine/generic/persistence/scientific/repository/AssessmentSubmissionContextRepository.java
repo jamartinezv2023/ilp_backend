@@ -25,4 +25,5 @@ public interface AssessmentSubmissionContextRepository
     List<AssessmentSubmissionContextEntity>
     findByAdministrationIdIn(
             Collection<String> administrationIds
-    );}
+    );
+}

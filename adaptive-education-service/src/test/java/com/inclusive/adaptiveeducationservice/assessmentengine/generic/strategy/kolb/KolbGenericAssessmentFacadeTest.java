@@ -6,7 +6,6 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.As
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentOption;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestion;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentQuestionType;
-import com.inclusive.adaptiveeducationservice.assessmentengine.generic.exception.InvalidAssessmentSubmissionException;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.AssessmentDefinitionRepositoryPort;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.AssessmentSubmissionValidator;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
@@ -19,7 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
