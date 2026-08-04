@@ -31,7 +31,7 @@ yet demonstrate complete parity across all mandatory workflows.
 A workflow that excludes `:adaptive-education-service:test` cannot be classified
 as a complete release-quality gate for the Scientific Feature Store.
 
-Current classification: PASS.
+Current classification: PARTIAL.
 
 ## Azure DevOps assessment
 
@@ -48,7 +48,7 @@ not a substitute for the Java quality pipeline.
 
 ## Release policy
 
-The GitHub Actions quality gate is aligned and verified on the feature branch.
+The GitHub Actions canonical quality gate is currently blocked by H2/Flyway integration-test failures.
 
 Azure DevOps alignment may be completed in a dedicated CI migration cycle.
 Until then, its non-parity must remain explicitly documented.
