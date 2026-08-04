@@ -48,4 +48,5 @@ public interface AssessmentScientificResultRepository
     List<AssessmentScientificResultEntity>
     findByParticipantIdOrderBySubmittedAtDescAdministrationIdAsc(
             String participantId
-    );}
+    );
+}
