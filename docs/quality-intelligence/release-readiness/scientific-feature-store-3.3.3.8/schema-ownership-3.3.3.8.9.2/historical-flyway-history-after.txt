@@ -1,0 +1,7 @@
+﻿ installed_rank | version |               description                |   type   |                      script                      |  checksum  | success 
+----------------+---------+------------------------------------------+----------+--------------------------------------------------+------------+---------
+              1 | 0       | ILP existing schema baseline             | BASELINE | ILP existing schema baseline                     |            | t
+              2 | 1       | create assessment scientific persistence | SQL      | V1__create_assessment_scientific_persistence.sql |  597452015 | t
+              3 | 2       | create scientific feature store          | SQL      | V2__create_scientific_feature_store.sql          | 1232790222 | t
+(3 rows)
+

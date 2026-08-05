@@ -1,0 +1,17 @@
+﻿M	_audit_2026_2027/01_git_status.txt
+M	_audit_2026_2027/02_git_branches.txt
+M	_audit_2026_2027/03_git_log.txt
+M	_audit_2026_2027/04_backend_structure.txt
+M	_audit_2026_2027/05_backend_files.txt
+M	_audit_2026_2027/08_gradle_projects.txt
+M	_audit_2026_2027/09_gradle_tasks.txt
+M	_audit_2026_2027/10_backend_tests.txt
+M	_audit_2026_2027/11_jacoco_report.txt
+M	_audit_2026_2027/12_backend_check_quality.txt
+M	_audit_2026_2027/13_backend_hexagonal_candidates.txt
+M	_audit_2026_2027/16_backend_config_files.txt
+M	_audit_2026_2027/17_docker_version.txt
+M	_audit_2026_2027/18_docker_compose_version.txt
+M	_audit_2026_2027/19_docker_containers.txt
+D	adaptive-education-service/src/main/resources/db/migration/V1__create_assessment_scientific_persistence.sql
+D	adaptive-education-service/src/main/resources/db/migration/V2__create_scientific_feature_store.sql
