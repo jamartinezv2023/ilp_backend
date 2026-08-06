@@ -12,17 +12,13 @@ import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.val
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.generation.ScientificFeatureGenerator;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.generation.model.ScientificFeatureGenerationRequest;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out.ScientificFeatureVectorPersistencePort;
+import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.Instant;
