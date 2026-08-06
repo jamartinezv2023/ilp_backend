@@ -92,7 +92,7 @@ subprojects {
         toolVersion = "7.26.0"
         ruleSetFiles = files(rootProject.file("config/pmd/pmd-ruleset.xml"))
         ruleSets = emptyList()
-        isIgnoreFailures = true
+        isIgnoreFailures = false
     }
     plugins.withType<JavaPlugin> {
 
