@@ -178,3 +178,24 @@ application-secret.yml
 
 # Generated local OpenAPI exports unless intentionally versioned
 *-openapi-local.json
+
+# Security-sensitive local diagnostics
+git_remotes.txt
+*_remotes.txt
+*credentials*.txt
+*secrets*.txt
+*token*.txt
+
+# Local recovery artifacts
+*.before-*
+*.before.*
+*.bak
+*.backup
+*.orig
+*.rej
+*.tmp
+
+# Local environment files
+.env
+.env.*
+!.env.example

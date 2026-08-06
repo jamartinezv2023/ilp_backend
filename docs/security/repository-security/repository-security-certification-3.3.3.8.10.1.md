@@ -11,13 +11,13 @@ _phase_1a_assessment_engine/00_baseline/git_remotes.txt
 
 ## Remediation
 
-- The exposed PAT was treated as compromised.
-- The PAT was revoked in Azure DevOps.
+- The exposed PAT is being treated as compromised.
+- PAT revocation in Azure DevOps requires manual confirmation.
 - A protected local backup was created.
-- The affected path was removed from branch history.
+- Removal of the affected path from branch history is pending.
 - Reachable Git objects were inspected.
 - Repository ignore rules were strengthened.
-- The branch was republished through GitHub Push Protection.
+- Republishing through GitHub Push Protection is pending.
 
 ## Prohibited evidence
 
