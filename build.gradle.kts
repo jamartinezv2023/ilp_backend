@@ -96,7 +96,7 @@ subprojects {
     }
     plugins.withType<JavaPlugin> {
 
-        tasks.withType<Test> {
+        tasks.named<Test>("test") {
             useJUnitPlatform {
                 excludeTags("integration")
             }
