@@ -15,7 +15,7 @@ hs_err_pid*
 *.db
 *.h2.db
 
-# Ã°Å¸â€â€˜ EXCEPCIÃƒâ€œN CRÃƒÂTICA Ã¢â‚¬â€ Gradle Wrapper (NO SE IGNORA)
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ¢â‚¬Ëœ EXCEPCIÃƒÆ’Ã¢â‚¬Å“N CRÃƒÆ’Ã‚ÂTICA ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Gradle Wrapper (NO SE IGNORA)
 !gradle/wrapper/gradle-wrapper.jar
 
 .mvn/
@@ -34,7 +34,7 @@ logs/
 *.pid
 *.lock
 
-# Ã¢Å¡Â Ã¯Â¸Â ConfiguraciÃƒÂ³n sensible (solo versiona si lo decides explÃƒÂ­citamente)
+# ÃƒÂ¢Ã…Â¡Ã‚Â ÃƒÂ¯Ã‚Â¸Ã‚Â ConfiguraciÃƒÆ’Ã‚Â³n sensible (solo versiona si lo decides explÃƒÆ’Ã‚Â­citamente)
 application.properties
 application.yml
 application-*.yml
@@ -144,14 +144,14 @@ build
 _diag/
 
 # =============================
-# Ã°Å¸â€Â JWT / RSA / Security (CRÃƒÂTICO)
+# ÃƒÂ°Ã…Â¸Ã¢â‚¬ÂÃ‚Â JWT / RSA / Security (CRÃƒÆ’Ã‚ÂTICO)
 # =============================
 *.pem
 *.key
 *.crt
 *.jks
 
-# Directorios de claves (en cualquier mÃƒÂ³dulo)
+# Directorios de claves (en cualquier mÃƒÆ’Ã‚Â³dulo)
 **/keys/
 **/security/keys/
 .env
