@@ -14,19 +14,22 @@ import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.ge
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out.ScientificFeatureVectorPersistencePort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.boot.test.context.SpringBootTest;
+import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.boot.test.mock.mockito.SpyBean;
+import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.time.Instant;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.clearInvocations;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.reset;
@@ -35,8 +38,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-@ActiveProfiles("test")
-class TransactionalScientificFeatureGenerationIntegrationTest {
+class TransactionalScientificFeatureGenerationIntegrationTest
+        extends PostgreSqlIntegrationTestBase {
 
     private static final Instant FEATURE_CUTOFF_AT =
             Instant.parse(
