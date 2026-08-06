@@ -1,0 +1,5 @@
+﻿"Path","LineNumber","Line"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\repository\AssessmentDefinitionRepository.java","8","public interface AssessmentDefinitionRepository"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\repository\AssessmentDefinitionRepository.java","9","        extends JpaRepository<AssessmentDefinitionEntity, String> {"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\repository\AssessmentDefinitionRepository.java","11","    Optional<AssessmentDefinitionEntity> findByCodeAndActiveTrue(String code);"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\repository\AssessmentDefinitionRepository.java","13","    boolean existsByCode(String code);"

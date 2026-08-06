@@ -1,0 +1,487 @@
+﻿===== KolbAssessmentEngine.java =====
+package com.inclusive.adaptiveeducationservice.assessment.service;
+
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+public class KolbAssessmentEngine {
+
+    public KolbScores calculate(List<Integer> answers) {
+        validateAnswers(answers);
+
+        int scoreCE = 0;
+        int scoreRO = 0;
+        int scoreAC = 0;
+        int scoreAE = 0;
+
+        for (int index = 0; index < answers.size(); index += 4) {
+            scoreCE += answers.get(index);
+            scoreRO += answers.get(index + 1);
+            scoreAC += answers.get(index + 2);
+            scoreAE += answers.get(index + 3);
+        }
+
+        var learningStyle = determineLearningStyle(
+                scoreCE,
+                scoreRO,
+                scoreAC,
+                scoreAE
+        );
+
+        return new KolbScores(
+                scoreCE,
+                scoreRO,
+                scoreAC,
+                scoreAE,
+                learningStyle
+        );
+    }
+
+    private void validateAnswers(List<Integer> answers) {
+        if (answers == null || answers.size() != 48) {
+            throw new IllegalArgumentException(
+                    "Kolb assessment requires exactly 48 answers"
+            );
+        }
+
+        boolean invalidAnswer = answers.stream()
+                .anyMatch(answer -> answer == null || answer < 1 || answer > 4);
+
+        if (invalidAnswer) {
+            throw new IllegalArgumentException(
+                    "Each Kolb answer must be between 1 and 4"
+            );
+        }
+    }
+
+    private String determineLearningStyle(
+            int scoreCE,
+            int scoreRO,
+            int scoreAC,
+            int scoreAE
+    ) {
+        int abstractConcreteAxis = scoreAC - scoreCE;
+        int activeReflectiveAxis = scoreAE - scoreRO;
+
+        if (abstractConcreteAxis < 0 && activeReflectiveAxis < 0) {
+            return "DIVERGENT";
+        }
+
+        if (abstractConcreteAxis >= 0 && activeReflectiveAxis < 0) {
+            return "ASSIMILATING";
+        }
+
+        if (abstractConcreteAxis >= 0 && activeReflectiveAxis >= 0) {
+            return "CONVERGENT";
+        }
+
+        return "ACCOMMODATING";
+    }
+
+    public record KolbScores(
+            Integer scoreCE,
+            Integer scoreRO,
+            Integer scoreAC,
+            Integer scoreAE,
+            String learningStyle
+    ) {
+    }
+}
+
+===== KolbAssessmentRequest.java =====
+package com.inclusive.adaptiveeducationservice.assessment.dto;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
+import java.util.List;
+
+public record KolbAssessmentRequest(
+
+        @NotBlank
+        String studentId,
+
+        @NotEmpty
+        @Size(min = 48, max = 48)
+        List<Integer> answers
+) {
+}
+
+===== KolbAssessmentResponse.java =====
+package com.inclusive.adaptiveeducationservice.assessment.dto;
+
+import java.time.Instant;
+
+public record KolbAssessmentResponse(
+
+        String assessmentId,
+
+        String studentId,
+
+        Integer scoreCE,
+
+        Integer scoreRO,
+
+        Integer scoreAC,
+
+        Integer scoreAE,
+
+        String learningStyle,
+
+        String instrumentVersion,
+
+        Instant createdAt
+) {
+}
+
+===== KolbAssessmentService.java =====
+package com.inclusive.adaptiveeducationservice.assessment.service;
+
+import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentRequest;
+import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentResponse;
+import com.inclusive.adaptiveeducationservice.assessment.entity.KolbAssessmentResultEntity;
+import com.inclusive.adaptiveeducationservice.assessment.repository.KolbAssessmentResultRepository;
+import com.inclusive.adaptiveeducationservice.student.repository.StudentProfileRepository;
+import jakarta.transaction.Transactional;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
+
+@Service
+public class KolbAssessmentService {
+
+    private static final String INSTRUMENT_VERSION = "KOLB_BASELINE_V1";
+
+    private final KolbAssessmentEngine kolbAssessmentEngine;
+
+    private final KolbAssessmentResultRepository assessmentResultRepository;
+
+    private final StudentProfileRepository studentProfileRepository;
+
+    public KolbAssessmentService(
+            KolbAssessmentEngine kolbAssessmentEngine,
+            KolbAssessmentResultRepository assessmentResultRepository,
+            StudentProfileRepository studentProfileRepository
+    ) {
+        this.kolbAssessmentEngine = kolbAssessmentEngine;
+        this.assessmentResultRepository = assessmentResultRepository;
+        this.studentProfileRepository = studentProfileRepository;
+    }
+
+    @Transactional
+    public KolbAssessmentResponse submit(KolbAssessmentRequest request) {
+        var student = studentProfileRepository.findById(request.studentId())
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Student profile not found"
+                ));
+
+        var scores = kolbAssessmentEngine.calculate(request.answers());
+        var assessmentId = "KOLB-" + UUID.randomUUID()
+                .toString()
+                .substring(0, 8)
+                .toUpperCase();
+
+        var result = new KolbAssessmentResultEntity(
+                assessmentId,
+                request.studentId(),
+                scores.scoreCE(),
+                scores.scoreRO(),
+                scores.scoreAC(),
+                scores.scoreAE(),
+                scores.learningStyle(),
+                INSTRUMENT_VERSION,
+                Instant.now(),
+                request.answers()
+        );
+
+        student.updateLearningProfile(scores.learningStyle());
+        studentProfileRepository.save(student);
+
+        return toResponse(assessmentResultRepository.save(result));
+    }
+
+    public List<KolbAssessmentResponse> findByStudentId(String studentId) {
+        return assessmentResultRepository
+                .findByStudentIdOrderByCreatedAtDesc(studentId)
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
+    private KolbAssessmentResponse toResponse(
+            KolbAssessmentResultEntity result
+    ) {
+        return new KolbAssessmentResponse(
+                result.getId(),
+                result.getStudentId(),
+                result.getScoreCE(),
+                result.getScoreRO(),
+                result.getScoreAC(),
+                result.getScoreAE(),
+                result.getLearningStyle(),
+                result.getInstrumentVersion(),
+                result.getCreatedAt()
+        );
+    }
+}
+
+===== KolbAssessmentController.java =====
+package com.inclusive.adaptiveeducationservice.api.assessment;
+
+import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentRequest;
+import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentResponse;
+import com.inclusive.adaptiveeducationservice.assessment.service.KolbAssessmentService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/assessments/kolb")
+public class KolbAssessmentController {
+
+    private final KolbAssessmentService kolbAssessmentService;
+
+    @GetMapping("/ping")
+    public ResponseEntity<Map<String, String>> ping() {
+        return ResponseEntity.ok(Map.of("status", "KOLB_CONTROLLER_OK"));
+    }
+
+    @PostMapping
+    public ResponseEntity<KolbAssessmentResponse> submit(
+            @Valid @RequestBody KolbAssessmentRequest request
+    ) {
+        return ResponseEntity.ok(kolbAssessmentService.submit(request));
+    }
+
+    @GetMapping("/students/{studentId}")
+    public ResponseEntity<List<KolbAssessmentResponse>> findByStudentId(
+            @PathVariable String studentId
+    ) {
+        return ResponseEntity.ok(kolbAssessmentService.findByStudentId(studentId));
+    }
+}
+
+===== KolbAssessmentResultEntity.java =====
+package com.inclusive.adaptiveeducationservice.assessment.entity;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "kolb_assessment_results")
+public class KolbAssessmentResultEntity {
+
+    @Id
+    private String id;
+
+    @Column(nullable = false)
+    private String studentId;
+
+    @Column(nullable = false)
+    private Integer scoreCE;
+
+    @Column(nullable = false)
+    private Integer scoreRO;
+
+    @Column(nullable = false)
+    private Integer scoreAC;
+
+    @Column(nullable = false)
+    private Integer scoreAE;
+
+    @Column(nullable = false)
+    private String learningStyle;
+
+    @Column(nullable = false)
+    private String instrumentVersion;
+
+    @Column(nullable = false)
+    private Instant createdAt;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(
+            name = "kolb_assessment_answers",
+            joinColumns = @JoinColumn(name = "assessment_id")
+    )
+    @Column(name = "answer_value", nullable = false)
+    private List<Integer> answers = new ArrayList<>();
+
+    protected KolbAssessmentResultEntity() {
+    }
+
+    public KolbAssessmentResultEntity(
+            String id,
+            String studentId,
+            Integer scoreCE,
+            Integer scoreRO,
+            Integer scoreAC,
+            Integer scoreAE,
+            String learningStyle,
+            String instrumentVersion,
+            Instant createdAt,
+            List<Integer> answers
+    ) {
+        this.id = id;
+        this.studentId = studentId;
+        this.scoreCE = scoreCE;
+        this.scoreRO = scoreRO;
+        this.scoreAC = scoreAC;
+        this.scoreAE = scoreAE;
+        this.learningStyle = learningStyle;
+        this.instrumentVersion = instrumentVersion;
+        this.createdAt = createdAt;
+        this.answers = new ArrayList<>(answers);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public Integer getScoreCE() {
+        return scoreCE;
+    }
+
+    public Integer getScoreRO() {
+        return scoreRO;
+    }
+
+    public Integer getScoreAC() {
+        return scoreAC;
+    }
+
+    public Integer getScoreAE() {
+        return scoreAE;
+    }
+
+    public String getLearningStyle() {
+        return learningStyle;
+    }
+
+    public String getInstrumentVersion() {
+        return instrumentVersion;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public List<Integer> getAnswers() {
+        return List.copyOf(answers);
+    }
+}
+
+===== KolbAssessmentResultRepository.java =====
+package com.inclusive.adaptiveeducationservice.assessment.repository;
+
+import com.inclusive.adaptiveeducationservice.assessment.entity.KolbAssessmentResultEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface KolbAssessmentResultRepository
+        extends JpaRepository<KolbAssessmentResultEntity, String> {
+
+    List<KolbAssessmentResultEntity> findByStudentIdOrderByCreatedAtDesc(
+            String studentId
+    );
+}
+
+===== KolbAssessmentEngineTest.java =====
+package com.inclusive.adaptiveeducationservice.assessment.service;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+class KolbAssessmentEngineTest {
+
+    private final KolbAssessmentEngine engine = new KolbAssessmentEngine();
+
+    @Test
+    void shouldCalculateDivergentLearningStyle() {
+        var answers = List.of(
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1
+        );
+
+        var result = engine.calculate(answers);
+
+        assertThat(result.learningStyle()).isEqualTo("DIVERGENT");
+        assertThat(result.scoreCE()).isEqualTo(48);
+        assertThat(result.scoreRO()).isEqualTo(48);
+    }
+
+    @Test
+    void shouldRejectInvalidAnswerSize() {
+        assertThatThrownBy(() -> engine.calculate(List.of(1, 2, 3)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("48 answers");
+    }
+
+    @Test
+    void shouldRejectInvalidAnswerValue() {
+        var answers = List.of(
+                5, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1,
+                4, 4, 1, 1
+        );
+
+        assertThatThrownBy(() -> engine.calculate(answers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("between 1 and 4");
+    }
+}

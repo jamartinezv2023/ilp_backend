@@ -1,0 +1,31 @@
+﻿package com.inclusive.adaptiveeducationservice.assessmentengine.generic.port;
+
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentDefinition;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface AssessmentDefinitionRepositoryPort {
+
+    AssessmentDefinition save(AssessmentDefinition definition);
+
+    boolean existsByCodeAndVersion(
+            String assessmentCode,
+            String version
+    );
+
+    Optional<AssessmentDefinition> findByCodeAndVersion(
+            String assessmentCode,
+            String version
+    );
+
+    Optional<AssessmentDefinition> findLatestActiveByCode(
+            String assessmentCode
+    );
+
+    List<AssessmentDefinition> findAllByCode(
+            String assessmentCode
+    );
+
+    List<AssessmentDefinition> findAllActive();
+}

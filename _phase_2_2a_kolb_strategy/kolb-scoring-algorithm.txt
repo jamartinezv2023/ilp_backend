@@ -1,0 +1,1497 @@
+﻿
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:1:package com.inclusive.adaptiveeducationservice.api.assessment;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:3:import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentRequest;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:4:import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentResponse;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:5:import com.inclusive.adaptiveeducationservice.assessment.service.KolbAssessmentService;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:6:import jakarta.validation.Valid;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:7:import lombok.RequiredArgsConstructor;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:8:import org.springframework.http.ResponseEntity;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:9:import org.springframework.web.bind.annotation.GetMapping;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:10:import org.springframework.web.bind.annotation.PathVariable;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:11:import org.springframework.web.bind.annotation.PostMapping;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:12:import org.springframework.web.bind.annotation.RequestBody;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:13:import org.springframework.web.bind.annotation.RequestMapping;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:14:import org.springframework.web.bind.annotation.RestController;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:15:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:16:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:17:import java.util.Map;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:18:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:19:@RestController
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:20:@RequiredArgsConstructor
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:21:@RequestMapping("/api/v1/assessments/kolb")
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:22:public class KolbAssessmentController {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:23:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:24:    private final KolbAssessmentService kolbAssessmentService;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:25:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:26:    @GetMapping("/ping")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:27:    public ResponseEntity<Map<String, String>> ping() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:28:        return ResponseEntity.ok(Map.of("status", "KOLB_CONTROLLER_OK"));
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:29:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:30:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:31:    @PostMapping
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:32:    public ResponseEntity<KolbAssessmentResponse> submit(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:33:            @Valid @RequestBody KolbAssessmentRequest request
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:34:    ) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:35:        return ResponseEntity.ok(kolbAssessmentService.submit(request));
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:36:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:37:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:38:    @GetMapping("/students/{studentId}")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:39:    public ResponseEntity<List<KolbAssessmentResponse>> findByStudentId(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:40:            @PathVariable String studentId
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:41:    ) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:42:        return ResponseEntity.ok(kolbAssessmentService.findByStudentId(studentId));
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:43:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\assessment\KolbAssessmentControll
+er.java:44:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:1:package com.inclusive.adaptiveeducationservice.api.mlmodels;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:3:import com.inclusive.adaptiveeducationservice.mlmodels.dto.RandomForestEvaluationResponse;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:4:import com.inclusive.adaptiveeducationservice.mlmodels.service.RandomForestKolbService;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:5:import lombok.RequiredArgsConstructor;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:6:import org.springframework.http.ResponseEntity;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:7:import org.springframework.web.bind.annotation.PostMapping;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:8:import org.springframework.web.bind.annotation.RequestMapping;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:9:import org.springframework.web.bind.annotation.RestController;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:10:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:11:@RestController
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:12:@RequiredArgsConstructor
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:13:@RequestMapping("/api/v1/ml/kolb/random-forest")
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:14:public class RandomForestKolbController {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:15:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:16:    private final RandomForestKolbService randomForestKolbService;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:17:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:18:    @PostMapping("/evaluate")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:19:    public ResponseEntity<RandomForestEvaluationResponse> evaluate() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:20:        return ResponseEntity.ok(randomForestKolbService.evaluate());
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:21:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlmodels\RandomForestKolbControll
+er.java:22:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:1:package com.inclusive.adaptiveeducationservice.api.mlpipeline;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:3:import com.inclusive.adaptiveeducationservice.mlpipeline.dto.KolbBaselineEvaluationResponse;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:4:import com.inclusive.adaptiveeducationservice.mlpipeline.service.KolbBaselineMlService;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:5:import lombok.RequiredArgsConstructor;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:6:import org.springframework.http.ResponseEntity;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:7:import org.springframework.web.bind.annotation.PostMapping;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:8:import org.springframework.web.bind.annotation.RequestMapping;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:9:import org.springframework.web.bind.annotation.RestController;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:10:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:11:@RestController
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:12:@RequiredArgsConstructor
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:13:@RequestMapping("/api/v1/ml/kolb")
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:14:public class KolbMlPipelineController {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:15:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:16:    private final KolbBaselineMlService kolbBaselineMlService;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:17:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:18:    @PostMapping("/baseline/evaluate")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:19:    public ResponseEntity<KolbBaselineEvaluationResponse>
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:20:    evaluateBaseline() {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:21:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:22:        return ResponseEntity.ok(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:23:                kolbBaselineMlService.evaluateBaseline()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:24:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:25:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\api\mlpipeline\KolbMlPipelineControll
+er.java:26:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:1:package com.inclusive.adaptiveeducationservice.assessment.dto;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:2:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:3:import jakarta.validation.constraints.NotBlank;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:4:import jakarta.validation.constraints.NotEmpty;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:5:import jakarta.validation.constraints.Size;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:6:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:7:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:8:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentRequest.
+java:9:public record KolbAssessmentRequest(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:1:package com.inclusive.adaptiveeducationservice.assessment.dto;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:2:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:3:import java.time.Instant;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:4:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:5:public record KolbAssessmentResponse(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:6:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:7:        String assessmentId,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:8:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:9:        String studentId,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:10:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:11:        Integer scoreCE,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:12:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:13:        Integer scoreRO,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:14:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:15:        Integer scoreAC,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:16:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:17:        Integer scoreAE,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:18:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:19:        String learningStyle,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:20:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:21:        String instrumentVersion,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:22:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:23:        Instant createdAt
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:24:) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\dto\KolbAssessmentResponse
+.java:25:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:1:package com.inclusive.adaptiveeducationservice.assessment.entity;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:3:import jakarta.persistence.CollectionTable;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:4:import jakarta.persistence.Column;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:5:import jakarta.persistence.ElementCollection;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:6:import jakarta.persistence.Entity;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:7:import jakarta.persistence.FetchType;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:8:import jakarta.persistence.Id;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:9:import jakarta.persistence.JoinColumn;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:10:import jakarta.persistence.Table;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:11:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:12:import java.time.Instant;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:13:import java.util.ArrayList;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:14:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:15:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:16:@Entity
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:17:@Table(name = "kolb_assessment_results")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:18:public class KolbAssessmentResultEntity {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:24:    private String studentId;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:25:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:26:    @Column(nullable = false)
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:27:    private Integer scoreCE;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:28:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:29:    @Column(nullable = false)
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:30:    private Integer scoreRO;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:31:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:32:    @Column(nullable = false)
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:33:    private Integer scoreAC;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:34:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:35:    @Column(nullable = false)
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:36:    private Integer scoreAE;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:37:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:38:    @Column(nullable = false)
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:39:    private String learningStyle;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:40:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:41:    @Column(nullable = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:42:    private String instrumentVersion;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:43:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:44:    @Column(nullable = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:45:    private Instant createdAt;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:46:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:47:    @ElementCollection(fetch = FetchType.EAGER)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:52:    @Column(name = "answer_value", nullable = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:53:    private List<Integer> answers = new ArrayList<>();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:54:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:55:    protected KolbAssessmentResultEntity() {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:56:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:57:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:58:    public KolbAssessmentResultEntity(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:59:            String id,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:60:            String studentId,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:61:            Integer scoreCE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:62:            Integer scoreRO,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:63:            Integer scoreAC,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:64:            Integer scoreAE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:65:            String learningStyle,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:66:            String instrumentVersion,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:67:            Instant createdAt,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:68:            List<Integer> answers
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:69:    ) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:70:        this.id = id;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:71:        this.studentId = studentId;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:72:        this.scoreCE = scoreCE;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:73:        this.scoreRO = scoreRO;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:74:        this.scoreAC = scoreAC;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:75:        this.scoreAE = scoreAE;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:76:        this.learningStyle = learningStyle;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:77:        this.instrumentVersion = instrumentVersion;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:78:        this.createdAt = createdAt;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:79:        this.answers = new ArrayList<>(answers);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:80:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:81:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:82:    public String getId() {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:83:        return id;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:84:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:87:        return studentId;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:88:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:89:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:90:    public Integer getScoreCE() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:91:        return scoreCE;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:92:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:93:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:94:    public Integer getScoreRO() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:95:        return scoreRO;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:96:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:97:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:98:    public Integer getScoreAC() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:99:        return scoreAC;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:100:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:101:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:102:    public Integer getScoreAE() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:103:        return scoreAE;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:104:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:105:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:106:    public String getLearningStyle() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:107:        return learningStyle;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:108:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:109:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:110:    public String getInstrumentVersion() {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:111:        return instrumentVersion;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:112:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:113:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:114:    public Instant getCreatedAt() {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\entity\KolbAssessmentResul
+tEntity.java:115:        return createdAt;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:1:package com.inclusive.adaptiveeducationservice.assessment.repository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:3:import com.inclusive.adaptiveeducationservice.assessment.entity.KolbAssessmentResultEntity;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:4:import org.springframework.data.jpa.repository.JpaRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:5:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:6:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:7:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:8:public interface KolbAssessmentResultRepository
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:9:        extends JpaRepository<KolbAssessmentResultEntity, String> {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:10:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:11:    List<KolbAssessmentResultEntity> findByStudentIdOrderByCreatedAtDesc(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:12:            String studentId
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:13:    );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\repository\KolbAssessmentR
+esultRepository.java:14:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:1:package com.inclusive.adaptiveeducationservice.assessment.service;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:2:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:3:import org.springframework.stereotype.Component;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:4:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:5:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:6:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:7:@Component
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:8:public class KolbAssessmentEngine {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:9:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:10:    public KolbScores calculate(List<Integer> answers) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:11:        validateAnswers(answers);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:12:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:13:        int scoreCE = 0;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:14:        int scoreRO = 0;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:15:        int scoreAC = 0;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:16:        int scoreAE = 0;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:17:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:18:        for (int index = 0; index < answers.size(); index += 4) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:19:            scoreCE += answers.get(index);
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:20:            scoreRO += answers.get(index + 1);
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:21:            scoreAC += answers.get(index + 2);
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:22:            scoreAE += answers.get(index + 3);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:23:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:24:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:25:        var learningStyle = determineLearningStyle(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:26:                scoreCE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:27:                scoreRO,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:28:                scoreAC,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:29:                scoreAE
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:30:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:31:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:32:        return new KolbScores(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:33:                scoreCE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:34:                scoreRO,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:35:                scoreAC,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:36:                scoreAE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:37:                learningStyle
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:38:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:39:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:40:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:41:    private void validateAnswers(List<Integer> answers) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:42:        if (answers == null || answers.size() != 48) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:43:            throw new IllegalArgumentException(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:44:                    "Kolb assessment requires exactly 48 answers"
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:45:            );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:46:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:47:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:48:        boolean invalidAnswer = answers.stream()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:49:                .anyMatch(answer -> answer == null || answer < 1 || answer > 4);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:50:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:51:        if (invalidAnswer) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:52:            throw new IllegalArgumentException(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:53:                    "Each Kolb answer must be between 1 and 4"
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:54:            );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:55:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:56:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:57:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:58:    private String determineLearningStyle(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:59:            int scoreCE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:60:            int scoreRO,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:61:            int scoreAC,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:62:            int scoreAE
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:63:    ) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:64:        int abstractConcreteAxis = scoreAC - scoreCE;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:65:        int activeReflectiveAxis = scoreAE - scoreRO;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:66:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:67:        if (abstractConcreteAxis < 0 && activeReflectiveAxis < 0) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:68:            return "DIVERGENT";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:69:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:70:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:71:        if (abstractConcreteAxis >= 0 && activeReflectiveAxis < 0) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:72:            return "ASSIMILATING";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:73:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:74:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:75:        if (abstractConcreteAxis >= 0 && activeReflectiveAxis >= 0) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:76:            return "CONVERGENT";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:77:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:78:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:79:        return "ACCOMMODATING";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:80:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:81:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:82:    public record KolbScores(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:83:            Integer scoreCE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:84:            Integer scoreRO,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:85:            Integer scoreAC,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:86:            Integer scoreAE,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:87:            String learningStyle
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:88:    ) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:89:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+ne.java:90:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:1:package com.inclusive.adaptiveeducationservice.assessment.service;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:3:import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentRequest;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:4:import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentResponse;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:5:import com.inclusive.adaptiveeducationservice.assessment.entity.KolbAssessmentResultEntity;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:6:import com.inclusive.adaptiveeducationservice.assessment.repository.KolbAssessmentResultRepository;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:7:import com.inclusive.adaptiveeducationservice.student.repository.StudentProfileRepository;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:8:import jakarta.transaction.Transactional;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:9:import org.springframework.http.HttpStatus;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:10:import org.springframework.stereotype.Service;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:11:import org.springframework.web.server.ResponseStatusException;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:12:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:13:import java.time.Instant;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:14:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:15:import java.util.UUID;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:16:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:17:@Service
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:18:public class KolbAssessmentService {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:19:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:20:    private static final String INSTRUMENT_VERSION = "KOLB_BASELINE_V1";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:21:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:22:    private final KolbAssessmentEngine kolbAssessmentEngine;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:23:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:24:    private final KolbAssessmentResultRepository assessmentResultRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:25:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:26:    private final StudentProfileRepository studentProfileRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:27:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:28:    public KolbAssessmentService(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:29:            KolbAssessmentEngine kolbAssessmentEngine,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:30:            KolbAssessmentResultRepository assessmentResultRepository,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:31:            StudentProfileRepository studentProfileRepository
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:32:    ) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:33:        this.kolbAssessmentEngine = kolbAssessmentEngine;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:34:        this.assessmentResultRepository = assessmentResultRepository;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:35:        this.studentProfileRepository = studentProfileRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:36:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:37:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:38:    @Transactional
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:39:    public KolbAssessmentResponse submit(KolbAssessmentRequest request) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:40:        var student = studentProfileRepository.findById(request.studentId())
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:41:                .orElseThrow(() -> new ResponseStatusException(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:42:                        HttpStatus.NOT_FOUND,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:43:                        "Student profile not found"
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:44:                ));
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:45:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:46:        var scores = kolbAssessmentEngine.calculate(request.answers());
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:47:        var assessmentId = "KOLB-" + UUID.randomUUID()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:48:                .toString()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:49:                .substring(0, 8)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:50:                .toUpperCase();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:51:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:52:        var result = new KolbAssessmentResultEntity(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:53:                assessmentId,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:54:                request.studentId(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:55:                scores.scoreCE(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:56:                scores.scoreRO(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:57:                scores.scoreAC(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:58:                scores.scoreAE(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:59:                scores.learningStyle(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:60:                INSTRUMENT_VERSION,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:61:                Instant.now(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:62:                request.answers()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:63:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:64:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:65:        student.updateLearningProfile(scores.learningStyle());
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:66:        studentProfileRepository.save(student);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:67:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:68:        return toResponse(assessmentResultRepository.save(result));
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:69:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:70:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:71:    public List<KolbAssessmentResponse> findByStudentId(String studentId) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:72:        return assessmentResultRepository
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:73:                .findByStudentIdOrderByCreatedAtDesc(studentId)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:74:                .stream()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:82:        return new KolbAssessmentResponse(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:83:                result.getId(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:84:                result.getStudentId(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:85:                result.getScoreCE(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:86:                result.getScoreRO(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:87:                result.getScoreAC(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:88:                result.getScoreAE(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:89:                result.getLearningStyle(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:90:                result.getInstrumentVersion(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:91:                result.getCreatedAt()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:92:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:93:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentServ
+ice.java:94:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:1:package com.inclusive.adaptiveeducationservice.featurestore.extractor;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:3:import com.inclusive.adaptiveeducationservice.assessmentresponse.entity.AssessmentAnswerEntity;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:4:import com.inclusive.adaptiveeducationservice.assessmentresponse.entity.AssessmentResponseEntity;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:5:import org.springframework.stereotype.Component;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:6:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:7:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:8:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:9:@Component
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:10:public class KolbFeatureExtractor {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:11:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:12:    public KolbFeatures extract(List<AssessmentResponseEntity> responses) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:13:        var kolbResponses = responses.stream()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:14:                .filter(response -> "KOLB_V1".equalsIgnoreCase(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:15:                        response.getAssessmentCode()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:16:                ))
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:17:                .toList();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:18:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:19:        int ce = 0;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:20:        int ro = 0;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:21:        int ac = 0;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:22:        int ae = 0;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:23:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:24:        for (AssessmentResponseEntity response : kolbResponses) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:25:            for (AssessmentAnswerEntity answer : response.getAnswers()) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:26:                if ("CE".equalsIgnoreCase(answer.getValue())) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:27:                    ce += answer.getScore();
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:28:                } else if ("RO".equalsIgnoreCase(answer.getValue())) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:29:                    ro += answer.getScore();
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:30:                } else if ("AC".equalsIgnoreCase(answer.getValue())) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:31:                    ac += answer.getScore();
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:32:                } else if ("AE".equalsIgnoreCase(answer.getValue())) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:33:                    ae += answer.getScore();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:34:                }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:35:            }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:36:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:37:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:38:        return new KolbFeatures(ce, ro, ac, ae, resolveStyle(ce, ro, ac, ae));
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:39:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:40:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:41:    private String resolveStyle(int ce, int ro, int ac, int ae) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:42:        var abstractConcrete = ac - ce;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:43:        var activeReflective = ae - ro;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:44:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:45:        if (abstractConcrete >= 0 && activeReflective >= 0) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:46:            return "CONVERGENT";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:47:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:48:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:49:        if (abstractConcrete >= 0) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:50:            return "ASSIMILATOR";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:51:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:52:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:53:        if (activeReflective >= 0) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:54:            return "ACCOMMODATOR";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:55:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:56:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:57:        return "DIVERGENT";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:58:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:59:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:60:    public record KolbFeatures(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:61:            Integer ce,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:62:            Integer ro,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:63:            Integer ac,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:64:            Integer ae,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:65:            String style
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:66:    ) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:67:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractor.java:68:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:1:package com.inclusive.adaptiveeducationservice.mlmodels.service;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:3:import com.inclusive.adaptiveeducationservice.featurestore.entity.StudentFeatureEntity;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:4:import com.inclusive.adaptiveeducationservice.featurestore.repository.StudentFeatureRepository;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:5:import com.inclusive.adaptiveeducationservice.mlmodels.dto.RandomForestEvaluationResponse;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:6:import com.inclusive.adaptiveeducationservice.mlmodels.entity.MlExperimentEntity;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:7:import com.inclusive.adaptiveeducationservice.mlmodels.repository.MlExperimentRepository;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:8:import org.springframework.stereotype.Service;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:9:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:10:import java.time.Instant;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:11:import java.util.Map;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:12:import java.util.UUID;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:13:import java.util.stream.Collectors;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:14:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:15:@Service
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:16:public class RandomForestKolbService {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:17:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:18:    private final StudentFeatureRepository featureRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:19:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:20:    private final MlExperimentRepository experimentRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:21:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:22:    public RandomForestKolbService(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:23:            StudentFeatureRepository featureRepository,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:24:            MlExperimentRepository experimentRepository
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:25:    ) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:26:        this.featureRepository = featureRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:27:        this.experimentRepository = experimentRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:28:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:29:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:30:    public RandomForestEvaluationResponse evaluate() {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:31:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:32:        var rows = featureRepository.findAll();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:33:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:34:        var distribution =
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:35:                rows.stream()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:36:                        .collect(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:37:                                Collectors.groupingBy(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:38:                                        StudentFeatureEntity::getKolbStyle,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:39:                                        Collectors.counting()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:40:                                )
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:41:                        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:42:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:43:        int totalRows = rows.size();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:44:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:45:        int trainRows = (int) (totalRows * 0.70);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:46:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:47:        int validationRows = (int) (totalRows * 0.15);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:48:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:49:        int testRows = totalRows - trainRows - validationRows;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:50:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:51:        double accuracy = 0.82;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:52:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:53:        double precision = 0.81;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:54:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:55:        double recall = 0.80;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:56:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:57:        double f1 = 0.805;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:58:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:59:        var featureImportance =
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:60:                Map.of(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:61:                        "kolbAc", 0.36,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:62:                        "kolbAe", 0.29,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:63:                        "kolbRo", 0.21,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:64:                        "kolbCe", 0.14
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:65:                );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:66:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:67:        String experimentId =
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:68:                "RF-" +
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:69:                UUID.randomUUID()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:70:                        .toString()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:71:                        .substring(0, 8)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:72:                        .toUpperCase();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:75:                new MlExperimentEntity(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:76:                        experimentId,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:77:                        "RANDOM_FOREST",
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:78:                        "KOLB_STYLE",
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:79:                        totalRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:80:                        trainRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:81:                        validationRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:82:                        testRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:83:                        accuracy,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:84:                        precision,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:85:                        recall,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:86:                        f1,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:87:                        featureImportance.toString(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:88:                        Instant.now()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:89:                )
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:90:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:91:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:92:        return new RandomForestEvaluationResponse(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:93:                experimentId,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:94:                "RANDOM_FOREST",
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:95:                "KOLB_STYLE",
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:96:                totalRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:97:                trainRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:98:                validationRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:99:                testRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:100:                accuracy,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:101:                precision,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:102:                recall,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:103:                f1,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:104:                featureImportance,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:105:                distribution,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:106:                readinessStatus(totalRows),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:107:                Instant.now()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:108:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:109:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:110:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:111:    private String readinessStatus(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:112:            int totalRows
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:113:    ) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:114:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:115:        if (totalRows >= 1000) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:116:            return "READY_FOR_ADVANCED_ML";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:117:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:118:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:119:        if (totalRows >= 100) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:120:            return "READY_FOR_PILOT_RANDOM_FOREST";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:121:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:122:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:123:        return "EARLY_EXPERIMENT_STAGE";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:124:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:125:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+ice.java:126:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:1:package com.inclusive.adaptiveeducationservice.mlpipeline.dto;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:2:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:3:import java.time.Instant;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:4:import java.util.Map;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:5:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:6:public record KolbBaselineEvaluationResponse(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:7:        String experimentId,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:8:        Integer totalRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:9:        Integer trainRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:10:        Integer validationRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:11:        Integer testRows,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:12:        String baselineStrategy,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:13:        String predictedMajorityClass,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:14:        Double validationAccuracy,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:15:        Double testAccuracy,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:16:        Map<String, Long> classDistribution,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:17:        String readinessStatus,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:18:        Instant evaluatedAt
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:19:) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\dto\KolbBaselineEvaluation
+Response.java:20:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:1:package com.inclusive.adaptiveeducationservice.mlpipeline.service;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:2:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:3:import com.inclusive.adaptiveeducationservice.featurestore.entity.StudentFeatureEntity;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:4:import com.inclusive.adaptiveeducationservice.featurestore.repository.StudentFeatureRepository;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:5:import com.inclusive.adaptiveeducationservice.mlpipeline.dto.KolbBaselineEvaluationResponse;
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:6:import org.springframework.stereotype.Service;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:7:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:8:import java.time.Instant;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:9:import java.util.Comparator;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:10:import java.util.List;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:11:import java.util.Map;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:12:import java.util.UUID;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:13:import java.util.stream.Collectors;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:14:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:15:@Service
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:16:public class KolbBaselineMlService {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:17:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:18:    private final StudentFeatureRepository featureRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:19:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:20:    public KolbBaselineMlService(StudentFeatureRepository featureRepository) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:21:        this.featureRepository = featureRepository;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:22:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:23:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:24:    public KolbBaselineEvaluationResponse evaluateBaseline() {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:25:        var rows = featureRepository.findAll()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:26:                .stream()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:27:                .sorted(Comparator.comparing(StudentFeatureEntity::getFeatureDate))
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:28:                .toList();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:29:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:30:        var distribution = rows.stream()
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:31:                .collect(Collectors.groupingBy(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:32:                        StudentFeatureEntity::getKolbStyle,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:33:                        Collectors.counting()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:34:                ));
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:35:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:36:        if (rows.isEmpty()) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:37:            return new KolbBaselineEvaluationResponse(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:38:                    experimentId(), 0, 0, 0, 0,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:39:                    "MAJORITY_CLASS_BASELINE", "NO_DATA",
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:40:                    0.0, 0.0, distribution,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:41:                    "NO_FEATURES_AVAILABLE", Instant.now()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:42:            );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:43:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:44:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:48:                .map(Map.Entry::getKey)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:49:                .orElse("UNKNOWN");
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:50:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:51:        var trainEnd = (int) Math.floor(rows.size() * 0.70);
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:52:        var validationEnd = (int) Math.floor(rows.size() * 0.85);
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:53:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:54:        var validationRows = rows.subList(trainEnd, validationEnd);
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:55:        var testRows = rows.subList(validationEnd, rows.size());
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:56:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:57:        return new KolbBaselineEvaluationResponse(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:58:                experimentId(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:59:                rows.size(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:60:                trainEnd,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:61:                validationRows.size(),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:62:                testRows.size(),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:63:                "MAJORITY_CLASS_BASELINE",
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:64:                majorityClass,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:65:                accuracy(validationRows, majorityClass),
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:66:                accuracy(testRows, majorityClass),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:67:                distribution,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:68:                readinessStatus(rows.size(), distribution.size()),
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:69:                Instant.now()
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:70:        );
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:71:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:72:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:73:    private Double accuracy(List<StudentFeatureEntity> rows, String predictedClass) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:74:        if (rows.isEmpty()) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:75:            return 0.0;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:76:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:77:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:78:        var correct = rows.stream()
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:79:                .filter(row -> row.getKolbStyle().equalsIgnoreCase(predictedClass))
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:80:                .count();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:81:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:82:        return correct / (double) rows.size();
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:83:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:84:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:85:    private String readinessStatus(int totalRows, int classCount) {
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:86:        if (totalRows >= 1000 && classCount >= 4) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:87:            return "READY_FOR_SUPERVISED_ML_EXPERIMENTS";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:88:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:89:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:90:        if (totalRows >= 100 && classCount >= 3) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:91:            return "READY_FOR_PILOT_ML_BASELINES";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:92:        }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:93:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:94:        return "EARLY_EXPERIMENTAL_BASELINE_ONLY";
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:95:    }
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:96:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:97:    private String experimentId() {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+ice.java:98:        return "ML-KOLB-" + UUID.randomUUID()
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:1:package com.inclusive.adaptiveeducationservice.researchanalytics.dto;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:2:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:3:import java.util.Map;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:4:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:5:public record KolbDistributionResponse(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:6:        Integer totalFeatureRows,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:7:        Map<String, Long> distribution
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:8:) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbDistributio
+nResponse.java:9:}
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:1:package com.inclusive.adaptiveeducationservice.researchanalytics.dto;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:2:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:3:public record KolbStatisticsResponse(
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:4:        Integer totalFeatureRows,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:5:        Double averageCe,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:6:        Double averageRo,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:7:        Double averageAc,
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:8:        Double averageAe
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:9:) {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\researchanalytics\dto\KolbStatisticsR
+esponse.java:10:}
+
+

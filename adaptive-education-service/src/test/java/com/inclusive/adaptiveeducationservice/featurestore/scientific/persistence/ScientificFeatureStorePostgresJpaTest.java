@@ -9,15 +9,14 @@ import com.inclusive.adaptiveeducationservice.featurestore.scientific.persistenc
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.persistence.repository.ScientificFeatureItemRepository;
 import com.inclusive.adaptiveeducationservice.featurestore.scientific.persistence.repository.ScientificFeatureVectorRepository;
 import jakarta.persistence.EntityManager;
+import com.inclusive.adaptiveeducationservice.testsupport.PostgreSqlIntegrationTestBase;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.transaction.TestTransaction;
 
 import java.time.Instant;
@@ -36,19 +35,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @AutoConfigureTestDatabase(
         replace = AutoConfigureTestDatabase.Replace.NONE
 )
-@TestPropertySource(
-        properties = {
-                "spring.datasource.url=${TEST_POSTGRES_URL}",
-                "spring.datasource.username=${TEST_POSTGRES_USERNAME}",
-                "spring.datasource.password=${TEST_POSTGRES_PASSWORD}",
-                "spring.datasource.driver-class-name=org.postgresql.Driver"
-        }
-)
-@EnabledIfEnvironmentVariable(
-        named = "RUN_POSTGRES_IT",
-        matches = "true"
-)
-class ScientificFeatureStorePostgresJpaTest {
+class ScientificFeatureStorePostgresJpaTest
+        extends PostgreSqlIntegrationTestBase {
 
     private static final String FEATURE_SET =
             "ILP_SCIENTIFIC_BASELINE_V1";

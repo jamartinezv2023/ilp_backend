@@ -1,0 +1,289 @@
+﻿
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:10:class KolbAssessmentEngineTest {
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:11:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:12:    private final KolbAssessmentEngine engine = new KolbAssessmentEngine();
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:13:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:14:    @Test
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:15:    void shouldCalculateDivergentLearningStyle() {
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:16:        var answers = List.of(
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:17:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:18:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:19:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:20:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:21:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:22:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:23:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:24:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:25:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:26:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:27:                4, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:28:                4, 4, 1, 1
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:29:        );
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:30:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:31:        var result = engine.calculate(answers);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:32:
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:33:        assertThat(result.learningStyle()).isEqualTo("DIVERGENT");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:34:        assertThat(result.scoreCE()).isEqualTo(48);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:35:        assertThat(result.scoreRO()).isEqualTo(48);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:36:    }
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:37:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:38:    @Test
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:39:    void shouldRejectInvalidAnswerSize() {
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:40:        assertThatThrownBy(() -> engine.calculate(List.of(1, 2, 3)))
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:41:                .isInstanceOf(IllegalArgumentException.class)
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:42:                .hasMessageContaining("48 answers");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:43:    }
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:44:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:45:    @Test
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:46:    void shouldRejectInvalidAnswerValue() {
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:47:        var answers = List.of(
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\assessment\service\KolbAssessmentEngi
+neTest.java:48:                5, 4, 1, 1,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:67:        // Assert
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:68:        assertThat(features.ac()).isEqualTo(4);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:69:        assertThat(features.ae()).isEqualTo(3);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:70:        assertThat(features.ce()).isEqualTo(1);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:71:        assertThat(features.ro()).isEqualTo(2);
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:72:        assertThat(features.style()).isEqualTo("CONVERGENT");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:73:    }
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\featurestore\extractor\KolbFeatureExt
+ractorTest.java:74:}
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:43:                                        now,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:44:                                        10,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:45:                                        20,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:46:                                        30,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:47:                                        40,
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:48:                                        "CONVERGENT"
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:49:                                ),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:50:                                new StudentFeatureEntity(
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:51:                                        "SF-002",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:52:                                        "ST-002",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:53:                                        now.plusSeconds(1),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:54:                                        11,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:55:                                        21,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:56:                                        31,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:57:                                        41,
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:58:                                        "CONVERGENT"
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:59:                                ),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:60:                                new StudentFeatureEntity(
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:61:                                        "SF-003",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:62:                                        "ST-003",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:63:                                        now.plusSeconds(2),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:64:                                        15,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:65:                                        25,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:66:                                        35,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:67:                                        45,
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:68:                                        "DIVERGENT"
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:69:                                )
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:70:                        )
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:71:                );
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:72:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:73:        var response = service.evaluate();
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:74:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:75:        verify(experimentRepository)
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:76:                .save(any());
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:77:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:78:        assertThat(response.algorithm())
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:79:                .isEqualTo("RANDOM_FOREST");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:80:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:81:        assertThat(response.target())
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:82:                .isEqualTo("KOLB_STYLE");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:83:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:91:                        "kolbRo",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:92:                        "kolbCe"
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:93:                );
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:94:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:95:        assertThat(response.classDistribution())
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:96:                .containsKey("CONVERGENT");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:97:    }
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlmodels\service\RandomForestKolbServ
+iceTest.java:98:}
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:33:                                        now,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:34:                                        10,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:35:                                        20,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:36:                                        30,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:37:                                        40,
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:38:                                        "CONVERGENT"
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:39:                                ),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:40:                                new StudentFeatureEntity(
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:41:                                        "SF-002",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:42:                                        "ST-002",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:43:                                        now.plusSeconds(1),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:44:                                        11,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:45:                                        21,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:46:                                        31,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:47:                                        41,
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:48:                                        "CONVERGENT"
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:49:                                ),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:50:                                new StudentFeatureEntity(
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:51:                                        "SF-003",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:52:                                        "ST-003",
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:53:                                        now.plusSeconds(2),
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:54:                                        12,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:55:                                        22,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:56:                                        32,
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:57:                                        42,
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:58:                                        "DIVERGENT"
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:59:                                )
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:60:                        )
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:61:                );
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:62:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:63:        var result = service.evaluateBaseline();
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:64:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:65:        assertThat(result.totalRows())
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:66:                .isEqualTo(3);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:67:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:68:        assertThat(result.baselineStrategy())
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:69:                .isEqualTo("MAJORITY_CLASS_BASELINE");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:70:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:71:        assertThat(result.predictedMajorityClass())
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:72:                .isEqualTo("CONVERGENT");
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:73:
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:74:        assertThat(
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:75:                result.classDistribution()
+> adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:76:                        .get("CONVERGENT")
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:77:        ).isEqualTo(2L);
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:78:    }
+  adaptive-education-service\src\test\java\com\inclusive\adaptiveeducationservice\mlpipeline\service\KolbBaselineMlServ
+iceTest.java:79:}
+
+

@@ -1,0 +1,5 @@
+﻿"Path","LineNumber","Line"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\repository\AssessmentDefinitionRepository.java","4","import org.springframework.data.jpa.repository.JpaRepository;"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\repository\AssessmentDefinitionRepository.java","9","        extends JpaRepository<AssessmentDefinitionEntity, String> {"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\repository\AssessmentResponseRepository.java","4","import org.springframework.data.jpa.repository.JpaRepository;"
+"C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\repository\AssessmentResponseRepository.java","9","        extends JpaRepository<AssessmentResponseEntity, String> {"

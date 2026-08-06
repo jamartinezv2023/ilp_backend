@@ -1,0 +1,669 @@
+ILP — SCIENTIFIC FEATURE STORE
+CYCLE: 3.3.3.7.2 — QUERY RESULT MODELS
+GENERATED_AT: 2026-08-02 12:39:54 -05:00
+BRANCH: feature/scientific-feature-store
+COMMIT: 537fa32f786b3204fd8650f138fa3a6bae54d3bb
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureItem.java
+SHA256: 4A04AF76C5E77374923A6882AFF4464AE61285BEDCE6D374D75FC48149B3F1EC
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureCode;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureValue;
+
+import java.util.Objects;
+
+public record ScientificFeatureItem(
+        String id,
+        FeatureCode featureCode,
+        FeatureValue value,
+        String sourceAssessmentCode,
+        String sourceAdministrationId
+) {
+
+    private static final int MAXIMUM_ID_LENGTH = 120;
+    private static final int MAXIMUM_SOURCE_LENGTH = 100;
+
+    public ScientificFeatureItem {
+        id = requireText(
+                id,
+                "id",
+                MAXIMUM_ID_LENGTH
+        );
+
+        Objects.requireNonNull(
+                featureCode,
+                "featureCode is required"
+        );
+
+        Objects.requireNonNull(
+                value,
+                "featureValue is required"
+        );
+
+        sourceAssessmentCode =
+                normalizeOptional(
+                        sourceAssessmentCode,
+                        "sourceAssessmentCode",
+                        MAXIMUM_SOURCE_LENGTH
+                );
+
+        sourceAdministrationId =
+                normalizeOptional(
+                        sourceAdministrationId,
+                        "sourceAdministrationId",
+                        MAXIMUM_SOURCE_LENGTH
+                );
+    }
+
+    private static String requireText(
+            String value,
+            String field,
+            int maximumLength
+    ) {
+        Objects.requireNonNull(
+                value,
+                field + " is required"
+        );
+
+        String normalized = value.trim();
+
+        if (normalized.isEmpty()) {
+            throw new IllegalArgumentException(
+                    field + " must not be blank"
+            );
+        }
+
+        if (normalized.length() > maximumLength) {
+            throw new IllegalArgumentException(
+                    field
+                            + " must not exceed "
+                            + maximumLength
+                            + " characters"
+            );
+        }
+
+        return normalized;
+    }
+
+    private static String normalizeOptional(
+            String value,
+            String field,
+            int maximumLength
+    ) {
+        if (value == null) {
+            return null;
+        }
+
+        String normalized = value.trim();
+
+        if (normalized.isEmpty()) {
+            return null;
+        }
+
+        if (normalized.length() > maximumLength) {
+            throw new IllegalArgumentException(
+                    field
+                            + " must not exceed "
+                            + maximumLength
+                            + " characters"
+            );
+        }
+
+        return normalized;
+    }
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureVector.java
+SHA256: E7CCFBF2F7312CC0E04621E1A811E13418F28C368A48818F158FEBB6EDC0EEB3
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureCode;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureSetVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.GeneratorVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ParticipantId;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificChecksum;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificFeatureVectorId;
+
+import java.time.Instant;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+
+public final class ScientificFeatureVector {
+
+    private final ScientificFeatureVectorId id;
+    private final ParticipantId participantId;
+    private final FeatureSetVersion featureSetVersion;
+    private final GeneratorVersion generatorVersion;
+    private final Instant featureCutoffAt;
+    private final Instant generatedAt;
+    private final int sourceObservationCount;
+    private final ScientificChecksum checksum;
+    private final List<ScientificFeatureItem> items;
+    private final Map<FeatureCode, ScientificFeatureItem> itemsByCode;
+
+    public ScientificFeatureVector(
+            ScientificFeatureVectorId id,
+            ParticipantId participantId,
+            FeatureSetVersion featureSetVersion,
+            GeneratorVersion generatorVersion,
+            Instant featureCutoffAt,
+            Instant generatedAt,
+            int sourceObservationCount,
+            ScientificChecksum checksum,
+            List<ScientificFeatureItem> items
+    ) {
+        this.id =
+                Objects.requireNonNull(
+                        id,
+                        "id is required"
+                );
+
+        this.participantId =
+                Objects.requireNonNull(
+                        participantId,
+                        "participantId is required"
+                );
+
+        this.featureSetVersion =
+                Objects.requireNonNull(
+                        featureSetVersion,
+                        "featureSetVersion is required"
+                );
+
+        this.generatorVersion =
+                Objects.requireNonNull(
+                        generatorVersion,
+                        "generatorVersion is required"
+                );
+
+        this.featureCutoffAt =
+                Objects.requireNonNull(
+                        featureCutoffAt,
+                        "featureCutoffAt is required"
+                );
+
+        this.generatedAt =
+                Objects.requireNonNull(
+                        generatedAt,
+                        "generatedAt is required"
+                );
+
+        if (generatedAt.isBefore(featureCutoffAt)) {
+            throw new IllegalArgumentException(
+                    "generatedAt must not be before featureCutoffAt"
+            );
+        }
+
+        if (sourceObservationCount < 0) {
+            throw new IllegalArgumentException(
+                    "sourceObservationCount must be non-negative"
+            );
+        }
+
+        this.sourceObservationCount =
+                sourceObservationCount;
+
+        this.checksum =
+                Objects.requireNonNull(
+                        checksum,
+                        "checksum is required"
+                );
+
+        this.itemsByCode =
+                validateAndIndexItems(items);
+
+        this.items =
+                List.copyOf(
+                        itemsByCode.values()
+                );
+    }
+
+    public ScientificFeatureVectorId id() {
+        return id;
+    }
+
+    public ParticipantId participantId() {
+        return participantId;
+    }
+
+    public FeatureSetVersion featureSetVersion() {
+        return featureSetVersion;
+    }
+
+    public GeneratorVersion generatorVersion() {
+        return generatorVersion;
+    }
+
+    public Instant featureCutoffAt() {
+        return featureCutoffAt;
+    }
+
+    public Instant generatedAt() {
+        return generatedAt;
+    }
+
+    public int sourceObservationCount() {
+        return sourceObservationCount;
+    }
+
+    public ScientificChecksum checksum() {
+        return checksum;
+    }
+
+    public List<ScientificFeatureItem> items() {
+        return items;
+    }
+
+    public int featureCount() {
+        return items.size();
+    }
+
+    public boolean containsFeature(
+            FeatureCode featureCode
+    ) {
+        Objects.requireNonNull(
+                featureCode,
+                "featureCode is required"
+        );
+
+        return itemsByCode.containsKey(
+                featureCode
+        );
+    }
+
+    public Optional<ScientificFeatureItem> findFeature(
+            FeatureCode featureCode
+    ) {
+        Objects.requireNonNull(
+                featureCode,
+                "featureCode is required"
+        );
+
+        return Optional.ofNullable(
+                itemsByCode.get(featureCode)
+        );
+    }
+
+    public ScientificFeatureItem requireFeature(
+            FeatureCode featureCode
+    ) {
+        return findFeature(featureCode)
+                .orElseThrow(() ->
+                        new IllegalArgumentException(
+                                "Feature not found: "
+                                        + featureCode.value()
+                        )
+                );
+    }
+
+    private static Map<
+            FeatureCode,
+            ScientificFeatureItem
+            > validateAndIndexItems(
+            List<ScientificFeatureItem> items
+    ) {
+        Objects.requireNonNull(
+                items,
+                "items are required"
+        );
+
+        if (items.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "items must not be empty"
+            );
+        }
+
+        Map<
+                FeatureCode,
+                ScientificFeatureItem
+                > indexed =
+                new LinkedHashMap<>();
+
+        for (ScientificFeatureItem item : items) {
+            Objects.requireNonNull(
+                    item,
+                    "feature item is required"
+            );
+
+            ScientificFeatureItem previous =
+                    indexed.putIfAbsent(
+                            item.featureCode(),
+                            item
+                    );
+
+            if (previous != null) {
+                throw new IllegalArgumentException(
+                        "Duplicate feature code: "
+                                + item.featureCode().value()
+                );
+            }
+        }
+
+        return Map.copyOf(indexed);
+    }
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\FeatureValue.java
+SHA256: 60391318A7AF1992046CDA46523F5A9F0BEEFA9D71833DDFE5480CE5D4BB96C1
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject;
+
+import java.util.Objects;
+
+public sealed interface FeatureValue
+        permits FeatureValue.NumericValue,
+        FeatureValue.TextValue,
+        FeatureValue.BooleanValue {
+
+    DataType dataType();
+
+    enum DataType {
+        NUMERIC,
+        TEXT,
+        BOOLEAN
+    }
+
+    record NumericValue(double value)
+            implements FeatureValue {
+
+        public NumericValue {
+            if (!Double.isFinite(value)) {
+                throw new IllegalArgumentException(
+                        "numeric feature value must be finite"
+                );
+            }
+        }
+
+        @Override
+        public DataType dataType() {
+            return DataType.NUMERIC;
+        }
+    }
+
+    record TextValue(String value)
+            implements FeatureValue {
+
+        public TextValue {
+            Objects.requireNonNull(
+                    value,
+                    "text feature value is required"
+            );
+
+            value = value.trim();
+
+            if (value.isEmpty()) {
+                throw new IllegalArgumentException(
+                        "text feature value must not be blank"
+                );
+            }
+        }
+
+        @Override
+        public DataType dataType() {
+            return DataType.TEXT;
+        }
+    }
+
+    record BooleanValue(boolean value)
+            implements FeatureValue {
+
+        @Override
+        public DataType dataType() {
+            return DataType.BOOLEAN;
+        }
+    }
+
+    static FeatureValue numeric(double value) {
+        return new NumericValue(value);
+    }
+
+    static FeatureValue text(String value) {
+        return new TextValue(value);
+    }
+
+    static FeatureValue bool(boolean value) {
+        return new BooleanValue(value);
+    }
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\FeatureCode.java
+SHA256: 61D81D9C76C2CEA7C92E5CF3BE3078B54974D9B3FCA73AB09D55A7BF3AAEC2B0
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject;
+
+import java.util.Locale;
+import java.util.Objects;
+import java.util.regex.Pattern;
+
+public record FeatureCode(String value) {
+
+    private static final Pattern VALID_PATTERN =
+            Pattern.compile("[A-Z][A-Z0-9_]{0,99}");
+
+    public FeatureCode {
+        Objects.requireNonNull(
+                value,
+                "featureCode is required"
+        );
+
+        value = value
+                .trim()
+                .toUpperCase(Locale.ROOT);
+
+        if (value.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "featureCode must not be blank"
+            );
+        }
+
+        if (!VALID_PATTERN.matcher(value).matches()) {
+            throw new IllegalArgumentException(
+                    "featureCode must start with a letter "
+                            + "and contain only uppercase letters, "
+                            + "numbers or underscores"
+            );
+        }
+    }
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\ScientificChecksum.java
+SHA256: 00A3914727169AF893209AE2F3F73EBCEAE6398FB896A86799F0E35DA2FCF678
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject;
+
+import java.util.Objects;
+
+public record ScientificChecksum(String value) {
+
+    private static final int MAXIMUM_LENGTH = 128;
+
+    public ScientificChecksum {
+        Objects.requireNonNull(
+                value,
+                "scientificChecksum is required"
+        );
+
+        value = value.trim();
+
+        if (value.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "scientificChecksum must not be blank"
+            );
+        }
+
+        if (value.length() > MAXIMUM_LENGTH) {
+            throw new IllegalArgumentException(
+                    "scientificChecksum must not exceed "
+                            + "128 characters"
+            );
+        }
+    }
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\in\query\ScientificFeatureVectorQueryUseCase.java
+SHA256: C24976482FFEEDAA3F9897D20140B162D59566144C23484C217440DC55107854
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model.FindExactScientificFeatureVectorQuery;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model.FindLatestScientificFeatureVectorQuery;
+
+import java.util.Optional;
+
+public interface ScientificFeatureVectorQueryUseCase {
+
+    Optional<ScientificFeatureVector> findExact(
+            FindExactScientificFeatureVectorQuery query
+    );
+
+    Optional<ScientificFeatureVector> findLatestCompleted(
+            FindLatestScientificFeatureVectorQuery query
+    );
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\in\query\model\FindExactScientificFeatureVectorQuery.java
+SHA256: AD288BC7007523B46738ACEB2DB73392175CF59E7376C5E0EAC30D92A03908B5
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureSetVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ParticipantId;
+
+import java.time.Instant;
+import java.util.Objects;
+
+public record FindExactScientificFeatureVectorQuery(
+        ParticipantId participantId,
+        FeatureSetVersion featureSetVersion,
+        Instant featureCutoffAt
+) {
+
+    public FindExactScientificFeatureVectorQuery {
+        Objects.requireNonNull(
+                participantId,
+                "participantId is required"
+        );
+
+        Objects.requireNonNull(
+                featureSetVersion,
+                "featureSetVersion is required"
+        );
+
+        Objects.requireNonNull(
+                featureCutoffAt,
+                "featureCutoffAt is required"
+        );
+    }
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\in\query\model\FindLatestScientificFeatureVectorQuery.java
+SHA256: D54CF0A577973538C87D9619A20C6279D97238BB8C7B6BBA6AAACCE65E8C4C17
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureSetVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ParticipantId;
+
+import java.util.Objects;
+
+public record FindLatestScientificFeatureVectorQuery(
+        ParticipantId participantId,
+        FeatureSetVersion featureSetVersion
+) {
+
+    public FindLatestScientificFeatureVectorQuery {
+        Objects.requireNonNull(
+                participantId,
+                "participantId is required"
+        );
+
+        Objects.requireNonNull(
+                featureSetVersion,
+                "featureSetVersion is required"
+        );
+    }
+}
+
+================================================================================
+FILE: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\query\ScientificFeatureVectorQueryService.java
+SHA256: F9F7919A2D7034FAC940CF2135251BA32E7292FEA9F6CED62815D489B9990618
+================================================================================
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.application.query;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.ScientificFeatureVectorQueryUseCase;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model.FindExactScientificFeatureVectorQuery;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.query.model.FindLatestScientificFeatureVectorQuery;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out.ScientificFeatureVectorQueryPort;
+
+import java.util.Objects;
+import java.util.Optional;
+
+public final class ScientificFeatureVectorQueryService
+        implements ScientificFeatureVectorQueryUseCase {
+
+    private final ScientificFeatureVectorQueryPort queryPort;
+
+    public ScientificFeatureVectorQueryService(
+            ScientificFeatureVectorQueryPort queryPort
+    ) {
+        this.queryPort =
+                Objects.requireNonNull(
+                        queryPort,
+                        "queryPort is required"
+                );
+    }
+
+    @Override
+    public Optional<ScientificFeatureVector> findExact(
+            FindExactScientificFeatureVectorQuery query
+    ) {
+        Objects.requireNonNull(
+                query,
+                "query is required"
+        );
+
+        return Objects.requireNonNull(
+                queryPort.findExact(
+                        query.participantId(),
+                        query.featureSetVersion(),
+                        query.featureCutoffAt()
+                ),
+                "queryPort result must not be null"
+        );
+    }
+
+    @Override
+    public Optional<ScientificFeatureVector> findLatestCompleted(
+            FindLatestScientificFeatureVectorQuery query
+    ) {
+        Objects.requireNonNull(
+                query,
+                "query is required"
+        );
+
+        return Objects.requireNonNull(
+                queryPort.findLatestCompleted(
+                        query.participantId(),
+                        query.featureSetVersion()
+                ),
+                "queryPort result must not be null"
+        );
+    }
+}
+

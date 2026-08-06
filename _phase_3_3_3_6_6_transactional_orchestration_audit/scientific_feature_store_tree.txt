@@ -1,0 +1,52 @@
+SCIENTIFIC FEATURE STORE — PACKAGE TREE
+GeneratedAt: 2026-07-31 22:13:27 -05:00
+Repository: C:\TEAC2026\ilp_backend
+Branch: feature/scientific-feature-store
+Commit: 92d04dc6ef4d728062269904896d3f086653c865
+Root: adaptive-education-service/src/main/java/com/inclusive/adaptiveeducationservice/featurestore/scientific
+TotalFiles: 44
+
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\idempotency\ScientificGenerationDecision.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\idempotency\ScientificGenerationIdempotencyService.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\pipeline\ScientificGenerationContext.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\pipeline\ScientificGenerationPipeline.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\pipeline\ScientificGenerationPipelineStep.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\pipeline\step\ProviderExecutionStep.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\pipeline\step\SeedFeaturesStep.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\pipeline\step\VectorAssemblyStep.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\ProviderCompositeScientificFeatureGenerator.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\ScientificFeatureGenerationService.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureGenerationRun.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureGenerationStatus.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureItem.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureVector.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\FeatureCode.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\FeatureSetVersion.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\FeatureValue.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\GeneratorVersion.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\ParticipantId.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\ScientificChecksum.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\ScientificFeatureGenerationRunId.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\valueobject\ScientificFeatureVectorId.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\adapter\JpaScientificFeatureGenerationRunAdapter.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\adapter\JpaScientificFeatureVectorAdapter.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\entity\ScientificFeatureDataType.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\entity\ScientificFeatureGenerationRunEntity.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\entity\ScientificFeatureGenerationStatus.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\entity\ScientificFeatureItemEntity.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\entity\ScientificFeatureVectorEntity.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\entity\ScientificFeatureVectorStatus.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\mapper\ScientificFeatureGenerationRunMapper.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\mapper\ScientificFeatureItemMapper.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\mapper\ScientificFeatureVectorMapper.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\repository\ScientificFeatureGenerationRunRepository.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\repository\ScientificFeatureItemRepository.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\persistence\repository\ScientificFeatureVectorRepository.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\in\generation\model\ScientificFeatureGenerationRequest.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\in\generation\ScientificFeatureGenerator.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\provider\ScientificFeatureProvider.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureGenerationRunPersistencePort.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureGenerationRunQueryPort.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureVectorPersistencePort.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureVectorQueryPort.java
+adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\provider\kolb\KolbScientificFeatureProvider.java

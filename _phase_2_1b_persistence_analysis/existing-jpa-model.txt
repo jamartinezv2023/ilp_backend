@@ -1,0 +1,141 @@
+﻿
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:15:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:16:@Entity
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:17:@Table(name = "assessment_definitions")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:18:public class AssessmentDefinitionEntity {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:19:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:20:    @Id
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:21:    private String id;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:22:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:23:    @Column(nullable = false, unique = true)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:49:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:50:    @OneToMany(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:51:            mappedBy = "assessmentDefinition",
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:52:            cascade = CascadeType.ALL,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tDefinitionEntity.java:53:            orphanRemoval = true,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:8:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:9:@Entity
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:10:@Table(name = "assessment_options")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:11:public class AssessmentOptionEntity {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:12:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:13:    @Id
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:14:    private String id;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:15:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:16:    @ManyToOne(optional = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:17:    private AssessmentQuestionEntity question;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:18:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tOptionEntity.java:19:    @Column(nullable = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:15:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:16:@Entity
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:17:@Table(name = "assessment_questions")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:18:public class AssessmentQuestionEntity {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:19:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:20:    @Id
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:21:    private String id;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:22:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:23:    @ManyToOne(optional = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:24:    private AssessmentDefinitionEntity assessmentDefinition;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:25:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:26:    @Column(nullable = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:46:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:47:    @OneToMany(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:48:            mappedBy = "question",
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:49:            cascade = CascadeType.ALL,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentdefinition\entity\Assessmen
+tQuestionEntity.java:50:            orphanRemoval = true,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:8:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:9:@Entity
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:10:@Table(name = "assessment_answers")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:11:public class AssessmentAnswerEntity {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:12:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:13:    @Id
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:14:    private String id;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:15:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:16:    @ManyToOne(optional = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:17:    private AssessmentResponseEntity assessmentResponse;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:18:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentA
+nswerEntity.java:19:    @Column(nullable = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:15:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:16:@Entity
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:17:@Table(name = "assessment_responses")
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:18:public class AssessmentResponseEntity {
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:19:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:20:    @Id
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:21:    private String id;
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:22:
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:23:    @Column(nullable = false)
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:37:
+> adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:38:    @OneToMany(
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:39:            mappedBy = "assessmentResponse",
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:40:            cascade = CascadeType.ALL,
+  adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\assessmentresponse\entity\AssessmentR
+esponseEntity.java:41:            orphanRemoval = true,
+
+

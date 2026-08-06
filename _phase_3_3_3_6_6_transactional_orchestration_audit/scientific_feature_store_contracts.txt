@@ -1,0 +1,897 @@
+SCIENTIFIC FEATURE STORE — TRANSACTIONAL ORCHESTRATION CONTRACT AUDIT
+GeneratedAt: 2026-07-31 22:14:45 -05:00
+Repository: C:\TEAC2026\ilp_backend
+Branch: feature/scientific-feature-store
+Commit: 92d04dc6ef4d728062269904896d3f086653c865
+RemoteHead: 92d04dc6ef4d728062269904896d3f086653c865
+
+================================================================================
+CLASS: ScientificFeatureGenerationService.java
+PATH: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\ScientificFeatureGenerationService.java
+SIZE_BYTES: 2040
+SHA256: CE37A81CB76BBBCFF8A649F9886DCFD520826ABA419C62980320B7610C0141D8
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.application.generation;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.generation.ScientificFeatureGenerator;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.generation.model.ScientificFeatureGenerationRequest;
+
+import java.util.Objects;
+
+/**
+ * Application service responsible for coordinating scientific feature
+ * generation.
+ *
+ * <p>This service deliberately contains no instrument-specific extraction,
+ * persistence, transaction, framework, or transport logic. Its current
+ * responsibility is to validate the application input and delegate feature
+ * generation to the configured {@link ScientificFeatureGenerator} port.</p>
+ */
+public final class ScientificFeatureGenerationService {
+
+    private final ScientificFeatureGenerator generator;
+
+    /**
+     * Creates the scientific feature generation application service.
+     *
+     * @param generator scientific feature generator port
+     * @throws NullPointerException when {@code generator} is {@code null}
+     */
+    public ScientificFeatureGenerationService(
+            ScientificFeatureGenerator generator
+    ) {
+        this.generator = Objects.requireNonNull(
+                generator,
+                "generator must not be null"
+        );
+    }
+
+    /**
+     * Generates a scientific feature vector from a validated generation
+     * request.
+     *
+     * @param request scientific feature generation request
+     * @return the vector returned by the configured generator
+     * @throws NullPointerException when {@code request} is {@code null}
+     */
+    public ScientificFeatureVector generate(
+            ScientificFeatureGenerationRequest request
+    ) {
+        Objects.requireNonNull(
+                request,
+                "request must not be null"
+        );
+
+        return generator.generate(request);
+    }
+}
+
+
+================================================================================
+CLASS: ScientificGenerationIdempotencyService.java
+PATH: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\application\generation\idempotency\ScientificGenerationIdempotencyService.java
+SIZE_BYTES: 1621
+SHA256: 57F6A2D483EC7327C24FB8C35779138734E92712C33044C3094EE29EB5A24A35
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.application.generation.idempotency;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.generation.model.ScientificFeatureGenerationRequest;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out.ScientificFeatureVectorQueryPort;
+
+import java.util.Objects;
+import java.util.Optional;
+
+public final class ScientificGenerationIdempotencyService {
+
+    private final ScientificFeatureVectorQueryPort queryPort;
+
+    public ScientificGenerationIdempotencyService(
+            ScientificFeatureVectorQueryPort queryPort
+    ) {
+        this.queryPort =
+                Objects.requireNonNull(
+                        queryPort,
+                        "queryPort is required"
+                );
+    }
+
+    public ScientificGenerationDecision decide(
+            ScientificFeatureGenerationRequest request
+    ) {
+        Objects.requireNonNull(
+                request,
+                "request is required"
+        );
+
+        Optional<ScientificFeatureVector> existingVector =
+                queryPort.findExact(
+                        request.participantId(),
+                        request.featureSetVersion(),
+                        request.featureCutoffAt()
+                );
+
+        return existingVector
+                .map(ScientificGenerationDecision::reuse)
+                .orElseGet(
+                        ScientificGenerationDecision::generateNew
+                );
+    }
+}
+
+
+================================================================================
+CLASS: ScientificFeatureVectorPersistencePort.java
+PATH: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureVectorPersistencePort.java
+SIZE_BYTES: 335
+SHA256: 56D9D5E7FA2A50624A5A510795F014D05D9B904B6A8F9698FD443E75B08BE2E8
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
+
+public interface ScientificFeatureVectorPersistencePort {
+
+    ScientificFeatureVector save(
+            ScientificFeatureVector vector
+    );
+}
+
+
+================================================================================
+CLASS: ScientificFeatureGenerationRunPersistencePort.java
+PATH: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureGenerationRunPersistencePort.java
+SIZE_BYTES: 360
+SHA256: 79E17885C0AD791D92A8355FD615920A7D38A146723452F2C8F994CD75CBE46D
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureGenerationRun;
+
+public interface ScientificFeatureGenerationRunPersistencePort {
+
+    ScientificFeatureGenerationRun save(
+            ScientificFeatureGenerationRun run
+    );
+}
+
+
+================================================================================
+CLASS: ScientificFeatureGenerator.java
+PATH: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\in\generation\ScientificFeatureGenerator.java
+SIZE_BYTES: 501
+SHA256: 8D8950378D5C4BB55336C8733DB840DDDB68B39259C55E352D6409035384D8BD
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.generation;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.port.in.generation.model.ScientificFeatureGenerationRequest;
+
+@FunctionalInterface
+public interface ScientificFeatureGenerator {
+
+    ScientificFeatureVector generate(
+            ScientificFeatureGenerationRequest request
+    );
+}
+
+
+================================================================================
+CLASS: ScientificFeatureGenerationRun.java
+PATH: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureGenerationRun.java
+SIZE_BYTES: 10224
+SHA256: 79CFD526DACF5818C9925AEC99BB114519F1C11980583DA70BAB6641F3BF6D8E
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureSetVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.GeneratorVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ParticipantId;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificFeatureGenerationRunId;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificFeatureVectorId;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.Optional;
+
+public final class ScientificFeatureGenerationRun {
+
+    private static final int MAXIMUM_ERROR_LENGTH = 2000;
+
+    private final ScientificFeatureGenerationRunId id;
+    private final ParticipantId participantId;
+    private final FeatureSetVersion featureSetVersion;
+    private final GeneratorVersion generatorVersion;
+    private final Instant featureCutoffAt;
+    private final Instant startedAt;
+    private final Instant completedAt;
+    private final ScientificFeatureGenerationStatus status;
+    private final int inputObservationCount;
+    private final String errorMessage;
+    private final ScientificFeatureVectorId featureVectorId;
+
+    private ScientificFeatureGenerationRun(
+            ScientificFeatureGenerationRunId id,
+            ParticipantId participantId,
+            FeatureSetVersion featureSetVersion,
+            GeneratorVersion generatorVersion,
+            Instant featureCutoffAt,
+            Instant startedAt,
+            Instant completedAt,
+            ScientificFeatureGenerationStatus status,
+            int inputObservationCount,
+            String errorMessage,
+            ScientificFeatureVectorId featureVectorId
+    ) {
+        this.id =
+                Objects.requireNonNull(
+                        id,
+                        "id is required"
+                );
+
+        this.participantId =
+                Objects.requireNonNull(
+                        participantId,
+                        "participantId is required"
+                );
+
+        this.featureSetVersion =
+                Objects.requireNonNull(
+                        featureSetVersion,
+                        "featureSetVersion is required"
+                );
+
+        this.generatorVersion =
+                Objects.requireNonNull(
+                        generatorVersion,
+                        "generatorVersion is required"
+                );
+
+        this.featureCutoffAt =
+                Objects.requireNonNull(
+                        featureCutoffAt,
+                        "featureCutoffAt is required"
+                );
+
+        this.startedAt =
+                Objects.requireNonNull(
+                        startedAt,
+                        "startedAt is required"
+                );
+
+        this.status =
+                Objects.requireNonNull(
+                        status,
+                        "status is required"
+                );
+
+        if (inputObservationCount < 0) {
+            throw new IllegalArgumentException(
+                    "inputObservationCount must be non-negative"
+            );
+        }
+
+        this.inputObservationCount =
+                inputObservationCount;
+
+        this.completedAt = completedAt;
+        this.errorMessage =
+                normalizeErrorMessage(errorMessage);
+        this.featureVectorId = featureVectorId;
+
+        validateState();
+    }
+
+    public static ScientificFeatureGenerationRun start(
+            ScientificFeatureGenerationRunId id,
+            ParticipantId participantId,
+            FeatureSetVersion featureSetVersion,
+            GeneratorVersion generatorVersion,
+            Instant featureCutoffAt,
+            Instant startedAt,
+            int inputObservationCount
+    ) {
+        return new ScientificFeatureGenerationRun(
+                id,
+                participantId,
+                featureSetVersion,
+                generatorVersion,
+                featureCutoffAt,
+                startedAt,
+                null,
+                ScientificFeatureGenerationStatus.STARTED,
+                inputObservationCount,
+                null,
+                null
+        );
+    }
+
+    public ScientificFeatureGenerationRun complete(
+            ScientificFeatureVectorId featureVectorId,
+            Instant completedAt
+    ) {
+        requireStarted();
+
+        return new ScientificFeatureGenerationRun(
+                id,
+                participantId,
+                featureSetVersion,
+                generatorVersion,
+                featureCutoffAt,
+                startedAt,
+                Objects.requireNonNull(
+                        completedAt,
+                        "completedAt is required"
+                ),
+                ScientificFeatureGenerationStatus.COMPLETED,
+                inputObservationCount,
+                null,
+                Objects.requireNonNull(
+                        featureVectorId,
+                        "featureVectorId is required"
+                )
+        );
+    }
+
+    public ScientificFeatureGenerationRun fail(
+            String errorMessage,
+            Instant completedAt
+    ) {
+        requireStarted();
+
+        return new ScientificFeatureGenerationRun(
+                id,
+                participantId,
+                featureSetVersion,
+                generatorVersion,
+                featureCutoffAt,
+                startedAt,
+                Objects.requireNonNull(
+                        completedAt,
+                        "completedAt is required"
+                ),
+                ScientificFeatureGenerationStatus.FAILED,
+                inputObservationCount,
+                requireErrorMessage(errorMessage),
+                null
+        );
+    }
+
+    public boolean isStarted() {
+        return status
+                == ScientificFeatureGenerationStatus.STARTED;
+    }
+
+    public boolean isCompleted() {
+        return status
+                == ScientificFeatureGenerationStatus.COMPLETED;
+    }
+
+    public boolean isFailed() {
+        return status
+                == ScientificFeatureGenerationStatus.FAILED;
+    }
+
+    public Optional<Duration> duration() {
+        if (completedAt == null) {
+            return Optional.empty();
+        }
+
+        return Optional.of(
+                Duration.between(
+                        startedAt,
+                        completedAt
+                )
+        );
+    }
+
+    public ScientificFeatureGenerationRunId id() {
+        return id;
+    }
+
+    public ParticipantId participantId() {
+        return participantId;
+    }
+
+    public FeatureSetVersion featureSetVersion() {
+        return featureSetVersion;
+    }
+
+    public GeneratorVersion generatorVersion() {
+        return generatorVersion;
+    }
+
+    public Instant featureCutoffAt() {
+        return featureCutoffAt;
+    }
+
+    public Instant startedAt() {
+        return startedAt;
+    }
+
+    public Instant completedAt() {
+        return completedAt;
+    }
+
+    public ScientificFeatureGenerationStatus status() {
+        return status;
+    }
+
+    public int inputObservationCount() {
+        return inputObservationCount;
+    }
+
+    public String errorMessage() {
+        return errorMessage;
+    }
+
+    public ScientificFeatureVectorId featureVectorId() {
+        return featureVectorId;
+    }
+
+    private void requireStarted() {
+        if (!isStarted()) {
+            throw new IllegalStateException(
+                    "Only STARTED runs can change state"
+            );
+        }
+    }
+
+    private void validateState() {
+        if (
+                completedAt != null
+                        && completedAt.isBefore(startedAt)
+        ) {
+            throw new IllegalArgumentException(
+                    "completedAt must not be before startedAt"
+            );
+        }
+
+        switch (status) {
+            case STARTED -> validateStartedState();
+            case COMPLETED -> validateCompletedState();
+            case FAILED -> validateFailedState();
+        }
+    }
+
+    private void validateStartedState() {
+        if (
+                completedAt != null
+                        || errorMessage != null
+                        || featureVectorId != null
+        ) {
+            throw new IllegalArgumentException(
+                    "STARTED run cannot contain completion data"
+            );
+        }
+    }
+
+    private void validateCompletedState() {
+        if (
+                completedAt == null
+                        || featureVectorId == null
+                        || errorMessage != null
+        ) {
+            throw new IllegalArgumentException(
+                    "COMPLETED run requires completedAt "
+                            + "and featureVectorId"
+            );
+        }
+    }
+
+    private void validateFailedState() {
+        if (
+                completedAt == null
+                        || errorMessage == null
+                        || featureVectorId != null
+        ) {
+            throw new IllegalArgumentException(
+                    "FAILED run requires completedAt "
+                            + "and errorMessage"
+            );
+        }
+    }
+
+    private static String requireErrorMessage(
+            String value
+    ) {
+        String normalized =
+                normalizeErrorMessage(value);
+
+        if (normalized == null) {
+            throw new IllegalArgumentException(
+                    "errorMessage must not be blank"
+            );
+        }
+
+        return normalized;
+    }
+
+    private static String normalizeErrorMessage(
+            String value
+    ) {
+        if (value == null) {
+            return null;
+        }
+
+        String normalized = value.trim();
+
+        if (normalized.isEmpty()) {
+            return null;
+        }
+
+        if (normalized.length() > MAXIMUM_ERROR_LENGTH) {
+            throw new IllegalArgumentException(
+                    "errorMessage must not exceed "
+                            + MAXIMUM_ERROR_LENGTH
+                            + " characters"
+            );
+        }
+
+        return normalized;
+    }
+}
+
+
+================================================================================
+CLASS: ScientificFeatureVector.java
+PATH: adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\domain\model\ScientificFeatureVector.java
+SIZE_BYTES: 6748
+SHA256: E7CCFBF2F7312CC0E04621E1A811E13418F28C368A48818F158FEBB6EDC0EEB3
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureCode;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureSetVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.GeneratorVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ParticipantId;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificChecksum;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificFeatureVectorId;
+
+import java.time.Instant;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+
+public final class ScientificFeatureVector {
+
+    private final ScientificFeatureVectorId id;
+    private final ParticipantId participantId;
+    private final FeatureSetVersion featureSetVersion;
+    private final GeneratorVersion generatorVersion;
+    private final Instant featureCutoffAt;
+    private final Instant generatedAt;
+    private final int sourceObservationCount;
+    private final ScientificChecksum checksum;
+    private final List<ScientificFeatureItem> items;
+    private final Map<FeatureCode, ScientificFeatureItem> itemsByCode;
+
+    public ScientificFeatureVector(
+            ScientificFeatureVectorId id,
+            ParticipantId participantId,
+            FeatureSetVersion featureSetVersion,
+            GeneratorVersion generatorVersion,
+            Instant featureCutoffAt,
+            Instant generatedAt,
+            int sourceObservationCount,
+            ScientificChecksum checksum,
+            List<ScientificFeatureItem> items
+    ) {
+        this.id =
+                Objects.requireNonNull(
+                        id,
+                        "id is required"
+                );
+
+        this.participantId =
+                Objects.requireNonNull(
+                        participantId,
+                        "participantId is required"
+                );
+
+        this.featureSetVersion =
+                Objects.requireNonNull(
+                        featureSetVersion,
+                        "featureSetVersion is required"
+                );
+
+        this.generatorVersion =
+                Objects.requireNonNull(
+                        generatorVersion,
+                        "generatorVersion is required"
+                );
+
+        this.featureCutoffAt =
+                Objects.requireNonNull(
+                        featureCutoffAt,
+                        "featureCutoffAt is required"
+                );
+
+        this.generatedAt =
+                Objects.requireNonNull(
+                        generatedAt,
+                        "generatedAt is required"
+                );
+
+        if (generatedAt.isBefore(featureCutoffAt)) {
+            throw new IllegalArgumentException(
+                    "generatedAt must not be before featureCutoffAt"
+            );
+        }
+
+        if (sourceObservationCount < 0) {
+            throw new IllegalArgumentException(
+                    "sourceObservationCount must be non-negative"
+            );
+        }
+
+        this.sourceObservationCount =
+                sourceObservationCount;
+
+        this.checksum =
+                Objects.requireNonNull(
+                        checksum,
+                        "checksum is required"
+                );
+
+        this.itemsByCode =
+                validateAndIndexItems(items);
+
+        this.items =
+                List.copyOf(
+                        itemsByCode.values()
+                );
+    }
+
+    public ScientificFeatureVectorId id() {
+        return id;
+    }
+
+    public ParticipantId participantId() {
+        return participantId;
+    }
+
+    public FeatureSetVersion featureSetVersion() {
+        return featureSetVersion;
+    }
+
+    public GeneratorVersion generatorVersion() {
+        return generatorVersion;
+    }
+
+    public Instant featureCutoffAt() {
+        return featureCutoffAt;
+    }
+
+    public Instant generatedAt() {
+        return generatedAt;
+    }
+
+    public int sourceObservationCount() {
+        return sourceObservationCount;
+    }
+
+    public ScientificChecksum checksum() {
+        return checksum;
+    }
+
+    public List<ScientificFeatureItem> items() {
+        return items;
+    }
+
+    public int featureCount() {
+        return items.size();
+    }
+
+    public boolean containsFeature(
+            FeatureCode featureCode
+    ) {
+        Objects.requireNonNull(
+                featureCode,
+                "featureCode is required"
+        );
+
+        return itemsByCode.containsKey(
+                featureCode
+        );
+    }
+
+    public Optional<ScientificFeatureItem> findFeature(
+            FeatureCode featureCode
+    ) {
+        Objects.requireNonNull(
+                featureCode,
+                "featureCode is required"
+        );
+
+        return Optional.ofNullable(
+                itemsByCode.get(featureCode)
+        );
+    }
+
+    public ScientificFeatureItem requireFeature(
+            FeatureCode featureCode
+    ) {
+        return findFeature(featureCode)
+                .orElseThrow(() ->
+                        new IllegalArgumentException(
+                                "Feature not found: "
+                                        + featureCode.value()
+                        )
+                );
+    }
+
+    private static Map<
+            FeatureCode,
+            ScientificFeatureItem
+            > validateAndIndexItems(
+            List<ScientificFeatureItem> items
+    ) {
+        Objects.requireNonNull(
+                items,
+                "items are required"
+        );
+
+        if (items.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "items must not be empty"
+            );
+        }
+
+        Map<
+                FeatureCode,
+                ScientificFeatureItem
+                > indexed =
+                new LinkedHashMap<>();
+
+        for (ScientificFeatureItem item : items) {
+            Objects.requireNonNull(
+                    item,
+                    "feature item is required"
+            );
+
+            ScientificFeatureItem previous =
+                    indexed.putIfAbsent(
+                            item.featureCode(),
+                            item
+                    );
+
+            if (previous != null) {
+                throw new IllegalArgumentException(
+                        "Duplicate feature code: "
+                                + item.featureCode().value()
+                );
+            }
+        }
+
+        return Map.copyOf(indexed);
+    }
+}
+
+
+
+================================================================================
+RELATED CONTRACT: ScientificFeatureVectorQueryPort.java
+PATH: C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureVectorQueryPort.java
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureVector;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.FeatureSetVersion;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ParticipantId;
+
+import java.time.Instant;
+import java.util.Optional;
+
+public interface ScientificFeatureVectorQueryPort {
+
+    boolean exists(
+            ParticipantId participantId,
+            FeatureSetVersion featureSetVersion,
+            Instant featureCutoffAt
+    );
+
+    Optional<ScientificFeatureVector> findExact(
+            ParticipantId participantId,
+            FeatureSetVersion featureSetVersion,
+            Instant featureCutoffAt
+    );
+
+    Optional<ScientificFeatureVector> findLatestCompleted(
+            ParticipantId participantId,
+            FeatureSetVersion featureSetVersion
+    );
+}
+
+================================================================================
+RELATED RUN CONTRACT: ScientificFeatureGenerationRunQueryPort.java
+PATH: C:\TEAC2026\ilp_backend\adaptive-education-service\src\main\java\com\inclusive\adaptiveeducationservice\featurestore\scientific\port\out\ScientificFeatureGenerationRunQueryPort.java
+================================================================================
+
+package com.inclusive.adaptiveeducationservice.featurestore.scientific.port.out;
+
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureGenerationRun;
+import com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.valueobject.ScientificFeatureGenerationRunId;
+
+import java.util.Optional;
+
+public interface ScientificFeatureGenerationRunQueryPort {
+
+    Optional<ScientificFeatureGenerationRun> findById(
+            ScientificFeatureGenerationRunId runId
+    );
+}
+
+
+================================================================================
+CONTRACT SIGNATURE SUMMARY
+================================================================================
+
+----- ScientificFeatureGenerationService.java -----
+L28: public ScientificFeatureGenerationService(
+L45: public ScientificFeatureVector generate(
+
+----- ScientificGenerationIdempotencyService.java -----
+L14: public ScientificGenerationIdempotencyService(
+L24: public ScientificGenerationDecision decide(
+
+----- ScientificFeatureVectorPersistencePort.java -----
+L5: public interface ScientificFeatureVectorPersistencePort {
+L7: ScientificFeatureVector save(
+
+----- ScientificFeatureGenerationRunPersistencePort.java -----
+L5: public interface ScientificFeatureGenerationRunPersistencePort {
+L7: ScientificFeatureGenerationRun save(
+
+----- ScientificFeatureGenerator.java -----
+L6: @FunctionalInterface
+L7: public interface ScientificFeatureGenerator {
+L9: ScientificFeatureVector generate(
+
+----- ScientificFeatureGenerationRun.java -----
+L102: public static ScientificFeatureGenerationRun start(
+L126: public ScientificFeatureGenerationRun complete(
+L153: public ScientificFeatureGenerationRun fail(
+L177: public boolean isStarted() {
+L182: public boolean isCompleted() {
+L187: public boolean isFailed() {
+L192: public Optional<Duration> duration() {
+L205: public ScientificFeatureGenerationRunId id() {
+L209: public ParticipantId participantId() {
+L213: public FeatureSetVersion featureSetVersion() {
+L217: public GeneratorVersion generatorVersion() {
+L221: public Instant featureCutoffAt() {
+L225: public Instant startedAt() {
+L229: public Instant completedAt() {
+L233: public ScientificFeatureGenerationStatus status() {
+L237: public int inputObservationCount() {
+L241: public String errorMessage() {
+L245: public ScientificFeatureVectorId featureVectorId() {
+
+----- ScientificFeatureVector.java -----
+L30: public ScientificFeatureVector(
+L107: public ScientificFeatureVectorId id() {
+L111: public ParticipantId participantId() {
+L115: public FeatureSetVersion featureSetVersion() {
+L119: public GeneratorVersion generatorVersion() {
+L123: public Instant featureCutoffAt() {
+L127: public Instant generatedAt() {
+L131: public int sourceObservationCount() {
+L135: public ScientificChecksum checksum() {
+L139: public List<ScientificFeatureItem> items() {
+L143: public int featureCount() {
+L147: public boolean containsFeature(
+L160: public Optional<ScientificFeatureItem> findFeature(
+L173: public ScientificFeatureItem requireFeature(

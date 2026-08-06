@@ -1,0 +1,20 @@
+﻿9ff5223 fix(deploy): stabilize adaptive render configuration
+116edc6 fix(deploy): remove duplicate cors configuration
+f60a505 fix(deploy): build adaptive jar inside docker image
+d1db610 chore(deploy): prepare auth service for render
+346c9a3 chore(deploy): prepare backend for render and vercel
+c5a5e2d fix(devops): enable docker compose fieldwork demo
+66479cb chore(devops): add backend docker compose and fieldwork CI
+14e3a2a fix(fieldwork): place controller in api layer
+1f2511b Merge pull request #97 from jamartinezv2023/implementation/BG-real-mvp-vertical1-consent-participant
+2809c1e docs(implementation): add real MVP vertical 1 consent participant
+7972902 Merge pull request #96 from jamartinezv2023/implementation/BF-full-implementation-deployment-readiness
+8c557ca docs(deployment): add full implementation and deployment readiness plan
+5caf5ba Merge pull request #95 from jamartinezv2023/implementation/BE-fieldwork-implementation-execution-cycle
+38c87b9 docs(implementation): add fieldwork implementation execution cycle
+1bc85c8 Merge pull request #94 from jamartinezv2023/implementation/BD-fieldwork-core-functional-modules
+e65e037 docs(implementation): add fieldwork core functional modules
+456442f Merge pull request #93 from jamartinezv2023/implementation/BC-fieldwork-data-capture-implementation-program
+9429018 docs(implementation): add fieldwork data capture implementation program
+f60c762 Merge pull request #92 from jamartinezv2023/docs/master-populate-all-phases-complete
+31b80d1 docs(factory): massively populate all phases with master audit layer
