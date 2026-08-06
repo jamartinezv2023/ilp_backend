@@ -2,7 +2,7 @@
 # Java / Maven / Gradle
 # =============================
 target/
-out/
+/out/
 build/
 *.class
 *.jar
@@ -15,7 +15,7 @@ hs_err_pid*
 *.db
 *.h2.db
 
-# 🔑 EXCEPCIÓN CRÍTICA — Gradle Wrapper (NO SE IGNORA)
+# Ã°Å¸â€â€˜ EXCEPCIÃƒâ€œN CRÃƒÂTICA Ã¢â‚¬â€ Gradle Wrapper (NO SE IGNORA)
 !gradle/wrapper/gradle-wrapper.jar
 
 .mvn/
@@ -34,7 +34,7 @@ logs/
 *.pid
 *.lock
 
-# ⚠️ Configuración sensible (solo versiona si lo decides explícitamente)
+# Ã¢Å¡Â Ã¯Â¸Â ConfiguraciÃƒÂ³n sensible (solo versiona si lo decides explÃƒÂ­citamente)
 application.properties
 application.yml
 application-*.yml
@@ -144,14 +144,14 @@ build
 _diag/
 
 # =============================
-# 🔐 JWT / RSA / Security (CRÍTICO)
+# Ã°Å¸â€Â JWT / RSA / Security (CRÃƒÂTICO)
 # =============================
 *.pem
 *.key
 *.crt
 *.jks
 
-# Directorios de claves (en cualquier módulo)
+# Directorios de claves (en cualquier mÃƒÂ³dulo)
 **/keys/
 **/security/keys/
 .env
@@ -178,3 +178,24 @@ application-secret.yml
 
 # Generated local OpenAPI exports unless intentionally versioned
 *-openapi-local.json
+
+# Security-sensitive local diagnostics
+git_remotes.txt
+*_remotes.txt
+*credentials*.txt
+*secrets*.txt
+*token*.txt
+
+# Local recovery artifacts
+*.before-*
+*.before.*
+*.bak
+*.backup
+*.orig
+*.rej
+*.tmp
+
+# Local environment files
+.env
+.env.*
+!.env.example
