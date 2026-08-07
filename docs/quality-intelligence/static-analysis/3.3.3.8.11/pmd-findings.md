@@ -2,7 +2,7 @@
 
 ## Cycle
 
-3.3.3.8.11 — Static Analysis Certification & Release Candidate
+3.3.3.8.11 â€” Static Analysis Certification & Release Candidate
 
 ## Toolchain
 
