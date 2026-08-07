@@ -20,5 +20,15 @@ public class AdaptationRuleRequest {
     @Size(max = 500)
     public String actionExpression;
 
-    public boolean enabled = true;
+    private boolean enabled = true;
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(
+            boolean enabled
+    ) {
+        this.enabled = enabled;
+    }
 }

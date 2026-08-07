@@ -55,7 +55,9 @@ public record LearningPathRecommendedEvent(
                 recommendationId,
                 reason,
                 recommendedItems,
-                confidence == null ? 0.0 : confidence,
+                confidence == null
+                        ? Double.valueOf(0.0)
+                        : confidence,
                 policyName,
                 modelName,
                 modelVersion,
