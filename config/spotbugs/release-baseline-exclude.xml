@@ -16,4 +16,27 @@
     <Class name="com.inclusive.adaptiveeducationservice.featurestore.scientific.persistence.entity.ScientificFeatureGenerationRunEntity" />
     <Bug pattern="CT_CONSTRUCTOR_THROW" />
   </Match>
+  <!--
+    SB-004
+    Spring Data JPA resolves styleKey through the derived repository
+    method findByStyleKeyAndStyleValue. Access occurs through
+    persistence metadata rather than direct Java bytecode.
+  -->
+  <Match>
+    <Class name="com.inclusive.adaptiveeducationservice.domain.adaptation.AdaptationRule" />
+    <Field name="styleKey" />
+    <Bug pattern="UUF_UNUSED_FIELD" />
+  </Match>
+
+  <!--
+    SB-005
+    Spring Data JPA resolves styleValue through the derived repository
+    method findByStyleKeyAndStyleValue. Access occurs through
+    persistence metadata rather than direct Java bytecode.
+  -->
+  <Match>
+    <Class name="com.inclusive.adaptiveeducationservice.domain.adaptation.AdaptationRule" />
+    <Field name="styleValue" />
+    <Bug pattern="UUF_UNUSED_FIELD" />
+  </Match>
 </FindBugsFilter>
