@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -34,6 +35,32 @@ public class ConsentRecord {
         }
     }
 
+    public void withdraw(
+            LocalDateTime withdrawalTime
+    ) {
+        if (!"APPROVED".equalsIgnoreCase(status)) {
+            throw new IllegalStateException(
+                    "Only approved consent can be withdrawn"
+            );
+        }
+
+        this.withdrawnAt =
+                Objects.requireNonNull(
+                        withdrawalTime,
+                        "withdrawalTime is required"
+                );
+
+        if (
+                approvedAt != null
+                        && withdrawnAt.isBefore(approvedAt)
+        ) {
+            throw new IllegalArgumentException(
+                    "withdrawalTime must not be before approvedAt"
+            );
+        }
+
+        this.status = "WITHDRAWN";
+    }
     public UUID getConsentId() { return consentId; }
     public String getParticipantCode() { return participantCode; }
     public String getConsentType() { return consentType; }
