@@ -42,9 +42,7 @@ public class ScientificFeatureApiExceptionHandler {
             HttpServletRequest request
     ) {
         String parameterName =
-                exception.getName() == null
-                        ? "request parameter"
-                        : exception.getName();
+                exception.getName();
 
         return build(
                 HttpStatus.BAD_REQUEST,
