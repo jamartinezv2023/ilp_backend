@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+
+    <!--
+      SB-001
+      JPA entity validates scientific feature-item invariants during
+      construction. The class cannot be final because persistence
+      providers may require proxying. No finalizer is implemented.
+    -->
+    <Match>
+        <Class
+            name="com.inclusive.adaptiveeducationservice.featurestore.scientific.persistence.entity.ScientificFeatureItemEntity"/>
+        <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+    </Match>
+
+    <!--
+      SB-002
+      JPA entity validates scientific vector invariants during
+      construction. The class cannot be final because persistence
+      providers may require proxying. No finalizer is implemented.
+    -->
+    <Match>
+        <Class
+            name="com.inclusive.adaptiveeducationservice.featurestore.scientific.persistence.entity.ScientificFeatureVectorEntity"/>
+        <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+    </Match>
+
+    <!--
+      SB-003
+      JPA entity validates generation-run invariants during
+      construction. The class cannot be final because persistence
+      providers may require proxying. No finalizer is implemented.
+    -->
+    <Match>
+        <Class
+            name="com.inclusive.adaptiveeducationservice.featurestore.scientific.persistence.entity.ScientificFeatureGenerationRunEntity"/>
+        <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+    </Match>
+
+</FindBugsFilter>
