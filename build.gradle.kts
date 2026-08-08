@@ -16,7 +16,8 @@ plugins {
     id("info.solidsoft.pitest") version "1.15.0" apply false
 }
 
-java {
+val testcontainersVersion = "1.21.4"
+    java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
@@ -39,7 +40,6 @@ subprojects {
     apply(plugin = "pmd")
     apply(plugin = "com.github.spotbugs")
     apply(plugin = "io.spring.dependency-management")
-
     java {
         toolchain {
             languageVersion.set(JavaLanguageVersion.of(17))
@@ -55,6 +55,13 @@ subprojects {
             if (requested.group == "org.junit.jupiter") {
                 useVersion("5.10.2")
             }
+
+            if (requested.group == "org.testcontainers") {
+                useVersion(testcontainersVersion)
+                because(
+                    "Align the complete Testcontainers dependency family"
+                )
+            }
         }
     }
 
@@ -65,11 +72,12 @@ subprojects {
         testImplementation(platform("org.junit:junit-bom:5.10.2"))
         testImplementation("org.junit.jupiter:junit-jupiter")
         testImplementation("com.tngtech.archunit:archunit-junit5:1.3.0")
-        testImplementation("org.testcontainers:junit-jupiter:1.19.8")
-        testImplementation("org.testcontainers:postgresql:1.19.8")
-
-        testImplementation("com.github.docker-java:docker-java-transport-httpclient5:3.3.6")
-
+        testImplementation(
+            "org.testcontainers:junit-jupiter:$testcontainersVersion"
+        )
+        testImplementation(
+            "org.testcontainers:postgresql:$testcontainersVersion"
+        )
         testImplementation("org.postgresql:postgresql:42.7.4")
         implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
         implementation("org.springframework.boot:spring-boot-starter-actuator")
@@ -81,24 +89,14 @@ subprojects {
     }
 
     pmd {
-        toolVersion = "7.6.0"
+        toolVersion = "7.26.0"
         ruleSetFiles = files(rootProject.file("config/pmd/pmd-ruleset.xml"))
         ruleSets = emptyList()
-        isIgnoreFailures = true
+        isIgnoreFailures = false
     }
-
-
-    configurations.all {
-        resolutionStrategy {
-            force("com.github.docker-java:docker-java-core:3.3.6")
-            force("com.github.docker-java:docker-java-api:3.3.6")
-            force("com.github.docker-java:docker-java-transport:3.3.6")
-        }
-    }
-
     plugins.withType<JavaPlugin> {
 
-        tasks.withType<Test> {
+        tasks.named<Test>("test") {
             useJUnitPlatform {
                 excludeTags("integration")
             }
@@ -174,8 +172,8 @@ subprojects {
     }
 
     tasks.withType<com.github.spotbugs.snom.SpotBugsTask> {
-        ignoreFailures = true
-        excludeFilter.set(rootProject.file("config/spotbugs/exclude.xml"))
+        ignoreFailures = name != "spotbugsMain"
+        excludeFilter.set(rootProject.file("config/spotbugs/release-baseline-exclude.xml"))
 
         reports {
             create("html") {

@@ -194,13 +194,21 @@ public class AssessmentDefinitionPersistenceMapper {
     private AssessmentQuestionType parseQuestionType(
             String questionType
     ) {
-        try {
-            return AssessmentQuestionType.valueOf(questionType);
-        }
-        catch (
-                IllegalArgumentException |
-                NullPointerException exception
+        if (
+                questionType == null
+                        || questionType.isBlank()
         ) {
+            throw new IllegalArgumentException(
+                    "Persisted question type is required"
+            );
+        }
+
+        try {
+            return AssessmentQuestionType.valueOf(
+                    questionType
+            );
+        }
+        catch (IllegalArgumentException exception) {
             throw new IllegalArgumentException(
                     "Unsupported persisted question type: "
                             + questionType,

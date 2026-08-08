@@ -137,6 +137,8 @@ public class ScientificFeatureGenerationRunEntity {
                 ScientificFeatureGenerationStatus.STARTED;
     }
 
+    @SuppressWarnings("PMD.NullAssignment")
+
     public void complete(
             ScientificFeatureVectorEntity featureVector,
             Instant completedAt
@@ -168,10 +170,13 @@ public class ScientificFeatureGenerationRunEntity {
             );
         }
 
+        // A completed run cannot retain a previous failure message.
         this.errorMessage = null;
         this.status =
                 ScientificFeatureGenerationStatus.COMPLETED;
     }
+
+    @SuppressWarnings("PMD.NullAssignment")
 
     public void fail(
             String errorMessage,
@@ -204,6 +209,7 @@ public class ScientificFeatureGenerationRunEntity {
             );
         }
 
+        // A failed run cannot retain a vector as a successful result.
         this.featureVector = null;
         this.status =
                 ScientificFeatureGenerationStatus.FAILED;
