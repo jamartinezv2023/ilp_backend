@@ -172,7 +172,7 @@ subprojects {
     }
 
     tasks.withType<com.github.spotbugs.snom.SpotBugsTask> {
-        ignoreFailures = true
+        ignoreFailures = name != "spotbugsMain"
         excludeFilter.set(rootProject.file("config/spotbugs/release-baseline-exclude.xml"))
 
         reports {
