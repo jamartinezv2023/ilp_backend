@@ -63,6 +63,18 @@ jobs:
           test -f \
             auth-service/build/reports/jacoco/test/jacocoTestReport.xml
 
+      - name: Set up JDK 21 for SonarCloud
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Verify Java for SonarCloud
+        run: |
+          echo "JAVA_HOME=$JAVA_HOME"
+          java -version
+          ./gradlew --version
+
       - name: SonarCloud Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
