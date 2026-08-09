@@ -11,7 +11,11 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-@SpringBootTest
+@SpringBootTest(
+        properties = {
+                "spring.flyway.enabled=false"
+        }
+)
 @ActiveProfiles("test")
 public class SmokeTestHandler {
 
