@@ -199,3 +199,9 @@ git_remotes.txt
 .env
 .env.*
 !.env.example
+
+# Canonical Adaptive Education test profile.
+# These files contain only disposable H2/test configuration and must
+# remain versioned so local and CI test environments are reproducible.
+!adaptive-education-service/src/test/resources/application-test.yml
+!adaptive-education-service/src/test/resources/application.properties
