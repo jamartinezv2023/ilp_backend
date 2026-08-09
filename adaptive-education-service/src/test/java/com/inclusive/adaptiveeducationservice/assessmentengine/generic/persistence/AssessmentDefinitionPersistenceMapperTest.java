@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AssessmentDefinitionPersistenceMapperTest {
@@ -52,17 +53,78 @@ class AssessmentDefinitionPersistenceMapperTest {
         assertEquals(original.id(), roundTrip.id());
         assertEquals(original.code(), roundTrip.code());
         assertEquals(original.version(), roundTrip.version());
+
         assertEquals(
                 original.questions().size(),
                 roundTrip.questions().size()
         );
+
         assertEquals(
                 original.questions().get(0).options().size(),
                 roundTrip.questions().get(0).options().size()
         );
     }
 
+    @Test
+    void shouldRejectNullPersistedQuestionType() {
+        AssessmentDefinitionEntity entity =
+                definitionWithQuestionType(null);
+
+        IllegalArgumentException exception =
+                assertThrows(
+                        IllegalArgumentException.class,
+                        () -> mapper.toDomain(entity)
+                );
+
+        assertEquals(
+                "Persisted question type is required",
+                exception.getMessage()
+        );
+    }
+
+    @Test
+    void shouldRejectBlankPersistedQuestionType() {
+        AssessmentDefinitionEntity entity =
+                definitionWithQuestionType("   ");
+
+        IllegalArgumentException exception =
+                assertThrows(
+                        IllegalArgumentException.class,
+                        () -> mapper.toDomain(entity)
+                );
+
+        assertEquals(
+                "Persisted question type is required",
+                exception.getMessage()
+        );
+    }
+
+    @Test
+    void shouldRejectUnsupportedPersistedQuestionType() {
+        AssessmentDefinitionEntity entity =
+                definitionWithQuestionType("UNSUPPORTED");
+
+        IllegalArgumentException exception =
+                assertThrows(
+                        IllegalArgumentException.class,
+                        () -> mapper.toDomain(entity)
+                );
+
+        assertEquals(
+                "Unsupported persisted question type: UNSUPPORTED",
+                exception.getMessage()
+        );
+    }
+
     private AssessmentDefinitionEntity existingKolbDefinition() {
+        return definitionWithQuestionType(
+                "IPSATIVE_RANKING"
+        );
+    }
+
+    private AssessmentDefinitionEntity definitionWithQuestionType(
+            String questionType
+    ) {
         AssessmentDefinitionEntity definition =
                 new AssessmentDefinitionEntity(
                         "DEF-KOLB-V1",
@@ -85,7 +147,7 @@ class AssessmentDefinitionPersistenceMapperTest {
                         "CE_RO_AC_AE",
                         "Use every rank once.",
                         true,
-                        "IPSATIVE_RANKING",
+                        questionType,
                         1
                 );
 
