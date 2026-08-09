@@ -2,36 +2,72 @@ name: SonarCloud Analysis
 
 on:
   push:
-    branches: [ main, feat/mvp-001-educational-diagnosis ]
+    branches:
+      - main
+      - feat/mvp-001-educational-diagnosis
+
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
+    name: SonarCloud Analysis
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up JDK 21
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
-          distribution: 'temurin'
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Grant execute permission
         run: chmod +x gradlew
 
-      - name: Build
-        run: ./gradlew build --no-daemon
+      - name: Build, test and generate JaCoCo reports
+        run: |
+          ./gradlew \
+            clean \
+            test \
+            jacocoTestReport \
+            build \
+            --no-daemon \
+            --no-configuration-cache
+
+      - name: Verify JaCoCo reports
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Generated JaCoCo XML reports:"
+          find . \
+            -path "*/build/reports/jacoco/test/jacocoTestReport.xml" \
+            -type f \
+            -print
+
+          test -f \
+            adaptive-education-service/build/reports/jacoco/test/jacocoTestReport.xml
+
+          test -f \
+            auth-service/build/reports/jacoco/test/jacocoTestReport.xml
 
       - name: SonarCloud Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonar `
-          -Dsonar.projectKey=jamartinezv2023_backend_ILP- `
-          -Dsonar.organization=jamartinezv2023 `
-          -Dsonar.host.url=https://sonarcloud.io `
-          --no-daemon
+        run: |
+          ./gradlew sonar \
+            -Dsonar.token="$SONAR_TOKEN" \
+            --no-daemon \
+            --no-configuration-cache
