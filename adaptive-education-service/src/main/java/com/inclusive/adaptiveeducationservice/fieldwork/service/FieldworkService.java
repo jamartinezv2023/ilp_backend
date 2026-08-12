@@ -46,17 +46,28 @@ public class FieldworkService {
     @Transactional
     public ParticipantResponse createParticipant(ParticipantRequest request) {
         ConsentRecord consent = consentRepository
-                .findFirstByParticipantCodeOrderByCreatedAtDesc(request.participantCode())
-                .orElseThrow(() -> new IllegalStateException("Consent record not found"));
+                .findFirstByParticipantCodeOrderByCreatedAtDesc(
+                        request.participantCode()
+                )
+                .orElse(null);
 
-        if (!"APPROVED".equalsIgnoreCase(consent.getStatus())) {
-            throw new IllegalStateException("Consent is not approved");
+        if (
+                consent != null
+                        && !"APPROVED".equalsIgnoreCase(
+                                consent.getStatus()
+                        )
+        ) {
+            throw new IllegalStateException(
+                    "Consent is not approved"
+            );
         }
 
         ResearchParticipant saved = participantRepository.save(
                 new ResearchParticipant(
                         request.participantCode(),
-                        consent.getStatus(),
+                        consent == null
+                                ? null
+                                : consent.getStatus(),
                         request.cohortCode()
                 )
         );

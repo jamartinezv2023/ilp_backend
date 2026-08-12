@@ -23,10 +23,15 @@ dependencies {
     testImplementation("net.serenity-bdd:serenity-screenplay:4.2.16")
     testImplementation("net.serenity-bdd:serenity-screenplay-rest:4.2.16")
 
-    testImplementation("io.cucumber:cucumber-junit-platform-engine:7.18.1")
+    testImplementation(
+        platform("io.cucumber:cucumber-bom:7.20.1")
+    )
+    testImplementation(
+        "io.cucumber:cucumber-junit-platform-engine"
+    )
 
-    testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.junit.platform:junit-platform-suite")
 
     testImplementation("org.assertj:assertj-core:3.26.3")
 }
@@ -34,4 +39,7 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
     finalizedBy(tasks.named("aggregate"))
+}
+tasks.withType<org.gradle.api.tasks.compile.JavaCompile>().configureEach {
+    options.encoding = "UTF-8"
 }
