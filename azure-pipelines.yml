@@ -1,4 +1,4 @@
-﻿trigger:
+trigger:
   branches:
     include:
       - main
@@ -14,20 +14,24 @@
 variables:
   vmImage: 'ubuntu-latest'
   javaVersion: '17'
-  mavenOptions: '-Xmx1024m'
   dockerImageName: 'adaptive-education-service'
   dockerImageTag: '$(Build.BuildId)'
   terraformWorkingDirectory: 'infra/terraform/aks'
 
 stages:
   - stage: Build
-    displayName: 'Build & Test (Maven)'
+    displayName: 'Canonical Backend Quality Gate'
     jobs:
-      - job: Build_Job
-        displayName: 'Build ILP Backend (adaptive-education-service)'
+      - job: Canonical_Quality_Job
+        displayName: 'Gradle Build, Test and Quality Gate'
         pool:
           vmImage: $(vmImage)
+
         steps:
+          - checkout: self
+            displayName: 'Checkout repository'
+            fetchDepth: 0
+
           - task: JavaToolInstaller@0
             displayName: 'Install Java $(javaVersion)'
             inputs:
@@ -35,28 +39,58 @@ stages:
               jdkArchitectureOption: 'x64'
               jdkSourceOption: 'PreInstalled'
 
-          - task: Maven@4
-            displayName: 'Maven clean package (adaptive-education-service)'
+          - script: |
+              chmod +x ./gradlew
+              java -version
+              ./gradlew --version
+            displayName: 'Verify Java and Gradle Wrapper'
+
+          - script: |
+              ./gradlew \
+                clean \
+                build \
+                test \
+                jacocoTestReport \
+                jacocoTestCoverageVerification \
+                checkstyleMain \
+                checkstyleTest \
+                pmdMain \
+                spotbugsMain \
+                bootJar \
+                --console=plain \
+                --no-daemon \
+                --no-configuration-cache
+            displayName: 'Run Canonical Release Quality Pipeline'
+
+          - task: PublishTestResults@2
+            displayName: 'Publish JUnit test results'
+            condition: always()
             inputs:
-              mavenPomFile: 'adaptive-education-service/pom.xml'
-              goals: 'clean package'
-              options: '$(mavenOptions)'
-              publishJUnitResults: true
-              testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              javaHomeOption: 'Path'
-              mavenVersionOption: 'Default'
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/build/test-results/**/*.xml'
+              searchFolder: '$(System.DefaultWorkingDirectory)'
+              mergeTestResults: true
+              failTaskOnFailedTests: false
+              testRunTitle: 'ILP Backend Gradle Tests'
 
           - task: PublishBuildArtifacts@1
-            displayName: 'Publicar artefactos (JARs)'
+            displayName: 'Publish quality reports'
+            condition: always()
             inputs:
               PathtoPublish: '$(System.DefaultWorkingDirectory)'
-              ArtifactName: 'drop'
+              ArtifactName: 'ilp-backend-quality-evidence'
               publishLocation: 'Container'
-
   - stage: Infra
     displayName: 'Provisionar Infraestructura (Terraform AKS + ACR + Postgres)'
     dependsOn: Build
-    condition: succeeded()
+    condition: |
+      and(
+        succeeded(),
+        or(
+          eq(variables['Build.SourceBranch'], 'refs/heads/main'),
+          eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        )
+      )
     jobs:
       - job: Infra_Job
         displayName: 'Terraform plan & apply'

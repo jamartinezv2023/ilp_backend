@@ -15,6 +15,7 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.persisten
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.persistence.scientific.repository.AssessmentScientificResultRepository;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.persistence.scientific.repository.AssessmentSubmissionContextRepository;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.AssessmentScientificObservationPort;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.ScientificParticipantIdentityPort;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.repository.AssessmentResponseRepository;
 import com.inclusive.adaptiveeducationservice.student.repository.StudentProfileRepository;
@@ -30,6 +31,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -58,6 +60,14 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
 
     private static final Instant SUBMITTED_AT =
             Instant.parse("2026-07-23T18:00:00Z");
+
+    private static final UUID RESEARCH_PARTICIPANT_UUID =
+            UUID.fromString(
+                    "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+            );
+
+    private static final String RESEARCH_SUBJECT_ID =
+            "11111111-1111-1111-1111-111111111111";
 
     @Autowired
     private SubmitAssessmentService service;
@@ -96,6 +106,10 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
     private AssessmentScientificObservationPort
             scientificObservationPort;
 
+    @MockBean
+    private ScientificParticipantIdentityPort
+            scientificParticipantIdentityPort;
+
     private SubmitAssessmentRequest request;
     private AssessmentSubmission submission;
     private AssessmentResult result;
@@ -109,7 +123,24 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                 studentProfileRepository,
                 assessmentEngine,
                 submissionMapper,
-                scientificObservationPort
+                scientificObservationPort,
+                scientificParticipantIdentityPort
+        );
+        when(
+                scientificParticipantIdentityPort
+                        .hasActiveResearchConsent(
+                                RESEARCH_PARTICIPANT_UUID
+                        )
+        ).thenReturn(true);
+        when(
+                scientificParticipantIdentityPort
+                        .resolveResearchSubjectId(
+                                RESEARCH_PARTICIPANT_UUID
+                        )
+        ).thenReturn(
+                Optional.of(
+                        RESEARCH_SUBJECT_ID
+                )
         );
 
         contextRepository.deleteAll();
@@ -146,6 +177,7 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
                 new SubmitAssessmentRequest(
                         ADMINISTRATION_ID,
                         PARTICIPANT_ID,
+                        RESEARCH_PARTICIPANT_UUID,
                         "KOLB_V1",
                         "1.0",
                         List.of(questionRequest),

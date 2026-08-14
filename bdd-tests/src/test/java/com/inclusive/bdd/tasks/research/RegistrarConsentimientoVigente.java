@@ -44,13 +44,11 @@ public class RegistrarConsentimientoVigente
                                         .body(
                                                 """
                                                 {
-                                                  "participantCode": "%s",
+                                                  "participantCode": "__PARTICIPANT_CODE__",
                                                   "consentType": "RESEARCH",
                                                   "status": "APPROVED"
                                                 }
-                                                """.formatted(
-                                                        participantCode
-                                                )
+                                                """.replace("__PARTICIPANT_CODE__", participantCode)
                                         )
                 )
         );
@@ -58,5 +56,32 @@ public class RegistrarConsentimientoVigente
         SerenityRest.lastResponse()
                 .then()
                 .statusCode(201);
+
+        String consentId =
+                SerenityRest
+                        .lastResponse()
+                        .jsonPath()
+                        .getString(
+                                "consentId"
+                        );
+
+        if (
+                consentId == null
+                        || consentId.isBlank()
+        ) {
+            throw new IllegalStateException(
+                    "research consent id is required"
+            );
+        }
+
+        actor.remember(
+                "research.consent.id",
+                consentId
+        );
+
+        actor.remember(
+                "research.consent.status",
+                "APPROVED"
+        );
     }
 }

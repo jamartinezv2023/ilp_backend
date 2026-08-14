@@ -1,6 +1,8 @@
 package com.inclusive.adaptiveeducationservice.fieldwork.service;
 
+import com.inclusive.adaptiveeducationservice.fieldwork.domain.ConsentRecord;
 import com.inclusive.adaptiveeducationservice.fieldwork.domain.ResearchParticipant;
+import com.inclusive.adaptiveeducationservice.fieldwork.dto.ConsentResponse;
 import com.inclusive.adaptiveeducationservice.fieldwork.dto.ParticipantRequest;
 import com.inclusive.adaptiveeducationservice.fieldwork.dto.ParticipantResponse;
 import com.inclusive.adaptiveeducationservice.fieldwork.repository.ConsentRecordRepository;
@@ -12,9 +14,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -87,5 +92,109 @@ class FieldworkServiceTest {
         ).isEqualTo(
                 "PILOT-1"
         );
+    }
+
+    @Test
+    void withdrawsApprovedConsent() {
+
+        ConsentRecord consent =
+                new ConsentRecord(
+                        "PARTICIPANT-WITHDRAW-001",
+                        "RESEARCH",
+                        "APPROVED"
+                );
+
+        UUID consentId =
+                consent.getConsentId();
+
+        when(
+                consentRepository.findById(
+                        consentId
+                )
+        ).thenReturn(
+                Optional.of(consent)
+        );
+
+        when(
+                consentRepository.save(
+                        any(ConsentRecord.class)
+                )
+        ).thenAnswer(
+                invocation ->
+                        invocation.getArgument(0)
+        );
+
+        ConsentResponse result =
+                service.withdrawConsent(
+                        consentId
+                );
+
+        assertThat(
+                result.consentId()
+        ).isEqualTo(
+                consentId
+        );
+
+        assertThat(
+                result.participantCode()
+        ).isEqualTo(
+                "PARTICIPANT-WITHDRAW-001"
+        );
+
+        assertThat(
+                result.consentType()
+        ).isEqualTo(
+                "RESEARCH"
+        );
+
+        assertThat(
+                result.status()
+        ).isEqualTo(
+                "WITHDRAWN"
+        );
+
+        assertThat(
+                consent.getStatus()
+        ).isEqualTo(
+                "WITHDRAWN"
+        );
+
+        assertThat(
+                consent.getWithdrawnAt()
+        ).isNotNull();
+
+        verify(
+                consentRepository
+        ).save(
+                consent
+        );
+    }
+
+    @Test
+    void rejectsUnknownConsentWithdrawal() {
+
+        UUID consentId =
+                UUID.randomUUID();
+
+        when(
+                consentRepository.findById(
+                        consentId
+                )
+        ).thenReturn(
+                Optional.empty()
+        );
+
+        assertThatThrownBy(
+                () ->
+                        service.withdrawConsent(
+                                consentId
+                        )
+        )
+                .isInstanceOf(
+                        ConsentRecordNotFoundException.class
+                )
+                .hasMessageContaining(
+                        consentId.toString()
+                );
     }
 }

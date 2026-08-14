@@ -35,6 +35,7 @@ class PersistAssessmentScientificObservationCommandTest {
 
         PersistAssessmentScientificObservationCommand command =
                 new PersistAssessmentScientificObservationCommand(
+                        "11111111-1111-1111-1111-111111111111",
                         submission,
                         result
                 );
@@ -50,6 +51,7 @@ class PersistAssessmentScientificObservationCommandTest {
     void shouldRejectDifferentAdministration() {
         assertThatThrownBy(() ->
                 new PersistAssessmentScientificObservationCommand(
+                        "11111111-1111-1111-1111-111111111111",
                         submission(
                                 "ADMIN-001",
                                 "ST-001",
@@ -74,6 +76,7 @@ class PersistAssessmentScientificObservationCommandTest {
     void shouldRejectDifferentParticipant() {
         assertThatThrownBy(() ->
                 new PersistAssessmentScientificObservationCommand(
+                        "11111111-1111-1111-1111-111111111111",
                         submission(
                                 "ADMIN-001",
                                 "ST-001",
@@ -98,6 +101,7 @@ class PersistAssessmentScientificObservationCommandTest {
     void shouldRejectDifferentAssessmentCode() {
         assertThatThrownBy(() ->
                 new PersistAssessmentScientificObservationCommand(
+                        "11111111-1111-1111-1111-111111111111",
                         submission(
                                 "ADMIN-001",
                                 "ST-001",
@@ -123,6 +127,7 @@ class PersistAssessmentScientificObservationCommandTest {
         assertThatNullPointerException()
                 .isThrownBy(() ->
                         new PersistAssessmentScientificObservationCommand(
+                                "11111111-1111-1111-1111-111111111111",
                                 null,
                                 result(
                                         "ADMIN-001",
@@ -175,5 +180,59 @@ class PersistAssessmentScientificObservationCommandTest {
                 "KOLB_BASELINE_V1",
                 SUBMITTED_AT.plusSeconds(1)
         );
+    }
+
+    @Test
+    void shouldRejectNullResearchSubjectId() {
+
+        assertThatThrownBy(
+                () ->
+                        new PersistAssessmentScientificObservationCommand(
+                                null,
+                                submission(
+                                        "ADMIN-001",
+                                        "ST-001",
+                                        "KOLB_V1"
+                                ),
+                                result(
+                                        "ADMIN-001",
+                                        "ST-001",
+                                        "KOLB_V1"
+                                )
+                        )
+        )
+                .isInstanceOf(
+                        NullPointerException.class
+                )
+                .hasMessageContaining(
+                        "researchSubjectId is required"
+                );
+    }
+
+    @Test
+    void shouldRejectBlankResearchSubjectId() {
+
+        assertThatThrownBy(
+                () ->
+                        new PersistAssessmentScientificObservationCommand(
+                                "   ",
+                                submission(
+                                        "ADMIN-001",
+                                        "ST-001",
+                                        "KOLB_V1"
+                                ),
+                                result(
+                                        "ADMIN-001",
+                                        "ST-001",
+                                        "KOLB_V1"
+                                )
+                        )
+        )
+                .isInstanceOf(
+                        IllegalArgumentException.class
+                )
+                .hasMessageContaining(
+                        "researchSubjectId must not be blank"
+                );
     }
 }

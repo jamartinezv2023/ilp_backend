@@ -1,5 +1,7 @@
 package com.inclusive.adaptiveeducationservice.api.fieldwork;
 
+import java.util.UUID;
+
 import com.inclusive.adaptiveeducationservice.fieldwork.dto.ConsentRequest;
 import com.inclusive.adaptiveeducationservice.fieldwork.dto.ConsentResponse;
 import com.inclusive.adaptiveeducationservice.fieldwork.dto.FieldworkReadinessResponse;
@@ -8,6 +10,8 @@ import com.inclusive.adaptiveeducationservice.fieldwork.dto.ParticipantResponse;
 import com.inclusive.adaptiveeducationservice.fieldwork.service.FieldworkService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -36,6 +40,12 @@ public class FieldworkController {
         return service.createParticipant(request);
     }
 
+    @PatchMapping("/consents/{consentId}/withdraw")
+    public ConsentResponse withdrawConsent(
+            @PathVariable UUID consentId
+    ) {
+        return service.withdrawConsent(consentId);
+    }
     @GetMapping("/readiness")
     public FieldworkReadinessResponse readiness() {
         return new FieldworkReadinessResponse(true, "Fieldwork MVP vertical 1 is available for demo data.");

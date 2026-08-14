@@ -44,12 +44,10 @@ public class IncorporarParticipante
                                         .body(
                                                 """
                                                 {
-                                                  "participantCode": "%s",
+                                                  "participantCode": "__PARTICIPANT_CODE__",
                                                   "cohort": "PILOT-1"
                                                 }
-                                                """.formatted(
-                                                        participantCode
-                                                )
+                                                """.replace("__PARTICIPANT_CODE__", participantCode)
                                         )
                 )
         );

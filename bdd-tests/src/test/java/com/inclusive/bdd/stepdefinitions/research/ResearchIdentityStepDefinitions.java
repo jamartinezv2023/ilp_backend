@@ -6,7 +6,6 @@ import com.inclusive.bdd.questions.research.IdentidadDeInvestigacionConservada;
 
 import com.inclusive.bdd.tasks.research.AsignarIdentidadDeInvestigacion;
 import com.inclusive.bdd.tasks.research.IncorporarParticipante;
-import com.inclusive.bdd.tasks.research.IntentarAsignarIdentidadDeInvestigacion;
 import com.inclusive.bdd.tasks.research.RegistrarConsentimientoVigente;
 import io.cucumber.java.Before;
 import io.cucumber.java.es.Cuando;
@@ -34,7 +33,7 @@ public class ResearchIdentityStepDefinitions {
         String baseUrl =
                 System.getProperty(
                         "services.adaptive.base-url",
-                        "http://localhost:8083"
+                        "http://localhost:18083"
                 );
 
         investigador =
@@ -114,9 +113,46 @@ public class ResearchIdentityStepDefinitions {
     }
 
     @Dado(
+            "que un participante tiene una identidad de investigación asignada"
+    )
+    public void unParticipanteTieneIdentidadDeInvestigacionAsignada() {
+        participanteTieneIdentidadDeInvestigacionAsignada();
+    }
+
+    @Dado(
             "el participante tiene una identidad de investigación asignada"
     )
     public void participanteTieneIdentidadDeInvestigacionAsignada() {
+
+        String participantUuid =
+                investigador.recall(
+                        "research.participant.uuid"
+                );
+
+        /*
+         * This Given is used both after an explicit
+         * consent/participant setup and as an autonomous
+         * precondition in the withdrawal scenario.
+         */
+        if (
+                participantUuid == null
+                        || participantUuid.isBlank()
+        ) {
+
+            String participantCode =
+                    "BDD-RESEARCH-"
+                            + UUID.randomUUID();
+
+            investigador.attemptsTo(
+                    RegistrarConsentimientoVigente.para(
+                            participantCode
+                    ),
+                    IncorporarParticipante.conCodigo(
+                            participantCode
+                    )
+            );
+        }
+
         investigador.attemptsTo(
                 AsignarIdentidadDeInvestigacion
                         .alParticipante()

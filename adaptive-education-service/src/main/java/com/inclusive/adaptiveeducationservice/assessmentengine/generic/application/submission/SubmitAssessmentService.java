@@ -10,6 +10,8 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.As
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentSubmission;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.scientific.PersistAssessmentScientificObservationCommand;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.AssessmentScientificObservationPort;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.ScientificObservationConsentEligibilityPort;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.ScientificParticipantIdentityPort;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.persistence.AssessmentDefinitionPersistenceMapper;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.entity.AssessmentAnswerEntity;
@@ -42,6 +44,12 @@ public class SubmitAssessmentService {
     private final AssessmentScientificObservationPort
             scientificObservationPort;
 
+    private final ScientificObservationConsentEligibilityPort
+            consentEligibilityPort;
+
+    private final ScientificParticipantIdentityPort
+            scientificParticipantIdentityPort;
+
     public SubmitAssessmentService(
             AssessmentResponseRepository responseRepository,
             AssessmentDefinitionRepository definitionRepository,
@@ -49,7 +57,9 @@ public class SubmitAssessmentService {
             StudentProfileRepository studentProfileRepository,
             GenericAssessmentEngine assessmentEngine,
             SubmitAssessmentMapper submissionMapper,
-            AssessmentScientificObservationPort scientificObservationPort
+            AssessmentScientificObservationPort scientificObservationPort,
+            ScientificObservationConsentEligibilityPort consentEligibilityPort,
+            ScientificParticipantIdentityPort scientificParticipantIdentityPort
     ) {
         this.responseRepository = responseRepository;
         this.definitionRepository = definitionRepository;
@@ -59,6 +69,10 @@ public class SubmitAssessmentService {
         this.submissionMapper = submissionMapper;
         this.scientificObservationPort =
                 scientificObservationPort;
+        this.consentEligibilityPort =
+                consentEligibilityPort;
+        this.scientificParticipantIdentityPort =
+                scientificParticipantIdentityPort;
     }
 
     @Transactional
@@ -67,11 +81,19 @@ public class SubmitAssessmentService {
     ) {
         validateIdempotency(request.administrationId());
         validateParticipant(request.participantId());
+        validateResearchConsent(
+                request.researchParticipantUuid()
+        );
 
         AssessmentDefinition definition =
                 loadDefinition(
                         request.assessmentCode(),
                         request.assessmentVersion()
+                );
+
+        String researchSubjectId =
+                resolveResearchSubjectId(
+                        request.researchParticipantUuid()
                 );
 
         AssessmentSubmission submission =
@@ -91,6 +113,7 @@ public class SubmitAssessmentService {
 
         scientificObservationPort.save(
                 new PersistAssessmentScientificObservationCommand(
+                        researchSubjectId,
                         submission,
                         result
                 )
@@ -140,6 +163,37 @@ public class SubmitAssessmentService {
         }
     }
 
+    private void validateResearchConsent(
+            java.util.UUID researchParticipantUuid
+    ) {
+        if (
+                !scientificParticipantIdentityPort
+                        .hasActiveResearchConsent(
+                                researchParticipantUuid
+                        )
+        ) {
+            throw new ResponseStatusException(
+                    HttpStatus.FORBIDDEN,
+                    "Active research consent is required"
+            );
+        }
+    }
+
+    private String resolveResearchSubjectId(
+            java.util.UUID researchParticipantUuid
+    ) {
+        return scientificParticipantIdentityPort
+                .resolveResearchSubjectId(
+                        researchParticipantUuid
+                )
+                .orElseThrow(
+                        () ->
+                                new ResponseStatusException(
+                                        HttpStatus.FORBIDDEN,
+                                        "Active research identity is required"
+                                )
+                );
+    }
     private AssessmentDefinition loadDefinition(
             String assessmentCode,
             String assessmentVersion

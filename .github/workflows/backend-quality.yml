@@ -1,23 +1,31 @@
-name: ILP Backend Quality Pipeline
+name: ILP Backend Canonical Quality Gate
 
 on:
   push:
     branches:
       - main
       - develop
+      - "feat/**"
+      - "fix/**"
+      - "hotfix/**"
 
   pull_request:
     branches:
       - main
       - develop
 
+  workflow_dispatch:
+
 jobs:
 
-  quality-gate:
+  canonical-quality-gate:
 
+    name: Canonical Release Quality Gate
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
-    timeout-minutes: 30
+    permissions:
+      contents: read
 
     steps:
 
@@ -28,48 +36,78 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: "17"
           cache: gradle
 
-      - name: Grant execute permission
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Grant Gradle execute permission
         run: chmod +x gradlew
 
-      - name: Run enterprise quality pipeline
+      - name: Verify Gradle environment
         run: |
-          ./gradlew clean \
-          build \
-          test \
-          jacocoTestReport \
-          jacocoTestCoverageVerification \
-          pmdMain \
-          spotbugsMain \
-          --no-daemon \
-          -x :adaptive-education-service:test
+          java -version
+          ./gradlew --version
 
-      - name: Upload JaCoCo Reports
+      - name: Run canonical release quality pipeline
+        run: |
+          ./gradlew \
+            clean \
+            build \
+            test \
+            jacocoTestReport \
+            jacocoTestCoverageVerification \
+            checkstyleMain \
+            checkstyleTest \
+            pmdMain \
+            spotbugsMain \
+            bootJar \
+            --console=plain \
+            --no-daemon \
+            --no-configuration-cache
+
+      - name: Upload JaCoCo reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: jacoco-reports
           path: |
-            **/build/reports/jacoco/
+            **/build/reports/jacoco/**
+          if-no-files-found: ignore
 
-      - name: Upload PMD Reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: pmd-reports
-          path: |
-            **/build/reports/pmd/
-
-      - name: Upload SpotBugs Reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: spotbugs-reports
-          path: |
-            **/build/reports/spotbugs/
-
-      - name: Upload Checkstyle Reports
+      - name: Upload Checkstyle reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: checkstyle-reports
           path: |
-            **/build/reports/checkstyle/
+            **/build/reports/checkstyle/**
+          if-no-files-found: ignore
+
+      - name: Upload PMD reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pmd-reports
+          path: |
+            **/build/reports/pmd/**
+          if-no-files-found: ignore
+
+      - name: Upload SpotBugs reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spotbugs-reports
+          path: |
+            **/build/reports/spotbugs/**
+          if-no-files-found: ignore
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            **/build/reports/tests/**
+          if-no-files-found: ignore

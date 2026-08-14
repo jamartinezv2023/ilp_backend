@@ -33,6 +33,7 @@ Característica: Identidad de investigación de un participante
     Entonces la persona no queda asociada con una identidad de investigación
 
   @exceptional
+  @consent_withdrawal
   Escenario: Impedir nuevas observaciones después del retiro del consentimiento
     Dado que un participante tiene una identidad de investigación asignada
     Y el participante ha retirado su consentimiento para el estudio

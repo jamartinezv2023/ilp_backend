@@ -37,7 +37,7 @@ public class AssessmentScientificObservationMapper {
                 new AssessmentScientificResultEntity(
                         resultId,
                         submission.administrationId(),
-                        submission.participantId(),
+                        command.researchSubjectId(),
                         submission.assessmentCode(),
                         submission.assessmentVersion(),
                         result.primaryProfile(),

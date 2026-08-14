@@ -54,6 +54,15 @@ class EventSchemaCompatibilityTest {
             JsonNode current =
                     objectMapper.readTree(currentPath.toFile());
 
+            Path baselineFileName = baselinePath.getFileName();
+
+            assertTrue(
+                    baselineFileName != null,
+                    "baselinePath must reference a schema file"
+            );
+
+            String contractName = baselineFileName.toString();
+
             assertEquals(
                     baseline.get("schemaVersion").asText(),
                     current.get("schemaVersion").asText(),
@@ -70,13 +79,13 @@ class EventSchemaCompatibilityTest {
             assertRequiredFieldsPreserved(
                     baseline.get("requiredFields"),
                     current.get("requiredFields"),
-                    baselinePath.getFileName().toString()
+                    contractName
             );
 
             assertFieldTypesPreserved(
                     baseline.get("fieldTypes"),
                     current.get("fieldTypes"),
-                    baselinePath.getFileName().toString()
+                    contractName
             );
 
         } catch (Exception exception) {

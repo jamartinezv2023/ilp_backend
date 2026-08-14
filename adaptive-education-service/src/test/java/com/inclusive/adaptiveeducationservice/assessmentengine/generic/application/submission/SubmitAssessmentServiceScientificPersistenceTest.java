@@ -9,6 +9,8 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.As
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentSubmission;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.persistence.AssessmentDefinitionPersistenceMapper;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.AssessmentScientificObservationPort;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.ScientificObservationConsentEligibilityPort;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.ScientificParticipantIdentityPort;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.entity.AssessmentResponseEntity;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.repository.AssessmentResponseRepository;
@@ -23,6 +25,7 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -44,6 +47,12 @@ class SubmitAssessmentServiceScientificPersistenceTest {
     private SubmitAssessmentMapper submissionMapper;
     private AssessmentScientificObservationPort
             scientificObservationPort;
+
+    private ScientificObservationConsentEligibilityPort
+            consentEligibilityPort;
+
+    private ScientificParticipantIdentityPort
+            scientificParticipantIdentityPort;
 
     private SubmitAssessmentService service;
 
@@ -78,6 +87,26 @@ class SubmitAssessmentServiceScientificPersistenceTest {
                         AssessmentScientificObservationPort.class
                 );
 
+        consentEligibilityPort =
+
+                mock(
+
+                        ScientificObservationConsentEligibilityPort.class
+
+                );
+
+        when(
+                consentEligibilityPort
+                        .hasActiveConsentForParticipantCode(
+                                "ST-001"
+                        )
+        ).thenReturn(true);
+        scientificParticipantIdentityPort =
+                mock(
+                        ScientificParticipantIdentityPort.class
+                );
+
+
         service =
                 new SubmitAssessmentService(
                         responseRepository,
@@ -86,7 +115,9 @@ class SubmitAssessmentServiceScientificPersistenceTest {
                         studentProfileRepository,
                         assessmentEngine,
                         submissionMapper,
-                        scientificObservationPort
+                        scientificObservationPort,
+                        consentEligibilityPort,
+                        scientificParticipantIdentityPort
                 );
 
         Instant submittedAt =
@@ -98,6 +129,9 @@ class SubmitAssessmentServiceScientificPersistenceTest {
                 new SubmitAssessmentRequest(
                         "ADMIN-001",
                         "ST-001",
+                        UUID.fromString(
+                                "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                        ),
                         "KOLB_V1",
                         "1.0",
                         List.of(),
@@ -266,6 +300,28 @@ class SubmitAssessmentServiceScientificPersistenceTest {
     }
 
     private void prepareSuccessfulSubmission() {
+
+        when(
+                scientificParticipantIdentityPort
+                        .hasActiveResearchConsent(
+                                UUID.fromString(
+                                        "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                                )
+                        )
+        ).thenReturn(true);
+
+        when(
+                scientificParticipantIdentityPort
+                        .resolveResearchSubjectId(
+                                UUID.fromString(
+                                        "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                                )
+                        )
+        ).thenReturn(
+                Optional.of(
+                        "11111111-1111-1111-1111-111111111111"
+                )
+        );
         AssessmentDefinitionEntity definitionEntity =
                 mock(
                         AssessmentDefinitionEntity.class
@@ -334,6 +390,166 @@ class SubmitAssessmentServiceScientificPersistenceTest {
                 )
         ).thenAnswer(invocation ->
                 invocation.getArgument(0)
+        );
+    }
+
+    @Test
+    void shouldRejectSubmissionWhenResearchConsentIsNotActive() {
+
+        when(
+                responseRepository.existsById(
+                        "ADMIN-001"
+                )
+        ).thenReturn(false);
+
+        when(
+                scientificObservationPort
+                        .existsByAdministrationId(
+                                "ADMIN-001"
+                        )
+        ).thenReturn(false);
+
+        when(
+                studentProfileRepository.existsById(
+                        "ST-001"
+                )
+        ).thenReturn(true);
+
+        when(
+                consentEligibilityPort
+                        .hasActiveConsentForParticipantCode(
+                                "ST-001"
+                        )
+        ).thenReturn(false);
+
+        assertThatThrownBy(
+                () -> service.submit(request)
+        )
+                .isInstanceOf(
+                        ResponseStatusException.class
+                )
+                .satisfies(exception ->
+                        assertThat(
+                                (
+                                        (ResponseStatusException)
+                                                exception
+                                )
+                                        .getStatusCode()
+                                        .value()
+                        ).isEqualTo(403)
+                );
+
+        verify(
+                assessmentEngine,
+                never()
+        ).evaluate(
+                any(),
+                any()
+        );
+
+        verify(
+                responseRepository,
+                never()
+        ).save(
+                any()
+        );
+
+        verify(
+                scientificObservationPort,
+                never()
+        ).save(
+                any()
+        );
+    }
+
+    @Test
+    void shouldResolvePseudonymousResearchSubjectBeforeScientificPersistence() {
+
+        UUID researchParticipantUuid =
+                UUID.fromString(
+                        "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                );
+
+        request =
+                new SubmitAssessmentRequest(
+                        "ADMIN-001",
+                        "ST-001",
+                        researchParticipantUuid,
+                        "KOLB_V1",
+                        "1.0",
+                        List.of(),
+                        Map.of(
+                                "source",
+                                "WEB"
+                        ),
+                        Instant.parse(
+                                "2026-07-23T10:00:00Z"
+                        )
+                );
+
+        prepareSuccessfulSubmission();
+
+        when(
+                scientificParticipantIdentityPort
+                        .resolveResearchSubjectId(
+                                researchParticipantUuid
+                        )
+        ).thenReturn(
+                Optional.of(
+                        "11111111-1111-1111-1111-111111111111"
+                )
+        );
+
+        service.submit(request);
+
+        verify(
+                studentProfileRepository
+        ).existsById(
+                "ST-001"
+        );
+
+        verify(
+                scientificParticipantIdentityPort
+        ).resolveResearchSubjectId(
+                researchParticipantUuid
+        );
+
+        ArgumentCaptor<
+                PersistAssessmentScientificObservationCommand
+                > commandCaptor =
+                ArgumentCaptor.forClass(
+                        PersistAssessmentScientificObservationCommand.class
+                );
+
+        verify(
+                scientificObservationPort
+        ).save(
+                commandCaptor.capture()
+        );
+
+        PersistAssessmentScientificObservationCommand command =
+                commandCaptor.getValue();
+
+        assertThat(
+                command.researchSubjectId()
+        ).isEqualTo(
+                "11111111-1111-1111-1111-111111111111"
+        );
+
+        assertThat(
+                command
+                        .submission()
+                        .participantId()
+        ).isEqualTo(
+                "ST-001"
+        );
+
+        assertThat(
+                command
+                        .result()
+                        .participantId()
+        ).isEqualTo(
+                "ST-001"
         );
     }
 }

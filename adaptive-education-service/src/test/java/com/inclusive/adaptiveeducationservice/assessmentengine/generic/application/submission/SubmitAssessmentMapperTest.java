@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,6 +39,9 @@ class SubmitAssessmentMapperTest {
                 new SubmitAssessmentRequest(
                         "ADMIN-001",
                         "ST-001",
+                        UUID.fromString(
+                                "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                        ),
                         "KOLB_V1",
                         "1.0",
                         List.of(question),

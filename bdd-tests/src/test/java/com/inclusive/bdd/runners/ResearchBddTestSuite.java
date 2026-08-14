@@ -17,7 +17,7 @@ import static io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME;
 )
 @ConfigurationParameter(
         key = FILTER_TAGS_PROPERTY_NAME,
-        value = "@research and (@identity_assignment or @identity_stability or @consent_required)"
+        value = "@research and (@identity_assignment or @identity_stability or @consent_required or @consent_withdrawal)"
 )
 public class ResearchBddTestSuite {
 }
