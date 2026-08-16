@@ -6,11 +6,23 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.As
 import java.util.Objects;
 
 public record PersistAssessmentScientificObservationCommand(
+        String researchSubjectId,
         AssessmentSubmission submission,
         AssessmentResult result
 ) {
 
     public PersistAssessmentScientificObservationCommand {
+
+        Objects.requireNonNull(
+                researchSubjectId,
+                "researchSubjectId is required"
+        );
+
+        if (researchSubjectId.isBlank()) {
+            throw new IllegalArgumentException(
+                    "researchSubjectId must not be blank"
+            );
+        }
         Objects.requireNonNull(
                 submission,
                 "submission is required"

@@ -102,12 +102,24 @@ class AssessmentScientificObservationMapperTest {
 
         PersistAssessmentScientificObservationCommand command =
                 new PersistAssessmentScientificObservationCommand(
+                        "11111111-1111-1111-1111-111111111111",
                         submission,
                         result
                 );
 
         var resultEntity =
                 mapper.toResultEntity(command);
+        assertThat(
+                resultEntity.getParticipantId()
+        ).isEqualTo(
+                "11111111-1111-1111-1111-111111111111"
+        );
+
+        assertThat(
+                resultEntity.getParticipantId()
+        ).isNotEqualTo(
+                "ST-001"
+        );
 
         var contextEntity =
                 mapper.toContextEntity(command);
@@ -201,6 +213,7 @@ class AssessmentScientificObservationMapperTest {
 
         var command =
                 new PersistAssessmentScientificObservationCommand(
+                        "11111111-1111-1111-1111-111111111111",
                         submission,
                         result
                 );

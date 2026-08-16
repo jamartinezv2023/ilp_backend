@@ -8,6 +8,9 @@ import com.inclusive.adaptiveeducationservice.fieldwork.dto.ParticipantRequest;
 import com.inclusive.adaptiveeducationservice.fieldwork.dto.ParticipantResponse;
 import com.inclusive.adaptiveeducationservice.fieldwork.repository.ConsentRecordRepository;
 import com.inclusive.adaptiveeducationservice.fieldwork.repository.ResearchParticipantRepository;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,17 +49,28 @@ public class FieldworkService {
     @Transactional
     public ParticipantResponse createParticipant(ParticipantRequest request) {
         ConsentRecord consent = consentRepository
-                .findFirstByParticipantCodeOrderByCreatedAtDesc(request.participantCode())
-                .orElseThrow(() -> new IllegalStateException("Consent record not found"));
+                .findFirstByParticipantCodeOrderByCreatedAtDesc(
+                        request.participantCode()
+                )
+                .orElse(null);
 
-        if (!"APPROVED".equalsIgnoreCase(consent.getStatus())) {
-            throw new IllegalStateException("Consent is not approved");
+        if (
+                consent != null
+                        && !"APPROVED".equalsIgnoreCase(
+                                consent.getStatus()
+                        )
+        ) {
+            throw new IllegalStateException(
+                    "Consent is not approved"
+            );
         }
 
         ResearchParticipant saved = participantRepository.save(
                 new ResearchParticipant(
                         request.participantCode(),
-                        consent.getStatus(),
+                        consent == null
+                                ? null
+                                : consent.getStatus(),
                         request.cohortCode()
                 )
         );
@@ -66,6 +80,44 @@ public class FieldworkService {
                 saved.getParticipantCode(),
                 saved.getConsentStatus(),
                 saved.getCohortCode()
+        );
+    }
+
+    @Transactional
+    public ConsentResponse withdrawConsent(
+            UUID consentId
+    ) {
+
+        if (consentId == null) {
+            throw new IllegalArgumentException(
+                    "consentId is required"
+            );
+        }
+
+        ConsentRecord consent =
+                consentRepository
+                        .findById(consentId)
+                        .orElseThrow(
+                                () ->
+                                        new ConsentRecordNotFoundException(
+                                                consentId
+                                        )
+                        );
+
+        consent.withdraw(
+                LocalDateTime.now()
+        );
+
+        ConsentRecord saved =
+                consentRepository.save(
+                        consent
+                );
+
+        return new ConsentResponse(
+                saved.getConsentId(),
+                saved.getParticipantCode(),
+                saved.getConsentType(),
+                saved.getStatus()
         );
     }
 }

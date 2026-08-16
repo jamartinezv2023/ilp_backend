@@ -39,4 +39,17 @@
     <Field name="styleValue" />
     <Bug pattern="UUF_UNUSED_FIELD" />
   </Match>
+
+  <!--
+    SB-006
+    ScientificFeatureGenerationRunTest intentionally ignores the return
+    value of transition methods inside AssertJ assertThatThrownBy lambdas.
+    These tests verify exceptional state transitions; a normal return value
+    is therefore neither reachable nor semantically relevant.
+    Scope is restricted to this test class and this SpotBugs pattern.
+  -->
+  <Match>
+    <Class name="com.inclusive.adaptiveeducationservice.featurestore.scientific.domain.model.ScientificFeatureGenerationRunTest" />
+    <Bug pattern="RV_RETURN_VALUE_IGNORED_INFERRED" />
+  </Match>
 </FindBugsFilter>
