@@ -50,6 +50,22 @@ jobs:
           java -version
           ./gradlew --version
 
+      - name: Run versioned Adaptive Research BDD runtime
+        shell: bash
+        run: |
+          bash scripts/ci/adaptive-bdd-runtime.sh
+
+      - name: Upload Adaptive Research BDD runtime log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-research-bdd-runtime
+          path: |
+            build/ci-runtime/**
+            bdd-tests/target/site/serenity/**
+            bdd-tests/build/reports/tests/**
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Run canonical release quality pipeline
         run: |
           ./gradlew \

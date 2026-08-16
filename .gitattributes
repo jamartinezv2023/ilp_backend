@@ -17,3 +17,4 @@
 
 # Git attributes file itself uses LF.
 /.gitattributes text eol=lf
+*.sh text eol=lf

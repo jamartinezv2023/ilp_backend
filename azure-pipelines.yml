@@ -7,6 +7,8 @@ trigger:
     include:
       - adaptive-education-service/*
       - commons-service/*
+      - bdd-tests/*
+      - scripts/ci/*
       - azure-pipelines.yml
       - infra/terraform/aks/*
       - k8s/*
@@ -45,6 +47,49 @@ stages:
               ./gradlew --version
             displayName: 'Verify Java and Gradle Wrapper'
 
+          - script: |
+              chmod +x scripts/ci/adaptive-bdd-runtime.sh
+              bash scripts/ci/adaptive-bdd-runtime.sh
+            displayName: 'Run versioned Adaptive Research BDD runtime'
+
+          - script: |
+              set -e
+
+              RUNTIME_EVIDENCE_DIR="$(Build.ArtifactStagingDirectory)/adaptive-research-bdd-runtime"
+
+              mkdir -p "${RUNTIME_EVIDENCE_DIR}"
+
+              if [ -d "build/ci-runtime" ]; then
+                mkdir -p "${RUNTIME_EVIDENCE_DIR}/build"
+                cp -R "build/ci-runtime" "${RUNTIME_EVIDENCE_DIR}/build/"
+              fi
+
+              if [ -d "bdd-tests/target/site/serenity" ]; then
+                mkdir -p "${RUNTIME_EVIDENCE_DIR}/bdd-tests/target/site"
+                cp -R \
+                  "bdd-tests/target/site/serenity" \
+                  "${RUNTIME_EVIDENCE_DIR}/bdd-tests/target/site/"
+              fi
+
+              if [ -d "bdd-tests/build/reports/tests" ]; then
+                mkdir -p "${RUNTIME_EVIDENCE_DIR}/bdd-tests/build/reports"
+                cp -R \
+                  "bdd-tests/build/reports/tests" \
+                  "${RUNTIME_EVIDENCE_DIR}/bdd-tests/build/reports/"
+              fi
+
+              echo "Runtime evidence staged at:"
+              echo "${RUNTIME_EVIDENCE_DIR}"
+            displayName: 'Stage Adaptive Research BDD runtime evidence'
+            condition: always()
+
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Adaptive Research BDD runtime evidence'
+            condition: always()
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)/adaptive-research-bdd-runtime'
+              ArtifactName: 'adaptive-research-bdd-runtime'
+              publishLocation: 'Container'
           - script: |
               ./gradlew \
                 clean \
