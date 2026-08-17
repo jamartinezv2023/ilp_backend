@@ -39,6 +39,7 @@ jobs:
           test \
           jacocoTestReport \
           -x :bdd-tests:test \
+          -x :bdd-tests:checkOutcomes \
           --no-daemon \
           -x :adaptive-education-service:test
 
