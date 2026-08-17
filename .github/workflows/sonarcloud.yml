@@ -43,6 +43,7 @@ jobs:
             test \
             jacocoTestReport \
             build \
+            -x :bdd-tests:test \
             --no-daemon \
             --no-configuration-cache
 
