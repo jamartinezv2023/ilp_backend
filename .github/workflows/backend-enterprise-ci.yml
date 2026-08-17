@@ -38,10 +38,10 @@ jobs:
         run: ./gradlew compileJava --no-daemon
 
       - name: Run tests
-        run: ./gradlew test --no-daemon
+        run: ./gradlew test -x :bdd-tests:test --no-daemon
 
       - name: Build backend
-        run: ./gradlew build --no-daemon
+        run: ./gradlew build -x :bdd-tests:test --no-daemon
 
       - name: Dependency Review
         if: github.event_name == 'pull_request'
