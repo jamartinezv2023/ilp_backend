@@ -73,6 +73,7 @@ jobs:
             build \
             test \
             -x :bdd-tests:test \
+            -x :bdd-tests:checkOutcomes \
             jacocoTestReport \
             jacocoTestCoverageVerification \
             checkstyleMain \
