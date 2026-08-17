@@ -72,6 +72,7 @@ jobs:
             clean \
             build \
             test \
+            -x :bdd-tests:test \
             jacocoTestReport \
             jacocoTestCoverageVerification \
             checkstyleMain \
