@@ -3,7 +3,7 @@ package com.inclusive.adaptiveeducationservice.fieldwork.application.researchide
 import java.util.UUID;
 
 public final class ResearchConsentRequiredException
-        extends IllegalStateException {
+        extends RuntimeException {
 
     public ResearchConsentRequiredException(
             UUID participantUuid
