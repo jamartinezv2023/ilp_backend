@@ -25,7 +25,8 @@ public class WebCorsConfig {
                                 .filter(origin -> !origin.isBlank())
                                 .toList();
 
-                registry.addMapping("/api/**")
+                for (String pathPattern : List.of("/api/**", "/analytics/**")) {
+                    registry.addMapping(pathPattern)
                         .allowedOriginPatterns(
                                 originPatterns.toArray(String[]::new)
                         )
@@ -39,6 +40,7 @@ public class WebCorsConfig {
                         )
                         .allowedHeaders("*")
                         .maxAge(1800);
+                }
             }
         };
     }
