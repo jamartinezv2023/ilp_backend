@@ -16,7 +16,12 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class TenantBoundaryHardeningTest {
     private static final UUID TENANT = UUID.fromString("11111111-1111-4111-8111-111111111111");
