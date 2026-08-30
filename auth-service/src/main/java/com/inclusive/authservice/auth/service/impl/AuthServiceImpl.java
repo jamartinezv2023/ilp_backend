@@ -8,6 +8,7 @@ import com.inclusive.authservice.repository.authorization.UserAccountRepository;
 import com.inclusive.authservice.security.jwt.JwtService;
 import com.inclusive.authservice.security.mfa.MfaService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,40 +26,30 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public LoginResponse login(LoginRequest request, UUID tenantId) {
-
         UserAccount user = userAccountRepository
                 .findByEmailAndTenantId(request.email(), tenantId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid credentials"));
+                .orElseThrow(() -> new BadCredentialsException("Invalid credentials"));
 
-        if (!passwordEncoder.matches(request.password(), user.getPasswordHash())) {
-            throw new IllegalArgumentException("Invalid credentials");
+        if (!user.isEnabled()
+                || !passwordEncoder.matches(request.password(), user.getPasswordHash())) {
+            throw new BadCredentialsException("Invalid credentials");
         }
 
         if (user.isMfaEnabled()) {
             if (request.mfaCode() == null) {
                 return LoginResponse.requiresMfa();
             }
-
-            boolean validMfaCode = mfaService.verifyCode(
-                    user.getMfaSecret(),
-                    request.mfaCode()
-            );
-
-            if (!validMfaCode) {
-                throw new IllegalArgumentException("Invalid MFA code");
+            int code = request.mfaCode();
+            if (!user.hasMfaSecret() || code < 0 || code > 999999
+                    || !mfaService.verifyCode(user.getMfaSecret(), code)) {
+                throw new BadCredentialsException("Invalid credentials");
             }
         }
 
         String accessToken = jwtService.generateAccessToken(
-                user.getId(),
-                tenantId,
-                user.getEmail(),
-                Set.of("USER"),
-                Set.of()
+                user.getId(), tenantId, user.getEmail(), Set.of("USER"), Set.of()
         );
-
         String refreshToken = jwtService.generateRefreshToken();
-
         return LoginResponse.authenticated(accessToken, refreshToken);
     }
 }
