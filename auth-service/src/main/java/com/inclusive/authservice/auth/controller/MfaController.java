@@ -79,12 +79,17 @@ public class MfaController {
         if (principal == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Authentication required");
         }
+        String subjectClaim = principal.getSubject();
+        String tenantClaim = principal.getClaimAsString("tenantId");
+        if (subjectClaim == null || tenantClaim == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid identity claims");
+        }
         UUID subject;
         UUID tokenTenant;
         try {
-            subject = UUID.fromString(principal.getSubject());
-            tokenTenant = UUID.fromString(principal.getClaimAsString("tenantId"));
-        } catch (IllegalArgumentException | NullPointerException ex) {
+            subject = UUID.fromString(subjectClaim);
+            tokenTenant = UUID.fromString(tenantClaim);
+        } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid identity claims");
         }
         if (!tokenTenant.equals(TenantContext.getTenantId())) {

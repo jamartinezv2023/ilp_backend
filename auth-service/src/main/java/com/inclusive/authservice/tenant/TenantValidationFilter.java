@@ -47,14 +47,18 @@ public class TenantValidationFilter extends OncePerRequestFilter {
             }
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             if (authentication instanceof JwtAuthenticationToken jwtAuthentication) {
+                String claim = jwtAuthentication.getToken().getClaimAsString("tenantId");
+                if (claim == null) {
+                    reject(response, HttpServletResponse.SC_UNAUTHORIZED, "INVALID_TOKEN_TENANT");
+                    return;
+                }
                 UUID tokenTenant;
                 try {
-                    String claim = jwtAuthentication.getToken().getClaimAsString("tenantId");
                     tokenTenant = UUID.fromString(claim);
                     if (!tokenTenant.toString().equalsIgnoreCase(claim)) {
                         throw new IllegalArgumentException("Non-canonical tenant claim");
                     }
-                } catch (IllegalArgumentException | NullPointerException ex) {
+                } catch (IllegalArgumentException ex) {
                     reject(response, HttpServletResponse.SC_UNAUTHORIZED, "INVALID_TOKEN_TENANT");
                     return;
                 }
