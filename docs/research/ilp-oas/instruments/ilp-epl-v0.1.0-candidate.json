@@ -1,0 +1,352 @@
+{
+    "schemaVersion":  "0.1.0",
+    "instrumentId":  "ILP-EPL",
+    "version":  "0.1.0-candidate",
+    "title":  "Inventario ILP de Exploración, Reflexión, Integración y Transferencia",
+    "shortTitle":  "ILP-EPL",
+    "language":  "es-CO",
+    "status":  "candidate_not_validated",
+    "purpose":  "Describe preferencias contextuales para abordar experiencias y transformar lo aprendido, con fines formativos y de investigación.",
+    "population":  {
+                       "primary":  "Colombian students enrolled in grades 9 through 11",
+                       "expectedAge":  "Approximately 14 to 18 years with legitimate grade-age variation",
+                       "pilot":  "Authorized institutions in Valle del Cauca after ethics and institutional approval",
+                       "futureExtension":  "Higher education requires an independent adaptation, replication and invariance phase"
+                   },
+    "safety":  {
+                   "diagnosticUse":  false,
+                   "highImpactAutomatedDecision":  false,
+                   "permanentTypeLabel":  false,
+                   "comparativeGroupClaimsBeforeInvariance":  false,
+                   "fieldReady":  false,
+                   "statement":  "Candidate research instrument. Results are contextual, provisional and require human interpretation."
+               },
+    "recallPeriod":  "Piensa en cómo sueles actuar durante actividades de aprendizaje recientes.",
+    "instructions":  "Lee cada afirmación y selecciona qué tanto se parece a tu forma habitual de aprender. No hay respuestas correctas o incorrectas.",
+    "responseScale":  {
+                          "type":  "likert_single_choice",
+                          "options":  [
+                                          {
+                                              "value":  1,
+                                              "label":  "No se parece a mi forma habitual"
+                                          },
+                                          {
+                                              "value":  2,
+                                              "label":  "Se parece poco"
+                                          },
+                                          {
+                                              "value":  3,
+                                              "label":  "Se parece algunas veces"
+                                          },
+                                          {
+                                              "value":  4,
+                                              "label":  "Se parece bastante"
+                                          },
+                                          {
+                                              "value":  5,
+                                              "label":  "Se parece mucho a mi forma habitual"
+                                          }
+                                      ]
+                      },
+    "dimensions":  [
+                       {
+                           "code":  "AE",
+                           "name":  "Exploración activa",
+                           "definition":  "Disposición a iniciar, probar y ajustar acciones para comprender una situación educativa."
+                       },
+                       {
+                           "code":  "MR",
+                           "name":  "Monitoreo reflexivo",
+                           "definition":  "Disposición a revisar procesos, evidencias, errores y cambios en la propia comprensión."
+                       },
+                       {
+                           "code":  "IE",
+                           "name":  "Integración explicativa",
+                           "definition":  "Disposición a conectar ideas, construir explicaciones y organizar relaciones conceptuales."
+                       },
+                       {
+                           "code":  "TA",
+                           "name":  "Transferencia adaptativa",
+                           "definition":  "Disposición a usar lo aprendido en situaciones nuevas y ajustar estrategias al contexto."
+                       }
+                   ],
+    "items":  [
+                  {
+                      "id":  "EPL-AE-01",
+                      "dimension":  "AE",
+                      "text":  "Cuando inicio una tarea nueva, pruebo una primera forma de resolverla para obtener información.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-AE-02",
+                      "dimension":  "AE",
+                      "text":  "Comprendo mejor una idea cuando puedo ponerla en práctica con un ejemplo.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-AE-03",
+                      "dimension":  "AE",
+                      "text":  "Si una estrategia no funciona, ensayo otra manera de avanzar.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-AE-04",
+                      "dimension":  "AE",
+                      "text":  "Me resulta útil construir, simular o manipular algo para explorar cómo funciona.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-AE-05",
+                      "dimension":  "AE",
+                      "text":  "Durante una actividad, hago pequeñas pruebas antes de decidir cómo continuar.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-AE-06",
+                      "dimension":  "AE",
+                      "text":  "Aprendo cuando participo activamente y observo las consecuencias de mis decisiones.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-MR-01",
+                      "dimension":  "MR",
+                      "text":  "Después de una actividad, reviso qué parte entendí y cuál necesito trabajar más.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-MR-02",
+                      "dimension":  "MR",
+                      "text":  "Antes de cambiar una respuesta, comparo mis razones con la información disponible.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-MR-03",
+                      "dimension":  "MR",
+                      "text":  "Cuando cometo un error, intento identificar en qué momento cambió mi razonamiento.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-MR-04",
+                      "dimension":  "MR",
+                      "text":  "Me tomo un momento para pensar qué aprendí de una experiencia.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-MR-05",
+                      "dimension":  "MR",
+                      "text":  "Reviso si la estrategia que utilicé fue adecuada para la tarea.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-MR-06",
+                      "dimension":  "MR",
+                      "text":  "Puedo explicar qué evidencia me hizo cambiar de opinión.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-IE-01",
+                      "dimension":  "IE",
+                      "text":  "Busco relaciones entre una idea nueva y conocimientos que ya tengo.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-IE-02",
+                      "dimension":  "IE",
+                      "text":  "Organizo la información para distinguir causas, consecuencias y condiciones.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-IE-03",
+                      "dimension":  "IE",
+                      "text":  "Intento expresar con mis propias palabras por qué ocurre un fenómeno.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-IE-04",
+                      "dimension":  "IE",
+                      "text":  "Comparo diferentes explicaciones antes de aceptar una conclusión.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-IE-05",
+                      "dimension":  "IE",
+                      "text":  "Uso esquemas, ejemplos o conceptos para construir una explicación completa.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-IE-06",
+                      "dimension":  "IE",
+                      "text":  "Identifico la idea principal y la conecto con los detalles importantes.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-TA-01",
+                      "dimension":  "TA",
+                      "text":  "Uso lo aprendido para enfrentar situaciones que no son exactamente iguales a las practicadas.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-TA-02",
+                      "dimension":  "TA",
+                      "text":  "Ajusto mi estrategia cuando cambian las condiciones de una tarea.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-TA-03",
+                      "dimension":  "TA",
+                      "text":  "Puedo proponer un ejemplo nuevo para mostrar cómo se aplica una idea.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-TA-04",
+                      "dimension":  "TA",
+                      "text":  "Reconozco cuándo una solución anterior puede servir y cuándo debe modificarse.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-TA-05",
+                      "dimension":  "TA",
+                      "text":  "Relaciono lo aprendido en una asignatura con problemas de otros contextos.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "EPL-TA-06",
+                      "dimension":  "TA",
+                      "text":  "Cuando aparece un problema nuevo, selecciono y adapto recursos que ya conozco.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  }
+              ],
+    "scoring":  {
+                    "method":  "unweighted_dimension_mean",
+                    "minimumAnsweredProportionPerDimension":  0.8,
+                    "globalScoreEnabled":  false,
+                    "categoricalBandsEnabled":  false,
+                    "missingHandling":  "Report answered count and missing proportion; do not impute for individual feedback in candidate version.",
+                    "uncertainty":  "No normative percentile, cut score or diagnostic category before validation."
+                },
+    "interpretation":  {
+                           "mode":  "continuous_dimension_profile",
+                           "comparisons":  "within-person descriptive only",
+                           "bands":  "disabled until empirical justification"
+                       }
+}

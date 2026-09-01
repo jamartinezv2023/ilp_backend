@@ -1,0 +1,12 @@
+requirement,status,evidence_required,blocks_submission,blocks_fieldwork
+Current protocol version identified,PASS,protocol manifest,true,true
+Historical-to-current method alignment documented,PASS,alignment memorandum,true,true
+Exact institutional recipient identified,PENDING,official recipient and route,true,true
+Director or supervisor review recorded,PENDING,dated review record,true,true
+University ethics determination recorded,PENDING,official determination,true,true
+Palmira territorial access determination recorded,PENDING,official determination,false,true
+Site authorization recorded,PENDING,signed institutional authorization,false,true
+Privacy and data-custody approval recorded,PENDING,approved plan,false,true
+Consent and assent materials approved,PENDING,approved versions,false,true
+Instrument version frozen for approved activity,PENDING,immutable version manifest,false,true
+Preregistration decision and record completed,PENDING,registration identifier or documented decision,false,true

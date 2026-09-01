@@ -1,0 +1,46 @@
+document_version: 0.1.0-candidate
+cycle: R10.12A-A7
+status: PENDING_EXTERNAL_APPROVAL_AND_PREREGISTRATION
+instrument_versions:
+  ILP-EPL: 0.1.0-candidate
+  ILP-MEA: 0.1.0-candidate
+  ILP-IVP: 0.1.0-candidate
+target_panel:
+  minimum: 6
+  maximum: 10
+  final_planned_n: PENDING
+  minimum_completed_per_item: PENDING
+independence:
+  project_authors_counted_as_independent: false
+  coordinated_ratings_permitted: false
+criteria:
+  - Relevance1to4
+  - Clarity1to4
+  - Comprehensibility1to4
+  - Representativeness1to4
+  - Accessibility1to4
+  - CulturalAppropriateness1to4
+endorsement_definition: score_3_or_4
+statistics:
+  item_cvi: true
+  scale_cvi_average: true
+  universal_agreement_supplementary: true
+  modified_kappa: true
+  essentiality_analyzed_separately: true
+thresholds:
+  criterion_specific_thresholds: PENDING
+  missing_rating_rule: PENDING
+  reviewer_exclusion_rule: PRE_SPECIFIED_GOVERNANCE_ONLY
+  qualitative_override_rule: MAJOR_BIAS_OR_ACCESSIBILITY_CONCERN_REQUIRES_WRITTEN_DISPOSITION
+multiplicity_and_reporting:
+  instruments_analyzed_separately: true
+  criteria_collapsed_into_global_validity_score: false
+  unfavorable_results_reported: true
+  all_exclusions_reported: true
+versioning:
+  completed_submissions_overwritten: false
+  accepted_semantic_revision_creates_new_version: true
+preregistration:
+  repository: PENDING
+  identifier: PENDING
+  frozen_utc: PENDING

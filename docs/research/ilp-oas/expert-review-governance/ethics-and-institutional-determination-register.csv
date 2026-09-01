@@ -1,0 +1,8 @@
+﻿"Gate","Question","Status","Authority","Decision","Reference","DecisionDate","ExpiryOrReviewDate","Notes"
+"INSTITUTIONAL_SPONSORSHIP","Institution or doctoral program accepts oversight responsibility","PENDING","","","","","",""
+"ETHICS_PATHWAY","Competent body determines review, exemption or non-applicability pathway","PENDING","","","","","",""
+"RISK_CLASSIFICATION","Competent body records applicable risk classification","PENDING","","","","","",""
+"EXPERT_INFORMATION_AND_CONSENT","Required information and consent or authorization procedure approved","PENDING","","","","","",""
+"DATA_PROTECTION","Responsible party, lawful basis, privacy notice, rights channel and retention approved","PENDING","","","","","",""
+"ITEM_CONFIDENTIALITY","Confidential disclosure of candidate item bank approved","PENDING","","","","","",""
+"RESEARCHER_CONFLICTS","Researcher and supervisor conflicts declared and dispositioned","PENDING","","","","","",""
