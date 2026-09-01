@@ -1,0 +1,6 @@
+﻿"Authorization","Status","Prerequisites","AuthorizedBy","AuthorizationDateUtc","EvidenceReference","ExpiryDate","Revoked","Notes"
+"CONTACT_AND_RECRUIT_EXPERTS","BLOCKED","All applicable determination gates approved; final invitation and privacy materials approved; secure contact channel ready","","","","","False",""
+"DISCLOSE_CANDIDATE_ITEM_BANK","BLOCKED","Reviewer eligible; independence disposition passed; confidentiality accepted; item access limited","","","","","False",""
+"COLLECT_EXPERT_RATINGS","BLOCKED","Recruitment authorized; reviewer enrolled; analysis decisions frozen; secure receipt and retention tested","","","","","False",""
+"ANALYZE_PSEUDONYMIZED_RATINGS","BLOCKED","Completed ratings received under approved procedure; dataset lock and quality checks complete","","","","","False",""
+"STUDENT_FIELD_COLLECTION","BLOCKED","Separate future protocol, ethics, institutional, consent-assent, cognitive and psychometric gates","","","","","False",""

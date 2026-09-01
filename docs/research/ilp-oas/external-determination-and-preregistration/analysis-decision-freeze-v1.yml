@@ -1,0 +1,72 @@
+document_version: 1.0.0-frozen-candidate
+cycle: R10.12A-A8
+status: FROZEN_BEFORE_REAL_EXPERT_RATINGS
+scope: EXPERT_CONTENT_REVIEW_ONLY
+instrument_versions:
+  ILP-EPL: 0.1.0-candidate
+  ILP-MEA: 0.1.0-candidate
+  ILP-IVP: 0.1.0-candidate
+panel:
+  planned_eligible_independent_reviewers: 8
+  maximum_candidates_contacted_after_authorization: 10
+  minimum_valid_ratings_per_item: 6
+  project_item_authors_counted_as_independent: false
+assignment:
+  all_instruments_require_domain_coverage: true
+  target_valid_ratings_per_item: 8
+  minimum_valid_ratings_per_item: 6
+ratings:
+  scale_minimum: 1
+  scale_maximum: 4
+  endorsement: SCORE_3_OR_4
+criteria:
+  - Relevance1to4
+  - Clarity1to4
+  - Comprehensibility1to4
+  - Representativeness1to4
+  - Accessibility1to4
+  - CulturalAppropriateness1to4
+primary_statistics:
+  item_cvi_by_criterion: true
+  scale_cvi_average_by_instrument_and_criterion: true
+supplementary_statistics:
+  universal_agreement: true
+  modified_kappa: true
+decision_targets:
+  item_cvi_minimum: 0.78
+  scale_cvi_average_target: 0.90
+  automatic_validity_claim_from_threshold: false
+missing_data:
+  imputation: NONE
+  denominator: ELIGIBLE_OBSERVED_RATINGS
+  fewer_than_six_valid_ratings: INSUFFICIENT_REVIEW_REQUIRES_ADDITIONAL_INDEPENDENT_RATING
+reviewer_exclusion:
+  based_on_score_direction: false
+  allowed_reasons:
+    - PRE_RECORDED_INELIGIBILITY
+    - UNMITIGATED_CONFLICT
+    - DUPLICATE_SUBMISSION
+    - CONFIRMED_COORDINATION_OR_COPYING
+    - INVALID_OR_INCOMPLETE_RATING_PROTOCOL
+item_disposition:
+  options:
+    - RETAIN_UNCHANGED
+    - REVISE
+    - SPLIT
+    - MERGE
+    - REMOVE
+    - DEFER
+  major_bias_or_accessibility_concern_requires_written_disposition: true
+  semantic_revision_creates_new_instrument_version: true
+reporting:
+  instruments_analyzed_separately: true
+  criteria_analyzed_separately: true
+  one_global_validity_score: false
+  qualitative_evidence_required: true
+  exclusions_and_deviations_reported: true
+preregistration:
+  platform_candidate: OSF_REGISTRATIONS
+  cost_candidate: ZERO
+  submission_status: NOT_SUBMITTED
+  identifier: PENDING
+  timestamp: PENDING

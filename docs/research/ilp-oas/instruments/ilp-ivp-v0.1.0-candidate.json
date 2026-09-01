@@ -1,0 +1,429 @@
+{
+    "schemaVersion":  "0.1.0",
+    "instrumentId":  "ILP-IVP",
+    "version":  "0.1.0-candidate",
+    "title":  "Inventario ILP de Intereses y Preferencias de Actividad",
+    "shortTitle":  "ILP-IVP",
+    "language":  "es-CO",
+    "status":  "candidate_not_validated",
+    "purpose":  "Explora intereses relativos por familias de actividades para apoyar reflexión vocacional abierta, sin prescribir carreras ni destinos educativos.",
+    "population":  {
+                       "primary":  "Colombian students enrolled in grades 9 through 11",
+                       "expectedAge":  "Approximately 14 to 18 years with legitimate grade-age variation",
+                       "pilot":  "Authorized institutions in Valle del Cauca after ethics and institutional approval",
+                       "futureExtension":  "Higher education requires an independent adaptation, replication and invariance phase"
+                   },
+    "safety":  {
+                   "diagnosticUse":  false,
+                   "highImpactAutomatedDecision":  false,
+                   "permanentTypeLabel":  false,
+                   "comparativeGroupClaimsBeforeInvariance":  false,
+                   "fieldReady":  false,
+                   "statement":  "Candidate research instrument. Results are contextual, provisional and require human interpretation."
+               },
+    "recallPeriod":  "Responde según el interés que te produce cada actividad en este momento.",
+    "instructions":  "Indica cuánto te interesaría realizar cada actividad, incluso si todavía no has tenido oportunidad de practicarla.",
+    "responseScale":  {
+                          "type":  "interest_single_choice",
+                          "options":  [
+                                          {
+                                              "value":  1,
+                                              "label":  "No me interesa"
+                                          },
+                                          {
+                                              "value":  2,
+                                              "label":  "Me interesa poco"
+                                          },
+                                          {
+                                              "value":  3,
+                                              "label":  "Me interesa moderadamente"
+                                          },
+                                          {
+                                              "value":  4,
+                                              "label":  "Me interesa bastante"
+                                          },
+                                          {
+                                              "value":  5,
+                                              "label":  "Me interesa mucho"
+                                          }
+                                      ]
+                      },
+    "dimensions":  [
+                       {
+                           "code":  "IP",
+                           "name":  "Indagación y resolución de problemas",
+                           "definition":  "Interés por investigar preguntas, analizar evidencia y resolver problemas abiertos."
+                       },
+                       {
+                           "code":  "CD",
+                           "name":  "Creación y diseño",
+                           "definition":  "Interés por imaginar, producir, expresar o diseñar soluciones y obras."
+                       },
+                       {
+                           "code":  "AP",
+                           "name":  "Acompañamiento y participación social",
+                           "definition":  "Interés por comprender, apoyar, enseñar o colaborar con personas y comunidades."
+                       },
+                       {
+                           "code":  "OC",
+                           "name":  "Organización y coordinación",
+                           "definition":  "Interés por planificar recursos, procesos, información y actividades colectivas."
+                       },
+                       {
+                           "code":  "TS",
+                           "name":  "Tecnología y sistemas",
+                           "definition":  "Interés por construir, comprender o mejorar sistemas tecnológicos y digitales."
+                       },
+                       {
+                           "code":  "ET",
+                           "name":  "Entorno y territorio",
+                           "definition":  "Interés por fenómenos ambientales, territorio, sostenibilidad y relaciones entre sociedad y naturaleza."
+                       }
+                   ],
+    "items":  [
+                  {
+                      "id":  "IVP-IP-01",
+                      "dimension":  "IP",
+                      "text":  "Investigar por qué ocurre un fenómeno que todavía no comprendo.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-IP-02",
+                      "dimension":  "IP",
+                      "text":  "Analizar datos para encontrar patrones o explicaciones.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-IP-03",
+                      "dimension":  "IP",
+                      "text":  "Diseñar una manera de comprobar una idea o resolver una pregunta.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-IP-04",
+                      "dimension":  "IP",
+                      "text":  "Comparar evidencias antes de tomar una decisión.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-IP-05",
+                      "dimension":  "IP",
+                      "text":  "Trabajar en problemas que admiten más de una estrategia.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-CD-01",
+                      "dimension":  "CD",
+                      "text":  "Diseñar un objeto, mensaje o experiencia para responder a una necesidad.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-CD-02",
+                      "dimension":  "CD",
+                      "text":  "Crear historias, imágenes, música, modelos u otras formas de expresión.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-CD-03",
+                      "dimension":  "CD",
+                      "text":  "Mejorar la apariencia y el funcionamiento de una propuesta.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-CD-04",
+                      "dimension":  "CD",
+                      "text":  "Imaginar varias soluciones antes de elegir una.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-CD-05",
+                      "dimension":  "CD",
+                      "text":  "Transformar una idea inicial en un producto que otras personas puedan comprender.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-AP-01",
+                      "dimension":  "AP",
+                      "text":  "Acompañar a una persona mientras aprende o supera una dificultad.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-AP-02",
+                      "dimension":  "AP",
+                      "text":  "Participar en proyectos que buscan mejorar una comunidad.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-AP-03",
+                      "dimension":  "AP",
+                      "text":  "Escuchar diferentes necesidades antes de proponer una acción.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-AP-04",
+                      "dimension":  "AP",
+                      "text":  "Explicar un tema de manera que resulte comprensible para otras personas.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-AP-05",
+                      "dimension":  "AP",
+                      "text":  "Colaborar en decisiones que afectan a un grupo.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-OC-01",
+                      "dimension":  "OC",
+                      "text":  "Planificar las etapas, tiempos y recursos de una actividad.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-OC-02",
+                      "dimension":  "OC",
+                      "text":  "Organizar información para que otras personas puedan utilizarla.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-OC-03",
+                      "dimension":  "OC",
+                      "text":  "Coordinar tareas entre varias personas para alcanzar una meta.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-OC-04",
+                      "dimension":  "OC",
+                      "text":  "Revisar que un proceso cumpla criterios y fechas acordadas.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-OC-05",
+                      "dimension":  "OC",
+                      "text":  "Buscar maneras de hacer un proceso más claro y eficiente.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-TS-01",
+                      "dimension":  "TS",
+                      "text":  "Comprender cómo se conectan las partes de un sistema tecnológico.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-TS-02",
+                      "dimension":  "TS",
+                      "text":  "Programar, configurar o automatizar una solución digital.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-TS-03",
+                      "dimension":  "TS",
+                      "text":  "Construir o reparar un dispositivo, mecanismo o prototipo.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-TS-04",
+                      "dimension":  "TS",
+                      "text":  "Analizar riesgos y efectos del uso de una tecnología.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-TS-05",
+                      "dimension":  "TS",
+                      "text":  "Probar una herramienta tecnológica y proponer cómo mejorarla.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-ET-01",
+                      "dimension":  "ET",
+                      "text":  "Observar y explicar cambios en un ecosistema o territorio.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-ET-02",
+                      "dimension":  "ET",
+                      "text":  "Participar en soluciones para el uso responsable de agua, energía o materiales.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-ET-03",
+                      "dimension":  "ET",
+                      "text":  "Estudiar cómo las decisiones humanas afectan el ambiente.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-ET-04",
+                      "dimension":  "ET",
+                      "text":  "Trabajar con información geográfica, ambiental o territorial.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "IVP-ET-05",
+                      "dimension":  "ET",
+                      "text":  "Diseñar acciones que relacionen bienestar comunitario y sostenibilidad.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  }
+              ],
+    "scoring":  {
+                    "method":  "unweighted_dimension_mean",
+                    "minimumAnsweredProportionPerDimension":  0.8,
+                    "globalScoreEnabled":  false,
+                    "categoricalBandsEnabled":  false,
+                    "missingHandling":  "Report answered count and missing proportion; do not impute for individual feedback in candidate version.",
+                    "uncertainty":  "No normative percentile, cut score or diagnostic category before validation."
+                },
+    "interpretation":  {
+                           "mode":  "continuous_activity_interest_profile",
+                           "comparisons":  "within-person descriptive only",
+                           "careerPrescription":  false,
+                           "bands":  "disabled until empirical justification"
+                       }
+}

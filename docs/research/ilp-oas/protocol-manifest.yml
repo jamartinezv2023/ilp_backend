@@ -1,0 +1,100 @@
+protocol:
+  id: ILP-OAS-MRP
+  version: 0.1.0-draft
+  status: DRAFT
+  field_data_collection_authorized: false
+  psychometric_validation_claimed: false
+  ethics_approval_recorded: false
+  preregistration_recorded: false
+
+suite:
+  name: ILP Open Assessment Suite
+  acronym: ILP-OAS
+  modules:
+    - id: ILP-EPL
+      status: CONCEPTUAL_DRAFT
+    - id: ILP-MEA
+      status: CONCEPTUAL_DRAFT
+    - id: ILP-IVP
+      status: CONCEPTUAL_DRAFT
+
+governance:
+  minors_expected: true
+  guardian_consent_required: true
+  participant_assent_required: true
+  clinical_use_allowed: false
+  automated_high_impact_decisions_allowed: false
+  human_oversight_required: true
+  scientific_and_software_versions_separated: true
+
+release:
+  current_classification: MASTER_PROTOCOL_DRAFT
+  field_ready_candidate: false
+# R10.12A-A4 controlled refinement
+refinement_version: 0.2.0-candidate
+refinement_cycle: R10.12A-A4
+field_data_collection_authorized: false
+ethics_approval_recorded: false
+psychometric_validation_claimed: false
+new_protocol_artifacts:
+  - scope-and-participant-framework.md
+  - instrument-development-and-content-validity-plan.md
+  - psychometric-validation-and-analysis-plan.md
+  - field-governance-and-deployment-gates.md
+  - blocker-disposition-register.csv
+# R10.12A-A4-R1 scope recertification
+scope_recertification_version: 0.2.1-candidate
+scope_recertification_cycle: R10.12A-A4-R1
+primary_population: secondary_and_upper_secondary_grades_9_to_11
+expected_age_range: approximately_14_to_18_with_legitimate_grade_age_variation
+initial_country: Colombia
+initial_pilot_region: Valle_del_Cauca
+higher_education_status: future_independent_extension
+field_data_collection_authorized_after_scope_recertification: false
+# R10.12A-A5 original instrument family
+instrument_family_version: 0.3.0-candidate
+instrument_specification_cycle: R10.12A-A5-R1
+instruments: 3
+candidate_items: 84
+item_banks_complete_for_expert_review: true
+expert_content_review_completed: false
+cognitive_interviews_completed: false
+psychometric_validation_claimed_after_a5: false
+field_data_collection_authorized_after_a5: false
+renderer_preview_candidate: true
+software_implementation_authorized_after_a5: false
+# R10.12A-A6 expert content-review package
+expert_review_package_version: 0.4.0-candidate
+expert_review_package_cycle: R10.12A-A6
+expert_review_items: 84
+expert_review_criteria: 6
+expert_review_package_prepared: true
+expert_recruitment_authorized_after_a6: false
+expert_content_review_completed_after_a6: false
+rights_review_completed_after_a6: false
+psychometric_validation_claimed_after_a6: false
+software_implementation_authorized_after_a6: false
+field_data_collection_authorized_after_a6: false
+# R10.12A-A7 expert-review governance
+expert_review_governance_version: 0.5.0-candidate
+expert_review_governance_cycle: R10.12A-A7
+governance_requirements: 12
+external_determinations_recorded: 0
+eligible_reviewers_recorded: 0
+expert_recruitment_authorized_after_a7: false
+expert_rating_collection_authorized_after_a7: false
+student_field_collection_authorized_after_a7: false
+software_implementation_authorized_after_a7: false
+# R10.12A-A8 external determination and preregistration
+external_determination_package_version: 0.6.0-candidate
+external_determination_cycle: R10.12A-A8
+analysis_decisions_frozen_before_real_ratings: true
+planned_eligible_expert_panel: 8
+minimum_valid_ratings_per_item: 6
+synthetic_dry_run_completed: true
+external_submission_completed_after_a8: false
+preregistration_completed_after_a8: false
+expert_recruitment_authorized_after_a8: false
+expert_rating_collection_authorized_after_a8: false
+software_implementation_authorized_after_a8: false
+field_data_collection_authorized_after_a8: false

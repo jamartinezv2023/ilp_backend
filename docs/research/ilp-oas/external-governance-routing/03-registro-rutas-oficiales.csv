@@ -1,0 +1,6 @@
+route_id,authority,purpose,official_entry,submitter,status,evidence_required
+UA-DIRECTION,Direccion doctoral TEAC,Revision cientifica previa,Canal institucional acordado,Doctorando,PENDING,Respuesta fechada o formulario firmado
+UA-CEI,Comite de Etica de la Investigacion UA,Evaluacion etica previa,Aplicacion uaInvestiga,Directora o tutora con perfil PDI,PENDING,Informe oficial CEI-UA
+UA-DPD,Delegacion de Proteccion de Datos UA,Consulta de datos,Canal oficial DPD-UA,Segun indicacion,PENDING,Respuesta oficial
+PALMIRA-SEM,Alcaldia de Palmira - Secretaria de Educacion,Direccion territorial,Ventanilla Unica oficial,Investigador tras aval doctoral,PENDING,Radicado y respuesta oficial
+SITE,Institucion educativa candidata,Permiso de sitio,Canal oficial del sitio,Tras rutas previas,PENDING,Autorizacion firmada

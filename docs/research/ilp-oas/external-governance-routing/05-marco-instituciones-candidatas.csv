@@ -1,0 +1,11 @@
+criterion_id,criterion,mandatory,status,evidence
+SITE-01,Institucion oficialmente autorizada en Palmira,true,PENDING,Registro oficial
+SITE-02,Oferta activa de grados 9 a 11,true,PENDING,Evidencia institucional
+SITE-03,Autorizacion de autoridad competente,true,PENDING,Documento firmado
+SITE-04,Compatibilidad con determinaciones etica y territorial,true,PENDING,Evidencia oficial
+SITE-05,Capacidad para consentimiento y asentimiento,true,PENDING,Procedimiento aprobado
+SITE-06,Privacidad y custodia,true,PENDING,Plan del sitio
+SITE-07,Gestion de conflicto de interes,true,PENDING,Declaracion
+SITE-08,Reclutamiento sin coercion,true,PENDING,Plan
+SITE-09,Accesibilidad e inclusion,true,PENDING,Ajustes
+SITE-10,Viabilidad tecnica no discriminatoria,false,PENDING,Evaluacion

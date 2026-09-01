@@ -1,0 +1,8 @@
+evidence_id,gate,authority,received,date,reference,sha256,scope_verified,conditions_recorded,status
+EVD-001,Revision doctoral,Direccion doctoral,false,,,,false,false,PENDING
+EVD-002,Etica UA,CEI-UA,false,,,,false,false,PENDING
+EVD-003,Proteccion de datos,DPD-UA,false,,,,false,false,PENDING
+EVD-004,Direccionamiento territorial,Secretaria de Educacion de Palmira,false,,,,false,false,PENDING
+EVD-005,Autorizacion de sitio,Institucion candidata,false,,,,false,false,PENDING
+EVD-006,Consentimiento y asentimiento,Autoridad aplicable,false,,,,false,false,PENDING
+EVD-007,Prerregistro,Repositorio seleccionado,false,,,,false,false,PENDING

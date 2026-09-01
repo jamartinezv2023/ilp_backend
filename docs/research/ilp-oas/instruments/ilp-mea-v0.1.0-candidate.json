@@ -1,0 +1,423 @@
+{
+    "schemaVersion":  "0.1.0",
+    "instrumentId":  "ILP-MEA",
+    "version":  "0.1.0-candidate",
+    "title":  "Inventario ILP de Estrategias Multidimensionales y Apoyos para el Aprendizaje",
+    "shortTitle":  "ILP-MEA",
+    "language":  "es-CO",
+    "status":  "candidate_not_validated",
+    "purpose":  "Describe estrategias y apoyos que el estudiante utiliza o necesita para organizar, representar, regular y sostener su aprendizaje.",
+    "population":  {
+                       "primary":  "Colombian students enrolled in grades 9 through 11",
+                       "expectedAge":  "Approximately 14 to 18 years with legitimate grade-age variation",
+                       "pilot":  "Authorized institutions in Valle del Cauca after ethics and institutional approval",
+                       "futureExtension":  "Higher education requires an independent adaptation, replication and invariance phase"
+                   },
+    "safety":  {
+                   "diagnosticUse":  false,
+                   "highImpactAutomatedDecision":  false,
+                   "permanentTypeLabel":  false,
+                   "comparativeGroupClaimsBeforeInvariance":  false,
+                   "fieldReady":  false,
+                   "statement":  "Candidate research instrument. Results are contextual, provisional and require human interpretation."
+               },
+    "recallPeriod":  "Piensa en tus actividades escolares de las últimas cuatro semanas.",
+    "instructions":  "Indica con qué frecuencia realizaste cada acción. Responde según tu experiencia, no según lo que creas que se espera de ti.",
+    "responseScale":  {
+                          "type":  "frequency_single_choice",
+                          "options":  [
+                                          {
+                                              "value":  1,
+                                              "label":  "Nunca"
+                                          },
+                                          {
+                                              "value":  2,
+                                              "label":  "Pocas veces"
+                                          },
+                                          {
+                                              "value":  3,
+                                              "label":  "Algunas veces"
+                                          },
+                                          {
+                                              "value":  4,
+                                              "label":  "Muchas veces"
+                                          },
+                                          {
+                                              "value":  5,
+                                              "label":  "Casi siempre"
+                                          }
+                                      ]
+                      },
+    "dimensions":  [
+                       {
+                           "code":  "OI",
+                           "name":  "Organización de la información",
+                           "definition":  "Estrategias para seleccionar, secuenciar y representar información relevante."
+                       },
+                       {
+                           "code":  "RM",
+                           "name":  "Representación multimodal",
+                           "definition":  "Uso intencional de representaciones verbales, visuales, simbólicas, auditivas o manipulativas."
+                       },
+                       {
+                           "code":  "AM",
+                           "name":  "Autorregulación y monitoreo",
+                           "definition":  "Planificación, seguimiento y ajuste consciente del propio trabajo."
+                       },
+                       {
+                           "code":  "AC",
+                           "name":  "Apoyo y colaboración",
+                           "definition":  "Búsqueda, ofrecimiento y uso responsable de apoyo interpersonal para aprender."
+                       },
+                       {
+                           "code":  "EA",
+                           "name":  "Entorno y accesibilidad",
+                           "definition":  "Reconocimiento y gestión de condiciones ambientales, tecnológicas y de accesibilidad que favorecen la participación."
+                       }
+                   ],
+    "items":  [
+                  {
+                      "id":  "MEA-OI-01",
+                      "dimension":  "OI",
+                      "text":  "Antes de estudiar un tema, identifico qué información es central y cuál es complementaria.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-OI-02",
+                      "dimension":  "OI",
+                      "text":  "Divido una tarea extensa en pasos que puedo realizar y revisar.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-OI-03",
+                      "dimension":  "OI",
+                      "text":  "Agrupo ideas relacionadas para recordar cómo se conectan.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-OI-04",
+                      "dimension":  "OI",
+                      "text":  "Elaboro resúmenes que conservan las relaciones importantes del tema.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-OI-05",
+                      "dimension":  "OI",
+                      "text":  "Ordeno datos o argumentos antes de elaborar una respuesta.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-OI-06",
+                      "dimension":  "OI",
+                      "text":  "Uso títulos, categorías o secuencias para ubicar rápidamente la información.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-RM-01",
+                      "dimension":  "RM",
+                      "text":  "Si una explicación verbal no es suficiente, busco otra forma de representar la idea.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-RM-02",
+                      "dimension":  "RM",
+                      "text":  "Uso diagramas, gráficos o dibujos cuando ayudan a comprender relaciones.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-RM-03",
+                      "dimension":  "RM",
+                      "text":  "Transformo una representación en otra, por ejemplo, de una tabla a una explicación escrita.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-RM-04",
+                      "dimension":  "RM",
+                      "text":  "Los ejemplos concretos me ayudan a interpretar expresiones abstractas.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-RM-05",
+                      "dimension":  "RM",
+                      "text":  "Combino palabras, símbolos e imágenes cuando necesito comunicar una idea compleja.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-RM-06",
+                      "dimension":  "RM",
+                      "text":  "Elijo la representación que mejor se ajusta al tipo de problema.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AM-01",
+                      "dimension":  "AM",
+                      "text":  "Antes de empezar, defino qué debo lograr y cuánto tiempo puedo dedicar.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AM-02",
+                      "dimension":  "AM",
+                      "text":  "Mientras trabajo, verifico si estoy avanzando hacia el objetivo.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AM-03",
+                      "dimension":  "AM",
+                      "text":  "Si pierdo la concentración, utilizo una acción concreta para retomarla.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AM-04",
+                      "dimension":  "AM",
+                      "text":  "Cambio mi plan cuando la estrategia inicial no produce el resultado esperado.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AM-05",
+                      "dimension":  "AM",
+                      "text":  "Al terminar, compruebo si mi respuesta cumple lo solicitado.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AM-06",
+                      "dimension":  "AM",
+                      "text":  "Reconozco qué parte de una tarea requiere más esfuerzo o apoyo.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AC-01",
+                      "dimension":  "AC",
+                      "text":  "Pido una aclaración específica cuando no comprendo una parte de la actividad.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AC-02",
+                      "dimension":  "AC",
+                      "text":  "Comparo ideas con otras personas sin limitarme a copiar sus respuestas.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AC-03",
+                      "dimension":  "AC",
+                      "text":  "Puedo explicar qué tipo de ayuda necesito para continuar.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AC-04",
+                      "dimension":  "AC",
+                      "text":  "Cuando trabajo en grupo, aporto razones y escucho las de los demás.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AC-05",
+                      "dimension":  "AC",
+                      "text":  "Uso la retroalimentación para mejorar una respuesta o procedimiento.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-AC-06",
+                      "dimension":  "AC",
+                      "text":  "Ofrezco apoyo respetuoso cuando otra persona lo solicita.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-EA-01",
+                      "dimension":  "EA",
+                      "text":  "Identifico qué condiciones del lugar facilitan o dificultan mi concentración.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-EA-02",
+                      "dimension":  "EA",
+                      "text":  "Organizo los materiales y recursos que necesito antes de comenzar.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-EA-03",
+                      "dimension":  "EA",
+                      "text":  "Uso herramientas tecnológicas cuando mejoran mi acceso o comprensión.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-EA-04",
+                      "dimension":  "EA",
+                      "text":  "Solicito ajustes razonables cuando una barrera limita mi participación.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-EA-05",
+                      "dimension":  "EA",
+                      "text":  "Elijo, cuando es posible, un ambiente adecuado al tipo de tarea.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  },
+                  {
+                      "id":  "MEA-EA-06",
+                      "dimension":  "EA",
+                      "text":  "Reconozco cuándo necesito pausas, apoyos visuales u otros recursos para continuar.",
+                      "required":  false,
+                      "scoring":  {
+                                      "direction":  "forward",
+                                      "weight":  1
+                                  },
+                      "status":  "candidate_for_expert_and_cognitive_review"
+                  }
+              ],
+    "scoring":  {
+                    "method":  "unweighted_dimension_mean",
+                    "minimumAnsweredProportionPerDimension":  0.8,
+                    "globalScoreEnabled":  false,
+                    "categoricalBandsEnabled":  false,
+                    "missingHandling":  "Report answered count and missing proportion; do not impute for individual feedback in candidate version.",
+                    "uncertainty":  "No normative percentile, cut score or diagnostic category before validation."
+                },
+    "interpretation":  {
+                           "mode":  "continuous_strategy_and_support_profile",
+                           "comparisons":  "within-person descriptive only",
+                           "bands":  "disabled until empirical justification"
+                       }
+}
