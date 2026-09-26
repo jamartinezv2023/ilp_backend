@@ -17,6 +17,7 @@ import com.inclusive.adaptiveeducationservice.assessmentresponse.repository.Asse
 import com.inclusive.adaptiveeducationservice.student.repository.StudentProfileRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -75,6 +76,7 @@ class SyntheticSpringBrowserBridgeTest {
     @MockBean private ControlledAssessmentModePolicy modePolicy;
 
     @Test
+    @EnabledIfEnvironmentVariable(named = "ILP_E2E_READY_FILE", matches = ".+")
     @Timeout(180)
     void browserPostsAndReadsThroughRealSpringHttpAndJpa() throws Exception {
         contextRepository.deleteAll();
