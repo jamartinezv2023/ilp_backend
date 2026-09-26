@@ -3,7 +3,6 @@ package com.inclusive.adaptiveeducationservice.api.assessmentsubmission;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.Instant;
 import java.util.List;
@@ -17,7 +16,7 @@ public record SubmitAssessmentRequest(
 
         @NotBlank
         String participantId,
-        @NotNull UUID researchParticipantUuid,
+        UUID researchParticipantUuid,
 
         @NotBlank
         String assessmentCode,

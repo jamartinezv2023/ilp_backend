@@ -50,6 +50,8 @@ public class SubmitAssessmentService {
     private final ScientificParticipantIdentityPort
             scientificParticipantIdentityPort;
 
+    private final ControlledAssessmentModePolicy modePolicy;
+
     public SubmitAssessmentService(
             AssessmentResponseRepository responseRepository,
             AssessmentDefinitionRepository definitionRepository,
@@ -59,7 +61,8 @@ public class SubmitAssessmentService {
             SubmitAssessmentMapper submissionMapper,
             AssessmentScientificObservationPort scientificObservationPort,
             ScientificObservationConsentEligibilityPort consentEligibilityPort,
-            ScientificParticipantIdentityPort scientificParticipantIdentityPort
+            ScientificParticipantIdentityPort scientificParticipantIdentityPort,
+            ControlledAssessmentModePolicy modePolicy
     ) {
         this.responseRepository = responseRepository;
         this.definitionRepository = definitionRepository;
@@ -73,12 +76,20 @@ public class SubmitAssessmentService {
                 consentEligibilityPort;
         this.scientificParticipantIdentityPort =
                 scientificParticipantIdentityPort;
+        this.modePolicy = modePolicy;
     }
 
     @Transactional
     public SubmitAssessmentResponse submit(
             SubmitAssessmentRequest request
     ) {
+        boolean controlledDemo =
+                modePolicy.validateAndIsDemo(request);
+
+        if (controlledDemo) {
+            return evaluateControlledDemo(request);
+        }
+
         validateIdempotency(request.administrationId());
         validateParticipant(request.participantId());
         validateResearchConsent(
@@ -135,6 +146,35 @@ public class SubmitAssessmentService {
         );
     }
 
+    private SubmitAssessmentResponse evaluateControlledDemo(
+            SubmitAssessmentRequest request
+    ) {
+        AssessmentDefinition definition =
+                loadDefinition(
+                        request.assessmentCode(),
+                        request.assessmentVersion()
+                );
+        AssessmentSubmission submission =
+                submissionMapper.toDomain(request);
+        AssessmentResult result =
+                assessmentEngine.evaluate(definition, submission);
+
+        return new SubmitAssessmentResponse(
+                result.administrationId(),
+                result.participantId(),
+                result.assessmentCode(),
+                result.assessmentVersion(),
+                "DEMO_COMPLETED_NOT_PERSISTED",
+                result.primaryProfile(),
+                result.scores(),
+                result.interpretations(),
+                result.recommendations(),
+                result.scoringAlgorithmVersion(),
+                0,
+                result.calculatedAt()
+        );
+    }
+
     private void validateIdempotency(
             String administrationId
     ) {
@@ -166,6 +206,12 @@ public class SubmitAssessmentService {
     private void validateResearchConsent(
             java.util.UUID researchParticipantUuid
     ) {
+        if (researchParticipantUuid == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Research participant identity is required"
+            );
+        }
         if (
                 !scientificParticipantIdentityPort
                         .hasActiveResearchConsent(

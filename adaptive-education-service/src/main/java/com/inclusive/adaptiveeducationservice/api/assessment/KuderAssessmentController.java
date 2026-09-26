@@ -21,12 +21,14 @@ import java.util.List;
 public class KuderAssessmentController {
 
     private final KuderAssessmentService kuderAssessmentService;
+    private final LegacyAssessmentWritePolicy legacyWritePolicy;
 
     @PostMapping
     public ResponseEntity<KuderAssessmentResponse> submit(
             @Valid @RequestBody KuderAssessmentRequest request
     ) {
-        return ResponseEntity.ok(kuderAssessmentService.submit(request));
+        legacyWritePolicy.rejectNewSubmission("Kuder");
+        throw new IllegalStateException("Legacy write policy must reject submission");
     }
 
     @GetMapping("/students/{studentId}")

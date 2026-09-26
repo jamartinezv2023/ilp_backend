@@ -109,6 +109,7 @@ class SubmitAssessmentScientificRollbackIntegrationTest {
     @MockBean
     private ScientificParticipantIdentityPort
             scientificParticipantIdentityPort;
+    @MockBean private ControlledAssessmentModePolicy modePolicy;
 
     private SubmitAssessmentRequest request;
     private AssessmentSubmission submission;

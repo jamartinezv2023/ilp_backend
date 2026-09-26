@@ -37,6 +37,7 @@ public class AssessmentResponseService {
     }
 
     public AssessmentResponseResponse submit(AssessmentResponseRequest request) {
+        rejectUnapprovedRawWrite();
         if (!studentProfileRepository.existsById(request.studentId())) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND,
@@ -65,6 +66,13 @@ public class AssessmentResponseService {
         }
 
         return toResponse(responseRepository.save(response));
+    }
+
+    private void rejectUnapprovedRawWrite() {
+        throw new ResponseStatusException(
+                HttpStatus.GONE,
+                "Raw assessment response submission is disabled pending instrument approval"
+        );
     }
 
     public AssessmentResponseResponse findById(String id) {
