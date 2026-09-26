@@ -22,6 +22,7 @@ import java.util.Map;
 public class KolbAssessmentController {
 
     private final KolbAssessmentService kolbAssessmentService;
+    private final LegacyAssessmentWritePolicy legacyWritePolicy;
 
     @GetMapping("/ping")
     public ResponseEntity<Map<String, String>> ping() {
@@ -32,7 +33,8 @@ public class KolbAssessmentController {
     public ResponseEntity<KolbAssessmentResponse> submit(
             @Valid @RequestBody KolbAssessmentRequest request
     ) {
-        return ResponseEntity.ok(kolbAssessmentService.submit(request));
+        legacyWritePolicy.rejectNewSubmission("Kolb");
+        throw new IllegalStateException("Legacy write policy must reject submission");
     }
 
     @GetMapping("/students/{studentId}")

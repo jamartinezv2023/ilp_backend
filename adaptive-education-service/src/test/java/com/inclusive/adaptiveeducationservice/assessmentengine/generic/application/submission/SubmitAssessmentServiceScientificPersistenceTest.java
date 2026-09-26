@@ -43,6 +43,7 @@ class SubmitAssessmentServiceScientificPersistenceTest {
     private AssessmentDefinitionRepository definitionRepository;
     private AssessmentDefinitionPersistenceMapper definitionMapper;
     private StudentProfileRepository studentProfileRepository;
+    private ControlledAssessmentModePolicy modePolicy;
     private GenericAssessmentEngine assessmentEngine;
     private SubmitAssessmentMapper submissionMapper;
     private AssessmentScientificObservationPort
@@ -105,6 +106,7 @@ class SubmitAssessmentServiceScientificPersistenceTest {
                 mock(
                         ScientificParticipantIdentityPort.class
                 );
+        modePolicy = mock(ControlledAssessmentModePolicy.class);
 
 
         service =
@@ -117,7 +119,8 @@ class SubmitAssessmentServiceScientificPersistenceTest {
                         submissionMapper,
                         scientificObservationPort,
                         consentEligibilityPort,
-                        scientificParticipantIdentityPort
+                        scientificParticipantIdentityPort,
+                        modePolicy
                 );
 
         Instant submittedAt =

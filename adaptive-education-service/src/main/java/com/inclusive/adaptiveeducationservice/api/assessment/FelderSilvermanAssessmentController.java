@@ -21,12 +21,14 @@ import java.util.List;
 public class FelderSilvermanAssessmentController {
 
     private final FelderSilvermanAssessmentService assessmentService;
+    private final LegacyAssessmentWritePolicy legacyWritePolicy;
 
     @PostMapping
     public ResponseEntity<FelderSilvermanAssessmentResponse> submit(
             @Valid @RequestBody FelderSilvermanAssessmentRequest request
     ) {
-        return ResponseEntity.ok(assessmentService.submit(request));
+        legacyWritePolicy.rejectNewSubmission("Felder-Silverman");
+        throw new IllegalStateException("Legacy write policy must reject submission");
     }
 
     @GetMapping("/students/{studentId}")
