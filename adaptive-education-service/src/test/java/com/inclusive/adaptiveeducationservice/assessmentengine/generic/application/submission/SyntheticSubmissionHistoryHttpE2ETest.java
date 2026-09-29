@@ -23,6 +23,8 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.repository.AssessmentResponseRepository;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.service.AssessmentResponseService;
+import com.inclusive.adaptiveeducationservice.assessmentresponse.dto.AssessmentResponseResponse;
+import com.inclusive.adaptiveeducationservice.dataset.scientific.SyntheticResearchDatasetBuilder;
 import com.inclusive.adaptiveeducationservice.student.repository.StudentProfileRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,12 +37,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.Instant;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
@@ -283,6 +289,49 @@ class SyntheticSubmissionHistoryHttpE2ETest {
         assertThat(responseRepository.findById(laterId)).isPresent();
         assertThat(responseRepository.findById(ADMIN)).isPresent();
         assertThat(responseRepository.findById(otherId)).isPresent();
+
+        var builder = new SyntheticResearchDatasetBuilder();
+        var snapshot = builder.build(history, responseService::findById);
+        assertThat(snapshot.manifest().acceptedAttempts()).isEqualTo(2);
+        assertThat(snapshot.manifest().excludedAttempts()).isZero();
+        assertThat(snapshot.manifest().answerRows()).isEqualTo(2);
+        assertThat(snapshot.manifest().firstSubmittedAt()).isEqualTo(TIME);
+        assertThat(snapshot.manifest().lastSubmittedAt()).isEqualTo(laterTime);
+        assertThat(snapshot.manifest().csvSha256())
+                .isEqualTo(SyntheticResearchDatasetBuilder.sha256(snapshot.csv()));
+        assertThat(snapshot.csv()).contains(ADMIN, laterId, CODE, VERSION,
+                "PHYSICS-Q1-B", SUBJECT);
+        assertThat(snapshot.csv()).doesNotContain(STUDENT, otherId, otherSubject);
+        assertThat(snapshot.csv().indexOf(ADMIN)).isLessThan(snapshot.csv().indexOf(laterId));
+        assertThat(builder.build(history, responseService::findById).csv())
+                .isEqualTo(snapshot.csv());
+
+        // A read projection incompatible with the persisted observation must
+        // fail the whole export; it must never silently become a partial dataset.
+        assertThatThrownBy(() -> builder.build(history, id -> {
+            AssessmentResponseResponse response = responseService.findById(id);
+            if (!id.equals(laterId)) return response;
+            return new AssessmentResponseResponse(response.id(), response.studentId(),
+                    response.assessmentCode(), "OTHER-VERSION", response.status(),
+                    response.submittedAt(), response.answers());
+        })).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("DATASET_RESPONSE_LINEAGE_MISMATCH");
+        assertThatThrownBy(() -> builder.build(history, id -> {
+            AssessmentResponseResponse response = responseService.findById(id);
+            return new AssessmentResponseResponse(response.id(), "REAL-STUDENT-001",
+                    response.assessmentCode(), response.assessmentVersion(), response.status(),
+                    response.submittedAt(), response.answers());
+        })).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("DATASET_RESPONSE_LINEAGE_MISMATCH");
+
+        Path artifactRoot = Path.of("build", "research-synthetic-dataset");
+        Files.createDirectories(artifactRoot);
+        Files.writeString(artifactRoot.resolve("observations.csv"), snapshot.csv(),
+                StandardCharsets.UTF_8);
+        Files.writeString(artifactRoot.resolve("manifest.json"),
+                objectMapper.writerWithDefaultPrettyPrinter()
+                        .writeValueAsString(snapshot.manifest()) + "\n",
+                StandardCharsets.UTF_8);
     }
 
     @Test

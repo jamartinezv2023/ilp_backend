@@ -31,3 +31,10 @@ jobs:
           name: research-traceability-junit
           path: adaptive-education-service/build/test-results/test/TEST-*SyntheticSubmissionHistoryHttpE2ETest.xml
           if-no-files-found: warn
+      - name: Preserve synthetic dataset and manifest
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-research-dataset
+          path: adaptive-education-service/build/research-synthetic-dataset/
+          if-no-files-found: error
