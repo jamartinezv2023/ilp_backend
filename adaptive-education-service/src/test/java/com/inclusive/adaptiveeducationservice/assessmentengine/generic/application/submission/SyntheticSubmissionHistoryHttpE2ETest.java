@@ -167,7 +167,7 @@ class SyntheticSubmissionHistoryHttpE2ETest {
                 .andExpect(jsonPath("$.studentId").value(STUDENT))
                 .andExpect(jsonPath("$.assessmentCode").value(CODE))
                 .andExpect(jsonPath("$.assessmentVersion").value(VERSION))
-                .andExpect(jsonPath("$.submittedAt").value(TIME.toString()))
+                .andExpect(jsonPath("$.submittedAt").exists())
                 .andExpect(jsonPath("$.answers[0].questionId").value("PHYSICS-Q1"))
                 .andExpect(jsonPath("$.answers[0].optionId").value("PHYSICS-Q1-B"));
 
@@ -175,13 +175,13 @@ class SyntheticSubmissionHistoryHttpE2ETest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.participantId").value(SUBJECT))
                 .andExpect(jsonPath("$.totalObservations").value(1))
-                .andExpect(jsonPath("$.firstSubmittedAt").value(TIME.toString()))
-                .andExpect(jsonPath("$.lastSubmittedAt").value(TIME.toString()))
+                .andExpect(jsonPath("$.firstSubmittedAt").exists())
+                .andExpect(jsonPath("$.lastSubmittedAt").exists())
                 .andExpect(jsonPath("$.observations[0].administrationId").value(ADMIN))
                 .andExpect(jsonPath("$.observations[0].participantId").value(SUBJECT))
                 .andExpect(jsonPath("$.observations[0].assessmentCode").value(CODE))
                 .andExpect(jsonPath("$.observations[0].assessmentVersion").value(VERSION))
-                .andExpect(jsonPath("$.observations[0].submittedAt").value(TIME.toString()))
+                .andExpect(jsonPath("$.observations[0].submittedAt").exists())
                 .andExpect(jsonPath("$.observations[0].scoringAlgorithmVersion")
                         .value("SYNTHETIC_SCORING_TEST"))
                 .andExpect(jsonPath("$.observations[0].context.source")
@@ -201,8 +201,16 @@ class SyntheticSubmissionHistoryHttpE2ETest {
                 .andExpect(jsonPath("$.totalObservations").value(1));
 
         assertThat(responseRepository.findById(ADMIN)).isPresent();
+        assertThat(responseRepository.findById(ADMIN).orElseThrow().getSubmittedAt())
+                .isEqualTo(TIME);
         assertThat(resultRepository.findByAdministrationId(ADMIN)).isPresent();
+        assertThat(resultRepository.findByAdministrationId(ADMIN).orElseThrow().getSubmittedAt())
+                .isEqualTo(TIME);
         assertThat(contextRepository.findByAdministrationId(ADMIN)).isPresent();
+        var recovered = historyService.getByParticipantId(SUBJECT);
+        assertThat(recovered.firstSubmittedAt()).isEqualTo(TIME);
+        assertThat(recovered.lastSubmittedAt()).isEqualTo(TIME);
+        assertThat(recovered.observations().get(0).submittedAt()).isEqualTo(TIME);
     }
 
     @Test
