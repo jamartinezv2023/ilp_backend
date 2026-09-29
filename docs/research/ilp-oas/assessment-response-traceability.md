@@ -34,6 +34,10 @@ Ejecutar desde la raíz del backend:
 
 La prueba `postPersistsAndBothHistoriesRecoverSameAttemptThenRejectDuplicate` usa Spring HTTP/MockMvc y H2 aislada. Verifica envío, lectura de respuesta cruda, lectura de observación seudónima, coincidencia del intento y tiempo, versión del instrumento y del algoritmo, procedencia sintética, rechazo de repetición y una única observación. La prueba complementaria rechaza el envío sin consentimiento activo antes de escribir. Hay componentes simulados (definición, identidad y motor de puntuación): aprobarla demuestra integridad del circuito técnico bajo esas condiciones, no validez del instrumento ni comportamiento de una base científica de producción.
 
+### Secuencia longitudinal sintética (RQ1, condición necesaria)
+
+La prueba `syntheticAttemptsAreOrderedBySubmissionTimeAndPartitionedByResearchSubject` envía primero el intento posterior y después el anterior para el mismo seudónimo, más un intento de otro seudónimo. Comprueba dos observaciones en orden descendente por `submittedAt`, límites temporales exactos y ausencia del tercer intento en la proyección del primer sujeto. La consulta del segundo sujeto muestra únicamente su intento. Los tres registros son ficticios; esta separación de resultados por clave de consulta **no demuestra autorización de acceso HTTP ni anonimización**. Antes de analizar trayectorias reales harán falta reglas explícitas para huso horario, frecuencia de medida, instrumentos/versiones comparables, observaciones faltantes y población autorizada. No se calcula cambio educativo ni tendencia con estos ejemplos.
+
 **Puerta de campo:** cualquier recolección real depende por separado de aprobación ética e institucional, consentimiento, seguridad, control de acceso, gobierno del dato y validación metodológica. El indicador de disponibilidad técnica de una ruta no sustituye esas decisiones. Se mantienen separados la demostración offline y el circuito de recolección del piloto.
 
 Marco de referencia interno: *Marco Rector de Investigación, Calidad y Desarrollo para la Tesis Doctoral basada en ILP*, apartados de trazabilidad, niveles de validación y doble definición de terminado.

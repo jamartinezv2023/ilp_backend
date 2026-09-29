@@ -214,6 +214,78 @@ class SyntheticSubmissionHistoryHttpE2ETest {
     }
 
     @Test
+    void syntheticAttemptsAreOrderedBySubmissionTimeAndPartitionedByResearchSubject()
+            throws Exception {
+        String laterId = "SYNTHETIC-ADMIN-002";
+        String otherId = "SYNTHETIC-ADMIN-003";
+        String otherSubject = "22222222-2222-2222-2222-222222222222";
+        UUID otherResearchUuid = UUID.fromString("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb");
+        Instant laterTime = TIME.plusSeconds(86400);
+
+        // Keep the transport, persistence and history real; only the controlled
+        // definition, identity resolution and scoring are fixtures.
+        when(submissionMapper.toDomain(any(SubmitAssessmentRequest.class)))
+                .thenAnswer(invocation -> {
+                    SubmitAssessmentRequest incoming = invocation.getArgument(0);
+                    return new AssessmentSubmission(
+                            incoming.administrationId(), incoming.participantId(),
+                            incoming.assessmentCode(), incoming.assessmentVersion(),
+                            List.of(new AssessmentResponse("PHYSICS-Q1",
+                                    List.of("PHYSICS-Q1-B"), Map.of(), null, null)),
+                            incoming.context(), incoming.submittedAt());
+                });
+        when(scoringEngine.evaluate(any(), any())).thenAnswer(invocation -> {
+            AssessmentSubmission incoming = invocation.getArgument(1);
+            return new AssessmentResult(incoming.administrationId(),
+                    incoming.participantId(), incoming.assessmentCode(),
+                    incoming.assessmentVersion(), "SYNTHETIC_FEEDBACK",
+                    Map.of("SYNTHETIC_SCORE", 1.0),
+                    Map.of("FEEDBACK", "Ejemplo sin interpretación científica"),
+                    List.of(), "SYNTHETIC_SCORING_TEST",
+                    incoming.submittedAt().plusSeconds(1));
+        });
+        when(researchIdentity.hasActiveResearchConsent(otherResearchUuid)).thenReturn(true);
+        when(researchIdentity.resolveResearchSubjectId(otherResearchUuid))
+                .thenReturn(Optional.of(otherSubject));
+
+        var later = new SubmitAssessmentRequest(laterId, STUDENT, RESEARCH_UUID,
+                CODE, VERSION, request.responses(), request.context(), laterTime);
+        var other = new SubmitAssessmentRequest(otherId, STUDENT, otherResearchUuid,
+                CODE, VERSION, request.responses(), request.context(), TIME.plusSeconds(3600));
+
+        // Deliberately insert out of chronological order.
+        for (var attempt : List.of(later, request, other)) {
+            mvc.perform(post("/api/v1/assessment-submissions")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(attempt)))
+                    .andExpect(status().isCreated())
+                    .andExpect(jsonPath("$.administrationId")
+                            .value(attempt.administrationId()));
+        }
+
+        mvc.perform(get("/api/v1/participants/{id}/assessment-scientific-history", SUBJECT))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.participantId").value(SUBJECT))
+                .andExpect(jsonPath("$.totalObservations").value(2))
+                .andExpect(jsonPath("$.observations[0].administrationId").value(laterId))
+                .andExpect(jsonPath("$.observations[1].administrationId").value(ADMIN))
+                .andExpect(jsonPath("$.observations[2]").doesNotExist());
+        var history = historyService.getByParticipantId(SUBJECT);
+        assertThat(history.firstSubmittedAt()).isEqualTo(TIME);
+        assertThat(history.lastSubmittedAt()).isEqualTo(laterTime);
+        assertThat(history.observations()).extracting(observation -> observation.submittedAt())
+                .containsExactly(laterTime, TIME);
+
+        mvc.perform(get("/api/v1/participants/{id}/assessment-scientific-history", otherSubject))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalObservations").value(1))
+                .andExpect(jsonPath("$.observations[0].administrationId").value(otherId));
+        assertThat(responseRepository.findById(laterId)).isPresent();
+        assertThat(responseRepository.findById(ADMIN)).isPresent();
+        assertThat(responseRepository.findById(otherId)).isPresent();
+    }
+
+    @Test
     void missingActiveResearchConsentRejectsBeforeAnyWrite() throws Exception {
         when(researchIdentity.hasActiveResearchConsent(RESEARCH_UUID)).thenReturn(false);
         mvc.perform(post("/api/v1/assessment-submissions")
