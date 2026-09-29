@@ -167,6 +167,7 @@ class SyntheticSubmissionHistoryHttpE2ETest {
                 .andExpect(jsonPath("$.studentId").value(STUDENT))
                 .andExpect(jsonPath("$.assessmentCode").value(CODE))
                 .andExpect(jsonPath("$.assessmentVersion").value(VERSION))
+                .andExpect(jsonPath("$.submittedAt").value(TIME.toString()))
                 .andExpect(jsonPath("$.answers[0].questionId").value("PHYSICS-Q1"))
                 .andExpect(jsonPath("$.answers[0].optionId").value("PHYSICS-Q1-B"));
 
@@ -174,9 +175,19 @@ class SyntheticSubmissionHistoryHttpE2ETest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.participantId").value(SUBJECT))
                 .andExpect(jsonPath("$.totalObservations").value(1))
+                .andExpect(jsonPath("$.firstSubmittedAt").value(TIME.toString()))
+                .andExpect(jsonPath("$.lastSubmittedAt").value(TIME.toString()))
                 .andExpect(jsonPath("$.observations[0].administrationId").value(ADMIN))
+                .andExpect(jsonPath("$.observations[0].participantId").value(SUBJECT))
                 .andExpect(jsonPath("$.observations[0].assessmentCode").value(CODE))
                 .andExpect(jsonPath("$.observations[0].assessmentVersion").value(VERSION))
+                .andExpect(jsonPath("$.observations[0].submittedAt").value(TIME.toString()))
+                .andExpect(jsonPath("$.observations[0].scoringAlgorithmVersion")
+                        .value("SYNTHETIC_SCORING_TEST"))
+                .andExpect(jsonPath("$.observations[0].context.source")
+                        .value("SYNTHETIC_HTTP_E2E"))
+                .andExpect(jsonPath("$.observations[0].context.fieldworkPhase")
+                        .value("TEST_ONLY"))
                 .andExpect(jsonPath("$.observations[0].context.language").value("es-CO"))
                 .andExpect(jsonPath("$.observations[0].context.completeContext.translationVersion")
                         .value("0.0.1-test"));
