@@ -1,0 +1,33 @@
+name: Research Traceability H2 E2E
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/research-traceability-ci.yml'
+      - 'adaptive-education-service/src/test/java/com/inclusive/adaptiveeducationservice/assessmentengine/generic/application/submission/SyntheticSubmissionHistoryHttpE2ETest.java'
+      - 'docs/research/ilp-oas/assessment-response-traceability.md'
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Synthetic submission and longitudinal history on isolated H2
+        run: |
+          chmod +x ./gradlew
+          ./gradlew :adaptive-education-service:test --tests '*SyntheticSubmissionHistoryHttpE2ETest' --no-daemon --console=plain
+      - name: Preserve JUnit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-traceability-junit
+          path: adaptive-education-service/build/test-results/test/TEST-*SyntheticSubmissionHistoryHttpE2ETest.xml
+          if-no-files-found: warn
