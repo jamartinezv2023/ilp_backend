@@ -145,7 +145,9 @@ public final class SyntheticResearchDatasetBuilder {
 
     private static void appendRow(StringBuilder csv, String... cells) {
         for (int i = 0; i < cells.length; i++) {
-            if (i > 0) csv.append(',');
+            if (i > 0) {
+                csv.append(',');
+            }
             csv.append('"').append(cells[i].replace("\"", "\"\"")).append('"');
         }
         csv.append('\n');

@@ -310,7 +310,9 @@ class SyntheticSubmissionHistoryHttpE2ETest {
         // fail the whole export; it must never silently become a partial dataset.
         assertThatThrownBy(() -> builder.build(history, id -> {
             AssessmentResponseResponse response = responseService.findById(id);
-            if (!id.equals(laterId)) return response;
+            if (!id.equals(laterId)) {
+                return response;
+            }
             return new AssessmentResponseResponse(response.id(), response.studentId(),
                     response.assessmentCode(), "OTHER-VERSION", response.status(),
                     response.submittedAt(), response.answers());
