@@ -1,0 +1,41 @@
+name: Synthetic dataset browser H2 E2E
+on:
+  pull_request:
+    paths:
+      - 'e2e/dataset-browser/**'
+      - '.github/workflows/synthetic-dataset-browser-ci.yml'
+      - 'adaptive-education-service/src/main/java/com/inclusive/adaptiveeducationservice/dataset/scientific/**'
+      - 'adaptive-education-service/src/test/java/com/inclusive/adaptiveeducationservice/assessmentengine/generic/application/submission/Synthetic*Test.java'
+permissions:
+  contents: read
+jobs:
+  browser-download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+        working-directory: e2e/dataset-browser
+      - run: npx playwright install --with-deps chromium
+        working-directory: e2e/dataset-browser
+      - name: Checkstyle
+        run: |
+          chmod +x gradlew
+          ./gradlew :adaptive-education-service:checkstyleTest --no-daemon --console=plain
+      - name: Browser downloads from real H2 persistence
+        run: node e2e/dataset-browser/run.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: synthetic-dataset-browser-evidence
+          path: |
+            e2e/dataset-browser/playwright-report/
+            e2e/dataset-browser/test-results/
+            adaptive-education-service/build/test-results/test/TEST-*SyntheticDatasetBrowserBridgeTest.xml
