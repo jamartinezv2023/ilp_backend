@@ -10,7 +10,7 @@ const root = resolve(lab, '../..');
 const evidence = await mkdtemp(join(tmpdir(), 'ilp-dataset-browser-'));
 const ready = join(evidence, 'ready.txt');
 const windows = process.platform === 'win32';
-const gradle = spawn(windows ? 'cmd.exe' : './gradlew', windows ? ['/d', '/s', '/c', 'gradlew.bat :adaptive-education-service:test --tests *SyntheticDatasetBrowserBridgeTest --no-daemon --console=plain'] : [':adaptive-education-service:test', '--tests', '*SyntheticDatasetBrowserBridgeTest', '--no-daemon', '--console=plain'], { cwd: root, env: { ...process.env, ILP_DATASET_READY: ready, ILP_DATASET_MANUAL: manual ? 'true' : 'false' }, stdio: 'inherit' });
+const gradle = spawn(windows ? 'cmd.exe' : './gradlew', windows ? ['/d', '/s', '/c', 'gradlew.bat :adaptive-education-service:test --tests *SyntheticDatasetBrowserBridgeTest --rerun-tasks --no-daemon --console=plain'] : [':adaptive-education-service:test', '--tests', '*SyntheticDatasetBrowserBridgeTest', '--rerun-tasks', '--no-daemon', '--console=plain'], { cwd: root, env: { ...process.env, ILP_DATASET_READY: ready, ILP_DATASET_MANUAL: manual ? 'true' : 'false' }, stdio: 'inherit' });
 let gradleEnded = false;
 const gradleExit = new Promise((done) => { gradle.on('error', (error) => { console.error(error); gradleEnded = true; done(1); }); gradle.on('exit', (code) => { gradleEnded = true; done(code ?? 1); }); });
 let url;
