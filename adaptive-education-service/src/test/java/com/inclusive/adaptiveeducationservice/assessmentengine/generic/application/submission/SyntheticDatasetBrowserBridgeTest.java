@@ -28,7 +28,7 @@ class SyntheticDatasetBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2
     @Autowired private ObjectMapper datasetJson;
 
     @Test
-    @Timeout(180)
+    @Timeout(720)
     void downloadPersistedSyntheticDatasetInBrowser() throws Exception {
         String readyFile = System.getenv("ILP_DATASET_READY");
         assumeTrue(readyFile != null, "Requires the browser coordinator");
@@ -84,7 +84,8 @@ class SyntheticDatasetBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2
         try {
             server.start();
             Files.writeString(Path.of(readyFile), "http://127.0.0.1:" + server.getAddress().getPort());
-            assertThat(finished.await(145, TimeUnit.SECONDS)).as("Browser coordinator completed").isTrue();
+            long sessionSeconds = "true".equals(System.getenv("ILP_DATASET_MANUAL")) ? 600 : 145;
+            assertThat(finished.await(sessionSeconds, TimeUnit.SECONDS)).as("Browser coordinator completed").isTrue();
         } finally {
             server.stop(0);
         }
