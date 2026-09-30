@@ -6,6 +6,7 @@ on:
       - '.github/workflows/research-traceability-ci.yml'
       - 'adaptive-education-service/src/test/java/com/inclusive/adaptiveeducationservice/assessmentengine/generic/application/submission/SyntheticSubmissionHistoryHttpE2ETest.java'
       - 'adaptive-education-service/src/main/java/com/inclusive/adaptiveeducationservice/dataset/scientific/**'
+      - 'adaptive-education-service/src/test/java/com/inclusive/adaptiveeducationservice/dataset/scientific/**'
       - 'docs/research/ilp-oas/assessment-response-traceability.md'
 
 permissions:
@@ -24,7 +25,7 @@ jobs:
       - name: Synthetic submission and longitudinal history on isolated H2
         run: |
           chmod +x ./gradlew
-          ./gradlew :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest :adaptive-education-service:test --tests '*SyntheticSubmissionHistoryHttpE2ETest' --no-daemon --console=plain
+          ./gradlew :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest :adaptive-education-service:test --tests '*SyntheticSubmissionHistoryHttpE2ETest' --tests '*SyntheticResearchDatasetBuilderTest' --no-daemon --console=plain
       - name: Preserve JUnit report
         if: always()
         uses: actions/upload-artifact@v4
