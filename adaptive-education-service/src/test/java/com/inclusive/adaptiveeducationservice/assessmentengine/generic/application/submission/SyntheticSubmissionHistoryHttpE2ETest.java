@@ -23,6 +23,8 @@ import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.service.GenericAssessmentEngine;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.repository.AssessmentResponseRepository;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.service.AssessmentResponseService;
+import com.inclusive.adaptiveeducationservice.assessmentresponse.dto.AssessmentResponseResponse;
+import com.inclusive.adaptiveeducationservice.dataset.scientific.SyntheticResearchDatasetBuilder;
 import com.inclusive.adaptiveeducationservice.student.repository.StudentProfileRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,12 +37,16 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.Instant;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
@@ -211,6 +217,123 @@ class SyntheticSubmissionHistoryHttpE2ETest {
         assertThat(recovered.firstSubmittedAt()).isEqualTo(TIME);
         assertThat(recovered.lastSubmittedAt()).isEqualTo(TIME);
         assertThat(recovered.observations().get(0).submittedAt()).isEqualTo(TIME);
+    }
+
+    @Test
+    void syntheticAttemptsAreOrderedBySubmissionTimeAndPartitionedByResearchSubject()
+            throws Exception {
+        String laterId = "SYNTHETIC-ADMIN-002";
+        String otherId = "SYNTHETIC-ADMIN-003";
+        String otherSubject = "22222222-2222-2222-2222-222222222222";
+        UUID otherResearchUuid = UUID.fromString("bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb");
+        Instant laterTime = TIME.plusSeconds(86400);
+
+        // Keep the transport, persistence and history real; only the controlled
+        // definition, identity resolution and scoring are fixtures.
+        when(submissionMapper.toDomain(any(SubmitAssessmentRequest.class)))
+                .thenAnswer(invocation -> {
+                    SubmitAssessmentRequest incoming = invocation.getArgument(0);
+                    return new AssessmentSubmission(
+                            incoming.administrationId(), incoming.participantId(),
+                            incoming.assessmentCode(), incoming.assessmentVersion(),
+                            List.of(new AssessmentResponse("PHYSICS-Q1",
+                                    List.of("PHYSICS-Q1-B"), Map.of(), null, null)),
+                            incoming.context(), incoming.submittedAt());
+                });
+        when(scoringEngine.evaluate(any(), any())).thenAnswer(invocation -> {
+            AssessmentSubmission incoming = invocation.getArgument(1);
+            return new AssessmentResult(incoming.administrationId(),
+                    incoming.participantId(), incoming.assessmentCode(),
+                    incoming.assessmentVersion(), "SYNTHETIC_FEEDBACK",
+                    Map.of("SYNTHETIC_SCORE", 1.0),
+                    Map.of("FEEDBACK", "Ejemplo sin interpretación científica"),
+                    List.of(), "SYNTHETIC_SCORING_TEST",
+                    incoming.submittedAt().plusSeconds(1));
+        });
+        when(researchIdentity.hasActiveResearchConsent(otherResearchUuid)).thenReturn(true);
+        when(researchIdentity.resolveResearchSubjectId(otherResearchUuid))
+                .thenReturn(Optional.of(otherSubject));
+
+        var later = new SubmitAssessmentRequest(laterId, STUDENT, RESEARCH_UUID,
+                CODE, VERSION, request.responses(), request.context(), laterTime);
+        var other = new SubmitAssessmentRequest(otherId, STUDENT, otherResearchUuid,
+                CODE, VERSION, request.responses(), request.context(), TIME.plusSeconds(3600));
+
+        // Deliberately insert out of chronological order.
+        for (var attempt : List.of(later, request, other)) {
+            mvc.perform(post("/api/v1/assessment-submissions")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(objectMapper.writeValueAsString(attempt)))
+                    .andExpect(status().isCreated())
+                    .andExpect(jsonPath("$.administrationId")
+                            .value(attempt.administrationId()));
+        }
+
+        mvc.perform(get("/api/v1/participants/{id}/assessment-scientific-history", SUBJECT))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.participantId").value(SUBJECT))
+                .andExpect(jsonPath("$.totalObservations").value(2))
+                .andExpect(jsonPath("$.observations[0].administrationId").value(laterId))
+                .andExpect(jsonPath("$.observations[1].administrationId").value(ADMIN))
+                .andExpect(jsonPath("$.observations[2]").doesNotExist());
+        var history = historyService.getByParticipantId(SUBJECT);
+        assertThat(history.firstSubmittedAt()).isEqualTo(TIME);
+        assertThat(history.lastSubmittedAt()).isEqualTo(laterTime);
+        assertThat(history.observations()).extracting(observation -> observation.submittedAt())
+                .containsExactly(laterTime, TIME);
+
+        mvc.perform(get("/api/v1/participants/{id}/assessment-scientific-history", otherSubject))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalObservations").value(1))
+                .andExpect(jsonPath("$.observations[0].administrationId").value(otherId));
+        assertThat(responseRepository.findById(laterId)).isPresent();
+        assertThat(responseRepository.findById(ADMIN)).isPresent();
+        assertThat(responseRepository.findById(otherId)).isPresent();
+
+        var builder = new SyntheticResearchDatasetBuilder();
+        var snapshot = builder.build(history, responseService::findById);
+        assertThat(snapshot.manifest().acceptedAttempts()).isEqualTo(2);
+        assertThat(snapshot.manifest().excludedAttempts()).isZero();
+        assertThat(snapshot.manifest().answerRows()).isEqualTo(2);
+        assertThat(snapshot.manifest().firstSubmittedAt()).isEqualTo(TIME);
+        assertThat(snapshot.manifest().lastSubmittedAt()).isEqualTo(laterTime);
+        assertThat(snapshot.manifest().csvSha256())
+                .isEqualTo(SyntheticResearchDatasetBuilder.sha256(snapshot.csv()));
+        assertThat(snapshot.csv()).contains(ADMIN, laterId, CODE, VERSION,
+                "PHYSICS-Q1-B", SUBJECT);
+        assertThat(snapshot.csv()).doesNotContain(STUDENT, otherId, otherSubject);
+        assertThat(snapshot.csv().indexOf(ADMIN)).isLessThan(snapshot.csv().indexOf(laterId));
+        assertThat(builder.build(history, responseService::findById).csv())
+                .isEqualTo(snapshot.csv());
+
+        // A read projection incompatible with the persisted observation must
+        // fail the whole export; it must never silently become a partial dataset.
+        assertThatThrownBy(() -> builder.build(history, id -> {
+            AssessmentResponseResponse response = responseService.findById(id);
+            if (!id.equals(laterId)) {
+                return response;
+            }
+            return new AssessmentResponseResponse(response.id(), response.studentId(),
+                    response.assessmentCode(), "OTHER-VERSION", response.status(),
+                    response.submittedAt(), response.answers());
+        })).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("DATASET_RESPONSE_LINEAGE_MISMATCH");
+        assertThatThrownBy(() -> builder.build(history, id -> {
+            AssessmentResponseResponse response = responseService.findById(id);
+            return new AssessmentResponseResponse(response.id(), "REAL-STUDENT-001",
+                    response.assessmentCode(), response.assessmentVersion(), response.status(),
+                    response.submittedAt(), response.answers());
+        })).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("DATASET_RESPONSE_LINEAGE_MISMATCH");
+
+        Path artifactRoot = Path.of("build", "research-synthetic-dataset");
+        Files.createDirectories(artifactRoot);
+        Files.writeString(artifactRoot.resolve("observations.csv"), snapshot.csv(),
+                StandardCharsets.UTF_8);
+        Files.writeString(artifactRoot.resolve("manifest.json"),
+                objectMapper.writerWithDefaultPrettyPrinter()
+                        .writeValueAsString(snapshot.manifest()) + "\n",
+                StandardCharsets.UTF_8);
     }
 
     @Test
