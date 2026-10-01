@@ -140,3 +140,109 @@ test('a new answer invalidates the previous snapshot and names the new pair', as
   expect(manifest.acceptedAttempts).toBe(3);
   expect(bytes.toString('utf8').trimEnd().split('\n').slice(1).map((line) => line.split(',')[7])).toEqual(['"PHYSICS-Q1-A"', '"PHYSICS-Q1-B"', '"PHYSICS-Q1-A"']);
 });
+
+test('a lost receipt is retried with the same ID after reload without duplication', async ({ page, request }) => {
+  const sent = [];
+  page.on('request', (req) => { if (req.method() === 'POST' && req.url().endsWith('/submit')) sent.push(req.postDataJSON()); });
+  await page.goto('/');
+  await page.route('**/submit', async (route) => { await route.fetch(); await route.abort(); });
+  await page.locator('input[value="PHYSICS-Q1-A"]').check();
+  await page.locator('#submit').click();
+  await expect(page.locator('#retry')).toBeVisible();
+  const original = sent[0];
+  const persisted = await request.get(`/lineage?session=${original.session}`);
+  expect((await persisted.json()).responses.map((row) => row.id)).toEqual([`SYNTHETIC-${original.requestId}`]);
+  await page.route('**/lineage?*', (route) => route.abort());
+  await page.reload();
+  await expect(page.locator('#retry')).toBeVisible();
+  expect(sent).toHaveLength(1);
+  await expect(page.locator('#submit')).toBeDisabled();
+  await page.locator('#language').selectOption('en');
+  await expect(page.locator('#retry')).toHaveText('Retry the same submission');
+  await page.unroute('**/submit');
+  await page.unroute('**/lineage?*');
+  const replay = page.waitForResponse((response) => response.url().endsWith('/submit'));
+  await page.locator('#retry').click();
+  expect((await replay).status()).toBe(200);
+  await expect(page.locator('#history li')).toHaveCount(1);
+  await expect(page.locator('#retry')).toBeHidden();
+  expect(sent).toEqual([original, original]);
+  const conflict = await request.post('/submit', { data: { ...original, option: 'PHYSICS-Q1-B' } });
+  expect(conflict.status()).toBe(409);
+  const unchanged = await request.get(`/lineage?session=${original.session}`);
+  const data = await unchanged.json();
+  expect(data.responses).toHaveLength(1);
+  expect(data.responses[0].answers[0].optionId).toBe('PHYSICS-Q1-A');
+  expect(data.history.observations[0].context.language).toBe('es-CO');
+});
+
+test('an unsent pending request survives reload and is sent only on explicit retry', async ({ page }) => {
+  let posts = 0;
+  page.on('request', (req) => { if (req.method() === 'POST' && req.url().endsWith('/submit')) posts++; });
+  await page.goto('/');
+  await page.route('**/submit', (route) => route.abort());
+  await page.locator('input[value="PHYSICS-Q1-B"]').check();
+  await page.locator('#submit').click();
+  await expect(page.locator('#retry')).toBeVisible();
+  const first = await page.evaluate(() => sessionStorage.getItem('synthetic-dataset-pending'));
+  await page.reload();
+  await expect(page.locator('#retry')).toBeVisible();
+  expect(posts).toBe(1);
+  expect(await page.evaluate(() => sessionStorage.getItem('synthetic-dataset-pending'))).toBe(first);
+  await page.unroute('**/submit');
+  await page.locator('#retry').click();
+  await expect(page.locator('#history li')).toHaveCount(1);
+  expect(posts).toBe(2);
+  expect(await page.evaluate(() => sessionStorage.getItem('synthetic-dataset-pending'))).toBeNull();
+});
+
+test('invalid inputs create no persisted answers', async ({ page, request }) => {
+  await page.goto('/');
+  const session = await page.evaluate(() => sessionStorage.getItem('synthetic-dataset-session'));
+  const requestId = await page.evaluate(() => crypto.randomUUID());
+  const valid = { session, requestId, option: 'PHYSICS-Q1-A', language: 'es' };
+  for (const data of [
+    { ...valid, option: 'REAL-OPTION' }, { ...valid, language: 'fr' },
+    { ...valid, extra: 'not allowed' }, { ...valid, requestId: 'invalid' },
+    { ...valid, session: 'invalid' }, { ...valid, option: 'x'.repeat(5000) },
+  ]) {
+    expect((await request.post('/submit', { data })).status()).toBe(422);
+  }
+  for (const data of ['{', '', 'null', '[]']) {
+    expect((await request.post('/submit', { data, headers: { 'Content-Type': 'application/json' } })).status()).toBe(422);
+  }
+  const history = await request.get(`/lineage?session=${session}`);
+  expect((await history.json()).responses).toEqual([]);
+  await page.locator('#refresh').click();
+  await expect(page.locator('#history li')).toHaveCount(0);
+});
+
+test('independent browser sessions export only their own persisted answers', async ({ browser }) => {
+  const contexts = await Promise.all([browser.newContext(), browser.newContext()]);
+  try {
+    const allIds = [];
+    const allCsv = [];
+    for (const [index, context] of contexts.entries()) {
+      const page = await context.newPage();
+      await page.goto(process.env.ILP_DATASET_URL);
+      for (const [count, option] of (index ? ['B', 'A'] : ['A', 'B']).entries()) {
+        await page.locator(`input[value="PHYSICS-Q1-${option}"]`).check();
+        await page.locator('#submit').click();
+        await expect(page.locator('#history li')).toHaveCount(count + 1);
+      }
+      allIds.push(await page.locator('#history li').allTextContents());
+      await page.locator('#prepare').click();
+      await expect(page.locator('#csv')).toBeVisible();
+      const downloaded = page.waitForEvent('download');
+      await page.locator('#csv').click();
+      allCsv.push((await readFile(await (await downloaded).path())).toString('utf8'));
+    }
+    for (const [index, ids] of allIds.entries()) {
+      for (const entry of ids) {
+        const id = entry.split(' · ')[0];
+        expect(allCsv[index]).toContain(id);
+        expect(allCsv[1 - index]).not.toContain(id);
+      }
+    }
+  } finally { await Promise.all(contexts.map((context) => context.close())); }
+});
