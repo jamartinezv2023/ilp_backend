@@ -27,6 +27,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.HashMap;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import java.util.List;
 import java.util.UUID;
 import java.util.Optional;
@@ -50,6 +52,8 @@ class SyntheticDatasetBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2
     @Autowired private AssessmentDefinitionPersistenceMapper labDefinitionsMapper;
     @Autowired private GenericAssessmentEngine labEngine;
     @Autowired private ScientificParticipantIdentityPort labIdentity;
+
+    private record LabReceipt(UUID session, String option, String language, byte[] body) {}
 
     private void configureInteractiveFixtures() {
         var definition = labDefinitionsMapper.toDomain(labDefinitions
@@ -85,6 +89,7 @@ class SyntheticDatasetBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2
         var builder = new SyntheticResearchDatasetBuilder();
 
         var finished = new CountDownLatch(1);
+        var receipts = new HashMap<UUID, LabReceipt>();
         var server = HttpServer.create(new InetSocketAddress("127.0.0.1", 0), 0);
         server.createContext("/", exchange -> {
             byte[] body;
@@ -99,24 +104,43 @@ class SyntheticDatasetBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2
                     if (!"POST".equals(exchange.getRequestMethod())) {
                         throw new IllegalArgumentException("POST required");
                     }
-                    var input = datasetJson.readTree(exchange.getRequestBody().readNBytes(4097));
+                    var payload = exchange.getRequestBody().readNBytes(4097);
+                    if (payload.length > 4096) {
+                        throw new IllegalArgumentException("Input too large");
+                    }
+                    var input = datasetJson.readTree(payload);
                     String option = input.path("option").asText();
                     String language = input.path("language").asText();
                     UUID session = UUID.fromString(input.path("session").asText());
-                    if (input.size() != 3 || !List.of("PHYSICS-Q1-A", "PHYSICS-Q1-B").contains(option)
+                    UUID requestId = UUID.fromString(input.path("requestId").asText());
+                    if (!input.isObject() || input.size() != 4
+                            || !session.toString().equals(input.path("session").asText())
+                            || !requestId.toString().equals(input.path("requestId").asText()) || !List.of("PHYSICS-Q1-A", "PHYSICS-Q1-B").contains(option)
                             || !List.of("es", "en").contains(language)) {
                         throw new IllegalArgumentException("Invalid synthetic input");
                     }
-                    when(labIdentity.hasActiveResearchConsent(session)).thenReturn(true);
-                    when(labIdentity.resolveResearchSubjectId(session)).thenReturn(Optional.of(session.toString()));
-                    var incoming = new SubmitAssessmentRequest("SYNTHETIC-" + UUID.randomUUID(),
-                            "SYNTHETIC-STUDENT-001", session, "ILP-SYNTHETIC-PHYSICS", "0.0.1-test",
-                            List.of(new SubmitAssessmentQuestionRequest("PHYSICS-Q1", List.of(option),
-                                    Map.of(), null, null)),
-                            Map.of("source", "SYNTHETIC_HTTP_E2E", "language", language.equals("es") ? "es-CO" : "en-US",
-                                    "translationVersion", "0.0.1-test", "fieldworkPhase", "TEST_ONLY"), Instant.now());
-                    body = datasetJson.writeValueAsBytes(labSubmit.submit(incoming));
-                    status = 201;
+                    var previous = receipts.get(requestId);
+                    if (previous != null) {
+                        if (!previous.session().equals(session) || !previous.option().equals(option)
+                                || !previous.language().equals(language)) {
+                            status = 409;
+                            body = datasetJson.writeValueAsBytes(Map.of("code", "REQUEST_ID_CONFLICT"));
+                        } else {
+                            body = previous.body();
+                        }
+                    } else {
+                        when(labIdentity.hasActiveResearchConsent(session)).thenReturn(true);
+                        when(labIdentity.resolveResearchSubjectId(session)).thenReturn(Optional.of(session.toString()));
+                        var incoming = new SubmitAssessmentRequest("SYNTHETIC-" + requestId,
+                                "SYNTHETIC-STUDENT-001", session, "ILP-SYNTHETIC-PHYSICS", "0.0.1-test",
+                                List.of(new SubmitAssessmentQuestionRequest("PHYSICS-Q1", List.of(option),
+                                        Map.of(), null, null)),
+                                Map.of("source", "SYNTHETIC_HTTP_E2E", "language", language.equals("es") ? "es-CO" : "en-US",
+                                        "translationVersion", "0.0.1-test", "fieldworkPhase", "TEST_ONLY"), Instant.now());
+                        body = datasetJson.writeValueAsBytes(labSubmit.submit(incoming));
+                        receipts.put(requestId, new LabReceipt(session, option, language, body));
+                        status = 201;
+                    }
                 } else if ("/snapshot".equals(route)) {
                     var parameters = exchange.getRequestURI().getQuery();
                     var subject = UUID.fromString(parameters.split("&")[0].replace("session=", "")).toString();
@@ -146,7 +170,7 @@ class SyntheticDatasetBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2
                     status = 404;
                     body = "{}".getBytes(StandardCharsets.UTF_8);
                 }
-            } catch (IllegalArgumentException invalid) {
+            } catch (IllegalArgumentException | JsonProcessingException invalid) {
                 status = 422;
                 body = datasetJson.writeValueAsBytes(Map.of("code", "DATASET_VALIDATION_FAILED"));
             }

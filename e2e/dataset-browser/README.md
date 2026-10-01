@@ -74,3 +74,23 @@ nombres facilitan reconocer la pareja; la integridad requiere recalcular el hash
 Guardar otra respuesta elimina los enlaces y el identificador anteriores; debe
 prepararse una nueva instantánea. Durante la preparación no se permite otro envío.
 Los archivos ya guardados no se eliminan ni se renombran automáticamente.
+
+## Recuperación de envíos y aislamiento
+
+Cada envío tiene un UUID generado en el navegador y conservado con su opción,
+idioma e identidad de sesión en sessionStorage mientras esté sin confirmar. No
+se reenvía automáticamente al recargar. Actualizar historial puede reconciliar
+el ID persistido; Reintentar el mismo envío usa el mismo contenido e ID. Hasta
+resolverlo se bloquean nuevos intentos y preparación de exportaciones.
+
+El adaptador de prueba mantiene recibos en memoria durante la sesión H2: mismo
+ID y contenido devuelve el recibo original (200), primera persistencia devuelve
+201 y reutilizar el ID con otra opción/idioma/sesión devuelve 409 sin modificar
+H2. Es un mecanismo del laboratorio, no idempotencia de producción ni un control
+de acceso. Al cerrar el backend se pierden recibos y registros; para otra sesión
+manual use una nueva pestaña. El filtrado por UUID no sustituye autenticación.
+
+E2E incluye pérdida del recibo tras persistir, recarga y replay sin duplicados;
+fallo anterior a persistencia, recuperación explícita; JSON/opciones/idiomas/IDs
+inválidos y payload excesivo rechazados con historial vacío; dos contextos de
+navegador con exportaciones que contienen exclusivamente sus propios intentos.
