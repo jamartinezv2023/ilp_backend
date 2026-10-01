@@ -64,3 +64,13 @@ Si el POST es aceptado y falla la lectura, use Actualizar historial: no se repit
 el envío automáticamente. La definición, el mapeo y la puntuación siguen siendo
 fixtures; no es un instrumento educativo validado. El idioma del contexto registra
 la selección al enviar, mientras el idioma de la interfaz puede cambiar después.
+
+## Identificación de la exportación
+
+El CSV y el manifiesto llevan el mismo SHA-256 completo del CSV en sus nombres:
+`observations-<sha256>.csv` y `manifest-<sha256>.json`. La interfaz muestra ese
+identificador y el número de intentos incluidos en el idioma seleccionado. Los
+nombres facilitan reconocer la pareja; la integridad requiere recalcular el hash.
+Guardar otra respuesta elimina los enlaces y el identificador anteriores; debe
+prepararse una nueva instantánea. Durante la preparación no se permite otro envío.
+Los archivos ya guardados no se eliminan ni se renombran automáticamente.
