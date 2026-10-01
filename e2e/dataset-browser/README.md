@@ -49,3 +49,17 @@ en PowerShell cuando termine. El coordinador cierra a los 9 minutos y el backend
 limita la sesión a 10. La BD H2 temporal se cierra al finalizar Gradle.
 `MANUAL_SESSION_EXIT_CODE=0` sólo confirma cierre normal, no aprobación E2E.
 Los archivos descargados permanecen en su carpeta de Descargas.
+
+## Respuestas elegidas en navegador
+
+La sesión inicia sin intentos. Seleccione una opción ficticia A o B y guárdela.
+El ID y la opción se recuperan de H2; una recarga conserva la sesión del navegador
+y vuelve a leer su historial. Guarde al menos dos intentos antes de preparar el
+CSV. Las elecciones se envían exclusivamente al adaptador del test, que fija
+instrumento, versión, identidad operativa y procedencia sintéticos. La identidad
+de sesión se genera al abrir la pestaña. Cerrar H2 elimina estos registros.
+
+Si el POST es aceptado y falla la lectura, use Actualizar historial: no se repite
+el envío automáticamente. La definición, el mapeo y la puntuación siguen siendo
+fixtures; no es un instrumento educativo validado. El idioma del contexto registra
+la selección al enviar, mientras el idioma de la interfaz puede cambiar después.
