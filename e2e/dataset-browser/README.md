@@ -5,8 +5,8 @@ El adaptador HTTP sólo existe en src/test, escucha en loopback con puerto aleat
 y se inicia exclusivamente con ILP_DATASET_READY. H2 se configura en la clase base
 SyntheticSubmissionHistoryHttpE2ETest; definición, identidad, mapeo de envío y
 puntuación son fixtures. Servicios de persistencia, historial y generador son reales.
-La preparación usa el E2E existente para persistir dos intentos del mismo sujeto
-y un tercero ajeno; la descarga incluye únicamente los dos primeros.
+Cada sesión inicia sin intentos. El navegador envía las opciones elegidas y la
+descarga incluye exclusivamente el historial persistido de esa sesión.
 
 El navegador recibe CSV y manifiesto en una respuesta JSON indivisible, verifica
 SHA-256 con Web Crypto y habilita dos enlaces de descarga. Se eliminan enlaces y
@@ -44,8 +44,23 @@ no acreditan validez psicométrica ni un mecanismo de autorización de exportaci
 Ejecute `node.exe e2e/dataset-browser/run.mjs --manual` desde un worktree aislado.
 Requiere Java 17 y Node 22; no requiere npm ni instalar Chromium para este modo.
 El ejecutor abre el navegador predeterminado de Windows y muestra `LAB_URL` como
-alternativa. Seleccione es/en, prepare y descargue CSV y manifiesto. Pulse ENTER
+alternativa. Seleccione es/en, guarde dos elecciones, prepare y descargue CSV y
+manifiesto. Pulse ENTER
 en PowerShell cuando termine. El coordinador cierra a los 9 minutos y el backend
 limita la sesión a 10. La BD H2 temporal se cierra al finalizar Gradle.
 `MANUAL_SESSION_EXIT_CODE=0` sólo confirma cierre normal, no aprobación E2E.
 Los archivos descargados permanecen en su carpeta de Descargas.
+
+## Respuestas elegidas en navegador
+
+La sesión inicia sin intentos. Seleccione una opción ficticia A o B y guárdela.
+El ID y la opción se recuperan de H2; una recarga conserva la sesión del navegador
+y vuelve a leer su historial. Guarde al menos dos intentos antes de preparar el
+CSV. Las elecciones se envían exclusivamente al adaptador del test, que fija
+instrumento, versión, identidad operativa y procedencia sintéticos. La identidad
+de sesión se genera al abrir la pestaña. Cerrar H2 elimina estos registros.
+
+Si el POST es aceptado y falla la lectura, use Actualizar historial: no se repite
+el envío automáticamente. La definición, el mapeo y la puntuación siguen siendo
+fixtures; no es un instrumento educativo validado. El idioma del contexto registra
+la selección al enviar, mientras el idioma de la interfaz puede cambiar después.

@@ -3,7 +3,13 @@
 <title>ILP — Synthetic dataset</title>
 <body><main><label id="language-label" for="language"></label>
 <select id="language"><option value="es">Español</option><option value="en">English</option></select>
-<h1 id="title"></h1><p id="scope"></p><button id="prepare"></button>
+<h1 id="title"></h1><p id="scope"></p>
+<form id="answer-form"><fieldset><legend id="question"></legend>
+<label><input type="radio" name="option" value="PHYSICS-Q1-A"><span id="option-a"></span></label>
+<label><input type="radio" name="option" value="PHYSICS-Q1-B"><span id="option-b"></span></label>
+</fieldset><button id="submit" type="submit"></button></form>
+<button id="refresh" type="button"></button><p id="submission-status" role="status"></p>
+<h2 id="history-title"></h2><ul id="history"></ul><button id="prepare"></button>
 <p id="status" role="status"></p><p id="error" role="alert"></p>
 <a id="csv" hidden download="observations.csv"></a>
 <a id="manifest" hidden download="manifest.json"></a></main>
