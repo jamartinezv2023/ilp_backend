@@ -208,7 +208,9 @@ test('invalid inputs create no persisted answers', async ({ page, request }) => 
   ]) {
     expect((await request.post('/submit', { data })).status()).toBe(422);
   }
-  expect((await request.post('/submit', { data: '{', headers: { 'Content-Type': 'application/json' } })).status()).toBe(422);
+  for (const data of ['{', '', 'null', '[]']) {
+    expect((await request.post('/submit', { data, headers: { 'Content-Type': 'application/json' } })).status()).toBe(422);
+  }
   const history = await request.get(`/lineage?session=${session}`);
   expect((await history.json()).responses).toEqual([]);
   await page.locator('#refresh').click();

@@ -109,6 +109,9 @@ class SyntheticDatasetBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2
                         throw new IllegalArgumentException("Input too large");
                     }
                     var input = datasetJson.readTree(payload);
+                    if (input == null || !input.isObject()) {
+                        throw new IllegalArgumentException("JSON object required");
+                    }
                     String option = input.path("option").asText();
                     String language = input.path("language").asText();
                     UUID session = UUID.fromString(input.path("session").asText());
