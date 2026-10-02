@@ -34,7 +34,7 @@ class KolbScoringStrategyEquivalenceTest {
     @Test
     void shouldMatchLegacyDivergentResult() {
         assertEquivalent(
-                List.of(4, 4, 1, 1),
+                List.of(4, 3, 2, 1),
                 "DIVERGENT"
         );
     }
@@ -42,7 +42,7 @@ class KolbScoringStrategyEquivalenceTest {
     @Test
     void shouldMatchLegacyAssimilatingResult() {
         assertEquivalent(
-                List.of(1, 4, 4, 1),
+                List.of(1, 4, 3, 2),
                 "ASSIMILATING"
         );
     }
@@ -50,7 +50,7 @@ class KolbScoringStrategyEquivalenceTest {
     @Test
     void shouldMatchLegacyConvergentResult() {
         assertEquivalent(
-                List.of(1, 1, 4, 4),
+                List.of(1, 2, 3, 4),
                 "CONVERGENT"
         );
     }
@@ -58,7 +58,7 @@ class KolbScoringStrategyEquivalenceTest {
     @Test
     void shouldMatchLegacyAccommodatingResult() {
         assertEquivalent(
-                List.of(4, 1, 1, 4),
+                List.of(3, 2, 1, 4),
                 "ACCOMMODATING"
         );
     }

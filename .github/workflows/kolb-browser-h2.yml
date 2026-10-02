@@ -1,0 +1,50 @@
+name: Kolb bilingual browser H2
+on:
+  pull_request:
+    paths: ['adaptive-education-service/**', '.github/workflows/kolb-browser-h2.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-h2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: backend
+      - uses: actions/checkout@v4
+        with:
+          repository: jamartinezv2023/ilp_frontend
+          ref: cb51d2ec84ef08d4e17797a1740d06a0fbb28dc2
+          path: frontend
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: gradle/actions/setup-gradle@v4
+      - run: npm ci
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: chmod +x gradlew
+        working-directory: backend
+      - run: node e2e/kolb-h2/run.mjs ../backend
+        working-directory: frontend
+      - run: ./gradlew :adaptive-education-service:test --tests '*Kolb*' --tests '*AssessmentSubmissionValidatorIpsativeTest' :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest --no-daemon
+        working-directory: backend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kolb-browser-h2-evidence
+          path: |
+            frontend/test-results
+            frontend/e2e/kolb-h2/test-results
+            backend/adaptive-education-service/build/test-results/test
+            backend/adaptive-education-service/build/reports/tests/test
+            backend/adaptive-education-service/build/reports/checkstyle

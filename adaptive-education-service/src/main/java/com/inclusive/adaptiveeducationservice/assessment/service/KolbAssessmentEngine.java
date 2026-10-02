@@ -9,6 +9,7 @@ public class KolbAssessmentEngine {
 
     public KolbScores calculate(List<Integer> answers) {
         validateAnswers(answers);
+        validateUniqueGroups(answers);
 
         int scoreCE = 0;
         int scoreRO = 0;
@@ -55,6 +56,16 @@ public class KolbAssessmentEngine {
         }
     }
 
+    private void validateUniqueGroups(List<Integer> answers) {
+        for (int offset = 0; offset < answers.size(); offset += 4) {
+            if (answers.subList(offset, offset + 4)
+                    .stream().distinct().count() != 4) {
+                throw new IllegalArgumentException(
+                        "Each Kolb group must use rankings 1 to 4 exactly once"
+                );
+            }
+        }
+    }
     private String determineLearningStyle(
             int scoreCE,
             int scoreRO,
