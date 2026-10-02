@@ -1,0 +1,54 @@
+name: Synthetic Kolb dataset browser H2
+on:
+  pull_request:
+    paths: ['adaptive-education-service/**', '.github/workflows/kolb-dataset-browser-h2.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dataset-browser-h2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: backend
+      - uses: actions/checkout@v4
+        with:
+          repository: jamartinezv2023/ilp_frontend
+          ref: f25abc8d30d6a94c5e932df85477634f444d9bdb
+          path: frontend
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: gradle/actions/setup-gradle@v4
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run lint && npm run build
+        working-directory: frontend
+      - run: npx tsc --noEmit --target ES2022 --module ESNext --moduleResolution bundler --jsx react-jsx --strict --skipLibCheck --types vite/client e2e/kolb-h2/harness.tsx
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: chmod +x gradlew
+        working-directory: backend
+      - run: ./gradlew :adaptive-education-service:test --tests '*SyntheticKolbDatasetBuilderTest' --tests '*SyntheticKolbDatasetPersistenceTest' :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest :adaptive-education-service:pmdMain :adaptive-education-service:pmdTest --no-daemon
+        working-directory: backend
+      - run: node e2e/kolb-h2/run.mjs ../backend
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: synthetic-kolb-dataset-evidence
+          path: |
+            frontend/test-results
+            backend/adaptive-education-service/build/test-results/test
+            backend/adaptive-education-service/build/reports/tests/test
+            backend/adaptive-education-service/build/reports/checkstyle
+            backend/adaptive-education-service/build/reports/pmd

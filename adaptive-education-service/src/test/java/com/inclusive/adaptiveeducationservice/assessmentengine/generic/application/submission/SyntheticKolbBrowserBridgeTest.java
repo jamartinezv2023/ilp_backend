@@ -1,6 +1,10 @@
 package com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.submission;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.inclusive.adaptiveeducationservice.assessment.entity.KolbAssessmentResultEntity;
+import com.inclusive.adaptiveeducationservice.dataset.scientific.SyntheticKolbDatasetBuilder;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 import com.inclusive.adaptiveeducationservice.api.assessment.LegacyAssessmentWritePolicy;
 import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentRequest;
 import com.inclusive.adaptiveeducationservice.api.assessment.KolbAssessmentController;
@@ -55,8 +59,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /** Test-only loopback adapter. Real Kolb service, validator, scoring and H2 result repository. */
+@org.springframework.test.context.TestPropertySource(properties = {
+        "spring.jpa.mapping-resources=kolb-lab/ordered-answers.orm.xml",
+        "spring.datasource.url=jdbc:h2:mem:ilp_kolb_ordered_lab;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1"
+})
 class SyntheticKolbBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2ETest {
     @Autowired private ObjectMapper json;
+    @Autowired private PlatformTransactionManager transactions;
     @Autowired private KolbAssessmentService kolbService;
     @Autowired private KolbAssessmentResultRepository kolbResults;
     @Autowired private StudentProfileRepository students;
@@ -154,6 +163,30 @@ class SyntheticKolbBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2ETe
                     summary.put("results", results.count());
                     summary.put("contexts", contexts.count());
                     body = json.writeValueAsBytes(summary);
+                } else if (route.startsWith("/test/kolb-dataset/")) {
+                    String id = route.substring("/test/kolb-dataset/".length());
+                    var row = new TransactionTemplate(transactions).execute(transaction ->
+                            kolbResults.findById(id).orElse(null));
+                    if (row == null) {
+                        status = 404;
+                        body = json.writeValueAsBytes(Map.of("code", "KOLB_DATASET_NOT_FOUND"));
+                    } else {
+                        // Fault injection exists only on this loopback test adapter.
+                        if ("fault=rank".equals(exchange.getRequestURI().getQuery())) {
+                            var invalid = new ArrayList<>(row.getAnswers());
+                            invalid.set(1, invalid.get(0));
+                            row = new KolbAssessmentResultEntity(row.getId(), row.getStudentId(),
+                                    row.getScoreCE(), row.getScoreRO(), row.getScoreAC(),
+                                    row.getScoreAE(), row.getLearningStyle(),
+                                    row.getInstrumentVersion(), row.getCreatedAt(), invalid);
+                        }
+                        try {
+                            body = json.writeValueAsBytes(new SyntheticKolbDatasetBuilder().build(row));
+                        } catch (IllegalArgumentException invalid) {
+                            status = 422;
+                            body = json.writeValueAsBytes(Map.of("code", "KOLB_DATASET_INVALID"));
+                        }
+                    }
                 } else if (route.startsWith("/api/v1/assessments/kolb")) {
                     var request = "POST".equals(exchange.getRequestMethod())
                             ? post(route).contentType("application/json")
