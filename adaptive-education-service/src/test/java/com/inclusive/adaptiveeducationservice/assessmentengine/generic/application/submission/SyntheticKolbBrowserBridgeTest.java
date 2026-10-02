@@ -3,15 +3,8 @@ package com.inclusive.adaptiveeducationservice.assessmentengine.generic.applicat
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inclusive.adaptiveeducationservice.api.assessment.LegacyAssessmentWritePolicy;
 import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentRequest;
-import com.inclusive.adaptiveeducationservice.assessment.dto.KolbAssessmentResponse;
-import org.springframework.context.annotation.Profile;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import jakarta.validation.Valid;
 import com.inclusive.adaptiveeducationservice.api.assessment.KolbAssessmentController;
+import com.inclusive.adaptiveeducationservice.api.assessment.SyntheticLoopbackKolbController;
 import com.inclusive.adaptiveeducationservice.api.assessmentsubmission.AssessmentSubmissionExceptionHandler;
 import com.inclusive.adaptiveeducationservice.assessment.repository.KolbAssessmentResultRepository;
 import com.inclusive.adaptiveeducationservice.assessment.service.KolbAssessmentEngine;
@@ -95,30 +88,7 @@ class SyntheticKolbBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2ETe
         assertThat(response.getStatus()).isEqualTo(410);
         org.mockito.Mockito.verifyNoInteractions(service);
     }
-    /**
-     * Registered manually in standalone MockMvc only.
-     * Its profile is absent from the Spring test application.
-     */
-    @RestController
-    @Profile("kolb-loopback-only")
-    @RequestMapping("/api/v1/assessments/kolb")
-    public static class SyntheticLoopbackKolbController
-            extends KolbAssessmentController {
-        private final KolbAssessmentService service;
-        public SyntheticLoopbackKolbController(
-                KolbAssessmentService service
-        ) {
-            super(service, new LegacyAssessmentWritePolicy());
-            this.service = service;
-        }
-        @Override
-        @PostMapping
-        public ResponseEntity<KolbAssessmentResponse> submit(
-                @Valid @RequestBody KolbAssessmentRequest request
-        ) {
-            return ResponseEntity.ok(service.submit(request));
-        }
-    }
+
     @Test
     @Timeout(420)
     void browserUsesRealKolbValidationAndH2() throws Exception {
