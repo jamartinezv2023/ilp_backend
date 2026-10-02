@@ -59,6 +59,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 /** Test-only loopback adapter. Real Kolb service, validator, scoring and H2 result repository. */
+@org.springframework.test.context.TestPropertySource(properties = {
+        "spring.jpa.mapping-resources=kolb-lab/ordered-answers.orm.xml",
+        "spring.datasource.url=jdbc:h2:mem:ilp_kolb_ordered_lab;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1"
+})
 class SyntheticKolbBrowserBridgeTest extends SyntheticSubmissionHistoryHttpE2ETest {
     @Autowired private ObjectMapper json;
     @Autowired private PlatformTransactionManager transactions;

@@ -16,6 +16,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /** Reloads from a new persistence context; an in-memory submit object cannot satisfy this test. */
+@org.springframework.test.context.TestPropertySource(properties = {
+        "spring.jpa.mapping-resources=kolb-lab/ordered-answers.orm.xml",
+        "spring.datasource.url=jdbc:h2:mem:ilp_kolb_ordered_lab;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1"
+})
 class SyntheticKolbDatasetPersistenceTest extends SyntheticSubmissionHistoryHttpE2ETest {
     @Autowired private KolbAssessmentResultRepository kolbResults;
     @Autowired private PlatformTransactionManager transactions;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings
+    xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+    version="3.0">
+    <entity class="com.inclusive.adaptiveeducationservice.assessment.entity.KolbAssessmentResultEntity">
+        <attributes>
+            <element-collection name="answers" target-class="java.lang.Integer" fetch="EAGER">
+                <order-column name="answer_position"/>
+                <column name="answer_value" nullable="false"/>
+                <collection-table name="kolb_assessment_answers">
+                    <join-column name="assessment_id"/>
+                </collection-table>
+            </element-collection>
+        </attributes>
+    </entity>
+</entity-mappings>
