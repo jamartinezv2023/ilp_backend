@@ -44,7 +44,7 @@ jobs:
       - run: chmod +x gradlew
         working-directory: backend
       - name: Adaptive suite, quality and executable
-        run: ./gradlew :adaptive-education-service:test :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest :adaptive-education-service:pmdMain :adaptive-education-service:pmdTest :adaptive-education-service:bootJar --no-daemon --console=plain
+        run: ./gradlew :adaptive-education-service:test :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest :adaptive-education-service:pmdMain :adaptive-education-service:pmdTest :adaptive-education-service:spotbugsMain :adaptive-education-service:spotbugsTest :adaptive-education-service:bootJar --no-daemon --console=plain
         working-directory: backend
       - name: Auth audience contract and quality
         run: ./gradlew :auth-service:test --tests '*JwtAudienceContractTest' :auth-service:checkstyleMain :auth-service:checkstyleTest :auth-service:pmdMain :auth-service:pmdTest --no-daemon --console=plain
