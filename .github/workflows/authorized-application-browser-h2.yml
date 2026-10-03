@@ -1,0 +1,85 @@
+name: Authorized scientific application browser H2
+on:
+  pull_request:
+    branches:
+      - main
+      - review/scientific-application-backend-20261002-225435267
+    paths:
+      - adaptive-education-service/**
+      - .github/workflows/authorized-application-browser-h2.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-h2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: backend
+      - uses: actions/checkout@v4
+        with:
+          repository: jamartinezv2023/ilp_frontend
+          ref: 94dfa6bc7152a50d6f2416b799935a16618d8cc5
+          path: frontend
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: gradle/actions/setup-gradle@v4
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run lint && npm run build
+        working-directory: frontend
+      - run: npx tsc --noEmit --target ES2022 --module ESNext --moduleResolution bundler --jsx react-jsx --strict --skipLibCheck --types vite/client e2e/authorized-application/harness.tsx
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: chmod +x gradlew
+        working-directory: backend
+      - run: ./gradlew :adaptive-education-service:test :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest :adaptive-education-service:pmdMain :adaptive-education-service:pmdTest :adaptive-education-service:bootJar --no-daemon
+        working-directory: backend
+      - name: Verify test authority is excluded from bootJar
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import zipfile
+          jars = [
+              p for p in pathlib.Path(
+                  "adaptive-education-service/build/libs"
+              ).glob("*.jar") if not p.name.endswith("-plain.jar")
+          ]
+          if len(jars) != 1:
+              raise SystemExit("Expected exactly one bootJar")
+          with zipfile.ZipFile(jars[0]) as archive:
+              forbidden = [
+                  name for name in archive.namelist()
+                  if any(marker in name for marker in (
+                      "AuthorizedScientificApplicationBrowserBridgeTest",
+                      "ScientificAuthorizationFixture",
+                      "scientific_lab_grants",
+                      "BOOT-INF/lib/spring-security-oauth2-jose-",
+                  ))
+              ]
+          if forbidden:
+              raise SystemExit("Test-only authorization content entered bootJar")
+          print("TEST_AUTHORITY_EXCLUDED_FROM_BOOTJAR=True")
+          PY
+        working-directory: backend
+      - run: node e2e/authorized-application/run.mjs ../backend
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: authorized-application-evidence
+          path: |
+            frontend/test-results
+            backend/adaptive-education-service/build/test-results/test
+            backend/adaptive-education-service/build/reports
