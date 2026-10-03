@@ -31,6 +31,8 @@ jobs:
           ./gradlew :adaptive-education-service:checkstyleTest --no-daemon --console=plain
       - name: Browser downloads from real H2 persistence
         run: node e2e/dataset-browser/run.mjs
+      - name: Repeat session to reject stale Gradle test results
+        run: node e2e/dataset-browser/run.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

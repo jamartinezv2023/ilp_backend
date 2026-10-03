@@ -38,3 +38,14 @@ Requiere Java 17 y Node 22. CI conserva Playwright y JUnit. No despliega la inte
 no añade controladores de producción, no conecta una BD científica ni autoriza
 recolección escolar. Los dos archivos corresponden a una instantánea sintética;
 no acreditan validez psicométrica ni un mecanismo de autorización de exportación.
+
+## Inspección manual Windows
+
+Ejecute `node.exe e2e/dataset-browser/run.mjs --manual` desde un worktree aislado.
+Requiere Java 17 y Node 22; no requiere npm ni instalar Chromium para este modo.
+El ejecutor abre el navegador predeterminado de Windows y muestra `LAB_URL` como
+alternativa. Seleccione es/en, prepare y descargue CSV y manifiesto. Pulse ENTER
+en PowerShell cuando termine. El coordinador cierra a los 9 minutos y el backend
+limita la sesión a 10. La BD H2 temporal se cierra al finalizar Gradle.
+`MANUAL_SESSION_EXIT_CODE=0` sólo confirma cierre normal, no aprobación E2E.
+Los archivos descargados permanecen en su carpeta de Descargas.
