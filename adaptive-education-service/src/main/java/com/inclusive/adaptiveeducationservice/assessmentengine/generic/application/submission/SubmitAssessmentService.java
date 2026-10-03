@@ -83,6 +83,8 @@ public class SubmitAssessmentService {
     public SubmitAssessmentResponse submit(
             SubmitAssessmentRequest request
     ) {
+        SubmissionTimingValidator.validate(request);
+
         boolean controlledDemo =
                 modePolicy.validateAndIsDemo(request);
 
