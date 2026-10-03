@@ -1,0 +1,119 @@
+name: Productive scientific authorization browser H2
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - adaptive-education-service/**
+      - auth-service/**
+      - .github/workflows/productive-authorization-browser-h2.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  productive-authorization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: backend
+      - uses: actions/checkout@v4
+        with:
+          repository: jamartinezv2023/ilp_frontend
+          ref: a2c462bd3e23734a6a004a7896b8676744a8b8b9
+          path: frontend
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: gradle/actions/setup-gradle@v4
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run lint && npm run build
+        working-directory: frontend
+      - run: node node_modules/typescript/bin/tsc --noEmit --jsx react-jsx --module esnext --target es2022 --moduleResolution bundler --esModuleInterop --skipLibCheck --strict --types vite/client --lib es2022,dom e2e/productive-authorization/harness.tsx
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: chmod +x gradlew
+        working-directory: backend
+      - name: Adaptive suite, quality and executable
+        run: ./gradlew :adaptive-education-service:test :adaptive-education-service:checkstyleMain :adaptive-education-service:checkstyleTest :adaptive-education-service:pmdMain :adaptive-education-service:pmdTest :adaptive-education-service:spotbugsMain :adaptive-education-service:spotbugsTest :adaptive-education-service:bootJar --no-daemon --console=plain
+        working-directory: backend
+      - name: Auth audience contract and quality
+        run: ./gradlew :auth-service:test --tests '*JwtAudienceContractTest' :auth-service:checkstyleMain :auth-service:checkstyleTest :auth-service:pmdMain :auth-service:pmdTest --no-daemon --console=plain
+        working-directory: backend
+      - name: Verify PostgreSQL authorization tests executed
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import xml.etree.ElementTree as ET
+          reports = list(pathlib.Path(
+              "adaptive-education-service/build/test-results/test"
+          ).glob("TEST-*ScientificProductionPostgresTest.xml"))
+          if len(reports) != 1:
+              raise SystemExit("Expected PostgreSQL authorization report")
+          suite = ET.parse(reports[0]).getroot()
+          cases = suite.findall("testcase")
+          if not cases or any(
+              case.find(tag) is not None
+              for case in cases
+              for tag in ("skipped", "failure", "error")
+          ):
+              raise SystemExit("PostgreSQL authorization tests did not all pass")
+          print(f"POSTGRES_AUTHORIZATION_TESTS_PASSED={len(cases)}")
+          PY
+        working-directory: backend
+      - name: Verify executable boundary
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import zipfile
+          jars = [
+              p for p in pathlib.Path(
+                  "adaptive-education-service/build/libs"
+              ).glob("*.jar") if not p.name.endswith("-plain.jar")
+          ]
+          if len(jars) != 1:
+              raise SystemExit("Expected exactly one bootJar")
+          with zipfile.ZipFile(jars[0]) as archive:
+              names = archive.namelist()
+          forbidden = (
+              "BrowserBridgeTest", "ScientificAuthorizationFixture",
+              "ordered-answers.orm.xml", "scientific_lab_grants"
+          )
+          if any(marker in name for name in names for marker in forbidden):
+              raise SystemExit("Test authority entered bootJar")
+          required = (
+              "BOOT-INF/classes/com/inclusive/adaptiveeducationservice/api/scientific/ScientificProductionController.class",
+              "BOOT-INF/classes/com/inclusive/adaptiveeducationservice/research/production/ScientificTokenVerifier.class"
+          )
+          if any(name not in names for name in required):
+              raise SystemExit("Production authorization component missing")
+          if not any(
+              name.startswith("BOOT-INF/lib/spring-security-oauth2-jose-")
+              for name in names
+          ):
+              raise SystemExit("JWT verification dependency missing")
+          print("BOOTJAR_PRODUCTION_BOUNDARY_VERIFIED=True")
+          PY
+        working-directory: backend
+      - name: Bilingual browser and real H2 persistence
+        run: node e2e/productive-authorization/run.mjs ../backend
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: productive-authorization-evidence
+          path: |
+            frontend/test-results
+            backend/adaptive-education-service/build/test-results/test
+            backend/adaptive-education-service/build/reports
+            backend/auth-service/build/test-results/test
+            backend/auth-service/build/reports
