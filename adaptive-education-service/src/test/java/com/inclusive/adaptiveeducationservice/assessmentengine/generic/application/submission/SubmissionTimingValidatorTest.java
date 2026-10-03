@@ -31,7 +31,8 @@ class SubmissionTimingValidatorTest {
                 Map.of("startedAt", "2026-10-02T10:00:00Z", "durationSeconds", "-1"),
                 Map.of("startedAt", "2026-10-02T10:00:11Z", "durationSeconds", "0"),
                 Map.of("startedAt", "2026-10-02T10:00:00Z", "durationSeconds", "11"))) {
-            assertThatThrownBy(() -> SubmissionTimingValidator.validate(request(timing)))
+            var submission = request(timing);
+            assertThatThrownBy(() -> SubmissionTimingValidator.validate(submission))
                     .isInstanceOf(ResponseStatusException.class)
                     .hasMessageContaining("ASSESSMENT_TIMING_INVALID");
         }

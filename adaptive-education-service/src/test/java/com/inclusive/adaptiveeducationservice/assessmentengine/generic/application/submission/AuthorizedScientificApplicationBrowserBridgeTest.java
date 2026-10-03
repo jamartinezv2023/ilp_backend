@@ -359,9 +359,9 @@ class AuthorizedScientificApplicationBrowserBridgeTest extends SyntheticSubmissi
 
     private void setConsentActive(boolean active) {
         if (!active && pendingConsent.isEmpty()) {
-            var record = new ConsentRecord("SYNTHETIC-AUTHORIZED-001", "SYNTHETIC_RESEARCH", "PENDING");
-            ReflectionTestUtils.setField(record, "createdAt", approvedConsent.getCreatedAt().plusSeconds(1));
-            pendingConsent = Optional.of(consentRecords.saveAndFlush(record));
+            var pendingRecord = new ConsentRecord("SYNTHETIC-AUTHORIZED-001", "SYNTHETIC_RESEARCH", "PENDING");
+            ReflectionTestUtils.setField(pendingRecord, "createdAt", approvedConsent.getCreatedAt().plusSeconds(1));
+            pendingConsent = Optional.of(consentRecords.saveAndFlush(pendingRecord));
         } else if (active && pendingConsent.isPresent()) {
             consentRecords.deleteById(pendingConsent.orElseThrow().getConsentId());
             pendingConsent = Optional.empty();
