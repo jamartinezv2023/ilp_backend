@@ -65,9 +65,10 @@ jobs:
                       "AuthorizedScientificApplicationBrowserBridgeTest",
                       "ScientificAuthorizationFixture",
                       "scientific_lab_grants",
-                      "BOOT-INF/lib/spring-security-oauth2-jose-",
                   ))
               ]
+          if not any("BOOT-INF/lib/spring-security-oauth2-jose-" in name for name in archive.namelist()):
+              raise SystemExit("Production JWT verification dependency is missing")
           if forbidden:
               raise SystemExit("Test-only authorization content entered bootJar")
           print("TEST_AUTHORITY_EXCLUDED_FROM_BOOTJAR=True")

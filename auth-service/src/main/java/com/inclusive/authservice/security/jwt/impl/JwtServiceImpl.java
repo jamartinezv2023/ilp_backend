@@ -21,6 +21,9 @@ public class JwtServiceImpl implements JwtService {
     @Value("${security.jwt.issuer}")
     private String issuer;
 
+    @Value("${security.jwt.audience:ilp-scientific-api}")
+    private String audience;
+
     @Value("${security.jwt.access-token-minutes}")
     private long accessTokenMinutes;
 
@@ -39,6 +42,7 @@ public class JwtServiceImpl implements JwtService {
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer(issuer)
+                .audience(java.util.List.of(audience))
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(accessTokenMinutes * 60))
                 .subject(userId.toString())
