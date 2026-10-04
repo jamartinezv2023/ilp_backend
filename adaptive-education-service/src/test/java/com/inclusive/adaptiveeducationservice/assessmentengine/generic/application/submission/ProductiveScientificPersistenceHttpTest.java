@@ -84,9 +84,16 @@ class ProductiveScientificPersistenceHttpTest extends SyntheticSubmissionHistory
                 "scientific_participant_bindings", "scientific_memberships")) {
             jdbc.execute("DROP TABLE IF EXISTS " + table);
         }
+        var dataSource = jdbc.getDataSource();
+        if (dataSource == null) {
+            throw new IllegalStateException("The persistence fixture requires a DataSource");
+        }
         new ResourceDatabasePopulator(new ClassPathResource(
-                "db/scientific-production/V1__scientific_authorization_registry.sql")).execute(jdbc.getDataSource());
+                "db/scientific-production/V1__scientific_authorization_registry.sql")).execute(dataSource);
         var original = (SubmitAssessmentRequest) ReflectionTestUtils.getField(this, "request");
+        if (original == null) {
+            throw new IllegalStateException("The inherited submission fixture must initialize request");
+        }
         var participant = new ResearchParticipant("SYNTHETIC-PROD-" + UUID.randomUUID(), "APPROVED", "TEST");
         ReflectionTestUtils.setField(participant, "participantUuid", original.researchParticipantUuid());
         participants.saveAndFlush(participant);

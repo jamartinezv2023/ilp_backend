@@ -128,7 +128,8 @@ class ScientificProductionHttpTest {
                 "TEST", "v1", List.of(new SubmitAssessmentQuestionRequest("Q1", List.of("A1"), Map.of(), null, null)),
                 Map.of("consentId", consent.getConsentId().toString(), "consentVersion", "v1",
                         "institutionId", "FORGED", "authorizedUserId", "FORGED"), Instant.now());
-        when(submissions.submit(any())).thenReturn(mock(SubmitAssessmentResponse.class));
+        var submittedResponse = mock(SubmitAssessmentResponse.class);
+        when(submissions.submit(any())).thenReturn(submittedResponse);
         token = signedToken(user, tenant, "ilp-scientific-api", Instant.now().plusSeconds(300));
     }
 

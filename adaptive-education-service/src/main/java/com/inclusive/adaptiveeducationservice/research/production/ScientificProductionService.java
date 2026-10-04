@@ -113,7 +113,7 @@ public class ScientificProductionService {
         var consentId = assignments.withdrawEvidence(evidenceId, actor);
         var consent = consents.findById(consentId).orElseThrow(ScientificAssignmentStore::denied);
         if (consent.getWithdrawnAt() == null) {
-            consent.withdraw(LocalDateTime.now());
+            consent.withdraw(LocalDateTime.now(java.time.ZoneId.systemDefault()));
             consents.saveAndFlush(consent);
         }
     }
