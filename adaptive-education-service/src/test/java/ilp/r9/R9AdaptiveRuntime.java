@@ -2,19 +2,32 @@ package ilp.r9;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.inclusive.adaptiveeducationservice.AdaptiveEducationServiceApplication;
-import com.inclusive.adaptiveeducationservice.research.production.*;
-import com.inclusive.adaptiveeducationservice.assessmentdefinition.entity.*;
+import com.inclusive.adaptiveeducationservice.research.production.ScientificApiFilter;
+import com.inclusive.adaptiveeducationservice.research.production.ScientificAssignmentStore;
+import com.inclusive.adaptiveeducationservice.research.production.ScientificProductionConfiguration;
+import com.inclusive.adaptiveeducationservice.research.production.ScientificProductionService;
+import com.inclusive.adaptiveeducationservice.research.production.ScientificSnapshot;
+import com.inclusive.adaptiveeducationservice.research.production.ScientificTokenVerifier;
+import com.inclusive.adaptiveeducationservice.assessmentdefinition.entity.AssessmentDefinitionEntity;
+import com.inclusive.adaptiveeducationservice.assessmentdefinition.entity.AssessmentOptionEntity;
+import com.inclusive.adaptiveeducationservice.assessmentdefinition.entity.AssessmentQuestionEntity;
 import com.inclusive.adaptiveeducationservice.assessmentdefinition.repository.AssessmentDefinitionRepository;
-import com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.submission.*;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.submission.ControlledAssessmentModePolicy;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.submission.SubmitAssessmentService;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.application.scientific.history.GetParticipantAssessmentScientificHistoryService;
-import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.*;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentDefinition;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentResult;
+import com.inclusive.adaptiveeducationservice.assessmentengine.generic.domain.AssessmentSubmission;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.port.out.scientific.ScientificParticipantIdentityPort;
 import com.inclusive.adaptiveeducationservice.assessmentengine.generic.strategy.AssessmentScoringStrategy;
 import com.inclusive.adaptiveeducationservice.assessmentresponse.service.AssessmentResponseService;
 import com.inclusive.adaptiveeducationservice.api.assessmentsubmission.SubmitAssessmentRequest;
-import com.inclusive.adaptiveeducationservice.fieldwork.domain.*;
-import com.inclusive.adaptiveeducationservice.fieldwork.repository.*;
-import com.inclusive.adaptiveeducationservice.fieldwork.adapter.out.persistence.researchidentity.*;
+import com.inclusive.adaptiveeducationservice.fieldwork.domain.ConsentRecord;
+import com.inclusive.adaptiveeducationservice.fieldwork.domain.ResearchParticipant;
+import com.inclusive.adaptiveeducationservice.fieldwork.repository.ConsentRecordRepository;
+import com.inclusive.adaptiveeducationservice.fieldwork.repository.ResearchParticipantRepository;
+import com.inclusive.adaptiveeducationservice.fieldwork.adapter.out.persistence.researchidentity.ResearchSubjectIdentityEntity;
+import com.inclusive.adaptiveeducationservice.fieldwork.adapter.out.persistence.researchidentity.ResearchSubjectIdentityJpaRepository;
 import com.inclusive.adaptiveeducationservice.student.entity.StudentProfileEntity;
 import com.inclusive.adaptiveeducationservice.student.repository.StudentProfileRepository;
 import com.nimbusds.jose.jwk.JWKSet;
@@ -25,7 +38,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
@@ -41,7 +58,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 /** Real production filter, token verification, authorization registry, consent, JPA submission and history.
  * Only the explicitly synthetic scoring strategy and collection policy are supplied by this test runtime.
@@ -79,14 +100,20 @@ public class R9AdaptiveRuntime {
     }
     @Bean ScientificTokenVerifier r9Verifier(Environment environment) throws Exception {
         String base = environment.getRequiredProperty("r9.auth-base");
-        if (!base.equals("http://127.0.0.1:18083")) throw new IllegalArgumentException("Local fixture auth required");
+        if (!base.equals("http://127.0.0.1:18083")) {
+            throw new IllegalArgumentException("Local fixture auth required");
+        }
         var response = HttpClient.newBuilder().connectTimeout(java.time.Duration.ofSeconds(5)).build()
             .send(HttpRequest.newBuilder(URI.create(base + "/.well-known/jwks.json"))
                 .header("X-Tenant-Id", TENANT.toString()).timeout(java.time.Duration.ofSeconds(10)).GET().build(),
                 HttpResponse.BodyHandlers.ofString());
-        if (response.statusCode() != 200) throw new IllegalStateException("Local JWKS unavailable");
+        if (response.statusCode() != 200) {
+            throw new IllegalStateException("Local JWKS unavailable");
+        }
         var keys = JWKSet.parse(response.body()).getKeys();
-        if (keys.size() != 1 || !(keys.get(0) instanceof RSAKey key)) throw new IllegalStateException("Unexpected local JWKS");
+        if (keys.size() != 1 || !(keys.get(0) instanceof RSAKey key)) {
+            throw new IllegalStateException("Unexpected local JWKS");
+        }
         return new ScientificTokenVerifier(key.toRSAPublicKey(), "urn:ilp:r9:isolated", "ilp-scientific-api");
     }
     @Bean FilterRegistrationBean<ScientificApiFilter> r9Boundary(ScientificTokenVerifier verifier) {
