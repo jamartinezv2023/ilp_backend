@@ -42,7 +42,9 @@ public class OfflineAccessController {
         try {
             this.signingKey = (RSAPrivateKey) KeyFactory.getInstance("RSA")
                     .generatePrivate(new PKCS8EncodedKeySpec(Base64.getDecoder().decode(encodedKey)));
-            if (signingKey.getModulus().bitLength() < 2048 || signingKey.getModulus().equals(apiPublicKey.getModulus())) throw new IllegalArgumentException("Weak offline signing key");
+            if (signingKey.getModulus().bitLength() < 2048 || signingKey.getModulus().equals(apiPublicKey.getModulus())) {
+                throw new IllegalArgumentException("Weak offline signing key");
+            }
         } catch (Exception ex) {
             throw new IllegalArgumentException("Invalid separate offline signing key", ex);
         }
@@ -50,7 +52,9 @@ public class OfflineAccessController {
     @PostMapping("/auth/offline-access")
     public ResponseEntity<Credential> enroll(@AuthenticationPrincipal Jwt principal, @RequestBody Enrollment input) {
         var identity = identities.identity(principal).getBody();
-        if (identity == null) throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        if (identity == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        }
         if (input == null || !canonicalUuid(input.assignmentId()) || !canonicalUuid(input.administrationId())
                 || !canonicalUuid(input.deviceId()) || input.instrumentVersion() == null
                 || !input.instrumentVersion().matches("[A-Za-z0-9._-]{1,100}")) {
@@ -70,7 +74,9 @@ public class OfflineAccessController {
         return ResponseEntity.ok().header("Cache-Control", "no-store").body(new Credential(token.serialize()));
     }
     private static boolean canonicalUuid(String value) {
-        if (value == null) return false;
+        if (value == null) {
+            return false;
+        }
         try { return UUID.fromString(value).toString().equals(value); }
         catch (IllegalArgumentException ex) { return false; }
     }

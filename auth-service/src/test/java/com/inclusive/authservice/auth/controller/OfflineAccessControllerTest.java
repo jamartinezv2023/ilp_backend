@@ -51,8 +51,9 @@ class OfflineAccessControllerTest {
         var generator = KeyPairGenerator.getInstance("RSA"); generator.initialize(2048);
         var normalApiKey = (RSAPublicKey) generator.generateKeyPair().getPublic();
         var credential = controller.enroll(principal, request).getBody().credential();
+        var decoder = NimbusJwtDecoder.withPublicKey(normalApiKey).build();
         assertThrows(org.springframework.security.oauth2.jwt.JwtException.class,
-                () -> NimbusJwtDecoder.withPublicKey(normalApiKey).build().decode(credential));
+                () -> decoder.decode(credential));
     }
     @Test void accountRejectionBlocksEnrollment() {
         when(identities.identity(principal)).thenThrow(new ResponseStatusException(org.springframework.http.HttpStatus.FORBIDDEN));
@@ -77,6 +78,24 @@ class OfflineAccessControllerTest {
         var encoded = Base64.getEncoder().encodeToString(pair.getPrivate().getEncoded());
         var apiKey = (RSAPublicKey) pair.getPublic();
         assertThrows(IllegalArgumentException.class, () -> new OfflineAccessController(identities, encoded, apiKey));
+    }
+    @Test void rejectsWeakKeys() throws Exception {
+        var generator = KeyPairGenerator.getInstance("RSA"); generator.initialize(1024);
+        var pair = generator.generateKeyPair();
+        var encoded = Base64.getEncoder().encodeToString(pair.getPrivate().getEncoded());
+        assertThrows(IllegalArgumentException.class, () -> new OfflineAccessController(identities, encoded, publicKey));
+    }
+    @Test void rejectsMissingIdentityBody() {
+        when(identities.identity(principal)).thenReturn(ResponseEntity.ok().build());
+        assertThrows(ResponseStatusException.class, () -> controller.enroll(principal, request));
+    }
+    @Test void rejectsMissingDevice() {
+        var invalid = new OfflineAccessController.Enrollment(request.assignmentId(), "r9-v1", request.administrationId(), null);
+        assertThrows(ResponseStatusException.class, () -> controller.enroll(principal, invalid));
+    }
+    @Test void rejectsNoncanonicalAdministration() {
+        var invalid = new OfflineAccessController.Enrollment(request.assignmentId(), "r9-v1", "1-1-1-1-1", request.deviceId());
+        assertThrows(ResponseStatusException.class, () -> controller.enroll(principal, invalid));
     }
     @Test void rejectsMisconfiguredKeys() { assertThrows(IllegalArgumentException.class, () -> new OfflineAccessController(identities, "invalid", publicKey)); }
 }
