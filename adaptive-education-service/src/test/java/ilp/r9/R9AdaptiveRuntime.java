@@ -178,7 +178,7 @@ public class R9AdaptiveRuntime {
                 TENANT, CODE, VERSION, "SYNTHETIC_NOT_ORIGINAL_INSTRUMENT", OWNER);
             var sessions = new LinkedHashMap<String, Object>();
             int index = 1;
-            for (String locale : List.of("es360", "es1440", "en360", "en1440")) {
+            for (String locale : List.of("es360", "es1440", "en360", "en1440", "p02es360", "p02es1440", "p02en360", "p02en1440")) {
                 String student = "SYNTHETIC-R9-" + locale;
                 students.saveAndFlush(new StudentProfileEntity(student, "Synthetic High", "TEST", 18,
                     "TEST_ONLY", "TEST_ONLY", "LOW", List.of(), List.of()));
