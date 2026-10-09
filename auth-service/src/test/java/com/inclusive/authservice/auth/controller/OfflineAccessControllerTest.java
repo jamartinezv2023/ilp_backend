@@ -97,5 +97,17 @@ class OfflineAccessControllerTest {
         var invalid = new OfflineAccessController.Enrollment(request.assignmentId(), "r9-v1", "1-1-1-1-1", request.deviceId());
         assertThrows(ResponseStatusException.class, () -> controller.enroll(principal, invalid));
     }
+    @Test void preservesRejectionStatusWithoutLeakingDetails() {
+        var failure = new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, "synthetic-sensitive-detail");
+        var response = controller.rejectedEnrollment(failure);
+        assertEquals(400, response.getStatusCode().value());
+        assertEquals("no-store", response.getHeaders().getFirst("Cache-Control"));
+        assertEquals(java.util.Map.of("error", "OFFLINE_ENROLLMENT_REJECTED"), response.getBody());
+    }
+    @Test void rejectsUnreadableBodyAsClientError() {
+        var response = controller.unreadableEnrollment(mock(org.springframework.http.converter.HttpMessageNotReadableException.class));
+        assertEquals(400, response.getStatusCode().value());
+        assertEquals("no-store", response.getHeaders().getFirst("Cache-Control"));
+    }
     @Test void rejectsMisconfiguredKeys() { assertThrows(IllegalArgumentException.class, () -> new OfflineAccessController(identities, "invalid", publicKey)); }
 }

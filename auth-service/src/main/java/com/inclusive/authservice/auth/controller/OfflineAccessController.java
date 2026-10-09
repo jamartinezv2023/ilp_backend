@@ -10,15 +10,19 @@ import com.nimbusds.jwt.SignedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.KeyFactory;
+import java.security.GeneralSecurityException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -26,6 +30,7 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
+import java.util.Map;
 
 /** Prepared local identity only. Uses a separate signing key, never an API bearer key. */
 @RestController
@@ -45,7 +50,7 @@ public final class OfflineAccessController {
             if (signingKey.getModulus().bitLength() < 2048 || signingKey.getModulus().equals(apiPublicKey.getModulus())) {
                 throw new IllegalArgumentException("Weak offline signing key");
             }
-        } catch (Exception ex) {
+        } catch (GeneralSecurityException | IllegalArgumentException ex) {
             throw new IllegalArgumentException("Invalid separate offline signing key", ex);
         }
     }
@@ -72,6 +77,18 @@ public final class OfflineAccessController {
         try { token.sign(new RSASSASigner(signingKey)); }
         catch (JOSEException ex) { throw new IllegalStateException("Offline credential signing failed", ex); }
         return ResponseEntity.ok().header("Cache-Control", "no-store").body(new Credential(token.serialize()));
+    }
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String, String>> rejectedEnrollment(ResponseStatusException failure) {
+        return rejection(failure.getStatusCode());
+    }
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, String>> unreadableEnrollment(HttpMessageNotReadableException failure) {
+        return rejection(HttpStatus.BAD_REQUEST);
+    }
+    private static ResponseEntity<Map<String, String>> rejection(HttpStatusCode status) {
+        return ResponseEntity.status(status).header("Cache-Control", "no-store")
+                .body(Map.of("error", "OFFLINE_ENROLLMENT_REJECTED"));
     }
     private static boolean canonicalUuid(String value) {
         if (value == null) {
