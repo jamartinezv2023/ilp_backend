@@ -30,7 +30,7 @@ import java.util.UUID;
 /** Prepared local identity only. Uses a separate signing key, never an API bearer key. */
 @RestController
 @ConditionalOnProperty(name = "security.offline.enabled", havingValue = "true")
-public class OfflineAccessController {
+public final class OfflineAccessController {
     private final SessionIdentityController identities;
     private final RSAPrivateKey signingKey;
     public record Enrollment(String assignmentId, String instrumentVersion, String administrationId, String deviceId) {}
