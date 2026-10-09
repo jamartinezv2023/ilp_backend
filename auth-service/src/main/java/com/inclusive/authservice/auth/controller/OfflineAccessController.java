@@ -31,11 +31,13 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /** Prepared local identity only. Uses a separate signing key, never an API bearer key. */
 @RestController
 @ConditionalOnProperty(name = "security.offline.enabled", havingValue = "true")
 public final class OfflineAccessController {
+    private static final Pattern INSTRUMENT_VERSION = Pattern.compile("[A-Za-z0-9._-]{1,100}");
     private final SessionIdentityController identities;
     private final RSAPrivateKey signingKey;
     public record Enrollment(String assignmentId, String instrumentVersion, String administrationId, String deviceId) {}
@@ -62,7 +64,7 @@ public final class OfflineAccessController {
         }
         if (input == null || !canonicalUuid(input.assignmentId()) || !canonicalUuid(input.administrationId())
                 || !canonicalUuid(input.deviceId()) || input.instrumentVersion() == null
-                || !input.instrumentVersion().matches("[A-Za-z0-9._-]{1,100}")) {
+                || !INSTRUMENT_VERSION.matcher(input.instrumentVersion()).matches()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid offline enrollment");
         }
         Instant issued = Instant.now();
