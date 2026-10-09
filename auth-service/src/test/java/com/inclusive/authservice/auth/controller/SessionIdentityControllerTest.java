@@ -12,8 +12,11 @@ import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 
 class SessionIdentityControllerTest {
     private final UUID owner = UUID.fromString("90000000-0000-4000-8000-000000000001");
@@ -44,6 +47,25 @@ class SessionIdentityControllerTest {
         assertEquals(401, assertThrows(ResponseStatusException.class,
                 () -> controller.identity(principal("invalid", tenant.toString()))).getStatusCode().value());
         verifyNoInteractions(accounts);
+    }
+    @Test void rejectsMissingTenantClaim() {
+        var jwt = Jwt.withTokenValue("test-only").header("alg", "RS256").subject(owner.toString()).build();
+        assertEquals(401, assertThrows(ResponseStatusException.class,
+                () -> controller.identity(jwt)).getStatusCode().value());
+        verifyNoInteractions(accounts);
+    }
+    @Test void rejectsNoncanonicalSubject() {
+        assertEquals(401, assertThrows(ResponseStatusException.class,
+                () -> controller.identity(principal("1-1-1-1-1", tenant.toString()))).getStatusCode().value());
+        verifyNoInteractions(accounts);
+    }
+    @Test void rejectsDifferentReturnedAccount() {
+        TenantContext.setTenantId(tenant);
+        var user = new UserAccount(UUID.randomUUID(), tenant, "synthetic@example.invalid", "test-only",
+                true, false, null, Instant.now(), null);
+        when(accounts.findById(owner)).thenReturn(Optional.of(user));
+        assertEquals(403, assertThrows(ResponseStatusException.class,
+                () -> controller.identity(principal(owner.toString(), tenant.toString()))).getStatusCode().value());
     }
     @Test void rejectsTenantMismatchBeforeAccountRead() {
         TenantContext.setTenantId(UUID.randomUUID());
