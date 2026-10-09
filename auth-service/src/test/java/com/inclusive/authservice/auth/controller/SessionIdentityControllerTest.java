@@ -44,8 +44,9 @@ class SessionIdentityControllerTest {
         verifyNoInteractions(accounts);
     }
     @Test void rejectsMalformedIdentity() {
+        var jwt = principal("invalid", tenant.toString());
         assertEquals(401, assertThrows(ResponseStatusException.class,
-                () -> controller.identity(principal("invalid", tenant.toString()))).getStatusCode().value());
+                () -> controller.identity(jwt)).getStatusCode().value());
         verifyNoInteractions(accounts);
     }
     @Test void rejectsMissingTenantClaim() {
@@ -55,8 +56,9 @@ class SessionIdentityControllerTest {
         verifyNoInteractions(accounts);
     }
     @Test void rejectsNoncanonicalSubject() {
+        var jwt = principal("1-1-1-1-1", tenant.toString());
         assertEquals(401, assertThrows(ResponseStatusException.class,
-                () -> controller.identity(principal("1-1-1-1-1", tenant.toString()))).getStatusCode().value());
+                () -> controller.identity(jwt)).getStatusCode().value());
         verifyNoInteractions(accounts);
     }
     @Test void rejectsDifferentReturnedAccount() {
@@ -64,31 +66,36 @@ class SessionIdentityControllerTest {
         var user = new UserAccount(UUID.randomUUID(), tenant, "synthetic@example.invalid", "test-only",
                 true, false, null, Instant.now(), null);
         when(accounts.findById(owner)).thenReturn(Optional.of(user));
+        var jwt = principal(owner.toString(), tenant.toString());
         assertEquals(403, assertThrows(ResponseStatusException.class,
-                () -> controller.identity(principal(owner.toString(), tenant.toString()))).getStatusCode().value());
+                () -> controller.identity(jwt)).getStatusCode().value());
     }
     @Test void rejectsTenantMismatchBeforeAccountRead() {
         TenantContext.setTenantId(UUID.randomUUID());
+        var jwt = principal(owner.toString(), tenant.toString());
         assertEquals(403, assertThrows(ResponseStatusException.class,
-                () -> controller.identity(principal(owner.toString(), tenant.toString()))).getStatusCode().value());
+                () -> controller.identity(jwt)).getStatusCode().value());
         verifyNoInteractions(accounts);
     }
     @Test void rejectsDeletedAccount() {
         TenantContext.setTenantId(tenant);
         when(accounts.findById(owner)).thenReturn(Optional.empty());
+        var jwt = principal(owner.toString(), tenant.toString());
         assertEquals(403, assertThrows(ResponseStatusException.class,
-                () -> controller.identity(principal(owner.toString(), tenant.toString()))).getStatusCode().value());
+                () -> controller.identity(jwt)).getStatusCode().value());
     }
     @Test void rejectsDisabledAccount() {
         TenantContext.setTenantId(tenant);
         when(accounts.findById(owner)).thenReturn(Optional.of(account(tenant, false)));
+        var jwt = principal(owner.toString(), tenant.toString());
         assertEquals(403, assertThrows(ResponseStatusException.class,
-                () -> controller.identity(principal(owner.toString(), tenant.toString()))).getStatusCode().value());
+                () -> controller.identity(jwt)).getStatusCode().value());
     }
     @Test void rejectsAccountInDifferentInstitution() {
         TenantContext.setTenantId(tenant);
         when(accounts.findById(owner)).thenReturn(Optional.of(account(UUID.randomUUID(), true)));
+        var jwt = principal(owner.toString(), tenant.toString());
         assertEquals(403, assertThrows(ResponseStatusException.class,
-                () -> controller.identity(principal(owner.toString(), tenant.toString()))).getStatusCode().value());
+                () -> controller.identity(jwt)).getStatusCode().value());
     }
 }
