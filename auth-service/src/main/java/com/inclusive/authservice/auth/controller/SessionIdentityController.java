@@ -26,17 +26,20 @@ public class SessionIdentityController {
         if (principal == null) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Authentication required");
         }
+        String subject = principal.getSubject();
+        String institution = principal.getClaimAsString("tenantId");
+        if (subject == null || institution == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid identity claims");
+        }
         UUID userId;
         UUID tenantId;
         try {
-            String subject = principal.getSubject();
-            String institution = principal.getClaimAsString("tenantId");
             userId = UUID.fromString(subject);
             tenantId = UUID.fromString(institution);
             if (!userId.toString().equalsIgnoreCase(subject) || !tenantId.toString().equalsIgnoreCase(institution)) {
                 throw new IllegalArgumentException("Noncanonical identity");
             }
-        } catch (IllegalArgumentException | NullPointerException ex) {
+        } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid identity claims");
         }
         if (!tenantId.equals(TenantContext.getTenantId())) {
