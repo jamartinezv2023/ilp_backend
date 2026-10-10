@@ -28,7 +28,6 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.time.Instant;
 import java.util.Base64;
-import java.util.Date;
 import java.util.UUID;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -72,7 +71,7 @@ public final class OfflineAccessController {
                 .subject(identity.userId().toString()).claim("tenantId", identity.tenantId().toString())
                 .claim("assignmentId", input.assignmentId()).claim("instrumentVersion", input.instrumentVersion())
                 .claim("administrationId", input.administrationId()).claim("deviceId", input.deviceId())
-                .issueTime(Date.from(issued)).expirationTime(Date.from(issued.plusSeconds(600)))
+                .claim("iat", issued.getEpochSecond()).claim("exp", issued.plusSeconds(600).getEpochSecond())
                 .jwtID(UUID.randomUUID().toString()).build();
         var token = new SignedJWT(new JWSHeader.Builder(JWSAlgorithm.RS256)
                 .type(new JOSEObjectType("ilp-offline+jwt")).build(), claims);
