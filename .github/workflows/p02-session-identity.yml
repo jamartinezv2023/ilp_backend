@@ -1,0 +1,28 @@
+name: P02 verified session identity
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  session-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - run: chmod +x gradlew
+      - name: Identity and existing authentication regressions
+        run: ./gradlew --no-daemon --no-configuration-cache :auth-service:test --tests '*SessionIdentityControllerTest' --tests '*AccountLoginHardeningTest' --tests '*LoginBoundaryExceptionHandlerTest'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: p02-session-identity-${{ github.event.pull_request.head.sha || github.sha }}
+          path: auth-service/build/test-results/test
